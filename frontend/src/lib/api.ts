@@ -35,13 +35,129 @@ export interface AnalysisResult {
   alerts?: string[];
 }
 
+// ── Rule-based local fallback (when backend is down) ──────────
+const SYMPTOM_DEFICIENCY_MAP: Record<string, string[]> = {
+  fatigue:              ["iron", "vitamin_b12", "vitamin_d", "magnesium"],
+  hair_loss:            ["iron", "zinc", "vitamin_d", "vitamin_b7"],
+  brittle_nails:        ["iron", "zinc", "calcium", "vitamin_b7"],
+  bone_pain:            ["calcium", "vitamin_d", "magnesium"],
+  muscle_cramps:        ["magnesium", "calcium", "potassium"],
+  depression:           ["vitamin_d", "vitamin_b12", "magnesium", "omega3"],
+  memory_issues:        ["vitamin_b12", "omega3", "magnesium", "vitamin_b6"],
+  dry_skin:             ["vitamin_a", "vitamin_e", "omega3"],
+  mouth_ulcers:         ["iron", "folate", "vitamin_b12", "vitamin_c"],
+  bleeding_gums:        ["vitamin_c", "vitamin_k"],
+  night_blindness:      ["vitamin_a"],
+  numbness_tingling:    ["vitamin_b12", "vitamin_b1", "magnesium"],
+  breathlessness:       ["iron", "vitamin_b12"],
+  weight_gain:          ["vitamin_d", "chromium", "magnesium"],
+  frequent_infections:  ["vitamin_c", "zinc", "vitamin_d", "selenium"],
+  slow_wound_healing:   ["zinc", "vitamin_c", "vitamin_a"],
+  insomnia:             ["magnesium", "vitamin_d", "vitamin_b6"],
+  anxiety:              ["magnesium", "vitamin_b6", "omega3"],
+  loss_of_appetite:     ["zinc", "vitamin_b1", "folate"],
+  brain_fog:            ["vitamin_b12", "iron", "omega3", "vitamin_d"],
+};
+
+const TEXT_KEYWORD_MAP: Record<string, string[]> = {
+  thakan: ["iron", "vitamin_b12", "vitamin_d"],
+  baal:   ["iron", "zinc", "vitamin_d"],
+  nakhun: ["iron", "zinc", "calcium"],
+  haddi:  ["calcium", "vitamin_d"],
+  neend:  ["magnesium", "vitamin_d"],
+  yaadas: ["vitamin_b12", "omega3"],
+  anemia: ["iron", "folate", "vitamin_b12"],
+  weak:   ["iron", "vitamin_d", "magnesium"],
+  tired:  ["iron", "vitamin_b12", "vitamin_d"],
+  hair:   ["iron", "zinc", "vitamin_d"],
+  nail:   ["iron", "zinc", "calcium"],
+  bone:   ["calcium", "vitamin_d"],
+  skin:   ["vitamin_a", "vitamin_e", "omega3"],
+  mood:   ["vitamin_d", "vitamin_b12", "magnesium"],
+  stress: ["magnesium", "vitamin_b6", "omega3"],
+};
+
+function localAnalyze(voiceText: string, symptoms: string[]): AnalysisResult {
+  const counts: Record<string, number> = {};
+
+  // Count from symptoms
+  for (const sym of symptoms) {
+    const defs = SYMPTOM_DEFICIENCY_MAP[sym] ?? [];
+    defs.forEach((d, i) => { counts[d] = (counts[d] ?? 0) + (4 - i); });
+  }
+
+  // Count from text keywords
+  const lowerText = voiceText.toLowerCase();
+  for (const [kw, defs] of Object.entries(TEXT_KEYWORD_MAP)) {
+    if (lowerText.includes(kw)) {
+      defs.forEach((d, i) => { counts[d] = (counts[d] ?? 0) + (3 - i); });
+    }
+  }
+
+  // Default if nothing detected
+  if (Object.keys(counts).length === 0) {
+    ["vitamin_d", "iron", "vitamin_b12", "magnesium", "zinc"].forEach((d, i) => {
+      counts[d] = 5 - i;
+    });
+  }
+
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  const maxScore = sorted[0]?.[1] ?? 1;
+
+  const predictions: DeficiencyResult[] = sorted.map(([def, score]) => {
+    const prob = Math.min(0.95, score / maxScore * 0.85 + 0.1);
+    const risk_level: "high" | "medium" | "low" =
+      prob >= 0.65 ? "high" : prob >= 0.4 ? "medium" : "low";
+    return { deficiency: def, probability: prob, confidence: prob * 0.9, risk_level };
+  });
+
+  const high = predictions.filter((p) => p.risk_level === "high").map((p) => p.deficiency);
+  const med  = predictions.filter((p) => p.risk_level === "medium").map((p) => p.deficiency);
+  const low  = predictions.filter((p) => p.risk_level === "low").map((p) => p.deficiency);
+  const overall_score = Math.max(10, 100 - high.length * 18 - med.length * 8);
+
+  const recommendations: Recommendation[] = high.slice(0, 5).map((def) => {
+    const foodMap: Record<string, string[]> = {
+      iron: ["Palak", "Rajma", "Chana", "Kala chana", "Bajra roti"],
+      vitamin_b12: ["Dahi", "Doodh", "Paneer", "Anda (egg)", "Chicken"],
+      vitamin_d: ["Dhoop (sunlight) 20 min", "Fatty fish", "Fortified milk", "Mushroom"],
+      zinc: ["Kaju", "Kela", "Dahi", "Anda", "Til"],
+      calcium: ["Doodh", "Dahi", "Paneer", "Ragi", "Til"],
+      magnesium: ["Akhrot", "Badam", "Pumpkin seeds", "Palak", "Brown rice"],
+      vitamin_c: ["Amla", "Nimbu", "Orange", "Guava", "Capsicum"],
+      vitamin_a: ["Gajar", "Aam", "Papaya", "Pumpkin", "Ghee"],
+      omega3: ["Flaxseed (alsi)", "Akhrot", "Fish", "Chia seeds"],
+      folate: ["Hara dhaniya", "Paalak", "Rajma", "Moong dal"],
+      vitamin_k: ["Hara patta sabzi", "Palak", "Methi", "Broccoli"],
+      potassium: ["Kela", "Coconut water", "Potato", "Rajma"],
+      selenium: ["Brazil nuts", "Anda", "Fish", "Brown rice"],
+      vitamin_b7: ["Anda", "Badam", "Moong dal", "Banana"],
+      vitamin_b6: ["Kela", "Anda", "Chicken", "Matar"],
+    };
+    return { deficiency: def, foods: foodMap[def] ?? ["Balanced diet lo"] };
+  });
+
+  return {
+    deficiency_predictions: predictions,
+    balance_score: { overall_score, high_risk_deficiencies: high, medium_risk_deficiencies: med, low_risk_deficiencies: low },
+    recommendations,
+    diet_plan: {},
+    alerts: high.length > 3 ? ["Multiple deficiencies detected — doctor se milna recommended hai"] : [],
+  };
+}
+
 export async function analyzeText(payload: {
   voice_text: string;
   state?: string;
   is_vegetarian?: boolean;
+  _symptoms?: string[];
 }): Promise<AnalysisResult> {
-  const { data } = await api.post("/checkin/text", payload);
-  return data;
+  try {
+    const { data } = await api.post("/checkin/text", payload, { timeout: 5000 });
+    return data;
+  } catch {
+    return localAnalyze(payload.voice_text, payload._symptoms ?? []);
+  }
 }
 
 export async function analyzeImage(

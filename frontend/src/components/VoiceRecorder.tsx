@@ -1,131 +1,190 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, MicOff, Square, Loader2 } from "lucide-react";
+import { Mic, Square, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const BACKEND = "http://localhost:8000";
 
 interface Props {
   onTranscript: (text: string) => void;
-  onAudioBlob?: (blob: Blob) => void;
   placeholder?: string;
 }
 
 type State = "idle" | "recording" | "processing";
+type Engine = "whisper" | "webspeech" | "none";
 
-export default function VoiceRecorder({ onTranscript, onAudioBlob, placeholder }: Props) {
-  const [state, setState] = useState<State>("idle");
-  const [volume, setVolume] = useState(0);
-  const mediaRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const animFrameRef = useRef<number>(0);
+export default function VoiceRecorder({ onTranscript, placeholder }: Props) {
+  const [recState,  setRecState]  = useState<State>("idle");
+  const [engine,    setEngine]    = useState<Engine>("none");
+  const [interim,   setInterim]   = useState("");
 
-  const stopRecording = useCallback(() => {
-    if (mediaRef.current && mediaRef.current.state !== "inactive") {
-      mediaRef.current.stop();
+  const mediaRef   = useRef<MediaRecorder | null>(null);
+  const chunksRef  = useRef<Blob[]>([]);
+  const wsRecogRef = useRef<any>(null);
+
+  // On mount: set engine (client-only, SSR disabled via dynamic import)
+  useEffect(() => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SR) {
+      setEngine("webspeech");
+    } else {
+      // Try Whisper backend only if Web Speech unavailable
+      fetch(`${BACKEND}/health`, { signal: AbortSignal.timeout(1500) })
+        .then((r) => { if (r.ok) setEngine("whisper"); })
+        .catch(() => setEngine("none"));
     }
-    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    setVolume(0);
-    setState("processing");
   }, []);
 
-  const startRecording = useCallback(async () => {
+  // ── WHISPER PATH (gold standard): record → send blob to backend ──
+  const startWhisper = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const ctx = new AudioContext();
-      const source = ctx.createMediaStreamSource(stream);
-      const analyser = ctx.createAnalyser();
-      analyser.fftSize = 256;
-      source.connect(analyser);
-      analyserRef.current = analyser;
-
-      const getVolume = () => {
-        const buf = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(buf);
-        const avg = buf.reduce((a, b) => a + b, 0) / buf.length;
-        setVolume(avg / 128);
-        animFrameRef.current = requestAnimationFrame(getVolume);
-      };
-      getVolume();
-
-      chunksRef.current = [];
       const mr = new MediaRecorder(stream, { mimeType: "audio/webm" });
+      chunksRef.current = [];
       mr.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
       mr.onstop = async () => {
-        const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-        onAudioBlob?.(blob);
         stream.getTracks().forEach((t) => t.stop());
-        ctx.close();
+        setRecState("processing");
+        try {
+          const blob = new Blob(chunksRef.current, { type: "audio/webm" });
+          const form = new FormData();
+          form.append("audio", blob, "recording.webm");
+          form.append("is_vegetarian", "false");
 
-        // Browser-side Web Speech API transcription (fallback)
-        if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
-          const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-          const recognition = new SR();
-          recognition.lang = "hi-IN";
-          recognition.interimResults = false;
-          recognition.onresult = (event: any) => {
-            const text = event.results[0][0].transcript;
-            onTranscript(text);
-            setState("idle");
-          };
-          recognition.onerror = () => setState("idle");
-          recognition.start();
-        } else {
-          setState("idle");
+          const res = await fetch(`${BACKEND}/checkin/voice`, { method: "POST", body: form });
+          if (!res.ok) throw new Error("backend error");
+          const data = await res.json();
+          // backend returns full deficiency result — extract transcribed voice_text if present
+          const text = data.transcribed_text || data.voice_text || data.symptoms_text || "";
+          if (text) onTranscript(text.trim());
+          else {
+            // backend processed but didn't return text — fall back to webspeech for caption
+            fallbackWebSpeech();
+            return;
+          }
+        } catch {
+          // backend unavailable mid-session, fall back
+          setEngine("webspeech");
+          fallbackWebSpeech();
+          return;
         }
+        setRecState("idle");
       };
-
       mediaRef.current = mr;
-      mr.start(100);
-      setState("recording");
+      mr.start(200);
+      setRecState("recording");
     } catch {
-      setState("idle");
-      alert("Microphone access needed. Please allow mic permission.");
+      setRecState("idle");
     }
-  }, [onTranscript, onAudioBlob]);
+  }, [onTranscript]);
+
+  const stopWhisper = useCallback(() => {
+    mediaRef.current?.stop();
+  }, []);
+
+  // ── WEB SPEECH PATH (fallback): live browser STT ──
+  const startWebSpeech = useCallback(() => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) return;
+    const r = new SR();
+    r.lang = "hi-IN";
+    r.continuous = true;
+    r.interimResults = true;
+    r.onstart = () => setRecState("recording");
+    r.onend   = () => { setRecState("idle"); setInterim(""); };
+    r.onerror = () => { setRecState("idle"); setInterim(""); };
+    r.onresult = (e: any) => {
+      let final = ""; let inter = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const t = e.results[i][0].transcript;
+        e.results[i].isFinal ? (final += t) : (inter += t);
+      }
+      if (final) onTranscript(final.trim());
+      setInterim(inter);
+    };
+    wsRecogRef.current = r;
+    r.start();
+  }, [onTranscript]);
+
+  const stopWebSpeech = useCallback(() => {
+    setRecState("processing");
+    wsRecogRef.current?.stop();
+  }, []);
+
+  function fallbackWebSpeech() {
+    setRecState("idle");
+    setEngine("webspeech");
+  }
+
+  // ── Unified start/stop ──
+  const handleClick = useCallback(() => {
+    if (recState === "idle") {
+      if (engine === "whisper")   startWhisper();
+      else if (engine === "webspeech") startWebSpeech();
+    } else if (recState === "recording") {
+      if (engine === "whisper")   stopWhisper();
+      else if (engine === "webspeech") stopWebSpeech();
+    }
+  }, [recState, engine, startWhisper, stopWhisper, startWebSpeech, stopWebSpeech]);
+
+  if (engine === "none") {
+    return (
+      <div className="text-center text-sm py-4" style={{ color: "rgba(255,255,255,0.4)" }}>
+        ⚠️ Voice support nahi mili — Type tab use karo
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="relative">
-        {/* Pulse rings when recording */}
         <AnimatePresence>
-          {state === "recording" && (
-            <>
-              {[1, 2, 3].map((ring) => (
-                <motion.div
-                  key={ring}
-                  className="absolute inset-0 rounded-full border-2 border-primary/40"
-                  initial={{ scale: 1, opacity: 0.6 }}
-                  animate={{ scale: 1 + ring * 0.35 + volume * 0.3, opacity: 0 }}
-                  transition={{ duration: 1.2, repeat: Infinity, delay: ring * 0.25, ease: "easeOut" }}
-                />
-              ))}
-            </>
-          )}
+          {recState === "recording" && [1, 2, 3].map((ring) => (
+            <motion.div
+              key={ring}
+              className="absolute inset-0 rounded-full"
+              style={{ border: "2px solid rgba(0,217,126,0.35)" }}
+              initial={{ scale: 1, opacity: 0.6 }}
+              animate={{ scale: 1 + ring * 0.4, opacity: 0 }}
+              transition={{ duration: 1.4, repeat: Infinity, delay: ring * 0.3, ease: "easeOut" }}
+            />
+          ))}
         </AnimatePresence>
 
         <Button
-          onClick={state === "idle" ? startRecording : stopRecording}
-          disabled={state === "processing"}
+          onClick={handleClick}
+          disabled={recState === "processing"}
           size="lg"
           className={`relative w-20 h-20 rounded-full transition-all ${
-            state === "recording"
+            recState === "recording"
               ? "bg-red-500 hover:bg-red-600 shadow-lg shadow-red-500/30"
-              : "bg-primary hover:bg-primary/90 glow-green"
+              : "bg-primary hover:bg-primary/90"
           }`}
         >
-          {state === "idle" && <Mic className="w-7 h-7" />}
-          {state === "recording" && <Square className="w-7 h-7 fill-current" />}
-          {state === "processing" && <Loader2 className="w-7 h-7 animate-spin" />}
+          {recState === "idle"       && <Mic     className="w-7 h-7" />}
+          {recState === "recording"  && <Square  className="w-7 h-7 fill-current" />}
+          {recState === "processing" && <Loader2 className="w-7 h-7 animate-spin" />}
         </Button>
       </div>
 
-      <p className="text-sm text-muted-foreground text-center">
-        {state === "idle" && (placeholder || "Mic dabao aur bolna shuru karo")}
-        {state === "recording" && "🔴 Recording... band karne ke liye dabao"}
-        {state === "processing" && "Processing aawaz..."}
-      </p>
+      <div className="text-center space-y-1">
+        <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+          {recState === "idle"       && (placeholder || "Mic dabao aur bolna shuru karo")}
+          {recState === "recording"  && "🔴 Sun raha hoon... band karne ke liye dabao"}
+          {recState === "processing" && "⏳ Transcribing..."}
+        </p>
+        <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.2)" }}>
+          {engine === "whisper" ? "🔬 Whisper AI (Gold Standard)" : engine === "webspeech" ? "🔬 Web Speech API (Gold Standard)" : ""}
+        </p>
+      </div>
+
+      {interim && (
+        <p className="text-sm italic text-center px-4" style={{ color: "rgba(255,255,255,0.35)" }}>
+          {interim}
+        </p>
+      )}
     </div>
   );
 }

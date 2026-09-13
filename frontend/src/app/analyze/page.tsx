@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mic, Camera, ClipboardList, ArrowRight, ArrowLeft, Loader2, Check, HeartPulse, UtensilsCrossed } from "lucide-react";
 import AppShell from "@/components/app/AppShell";
-import VoiceRecorder from "@/components/VoiceRecorder";
+import dynamic from "next/dynamic";
+const VoiceRecorder = dynamic(() => import("@/components/VoiceRecorder"), { ssr: false });
 import CameraCapture from "@/components/CameraCapture";
 import { SYMPTOM_OPTIONS, SYMPTOM_LABELS, analyzeText, analyzeImage } from "@/lib/api";
 import {
@@ -121,6 +122,7 @@ export default function AnalyzePage() {
         voice_text: symptomStr || "general health checkup",
         state: state || undefined,
         is_vegetarian: isVeg,
+        _symptoms: selectedSymptoms,
       });
 
       const imageResults: Record<string, Record<string, number>> = {};
