@@ -87,103 +87,976 @@ export function getRecipesForDeficiency(
   return scored.slice(0, limit).map((x) => x.f);
 }
 
-// ── Comprehensive Hindi food alias map (fuzzy search) ────────
+// ── Comprehensive multi-language food alias map ───────────────
+// Hindi / English / Punjabi / Bengali / Gujarati / Tamil / Telugu / Marathi / Kannada / Odia
+// + common misspellings for every entry
 export const FOOD_ALIASES: Record<string, string[]> = {
-  // Grains / Roti
-  roti:        ["chapati","chapatti","chappati","chapathi","phulka","fulka","wheat roti","gehu roti","rotto","atta","gehu"],
-  "bajra roti":["bajre ki roti","bajre roti","millet roti","bajra","pearl millet"],
-  "ragi roti": ["nachni","mandua","finger millet","ragi"],
-  rice:        ["chawal","chaawal","chaval","bhat","bhaat","white rice","plain rice"],
-  poha:        ["pohe","aval","chiwda","beaten rice","flattened rice"],
-  upma:        ["uppama","uppuma","semolina","suji","sooji upma"],
-  khichdi:     ["khichri","khichadi","khichari","dal rice","dal chawal"],
-  dalia:       ["daliya","broken wheat","oatmeal","porridge"],
-  idli:        ["idly","idlies","steam cake"],
-  dosa:        ["dosai","dose","plain dosa","masala dosa"],
 
-  // Dal / Legumes
-  dal:         ["daal","dhal","lentil","lentils"],
-  "masoor dal":["masoor","red lentil","pink dal","lal dal","masur"],
-  "moong dal": ["moong","mung","green gram","mung dal","mung bean","sabut moong"],
-  rajma:       ["kidney bean","red beans","rajmah","rajme"],
-  "chana dal": ["chana","bengal gram","desi chana"],
-  "urad dal":  ["urad","black gram","kaali dal","maa di dal","black lentil"],
-  "toor dal":  ["arhar dal","tur dal","pigeon pea","tuvar dal","arhar"],
-  "kala chana":["black chana","desi chana","horse gram","kale chane"],
-  "chole":     ["chhole","chickpea","kabuli chana","safed chana","garbanzo"],
+  // ── GRAINS / ROTI ──────────────────────────────────────────
+  roti: ["chapati","chapatti","chappati","chapathi","phulka","fulka","wheat roti","gehu roti",
+         "rotto","atta roti","gehun roti","gehu","chapdi","chappathi","chappathi","tawa roti",
+         // Punjabi
+         "atta di roti","gehun di roti",
+         // Gujarati
+         "rotli","bhakri","chapdi","fulka",
+         // Tamil
+         "chapathi","chappati","wheat chapathi",
+         // Telugu
+         "chapati","phulka roti",
+         // Marathi
+         "poli","bhakar",
+         // Bengali
+         "ruti","luchi",
+         // common typos
+         "rotti","rotii","chappathi","caapati"],
+  "bajra roti": ["bajre ki roti","bajre roti","millet roti","bajra","pearl millet",
+                 "bajri rotla","bajri roti","bajre","bajra rotla","baarjra",
+                 // Punjabi
+                 "makki nal bajra","bajre di roti",
+                 // Gujarati
+                 "bajri rotla","bajri",
+                 // Marathi
+                 "bajrichi bhakri","bajrichya roti",
+                 // Rajasthani
+                 "bajre ki roti","baajra",
+                 "bajre","bajara","bajraa"],
+  "ragi roti":  ["nachni","mandua","finger millet","ragi","nachni roti","raagi",
+                 "ragi mudde","ragi ball","kelvaragu",
+                 // Kannada
+                 "ragi rotti","raagi rotti","ragi mudde",
+                 // Tamil
+                 "kelvaragu","kezhvaragu","keppai",
+                 // Telugu
+                 "ragi rotte","ragulu",
+                 // Marathi
+                 "nachni bhakri","naachni",
+                 "raagi","raagi roti","rragi"],
+  "makki roti": ["makki di roti","cornmeal roti","corn roti","maize roti","maki roti",
+                 "makai roti","makii","makki"],
+  rice:         ["chawal","chaawal","chaval","bhat","bhaat","white rice","plain rice","bhaat",
+                 // Bengali
+                 "bhat","anna",
+                 // Tamil
+                 "sadam","soru","rice sadam",
+                 // Telugu
+                 "annam","biyyam",
+                 // Kannada
+                 "anna","akki",
+                 // Gujarati
+                 "chaval","bhaat",
+                 // Odia
+                 "bhata","anna",
+                 // typos
+                 "chaawl","chawl","chaawl","rce"],
+  "brown rice": ["brown chawal","unpolished rice","whole grain rice","bura chawal","sabut chawal"],
+  poha:         ["pohe","aval","chiwda","beaten rice","flattened rice","avalakki",
+                 // Tamil
+                 "aval","poha",
+                 // Telugu
+                 "atukulu","borugulu",
+                 // Kannada
+                 "avalakki","beaten rice",
+                 // Gujarati
+                 "poha","pauwa","thick poha",
+                 // Bengali
+                 "chira","chiura",
+                 // Marathi
+                 "pohe","kanda pohe",
+                 "pohaa","powa","pawaa"],
+  upma:         ["uppama","uppuma","semolina upma","suji upma","sooji upma","rava upma","uppittu",
+                 // Kannada
+                 "uppittu","upma",
+                 // Tamil
+                 "upma","sooji upma",
+                 // Telugu
+                 "uppudi pindi","uppuma",
+                 "oopmaa","upuma","upamma"],
+  khichdi:      ["khichri","khichadi","khichari","dal rice","dal chawal","khichdee",
+                 // Bengali
+                 "khichuri","bhog khichuri",
+                 // Gujarati
+                 "khichdi","dal bhat",
+                 // Tamil
+                 "pongal","ven pongal",
+                 // Telugu
+                 "huggi","pongali",
+                 // Odia
+                 "khechudi",
+                 "khicdi","khichdii","kkhichdi"],
+  dalia:        ["daliya","broken wheat","wheat porridge","lapsi","porridge","gehu dalia",
+                 "daliya porridge","cracked wheat",
+                 // Gujarati
+                 "lapsi","wheat lapsi",
+                 "dalia","daliyaa"],
+  idli:         ["idly","idlies","steam cake","idly rice","idli batter",
+                 // Tamil
+                 "idli","kanchipuram idli",
+                 // Telugu
+                 "idli","ravva idli",
+                 // Kannada
+                 "idli","thatte idli",
+                 "idlii","iddli","iddly"],
+  dosa:         ["dosai","dose","plain dosa","masala dosa","rava dosa","set dosa",
+                 // Tamil
+                 "dosai","adai dosa",
+                 // Telugu
+                 "dosa","pesarattu dosa",
+                 // Kannada
+                 "dose","neer dose","akki rotti",
+                 // typos
+                 "dosaa","doosa","dhosa"],
+  oats:         ["oatmeal","rolled oats","quick oats","jai","javi","oat porridge","granola",
+                 "oate","oats porridge","oatts","oat"],
+  dalia_oats:   ["dalia porridge","oat dalia","mixed porridge"],
 
-  // Vegetables
-  palak:       ["paalak","spinach","saag","palaka","hara saag","spinch"],
-  methi:       ["methi saag","fenugreek","fenugreek leaves","kasuri methi"],
-  aloo:        ["alu","aaloo","potato","batata","urulaikizhangu","aloo"],
-  "aloo gobhi":["aloo gobi","potato cauliflower","alu gobhi"],
-  gobhi:       ["gobi","cauliflower","cauliflower sabzi","phoolgobhi","phool gobhi"],
-  "palak paneer":["palak pneer","spinach paneer","saag paneer","saagpaneer"],
-  baingan:     ["brinjal","eggplant","aubergine","baigan","begun","ringna"],
-  bhindi:      ["okra","ladies finger","lady finger","vendakka","bendekai"],
-  lauki:       ["bottle gourd","ghiya","doodhi","dudhi","sorakkai"],
-  karela:      ["bitter gourd","bitter melon","pavakka","hagalakai"],
-  tinda:       ["round gourd","apple gourd","tindora","kundru"],
-  turai:       ["ridge gourd","zucchini","torai","beerakaya"],
-  pumpkin:     ["kaddu","sitaphal","petha","kumbalangi","parangikkai"],
-  "gajar":     ["carrot","gaajar","carrot sabzi","gajjar"],
-  "matar":     ["peas","green peas","mattar","vatana","pattani"],
-  tamatar:     ["tomato","tamaatar","tamaater","timaatar"],
-  pyaz:        ["onion","pyaaz","piaz","dungri"],
-  lehsun:      ["garlic","lasan","lasun","garlic clove"],
-  adrak:       ["ginger","ginger root","saunth","sonth","inguru"],
-  "shimla mirch":["capsicum","bell pepper","red pepper","green pepper","yellow pepper"],
-  "hara dhaniya":["coriander leaves","cilantro","dhania","dhaniya","kothimira"],
-  "saag":      ["mixed greens","leafy vegetables","harisaag","saagwala"],
-  broccoli:    ["brokali","brocoli"],
-  "sweet potato":["shakarkand","shakarkandi","sarkande","ratalu"],
-  chukandar:   ["beetroot","beet","red beet","chukander"],
+  // ── DAL / LEGUMES ──────────────────────────────────────────
+  dal:          ["daal","dhal","lentil","lentils","daal",
+                 // Tamil
+                 "paruppu","dal",
+                 // Telugu
+                 "pappu","dal",
+                 // Kannada
+                 "bele","dal",
+                 // Bengali
+                 "daal","dal",
+                 // Marathi
+                 "dal","varan",
+                 // Gujarati
+                 "dal","daal",
+                 "dhal","daal","dhaal"],
+  "masoor dal": ["masoor","red lentil","pink dal","lal dal","masur","red masoor",
+                 // Bengali
+                 "moshur dal","masur dal",
+                 // Tamil
+                 "mysore paruppu","masoor paruppu",
+                 // Gujarati
+                 "masoor ni dal",
+                 // Marathi
+                 "masoor dal","masoorachi dal",
+                 "masur","massoor","masoorr","masoor daal"],
+  "moong dal":  ["moong","mung","green gram","mung dal","mung bean","sabut moong","hari moong",
+                 "dhuli moong","yellow moong","moong soup",
+                 // Bengali
+                 "mug dal","mug daal","moog dal",
+                 // Tamil
+                 "payatham paruppu","moong paruppu",
+                 // Telugu
+                 "pesara pappu","moong pappu",
+                 // Kannada
+                 "hesaru bele","moong",
+                 // Gujarati
+                 "mag ni dal","mag dal",
+                 // Marathi
+                 "mugachi dal","mug dal",
+                 "moong daal","muung","mong","moongdal"],
+  rajma:        ["kidney bean","red beans","rajmah","rajme","red kidney beans",
+                 // Bengali
+                 "rajma","shim",
+                 // Punjabi
+                 "rajma chawal","rajme",
+                 // Kashmiri
+                 "rajmah","rajma roganjosh",
+                 "raajma","rajmaa","rajmma","rajuma"],
+  "chana dal":  ["chana","bengal gram","desi chana","gram dal","chane ki dal",
+                 // Tamil
+                 "kadalai paruppu","chana paruppu",
+                 // Telugu
+                 "senagapappu","chana pappu",
+                 // Kannada
+                 "kadle bele","chana bele",
+                 // Gujarati
+                 "chana ni dal","chana dal",
+                 "channa dal","chanaa dal","chaana","channadal"],
+  "urad dal":   ["urad","black gram","kaali dal","maa di dal","black lentil","maa ki dal",
+                 "dhuli urad","sabut urad",
+                 // Bengali
+                 "biulir dal","mashkalai dal",
+                 // Tamil
+                 "ulunthu paruppu","urad paruppu",
+                 // Telugu
+                 "minumula pappu","urad pappu",
+                 // Kannada
+                 "uddina bele","urad bele",
+                 // Gujarati
+                 "adad ni dal","urad dal",
+                 // Marathi
+                 "udid dal","uddachi dal",
+                 "uradd","urad daal","uradd","maaki dal"],
+  "toor dal":   ["arhar dal","tur dal","pigeon pea","tuvar dal","arhar","toovar","arhar daal",
+                 // Tamil
+                 "tuvaram paruppu","thuvaram paruppu",
+                 // Telugu
+                 "kandi pappu","toor pappu",
+                 // Kannada
+                 "togari bele","toor bele",
+                 // Gujarati
+                 "tuver ni dal","toor ni dal",
+                 // Marathi
+                 "tur dal","toorichi dal",
+                 "toordal","toovar dal","tuvar","arahr","arhardal"],
+  "kala chana": ["black chana","desi chana whole","horse gram","kale chane","bengal gram whole",
+                 "kala chhola","kaale chane",
+                 // Bengali
+                 "kala chana",
+                 // Punjabi
+                 "kale channe","kaale chane",
+                 "kala channa","kale chane","kaalachana"],
+  chole:        ["chhole","chickpea","kabuli chana","safed chana","garbanzo","white chana",
+                 // Bengali
+                 "chhola","kabuli chhola",
+                 // Gujarati
+                 "chana","chhole",
+                 // Punjabi
+                 "chole","channe",
+                 // Tamil
+                 "kondakadalai","kabuli kadalai",
+                 // Telugu
+                 "senagalu","chole",
+                 "cholle","chhole","chhola","choley","chholey","channey"],
+  lobia:        ["cowpea","black eyed peas","chauli","lobiya","black eye beans",
+                 // Bengali
+                 "barbati","borboti",
+                 // Gujarati
+                 "chola","val",
+                 // Tamil
+                 "karamani","thatta payiru",
+                 // Telugu
+                 "bobbarlu","lobia",
+                 "lobiyaa","lobi"],
+  "sabut moong":["whole moong","whole green gram","sabut mung","green moong whole","hari moong"],
 
-  // Dairy
-  dahi:        ["curd","yogurt","yoghurt","daahi","plain curd"],
-  paneer:      ["cottage cheese","panner","pneer","fresh cheese"],
-  doodh:       ["milk","dudh","dudha","gaay ka doodh","cow milk","whole milk"],
-  "lassi":     ["sweet lassi","salted lassi","butter milk"],
-  "chaas":     ["buttermilk","chaach","mattha","majjiga"],
-  ghee:        ["clarified butter","desi ghee","pure ghee"],
+  // ── VEGETABLES ─────────────────────────────────────────────
+  palak:        ["paalak","spinach","saag","palaka","hara saag","spinch","palok",
+                 // Bengali
+                 "palak shak","paalang","palang saag",
+                 // Tamil
+                 "keerai","pasalai keerai",
+                 // Telugu
+                 "palakura","paala kura",
+                 // Kannada
+                 "palaka soppu","soppu",
+                 // Gujarati
+                 "palak","paalak",
+                 // Marathi
+                 "palak","palakachi bhaji",
+                 // Punjabi
+                 "paalak","saag",
+                 "palakk","paalk","paalak","spinaach","spinich"],
+  methi:        ["methi saag","fenugreek","fenugreek leaves","kasuri methi","methi leaves",
+                 "methi ka saag",
+                 // Bengali
+                 "methi shak","methi pata",
+                 // Tamil
+                 "vendhaya keerai","methi keerai",
+                 // Telugu
+                 "menthiku","menthi koora",
+                 // Kannada
+                 "menthya soppu","menthe",
+                 // Gujarati
+                 "methi","methi ni bhaji",
+                 // Marathi
+                 "methi","methichi bhaji",
+                 // Punjabi
+                 "methi","methi da saag",
+                 "meethee","meethi","methee","meti"],
+  sarson:       ["mustard greens","sarson saag","sarson leaves","mustard leaves","sarsoo",
+                 "sarson da saag",
+                 // Punjabi
+                 "sarson da saag","sarso",
+                 // Bengali
+                 "shorshe shak","sarisha",
+                 // Marathi
+                 "mohri bhaji","sarson",
+                 "sarso","sarsoon","saason","sarsav"],
+  bathua:       ["chenopodium","goosefoot","pigweed","bathuwa","bathwa",
+                 // Punjabi
+                 "bathua saag","bathua",
+                 // Bengali
+                 "bethu shak",
+                 "bathoa","bathwa"],
+  aloo:         ["alu","aaloo","potato","batata","urulaikizhangu","aloo",
+                 // Bengali
+                 "aloo","alu","alur dom",
+                 // Tamil
+                 "urulaikizhangu","aloo",
+                 // Telugu
+                 "bangaladumpa","aloo kura",
+                 // Kannada
+                 "aloo","genasinakki",
+                 // Gujarati
+                 "bateta","aloo","bataaka",
+                 // Marathi
+                 "bataata","aloo",
+                 // Punjabi
+                 "aloo","alu",
+                 "aallu","allu","potatoes","poteto","patato"],
+  "aloo gobhi": ["aloo gobi","potato cauliflower","alu gobhi","aloo phoolgobi"],
+  gobhi:        ["gobi","cauliflower","cauliflower sabzi","phoolgobhi","phool gobhi",
+                 "phool gobi","foolgobhi",
+                 // Bengali
+                 "phulkopi","phool kopi",
+                 // Tamil
+                 "cauliflower","kovippu",
+                 // Telugu
+                 "cauliflower","gobi",
+                 // Gujarati
+                 "cauliflower","flaavara",
+                 // Marathi
+                 "phulkohala","phool gobhi",
+                 "gobhee","gobbhi","cauliflower"],
+  "palak paneer":["palak pneer","spinach paneer","saag paneer","saagpaneer","palak cheese"],
+  baingan:      ["brinjal","eggplant","aubergine","baigan","begun","ringna","vangi","bangan",
+                 // Bengali
+                 "begun","begoon",
+                 // Tamil
+                 "katharikai","kathirikai",
+                 // Telugu
+                 "vankaya","baingan",
+                 // Kannada
+                 "badnekai","baingan",
+                 // Gujarati
+                 "ringna","baingan",
+                 // Marathi
+                 "vaangi","baingan",
+                 // Punjabi
+                 "baingan","begun",
+                 "baigan","baingun","bainkan","egg plant"],
+  bhindi:       ["okra","ladies finger","lady finger","vendakka","bendekai","lady's finger",
+                 // Bengali
+                 "dheros","dherosh",
+                 // Tamil
+                 "vendakkai","vendaikkai",
+                 // Telugu
+                 "bendakaya","bhindi",
+                 // Kannada
+                 "bendekai","bhindi",
+                 // Gujarati
+                 "bhinda","bhindi",
+                 // Marathi
+                 "bhendi","bhindi",
+                 // Punjabi
+                 "bhindi","bhindi da saag",
+                 "bhindee","bindi","bindee","okraa"],
+  lauki:        ["bottle gourd","ghiya","doodhi","dudhi","sorakkai","kaddu wali","lau","gheeya",
+                 // Bengali
+                 "lau","lao",
+                 // Tamil
+                 "sorakkai","bottle gourd",
+                 // Telugu
+                 "anapa kaya","lauki",
+                 // Kannada
+                 "sorekai","lauki",
+                 // Gujarati
+                 "dudhi","lauki",
+                 // Marathi
+                 "dudhi","doodhi",
+                 // Punjabi
+                 "lauki","ghiya","gheeya",
+                 "laukee","laukii","ghiya","gheeya"],
+  karela:       ["bitter gourd","bitter melon","pavakka","hagalakai","pavakkai",
+                 "bittergourd","bitter guard",
+                 // Bengali
+                 "uchhe","karala",
+                 // Tamil
+                 "pavakkai","paavakkai",
+                 // Telugu
+                 "kakarakaya","karela",
+                 // Kannada
+                 "hagalakai","karela",
+                 // Gujarati
+                 "karela","karelu",
+                 // Marathi
+                 "karle","karela",
+                 "karella","kaarela","bitter gourd"],
+  tinda:        ["round gourd","apple gourd","tindora","kundru","tindli",
+                 // Bengali
+                 "tinda","kundri",
+                 // Gujarati
+                 "tindola","tindora",
+                 // Telugu
+                 "dondakaya","tindora",
+                 // Kannada
+                 "tendli","tindora",
+                 // Marathi
+                 "tendli","tondekai",
+                 "tindaa","kundru","kunduri"],
+  turai:        ["ridge gourd","torai","beerakaya","dodka","silk gourd",
+                 // Bengali
+                 "jhinge","jhingey",
+                 // Tamil
+                 "peerkangai","ridge gourd",
+                 // Telugu
+                 "beerakaya","turai",
+                 // Kannada
+                 "heerekai","turai",
+                 // Gujarati
+                 "turiya","turai",
+                 // Marathi
+                 "dodka","turai",
+                 "torai","turaii","turahi"],
+  pumpkin:      ["kaddu","sitaphal","petha","kumbalangi","parangikkai","kaddoo",
+                 // Bengali
+                 "kumro","kumra",
+                 // Tamil
+                 "poosanikai","parangikkai",
+                 // Telugu
+                 "gummadikaya","pumpkin",
+                 // Kannada
+                 "kumbalakai","pumpkin",
+                 // Gujarati
+                 "kaddu","kolu","kadoo",
+                 // Marathi
+                 "lal bhopla","kaddu",
+                 "kadduu","kadduuu","pumpkin"],
+  gajar:        ["carrot","gaajar","carrot sabzi","gajjar","carrots",
+                 // Bengali
+                 "gajar","gaajor",
+                 // Tamil
+                 "carrot","carrot kizhangu",
+                 // Telugu
+                 "carrot","gajjara",
+                 // Kannada
+                 "carrot","gaajari",
+                 // Gujarati
+                 "gajar","gajar nu shaak",
+                 "caroot","carrot","gaajjar","gaajaar"],
+  matar:        ["peas","green peas","mattar","vatana","pattani","hare matar","fresh peas",
+                 // Bengali
+                 "matar","motorshuti",
+                 // Tamil
+                 "pattani","green peas",
+                 // Telugu
+                 "pachi batani","matar",
+                 // Kannada
+                 "batani","matar",
+                 // Gujarati
+                 "vatana","matar",
+                 // Marathi
+                 "vatana","matar",
+                 "mattar","mattarr","peas","pea"],
+  tamatar:      ["tomato","tamaatar","tamaater","timaatar","tomatoes",
+                 // Bengali
+                 "tamato","tomatoo",
+                 // Tamil
+                 "thakkali","tomato",
+                 // Telugu
+                 "tomato","ramamulakaya",
+                 // Kannada
+                 "tomato","tomatoo",
+                 // Gujarati
+                 "tameta","tomato",
+                 // Marathi
+                 "tomato","tamatar",
+                 "tameto","tamito","tomatoo"],
+  pyaz:         ["onion","pyaaz","piaz","dungri","kanda",
+                 // Bengali
+                 "piyaj","piaj",
+                 // Tamil
+                 "vengayam","venkayam",
+                 // Telugu
+                 "ulli","neerulli",
+                 // Kannada
+                 "eerulli","ulli",
+                 // Gujarati
+                 "dungri","kanda",
+                 // Marathi
+                 "kanda","pyaz",
+                 // Punjabi
+                 "pyaz","piaz",
+                 "pyaz","pyaaz","oinin","onnion"],
+  lehsun:       ["garlic","lasan","lasun","garlic clove","lahasun","lahsun",
+                 // Bengali
+                 "rasun","laasun",
+                 // Tamil
+                 "poondu","puntu",
+                 // Telugu
+                 "vellulli","vellaipoondu",
+                 // Kannada
+                 "bellulli","lasun",
+                 // Gujarati
+                 "lasun","garlic",
+                 // Marathi
+                 "lasun","lehsun",
+                 "garlik","garlick","lahasun","lahsun"],
+  adrak:        ["ginger","ginger root","saunth","sonth","inguru","sooth","fresh ginger",
+                 // Bengali
+                 "ada","aada",
+                 // Tamil
+                 "inji","ginger",
+                 // Telugu
+                 "allam","ginger",
+                 // Kannada
+                 "shunti","ginger",
+                 // Gujarati
+                 "aadu","ginger",
+                 // Marathi
+                 "aale","ginger",
+                 "gingger","adrak","adarak","aadrakh"],
+  "shimla mirch":["capsicum","bell pepper","red pepper","green pepper","yellow pepper",
+                  "sweet pepper","paprika",
+                  // Bengali
+                  "capsicum","shimla mirch",
+                  // Tamil
+                  "kodaimilagai","capsicum",
+                  // Telugu
+                  "capsicum","donga mirchi",
+                  // Kannada
+                  "capsicum","donne menasinakai",
+                  // Gujarati
+                  "shimla mirchi","capsicum",
+                  "shimlamirch","capsikum","capscium"],
+  "hara dhaniya":["coriander leaves","cilantro","dhania","dhaniya","kothimira",
+                  "coriander","kothmeer","dhaniwa",
+                  // Bengali
+                  "dhone pata","dhanepata",
+                  // Tamil
+                  "kothamalli","kothambari",
+                  // Telugu
+                  "kothimira","kothamara",
+                  // Kannada
+                  "kottambari soppu","kothambari",
+                  // Gujarati
+                  "kothmir","kothmiri",
+                  // Marathi
+                  "kothimbir","kothmir",
+                  "corriander","corainder","dhanyia"],
+  broccoli:     ["brokali","brocoli","broccolli","green gobhi","broko","brokli"],
+  "sweet potato":["shakarkand","shakarkandi","sarkande","ratalu","meetha aloo",
+                  // Bengali
+                  "misti alu","misti aloo",
+                  // Tamil
+                  "sakkaravalli kizhangu",
+                  // Telugu
+                  "chettu dumpa","sweet potato",
+                  // Kannada
+                  "genasina gedde","sweet potato",
+                  "shakar kand","sakarkand","shakarkend","sweet aloo"],
+  chukandar:    ["beetroot","beet","red beet","chukander","chukundar",
+                 // Bengali
+                 "beet","chukundar",
+                 // Tamil
+                 "beetroot","beet kizhangu",
+                 "beetrut","beet root","chukndar","chukandaar"],
+  "drumstick":  ["sahjan","moringa pods","saijan","munaga","muringakkai","saginakaya",
+                 // Tamil
+                 "murungakkai","drumstick",
+                 // Telugu
+                 "munagakaya","drumstick",
+                 // Kannada
+                 "nuggekai","drumstick",
+                 // Marathi
+                 "shevga","drumstick",
+                 "sajan","sahjann","muringa","sahjanaa"],
+  arbi:         ["taro root","taro","kachalu","ghuiyan","eddoe","arvi",
+                 // Bengali
+                 "kochu","kochur","mukhi kochu",
+                 // Tamil
+                 "seppankizhangu","colocasia",
+                 // Telugu
+                 "chama dumpa","arbi",
+                 // Kannada
+                 "kesavinakki","arbi",
+                 // Gujarati
+                 "arvi","arbi",
+                 // Marathi
+                 "alu","arvi",
+                 "arvii","arbiiii","taroroot"],
 
-  // Protein / Non-veg
-  anda:        ["egg","anda","anDA","boiled egg","omelette","egg white","egg yolk","scrambled"],
-  chicken:     ["murgi","murga","murg","poultry","grilled chicken","chicken curry"],
-  fish:        ["machli","machali","maach","meen","sea food","seafood","salmon","rohu","katla"],
-  mutton:      ["lamb","gosht","maas","meat","keema","kheema","minced meat"],
+  // ── DAIRY ──────────────────────────────────────────────────
+  dahi:         ["curd","yogurt","yoghurt","daahi","plain curd","plain yogurt",
+                 // Bengali
+                 "doi","dahi",
+                 // Tamil
+                 "thayir","mosaru",
+                 // Telugu
+                 "perugu","dahi",
+                 // Kannada
+                 "mosaru","majjige",
+                 // Gujarati
+                 "dahi","dahi nu shaak",
+                 // Marathi
+                 "dahi","curd",
+                 // Punjabi
+                 "dahi","daahi",
+                 "dahii","cerd","yougurt","yogert","yoghurt","yoghert"],
+  paneer:       ["cottage cheese","panner","pneer","fresh cheese","soft cheese",
+                 // Bengali
+                 "chena","chhana","paneer",
+                 // Tamil
+                 "paneer","panner",
+                 // Telugu
+                 "paneer","paniru",
+                 // Kannada
+                 "paneer","chenna",
+                 // Gujarati
+                 "paneer","chhena",
+                 // Marathi
+                 "paneer","chena",
+                 "paneer","panier","panir","panear","paneeer"],
+  doodh:        ["milk","dudh","dudha","gaay ka doodh","cow milk","whole milk","full fat milk",
+                 // Bengali
+                 "dudh","doodh",
+                 // Tamil
+                 "paal","pal",
+                 // Telugu
+                 "palu","doodh",
+                 // Kannada
+                 "halu","doodh",
+                 // Gujarati
+                 "dudh","doodh",
+                 // Marathi
+                 "dudh","doodh",
+                 // Punjabi
+                 "doodh","dudh",
+                 "milkk","miilk","dudh","dooodh"],
+  lassi:        ["sweet lassi","salted lassi","butter milk","thick lassi","fruit lassi",
+                 // Punjabi
+                 "makhan lassi","meethi lassi",
+                 "laassi","lasi","laasi"],
+  chaas:        ["buttermilk","chaach","mattha","majjiga","tak",
+                 // Tamil
+                 "mor","neer mor",
+                 // Telugu
+                 "majjiga","chaas",
+                 // Kannada
+                 "majjige","chaas",
+                 // Gujarati
+                 "chaas","matho",
+                 // Marathi
+                 "taak","chaas",
+                 "chaach","chhaas","taak","takk"],
+  ghee:         ["clarified butter","desi ghee","pure ghee","cow ghee",
+                 // Tamil
+                 "nei","ghee",
+                 // Telugu
+                 "neyyi","ghee",
+                 // Kannada
+                 "thuppa","ghee",
+                 // Gujarati
+                 "ghee","ghee nu desi",
+                 "ghee","ghii","ghi"],
 
-  // Fruits
-  kela:        ["banana","kella","plantain"],
-  seb:         ["apple","saab","apple fruit"],
-  aam:         ["mango","amra","keri","raw mango"],
-  papaya:      ["papita","papetas","papaya fruit"],
-  anar:        ["pomegranate","annar","dalim"],
-  "amrud":     ["guava","peru","jaamfal"],
-  "santara":   ["orange","naranga","santra","narangi"],
-  nimbu:       ["lemon","lime","neembu","limon","citrus"],
-  amla:        ["gooseberry","indian gooseberry","awla","nellikai"],
+  // ── PROTEIN / NON-VEG ──────────────────────────────────────
+  anda:         ["egg","boiled egg","omelette","egg white","egg yolk","scrambled egg","fried egg",
+                 "anDa","anda bhurji","half fry",
+                 // Bengali
+                 "dim","deem",
+                 // Tamil
+                 "muttai","muttay",
+                 // Telugu
+                 "guddu","muttai",
+                 // Kannada
+                 "motte","mutte",
+                 // Gujarati
+                 "anda","egg",
+                 // Marathi
+                 "anda","andya",
+                 "andaa","eggg","eeg","anDa"],
+  chicken:      ["murgi","murga","murg","poultry","grilled chicken","chicken curry","murgi",
+                 "tandoori chicken","chicken tikka",
+                 // Bengali
+                 "murgir mangsho","chicken",
+                 // Tamil
+                 "kozhi","chicken",
+                 // Telugu
+                 "kodi","chicken",
+                 // Kannada
+                 "koli","chicken",
+                 "chiken","chickin","chickenn"],
+  fish:         ["machli","machali","maach","meen","seafood","salmon","rohu","katla","pomfret",
+                 "hilsa","bangda",
+                 // Bengali
+                 "maachh","mach","ilish",
+                 // Tamil
+                 "meen","fish",
+                 // Telugu
+                 "chepala","fish",
+                 // Kannada
+                 "meenu","fish",
+                 // Odia
+                 "machha","fish",
+                 "mackali","machhli","maachhi","fishh"],
+  mutton:       ["lamb","gosht","maas","meat","keema","kheema","minced meat","goat meat",
+                 // Bengali
+                 "mangsho","khasi",
+                 // Tamil
+                 "aadu kari","mutton",
+                 // Telugu
+                 "mamsam","mutton",
+                 // Kannada
+                 "mamsada saaru","mutton",
+                 // Punjabi
+                 "maas","gosht",
+                 "muttonn","muttn","goshat"],
 
-  // Nuts & Seeds
-  badam:       ["almond","badaam","almonds"],
-  akhrot:      ["walnut","akhrot"],
-  kaju:        ["cashew","cashewnut","keshoo","kaaju"],
-  "mungfali":  ["peanut","groundnut","moongphali","singdana"],
-  til:         ["sesame","sesame seeds","gingelly"],
-  "alsi":      ["flaxseed","linseed","flax seed","flax"],
-  "kaddu ke beej":["pumpkin seeds","pepitas"],
+  // ── FRUITS ─────────────────────────────────────────────────
+  kela:         ["banana","kella","plantain","raw banana","green banana","kacha kela",
+                 // Bengali
+                 "kola","kela",
+                 // Tamil
+                 "vaazhai pazham","vaalai",
+                 // Telugu
+                 "aratipandu","kela",
+                 // Kannada
+                 "bale hannu","kela",
+                 // Gujarati
+                 "kela","kelo",
+                 // Marathi
+                 "kela","kel",
+                 "banaana","bananna","bannaana","kella"],
+  seb:          ["apple","saab","apple fruit","appl","shimla apple","kashmiri apple",
+                 // Bengali
+                 "seb","aapel",
+                 // Tamil
+                 "apple","aapil",
+                 "appl","aplee","appel"],
+  aam:          ["mango","amra","keri","raw mango","kacha aam","paka aam","alphonso",
+                 // Bengali
+                 "aam","aamer",
+                 // Tamil
+                 "maambazham","mangai","manga",
+                 // Telugu
+                 "mamidipandu","mango",
+                 // Kannada
+                 "maavinahannu","mango",
+                 // Gujarati
+                 "keri","aam",
+                 // Marathi
+                 "amba","aamba",
+                 "mangg","maango","mnago"],
+  papaya:       ["papita","papetas","papaya fruit","raw papaya","paka papita","kachha papita",
+                 // Bengali
+                 "papey","papeya",
+                 // Tamil
+                 "pappali pazham","pappayi",
+                 // Telugu
+                 "boppaya pazham","papaya",
+                 // Kannada
+                 "parangi hannu","papaya",
+                 "papayaa","papaaya","papita"],
+  anar:         ["pomegranate","annar","dalim","anaar",
+                 // Bengali
+                 "dalim","daanaa",
+                 // Tamil
+                 "mathulampazham","anar",
+                 // Telugu
+                 "danimma pandu","anar",
+                 // Kannada
+                 "daalimbe","anar",
+                 "anar","pomgranate","pomegranete"],
+  amrud:        ["guava","peru","jaamfal","amrood","jamphal",
+                 // Bengali
+                 "peara","piara",
+                 // Tamil
+                 "koiyya pazham","kovva",
+                 // Telugu
+                 "jaamapandu","guava",
+                 // Kannada
+                 "seebe hannu","guava",
+                 // Gujarati
+                 "jamfal","amrood",
+                 // Marathi
+                 "peru","amrood",
+                 "guavaa","guawa","jaamfal","jamfal"],
+  santara:      ["orange","naranga","santra","narangi","mosambi","malta","citrus",
+                 // Bengali
+                 "komola","kamalalebu",
+                 // Tamil
+                 "aaranjai","orange",
+                 // Telugu
+                 "narinza pandu","orange",
+                 // Kannada
+                 "kittale","orange",
+                 // Gujarati
+                 "santra","narangi",
+                 "santaraa","organge","orangge","narangi"],
+  nimbu:        ["lemon","lime","neembu","limon","citrus","nimboo","lemon juice","nimbu ras",
+                 // Bengali
+                 "lebu","nimboo",
+                 // Tamil
+                 "elumichai","lemon",
+                 // Telugu
+                 "nimma pandu","lemon",
+                 // Kannada
+                 "nimbe hannu","lemon",
+                 "limon","nimbuu","lemoon","lemmn"],
+  amla:         ["gooseberry","indian gooseberry","awla","nellikai","aonla","awala","vitamin c fruit",
+                 // Bengali
+                 "amloki","awla",
+                 // Tamil
+                 "nellikai","amla",
+                 // Telugu
+                 "usirikaya","amla",
+                 // Kannada
+                 "nelli hannu","amla",
+                 // Gujarati
+                 "amla","aamla",
+                 "amlaa","aamla","awla","awwla"],
+  "khajoor":    ["dates","date fruit","medjool","arabic dates","chuara","sukhe khajoor",
+                 // Tamil
+                 "perichamkani","dates",
+                 // Telugu
+                 "kharjura pandu","dates",
+                 // Arabic origin
+                 "khurma","kurma","khurmaa"],
+  "kismis":     ["raisins","kishmish","dry grapes","dried grapes","sultana","kismis",
+                 "black raisins","kali kishmish","munakka",
+                 "kishmis","kismish","resins","raisns"],
+  "anjeer":     ["dried fig","fig","dry fig","sookhi anjeer","figs",
+                 // Bengali
+                 "dumur","anjeer",
+                 // Tamil
+                 "athi pazham","fig",
+                 // Telugu
+                 "athi pandu","anjeer",
+                 "aanjeer","anjiir","figs"],
 
-  // Common dishes
-  "dal makhani":["daal makhani","dal makhni","makhani dal","butter dal"],
-  "dal tadka":  ["tadke wali dal","tarka dal","tadka wali dal"],
-  "shahi paneer":["paneer makhani","butter paneer","paneer in gravy"],
-  "matar paneer":["mattar paneer","peas paneer"],
-  biryani:     ["biriyani","biriani","veg biryani","chicken biryani","rice dish"],
-  "sambar":    ["sambaar","south indian dal","sambhar"],
-  rasam:       ["pepper water","tomato rasam","tamarind soup"],
-  "pav bhaji": ["pao bhaji","paw bhaji","mumbai pav bhaji"],
-  "halwa":     ["sheera","halva","sooji halwa","gajar halwa"],
-  "kheer":     ["payasam","rice pudding","milk pudding"],
+  // ── NUTS & SEEDS ────────────────────────────────────────────
+  badam:        ["almond","badaam","almonds","soaked almond","peeled almond","badam milk",
+                 // Tamil
+                 "badam","vadumaai",
+                 // Telugu
+                 "badam","badaamu",
+                 // Kannada
+                 "badam","badaami",
+                 "baadaam","badamm","almonnd","almand"],
+  akhrot:       ["walnut","walnuts","omega-3 nuts","akhrot",
+                 // Bengali
+                 "akhrot",
+                 // Tamil
+                 "akhrot","vella kottai",
+                 "akhrott","aakhrot","walnut"],
+  kaju:         ["cashew","cashewnut","keshoo","kaaju","cashew nut",
+                 // Bengali
+                 "kaju","keshoo",
+                 // Tamil
+                 "mundhiri","kaju",
+                 // Telugu
+                 "jeedipappu","kaju",
+                 // Kannada
+                 "godambi","kaju",
+                 "caashew","cashuew","cajoo","kaaju"],
+  pista:        ["pistachio","pista nut","pistachios","pista",
+                 // Bengali
+                 "pesta","pista",
+                 // Tamil
+                 "pista","pistaa",
+                 "pistacchio","pistachio","peesta"],
+  mungfali:     ["peanut","groundnut","moongphali","singdana","mungphali","ground nut",
+                 // Bengali
+                 "badam","cheenababadam",
+                 // Tamil
+                 "verkadalai","kadalai",
+                 // Telugu
+                 "pallilu","verusenaga",
+                 // Kannada
+                 "kadale beeja","kadlekai",
+                 // Gujarati
+                 "singdana","mungfali",
+                 // Marathi
+                 "shengdana","mungfali",
+                 "moongphali","moongphaali","peanuts","peanut"],
+  til:          ["sesame","sesame seeds","gingelly","white sesame","black sesame","kala til","safed til",
+                 // Bengali
+                 "til","teel",
+                 // Tamil
+                 "ellu","til",
+                 // Telugu
+                 "nuvvulu","til",
+                 // Kannada
+                 "ellu","til",
+                 // Gujarati
+                 "tal","til",
+                 // Marathi
+                 "til","teel",
+                 "teel","tilll","sesame seed","sesmi"],
+  alsi:         ["flaxseed","linseed","flax seed","flax","alasi","omega3 seeds","flaxseeds",
+                 // Bengali
+                 "tisi","alshi",
+                 // Gujarati
+                 "alsi","alasi",
+                 // Marathi
+                 "alashi","alsi",
+                 "alsii","alsee","flaxseed","flax seeds"],
+  "kaddu beej": ["pumpkin seeds","pepitas","kaddu ke beej","kaddu beej",
+                 // Tamil
+                 "parangi virai","pumpkin seed",
+                 "kaddu ka beej","pumpkin seeds"],
+  chia:         ["chia seeds","soaked chia","chia seed","chea seeds","sabja like",
+                 "cheea","chiaa","chiya","chia seed"],
+
+  // ── DRY FRUITS ──────────────────────────────────────────────
+  "khumani":    ["apricot","dried apricot","khubani","sukhi khubani","sookhi khubani",
+                 "khubaani","khubani","apricots","aabkhurmani"],
+  "prune":      ["alubukhara","dried plum","prunes","plum dry","sookha alubukhara",
+                 "prune fruit","aloobukhara"],
+  "coconut":    ["nariyal","naarial","coconut","thengai","kobri","kopra",
+                 // Bengali
+                 "narikol","nariyal",
+                 // Tamil
+                 "thengai","coconut",
+                 // Telugu
+                 "kobbari","coconut",
+                 // Kannada
+                 "thengi","coconut",
+                 // Gujarati
+                 "nariyal","naariyal",
+                 "narial","narikol","cocnut","coconutt"],
+
+  // ── COMMON DISHES ───────────────────────────────────────────
+  "dal makhani":["daal makhani","dal makhni","makhani dal","butter dal","kaali dal makhani",
+                 "dal makhni","daal makhni"],
+  "dal tadka":  ["tadke wali dal","tarka dal","tadka wali dal","yellow dal tadka"],
+  "shahi paneer":["paneer makhani","butter paneer","paneer in gravy","paneer curry"],
+  "matar paneer":["mattar paneer","peas paneer","mutter paneer"],
+  biryani:      ["biriyani","biriani","veg biryani","chicken biryani","rice dish","pulao rice",
+                 "biriyaani","biriyan","birryani"],
+  sambar:       ["sambaar","south indian dal","sambhar","saambar",
+                 // Tamil
+                 "sambar","sambhar",
+                 // Telugu
+                 "sambhar","saambar",
+                 // Kannada
+                 "huli","saar",
+                 "sambarr","sambaarr"],
+  rasam:        ["pepper water","tomato rasam","tamarind soup","clear soup south indian",
+                 // Tamil
+                 "rasam","charu",
+                 // Telugu
+                 "charu","rasam",
+                 // Kannada
+                 "saaru","rasam",
+                 "rasam","rasam"],
+  "pav bhaji":  ["pao bhaji","paw bhaji","mumbai pav bhaji","pavbhaji"],
+  halwa:        ["sheera","halva","sooji halwa","gajar halwa","atta halwa","moong dal halwa",
+                 // Tamil
+                 "kesari","halwa",
+                 // Telugu
+                 "halwa","ravva halwa",
+                 "halwaa","halvaa","halva"],
+  kheer:        ["payasam","rice pudding","milk pudding","chawal ki kheer","ksheeram",
+                 // Tamil
+                 "payasam","pal payasam",
+                 // Telugu
+                 "paramannam","payasam",
+                 // Bengali
+                 "payesh","kheer",
+                 "khirr","kheerr","payasam"],
+  "chole bhature":["chhole bhature","cholay bhature","bhatura chole"],
+  "rajma chawal":["rajma rice","kidney beans rice","rajma dal chawal"],
+  "aloo paratha":["alu paratha","stuffed paratha","potato paratha","aluu paratha"],
+  "kadhi":      ["kadhi pakora","besan kadhi","dahi kadhi","buttermilk curry",
+                 // Gujarati
+                 "kadhi","gujarati kadhi",
+                 // Punjabi
+                 "kadhi pakora","kadhi",
+                 "kadi","kaadhi"],
+  "dhokla":     ["dhokla","dhokala","besan dhokla","gujarati dhokla","khaman",
+                 // Gujarati
+                 "dhokla","khaman dhokla",
+                 "dokla","dhokla"],
+  "thepla":     ["gujarati thepla","methi thepla","wheat thepla",
+                 "tepla","thepala","thepla"],
 };
 
 // Normalize text for fuzzy matching

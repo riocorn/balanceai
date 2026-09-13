@@ -8,7 +8,7 @@ import { getAllAnalyses, getOrCreateProfile, type AnalysisEntry } from "@/lib/db
 import { searchFoods, NUTRIENT_DAILY, NUTRIENT_UNITS, type FoodItem } from "@/lib/food-db";
 import { RECIPE_DB } from "@/lib/recipe-db";
 import { DEFICIENCY_LABELS } from "@/lib/api";
-import { generateMeals, quickSuggestion, type GeneratedMeals } from "@/lib/meal-generator";
+import { getMealOptions, quickSuggestion, DAILY_ROUTINE, type ThaliOption, type ThaliItem } from "@/lib/meal-generator";
 
 interface LogEntry { food: FoodItem; qty: number; }
 interface ChatMsg   { role: "user" | "ai"; text: string; }
@@ -209,22 +209,16 @@ export default function DiaryPage() {
     }, 900);
   };
 
-  const generatedMeals = useMemo<GeneratedMeals>(
-    () => generateMeals(userState, isVeg, [...deficientSet]),
-    [userState, isVeg, deficientSet],
-  );
+  const thaliOptions = useMemo(() => {
+    const slot = activeMeal.toLowerCase() as "breakfast"|"lunch"|"snacks"|"dinner";
+    return getMealOptions(slot, [...deficientSet]);
+  }, [activeMeal, deficientSet]);
 
-  // Active meal slot's seasonal suggestions
-  const mealSuggestions = useMemo(() => {
-    const slot = activeMeal.toLowerCase() as keyof GeneratedMeals;
-    return (generatedMeals[slot] as string[] | undefined) ?? generatedMeals.breakfast;
-  }, [generatedMeals, activeMeal]);
+  const [selectedThaliIdx, setSelectedThaliIdx] = useState(0);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [showRoutine, setShowRoutine] = useState(false);
 
-  // Find recipe in DB by first word (for chip add)
-  const findRecipeInDB = (name: string): FoodItem | null => {
-    const nl = name.toLowerCase().split(" ")[0];
-    return RECIPE_DB.find((r) => r.name.toLowerCase().includes(nl)) ?? null;
-  };
+  const currentThali: ThaliOption | null = thaliOptions[selectedThaliIdx] ?? thaliOptions[0] ?? null;
 
   return (
     <AppShell>
@@ -309,59 +303,198 @@ export default function DiaryPage() {
           </motion.div>
         )}
 
-        {/* AI-Generated Seasonal Meal Suggestions */}
-        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Leaf className="w-4 h-4" style={{ color: "#00d97e" }} />
-              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.8)" }}>
-                {activeMeal} Ideas — Seasonal{userState ? ` (${userState})` : ""}
-              </p>
-            </div>
-            {generatedMeals.produce.length > 0 && (
-              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.25)" }}>
-                {generatedMeals.produce.slice(0,3).join(", ")} in season
-              </p>
-            )}
-          </div>
-          <div className="space-y-1.5">
-            {mealSuggestions.map((idea, i) => {
-              const firstWord = idea.split(" ")[0].toLowerCase().replace(/[^a-z]/g,"");
-              const recipe = findRecipeInDB(firstWord);
-              return (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (recipe) addFood(recipe);
-                    else setQuery(firstWord);
-                    setShowSearch(true);
-                  }}
-                  className="w-full flex items-center justify-between p-3 rounded-xl text-left gap-3"
-                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
-                >
-                  <p className="text-xs flex-1" style={{ color: "rgba(255,255,255,0.7)" }}>{idea}</p>
-                  <Plus className="w-3 h-3 shrink-0" style={{ color: "#00d97e" }} />
-                </button>
-              );
-            })}
-          </div>
-          {/* Meal slot quick-filter chips */}
-          <div className="flex gap-1.5 mt-3 flex-wrap">
+        {/* ── THALI MEAL PLAN ── */}
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}
+          className="space-y-3">
+
+          {/* Meal slot tabs */}
+          <div className="flex gap-1.5 flex-wrap">
             {MEAL_SLOTS.map((m) => (
-              <button
-                key={m}
-                onClick={() => setActiveMeal(m)}
-                className="text-[10px] px-2.5 py-1 rounded-full font-medium transition-all"
+              <button key={m} onClick={() => { setActiveMeal(m); setSelectedThaliIdx(0); setExpandedItem(null); }}
+                className="text-[10px] px-3 py-1.5 rounded-full font-semibold transition-all"
                 style={{
                   background: activeMeal === m ? "rgba(0,217,126,0.15)" : "rgba(255,255,255,0.04)",
-                  border: activeMeal === m ? "1px solid rgba(0,217,126,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                  border: activeMeal === m ? "1px solid rgba(0,217,126,0.3)" : "1px solid rgba(255,255,255,0.07)",
                   color: activeMeal === m ? "#00d97e" : "rgba(255,255,255,0.4)",
-                }}
-              >
+                }}>
                 {MEAL_EMOJI[m]} {m}
               </button>
             ))}
           </div>
+
+          {/* Thali option selector */}
+          {thaliOptions.length > 1 && (
+            <div className="flex gap-1.5 overflow-x-auto pb-1">
+              {thaliOptions.map((opt, i) => (
+                <button key={opt.id} onClick={() => { setSelectedThaliIdx(i); setExpandedItem(null); }}
+                  className="shrink-0 text-[10px] px-2.5 py-1.5 rounded-lg text-left max-w-[140px] truncate"
+                  style={{
+                    background: selectedThaliIdx === i ? "rgba(0,217,126,0.1)" : "rgba(255,255,255,0.03)",
+                    border: selectedThaliIdx === i ? "1px solid rgba(0,217,126,0.25)" : "1px solid rgba(255,255,255,0.06)",
+                    color: selectedThaliIdx === i ? "#00d97e" : "rgba(255,255,255,0.4)",
+                  }}>
+                  {i+1}. {opt.title.split("+")[0].trim()}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Current Thali Card */}
+          {currentThali && (
+            <div className="rounded-2xl overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+
+              {/* Header */}
+              <div className="px-4 py-3 flex items-start justify-between gap-2"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <Leaf className="w-3 h-3" style={{ color: "#00d97e" }} />
+                    <p className="text-xs font-bold" style={{ color: "#00d97e" }}>{currentThali.title}</p>
+                  </div>
+                  <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    🕐 {currentThali.timing}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1 justify-end">
+                  {currentThali.tags.map(t => (
+                    <span key={t} className="text-[9px] px-1.5 py-0.5 rounded-full"
+                      style={{ background: "rgba(0,217,126,0.08)", color: "rgba(0,217,126,0.7)" }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Thali Items */}
+              <div className="divide-y" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                {currentThali.items.map((item: ThaliItem) => {
+                  const key = currentThali.id + item.name;
+                  const isOpen = expandedItem === key;
+                  return (
+                    <div key={key}>
+                      {/* Item row */}
+                      <button
+                        onClick={() => setExpandedItem(isOpen ? null : key)}
+                        className="w-full flex items-start gap-3 p-3 text-left"
+                        style={{ background: isOpen ? "rgba(0,217,126,0.04)" : "transparent" }}
+                      >
+                        <span className="text-base shrink-0 mt-0.5">{item.emoji}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-xs font-semibold" style={{ color: item.category === "Reminder" ? "#ef4444" : "rgba(255,255,255,0.85)" }}>
+                              {item.name}
+                            </p>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-full shrink-0"
+                              style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.3)" }}>
+                              {item.category}
+                            </span>
+                          </div>
+                          <p className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>
+                            {item.qty}{item.keyNutrient ? ` · ${item.keyNutrient}` : ""}
+                          </p>
+                        </div>
+                        <ChevronRight
+                          className="w-3.5 h-3.5 shrink-0 mt-1 transition-transform"
+                          style={{ color: "rgba(255,255,255,0.2)", transform: isOpen ? "rotate(90deg)" : "none" }}
+                        />
+                      </button>
+
+                      {/* Expanded cooking steps */}
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-4 pb-4 space-y-2"
+                              style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                              <p className="text-[10px] font-semibold mt-3 mb-2 uppercase tracking-widest"
+                                style={{ color: "rgba(255,255,255,0.25)" }}>Kaise Banayein</p>
+                              {item.steps.map((step, si) => (
+                                <div key={si} className="space-y-1">
+                                  <div className="flex gap-2">
+                                    <span className="text-[10px] font-bold shrink-0 w-4"
+                                      style={{ color: "rgba(255,255,255,0.3)" }}>{si+1}.</span>
+                                    <p className="text-[11px] leading-relaxed"
+                                      style={{ color: "rgba(255,255,255,0.7)" }}>{step.text}</p>
+                                  </div>
+                                  {step.tip && (
+                                    <div className="ml-6 px-2.5 py-1.5 rounded-lg"
+                                      style={{ background: "rgba(0,217,126,0.06)", border: "1px solid rgba(0,217,126,0.12)" }}>
+                                      <p className="text-[10px] leading-relaxed"
+                                        style={{ color: "rgba(0,217,126,0.85)" }}>💡 {step.tip}</p>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Daily Routine: Dry Fruits + Fruits */}
+          <button onClick={() => setShowRoutine(r => !r)}
+            className="w-full flex items-center justify-between px-4 py-3 rounded-xl"
+            style={{ background: "rgba(255,200,0,0.04)", border: "1px solid rgba(255,200,0,0.1)" }}>
+            <div className="flex items-center gap-2">
+              <span>🌰</span>
+              <p className="text-xs font-semibold" style={{ color: "rgba(255,200,0,0.8)" }}>
+                Dry Fruits + Fruits — Kab Aur Kitna Khaayein
+              </p>
+            </div>
+            <ChevronRight className="w-3.5 h-3.5" style={{ color: "rgba(255,200,0,0.4)", transform: showRoutine ? "rotate(90deg)" : "none" }} />
+          </button>
+
+          <AnimatePresence>
+            {showRoutine && (
+              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
+                className="overflow-hidden rounded-2xl"
+                style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                <div className="p-4 space-y-4">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest mb-2"
+                      style={{ color: "rgba(255,200,0,0.6)" }}>🌰 Dry Fruits — Timing</p>
+                    <div className="space-y-2">
+                      {DAILY_ROUTINE.dryFruits.map((df, i) => (
+                        <div key={i} className="flex gap-2">
+                          <div className="flex-1">
+                            <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>
+                              {df.name} <span style={{ color: "rgba(255,255,255,0.35)" }}>— {df.qty}</span>
+                            </p>
+                            <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>⏰ {df.when}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "12px" }}>
+                    <p className="text-[10px] font-bold uppercase tracking-widest mb-2"
+                      style={{ color: "rgba(0,217,126,0.6)" }}>🍎 Fruits — Kab Khaayein</p>
+                    <div className="space-y-2">
+                      {DAILY_ROUTINE.fruits.map((fr, i) => (
+                        <div key={i}>
+                          <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>
+                            {fr.name} <span style={{ color: "rgba(255,255,255,0.35)" }}>— {fr.qty}</span>
+                          </p>
+                          <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>⏰ {fr.when}</p>
+                          <p className="text-[10px] mt-0.5" style={{ color: "rgba(0,217,126,0.6)" }}>💡 {fr.tip}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Meal slots */}
