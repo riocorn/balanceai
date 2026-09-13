@@ -108,6 +108,45 @@ function medicalFilter(recipe: FoodItem, medConditions: string[]): boolean {
   return true;
 }
 
+// Indian meal-time rules
+// breakfast: light grains, fruits, dairy ok, no heavy non-veg curry
+// lunch: all ok including dahi/raita
+// snacks: fruits, nuts, light items only
+// dinner: NO dahi/curd, NO heavy fried, prefer light grains + dal + sabzi
+const MEAL_AVOID_KEYWORDS: Record<string, string[]> = {
+  breakfast: ["fish curry", "mutton", "biryani", "pulao", "haleem", "nihari", "keema"],
+  lunch:     [],
+  snacks:    ["roti", "paratha", "biryani", "pulao", "mutton", "chicken curry", "dal makhani"],
+  dinner:    ["dahi", "curd", "yogurt", "lassi", "chaas", "raita", "ice cream", "mishti doi",
+               "puri", "bhature", "fried", "pakora", "samosa", "jalebi", "mango lassi"],
+};
+const SNACK_PREFERRED = ["fruit", "nuts", "seed", "roasted", "bhuna", "chana", "makhana",
+                          "sprout", "salad", "chaas", "lassi", "amla", "guava", "pomegranate", "banana"];
+
+function mealFilter(recipe: FoodItem, meal: string): boolean {
+  const name = recipe.name.toLowerCase();
+  const cat  = recipe.category.toLowerCase();
+  const avoidKw = MEAL_AVOID_KEYWORDS[meal] ?? [];
+  if (avoidKw.some((kw) => name.includes(kw) || cat.includes(kw))) return false;
+
+  // Snacks: prefer fruits/nuts/light
+  if (meal === "snacks") {
+    const isLight = SNACK_PREFERRED.some((kw) => name.includes(kw) || cat.includes(kw));
+    const isFruitOrNut = cat.includes("fruit") || cat.includes("snack") || cat.includes("nut");
+    return isLight || isFruitOrNut;
+  }
+  // Dinner: no dairy main items, prefer grain+dal+sabzi
+  if (meal === "dinner") {
+    if (cat === "dairy" || cat === "beverage") return false;
+    if (name.includes("doodh") || name.includes("milk")) return false;
+  }
+  // Breakfast: no heavy meat curries
+  if (meal === "breakfast") {
+    if (name.includes("nihari") || name.includes("haleem")) return false;
+  }
+  return true;
+}
+
 function pickForMeal(
   pool: FoodItem[],
   deficiencies: string[],
@@ -117,6 +156,7 @@ function pickForMeal(
   exclude: Set<string>,
   profile: UserProfile | null,
   count = 2,
+  meal = "lunch",
 ): FoodItem[] {
   const nonVegTerms = ["fish", "chicken", "mutton", "pork", "beef", "egg", "meat", "prawn", "duck", "mithun", "crab", "squid"];
 
@@ -124,6 +164,7 @@ function pickForMeal(
     if (exclude.has(r.id)) return false;
     if (!medicalFilter(r, medConditions)) return false;
     if (isVeg && nonVegTerms.some((t) => r.name.toLowerCase().includes(t))) return false;
+    if (!mealFilter(r, meal)) return false;
     return true;
   });
 
@@ -159,10 +200,10 @@ export function generateDietPlan(
   const pool = [...statePriority, ...rest];
   const used = new Set<string>();
 
-  const bfRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2);
-  const lunchRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3);
-  const snackRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2);
-  const dinnerRaw = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3);
+  const bfRaw     = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2, "breakfast");
+  const lunchRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3, "lunch");
+  const snackRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2, "snacks");
+  const dinnerRaw = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3, "dinner");
 
   const portion = (raw: FoodItem[], kcalBudget: number): PortionedItem[] =>
     raw.map((r) => portionItem(r, kcalBudget, raw.length));

@@ -87,13 +87,185 @@ export function getRecipesForDeficiency(
   return scored.slice(0, limit).map((x) => x.f);
 }
 
+// ── Comprehensive Hindi food alias map (fuzzy search) ────────
+export const FOOD_ALIASES: Record<string, string[]> = {
+  // Grains / Roti
+  roti:        ["chapati","chapatti","chappati","chapathi","phulka","fulka","wheat roti","gehu roti","rotto","atta","gehu"],
+  "bajra roti":["bajre ki roti","bajre roti","millet roti","bajra","pearl millet"],
+  "ragi roti": ["nachni","mandua","finger millet","ragi"],
+  rice:        ["chawal","chaawal","chaval","bhat","bhaat","white rice","plain rice"],
+  poha:        ["pohe","aval","chiwda","beaten rice","flattened rice"],
+  upma:        ["uppama","uppuma","semolina","suji","sooji upma"],
+  khichdi:     ["khichri","khichadi","khichari","dal rice","dal chawal"],
+  dalia:       ["daliya","broken wheat","oatmeal","porridge"],
+  idli:        ["idly","idlies","steam cake"],
+  dosa:        ["dosai","dose","plain dosa","masala dosa"],
+
+  // Dal / Legumes
+  dal:         ["daal","dhal","lentil","lentils"],
+  "masoor dal":["masoor","red lentil","pink dal","lal dal","masur"],
+  "moong dal": ["moong","mung","green gram","mung dal","mung bean","sabut moong"],
+  rajma:       ["kidney bean","red beans","rajmah","rajme"],
+  "chana dal": ["chana","bengal gram","desi chana"],
+  "urad dal":  ["urad","black gram","kaali dal","maa di dal","black lentil"],
+  "toor dal":  ["arhar dal","tur dal","pigeon pea","tuvar dal","arhar"],
+  "kala chana":["black chana","desi chana","horse gram","kale chane"],
+  "chole":     ["chhole","chickpea","kabuli chana","safed chana","garbanzo"],
+
+  // Vegetables
+  palak:       ["paalak","spinach","saag","palaka","hara saag","spinch"],
+  methi:       ["methi saag","fenugreek","fenugreek leaves","kasuri methi"],
+  aloo:        ["alu","aaloo","potato","batata","urulaikizhangu","aloo"],
+  "aloo gobhi":["aloo gobi","potato cauliflower","alu gobhi"],
+  gobhi:       ["gobi","cauliflower","cauliflower sabzi","phoolgobhi","phool gobhi"],
+  "palak paneer":["palak pneer","spinach paneer","saag paneer","saagpaneer"],
+  baingan:     ["brinjal","eggplant","aubergine","baigan","begun","ringna"],
+  bhindi:      ["okra","ladies finger","lady finger","vendakka","bendekai"],
+  lauki:       ["bottle gourd","ghiya","doodhi","dudhi","sorakkai"],
+  karela:      ["bitter gourd","bitter melon","pavakka","hagalakai"],
+  tinda:       ["round gourd","apple gourd","tindora","kundru"],
+  turai:       ["ridge gourd","zucchini","torai","beerakaya"],
+  pumpkin:     ["kaddu","sitaphal","petha","kumbalangi","parangikkai"],
+  "gajar":     ["carrot","gaajar","carrot sabzi","gajjar"],
+  "matar":     ["peas","green peas","mattar","vatana","pattani"],
+  tamatar:     ["tomato","tamaatar","tamaater","timaatar"],
+  pyaz:        ["onion","pyaaz","piaz","dungri"],
+  lehsun:      ["garlic","lasan","lasun","garlic clove"],
+  adrak:       ["ginger","ginger root","saunth","sonth","inguru"],
+  "shimla mirch":["capsicum","bell pepper","red pepper","green pepper","yellow pepper"],
+  "hara dhaniya":["coriander leaves","cilantro","dhania","dhaniya","kothimira"],
+  "saag":      ["mixed greens","leafy vegetables","harisaag","saagwala"],
+  broccoli:    ["brokali","brocoli"],
+  "sweet potato":["shakarkand","shakarkandi","sarkande","ratalu"],
+  chukandar:   ["beetroot","beet","red beet","chukander"],
+
+  // Dairy
+  dahi:        ["curd","yogurt","yoghurt","daahi","plain curd"],
+  paneer:      ["cottage cheese","panner","pneer","fresh cheese"],
+  doodh:       ["milk","dudh","dudha","gaay ka doodh","cow milk","whole milk"],
+  "lassi":     ["sweet lassi","salted lassi","butter milk"],
+  "chaas":     ["buttermilk","chaach","mattha","majjiga"],
+  ghee:        ["clarified butter","desi ghee","pure ghee"],
+
+  // Protein / Non-veg
+  anda:        ["egg","anda","anDA","boiled egg","omelette","egg white","egg yolk","scrambled"],
+  chicken:     ["murgi","murga","murg","poultry","grilled chicken","chicken curry"],
+  fish:        ["machli","machali","maach","meen","sea food","seafood","salmon","rohu","katla"],
+  mutton:      ["lamb","gosht","maas","meat","keema","kheema","minced meat"],
+
+  // Fruits
+  kela:        ["banana","kella","plantain"],
+  seb:         ["apple","saab","apple fruit"],
+  aam:         ["mango","amra","keri","raw mango"],
+  papaya:      ["papita","papetas","papaya fruit"],
+  anar:        ["pomegranate","annar","dalim"],
+  "amrud":     ["guava","peru","jaamfal"],
+  "santara":   ["orange","naranga","santra","narangi"],
+  nimbu:       ["lemon","lime","neembu","limon","citrus"],
+  amla:        ["gooseberry","indian gooseberry","awla","nellikai"],
+
+  // Nuts & Seeds
+  badam:       ["almond","badaam","almonds"],
+  akhrot:      ["walnut","akhrot"],
+  kaju:        ["cashew","cashewnut","keshoo","kaaju"],
+  "mungfali":  ["peanut","groundnut","moongphali","singdana"],
+  til:         ["sesame","sesame seeds","gingelly"],
+  "alsi":      ["flaxseed","linseed","flax seed","flax"],
+  "kaddu ke beej":["pumpkin seeds","pepitas"],
+
+  // Common dishes
+  "dal makhani":["daal makhani","dal makhni","makhani dal","butter dal"],
+  "dal tadka":  ["tadke wali dal","tarka dal","tadka wali dal"],
+  "shahi paneer":["paneer makhani","butter paneer","paneer in gravy"],
+  "matar paneer":["mattar paneer","peas paneer"],
+  biryani:     ["biriyani","biriani","veg biryani","chicken biryani","rice dish"],
+  "sambar":    ["sambaar","south indian dal","sambhar"],
+  rasam:       ["pepper water","tomato rasam","tamarind soup"],
+  "pav bhaji": ["pao bhaji","paw bhaji","mumbai pav bhaji"],
+  "halwa":     ["sheera","halva","sooji halwa","gajar halwa"],
+  "kheer":     ["payasam","rice pudding","milk pudding"],
+};
+
+// Normalize text for fuzzy matching
+function normalize(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/aa/g, "a")
+    .replace(/ee/g, "i")
+    .replace(/oo/g, "u")
+    .replace(/ph/g, "f")
+    .replace(/kh/g, "k")
+    .replace(/gh/g, "g")
+    .replace(/ch/g, "c")
+    .replace(/sh/g, "s")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
+// Levenshtein distance (for short words)
+function levenshtein(a: string, b: string): number {
+  const m = a.length, n = b.length;
+  const dp: number[][] = Array.from({ length: m + 1 }, (_, i) =>
+    Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
+  );
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]);
+  return dp[m][n];
+}
+
 export function searchFoods(query: string, extra: FoodItem[] = []): FoodItem[] {
-  const q = query.toLowerCase();
-  return [...FOOD_DB, ...extra].filter(
-    (f) =>
-      f.name.toLowerCase().includes(q) ||
-      f.hindi?.toLowerCase().includes(q) ||
-      f.category.toLowerCase().includes(q) ||
-      (f.state?.toLowerCase().includes(q) ?? false)
-  ).slice(0, 20);
+  if (!query.trim()) return [];
+  const raw = query.toLowerCase().trim();
+  const norm = normalize(raw);
+  const all = [...FOOD_DB, ...extra];
+
+  // Score each food item
+  const scored = all.map((f) => {
+    const nameLow   = f.name.toLowerCase();
+    const hindiLow  = (f.hindi ?? "").toLowerCase();
+    const normName  = normalize(nameLow);
+    let score = 0;
+
+    // Exact match = highest priority
+    if (nameLow === raw || hindiLow === raw) score = 100;
+    // Starts with
+    else if (nameLow.startsWith(raw) || normName.startsWith(norm)) score = 90;
+    // Contains
+    else if (nameLow.includes(raw) || hindiLow.includes(raw) || normName.includes(norm)) score = 70;
+    else {
+      // Check aliases
+      for (const [canonical, aliases] of Object.entries(FOOD_ALIASES)) {
+        const allTerms = [canonical, ...aliases];
+        if (
+          allTerms.some((t) => nameLow.includes(t) || t.includes(raw)) &&
+          allTerms.some((t) => t.includes(raw) || raw.includes(t) || normalize(t).includes(norm))
+        ) {
+          score = 60;
+          break;
+        }
+        // If query matches an alias and food matches the canonical
+        if (allTerms.some((t) => t === raw || t.startsWith(raw) || raw.startsWith(t))) {
+          if (nameLow.includes(canonical) || normName.includes(normalize(canonical))) {
+            score = 65;
+            break;
+          }
+        }
+      }
+      // Fuzzy (Levenshtein) for short words
+      if (score === 0 && raw.length >= 3) {
+        const words = normName.split(" ");
+        const dist = Math.min(...words.map((w) => levenshtein(norm, w)));
+        if (dist <= 2) score = Math.max(10, 50 - dist * 15);
+      }
+    }
+
+    return { food: f, score };
+  });
+
+  return scored
+    .filter((s) => s.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((s) => s.food)
+    .slice(0, 20);
 }
