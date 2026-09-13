@@ -8,6 +8,7 @@ import { getAllAnalyses, getOrCreateProfile, type AnalysisEntry } from "@/lib/db
 import { searchFoods, NUTRIENT_DAILY, NUTRIENT_UNITS, type FoodItem } from "@/lib/food-db";
 import { RECIPE_DB } from "@/lib/recipe-db";
 import { DEFICIENCY_LABELS } from "@/lib/api";
+import { generateMeals, quickSuggestion, type GeneratedMeals } from "@/lib/meal-generator";
 
 interface LogEntry { food: FoodItem; qty: number; }
 interface ChatMsg   { role: "user" | "ai"; text: string; }
@@ -15,32 +16,6 @@ interface ChatMsg   { role: "user" | "ai"; text: string; }
 const MEAL_SLOTS  = ["Breakfast", "Lunch", "Snacks", "Dinner"];
 const MEAL_EMOJI: Record<string, string> = { Breakfast: "🌅", Lunch: "☀️", Snacks: "🍎", Dinner: "🌙" };
 
-// ── Seasonal recipes for September (post-monsoon India) ───────
-// Seasonal produce: lauki, tinda, turai, karela, pumpkin, pomegranate, guava, banana, papaya
-const SEASONAL_MONTH_RECIPES: Record<string, string[]> = {
-  default:          ["Lauki Dal","Tinda Sabzi","Moong Dal Khichdi","Banana Oats Porridge","Guava Chaat","Pumpkin Sabzi","Palak Dal","Sprouts Salad"],
-  Punjab:           ["Sarson Da Saag","Makki Di Roti","Lassi","Bajra Khichdi","Amritsari Dal","Aloo Gobhi","Guava Chaat","Gajar Halwa"],
-  "Uttar Pradesh":  ["Dal Baati","Tehri","Moong Dal","Lauki Kofta","Kaddu Ki Sabzi","Aloo Roti","Palak Paneer","Boondi Raita"],
-  Maharashtra:      ["Zunka Bhakar","Varan Bhat","Solkadhi","Pitla","Amti Dal","Kanda Poha","Puran Poli","Thalipeeth"],
-  "West Bengal":    ["Khichuri","Aloo Posto","Cholar Dal","Shukto","Luchi","Begun Bhaja","Mishti Doi","Sandesh"],
-  Rajasthan:        ["Dal Baati Churma","Gatte Ki Sabzi","Bajre Ki Roti","Ker Sangri","Laal Maas","Mohan Maas","Rabdi","Churma"],
-  Kerala:           ["Avial","Sambar","Puttu Kadala","Erissery","Olan","Thoran","Fish Curry","Appam"],
-  Karnataka:        ["Bisi Bele Bath","Ragi Mudde","Rasam","Kosambari","Vangi Bath","Neer Dosa","Akki Roti","Gojju"],
-  "Tamil Nadu":     ["Sambar Rice","Rasam Rice","Kootu","Poriyal","Kuzhambu","Idli Sambar","Pongal","Avial"],
-  Gujarat:          ["Thepla","Undhiyu","Khakhra","Dhokla","Kadhi","Dal Dhokli","Sev Tamatar","Bajri Rotla"],
-  Delhi:            ["Chole Bhature","Dal Makhani","Paneer Tikka","Rajma Chawal","Butter Chicken","Nihari","Kulcha","Kheer"],
-  Haryana:          ["Bajra Roti","Kachri Ki Sabzi","Methi Paratha","Hara Dhania Chutney","Bathua Raita","Singri Sabzi","Dal Tadka","Lassi"],
-  Bihar:            ["Litti Chokha","Sattu Paratha","Dal Pithi","Thekua","Khaja","Khichdi","Kadhi Bari","Chura Dahi"],
-  Odisha:           ["Dalma","Pakhala Bhata","Saga Bhaja","Chungdi Malai","Mudhi Mansa","Besara","Rasabali","Chhena Poda"],
-  Assam:            ["Masor Tenga","Khar","Aloo Pitika","Duck Curry","Pitha","Til Pitha","Bamboo Shoot Curry","Ou Tenga Dal"],
-};
-
-function getSeasonalRecipes(userState: string): string[] {
-  const stateKey = Object.keys(SEASONAL_MONTH_RECIPES).find(
-    (k) => k !== "default" && (userState?.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(userState?.toLowerCase()))
-  );
-  return SEASONAL_MONTH_RECIPES[stateKey ?? "default"];
-}
 
 // ── AI Chat Engine ────────────────────────────────────────────
 function getAIReply(
@@ -134,6 +109,7 @@ const FOCUS_NUTRIENTS = ["iron","vitamin_b12","vitamin_d","calcium","zinc","omeg
 export default function DiaryPage() {
   const [analysis,    setAnalysis]    = useState<AnalysisEntry | null>(null);
   const [userState,   setUserState]   = useState("");
+  const [isVeg,       setIsVeg]       = useState(true);
   const [logs,        setLogs]        = useState<Record<string, LogEntry[]>>({ Breakfast: [], Lunch: [], Snacks: [], Dinner: [] });
   const [activeMeal,  setActiveMeal]  = useState("Breakfast");
   const [query,       setQuery]       = useState("");
@@ -149,9 +125,9 @@ export default function DiaryPage() {
   useEffect(() => {
     Promise.all([getAllAnalyses(), getOrCreateProfile()]).then(([analyses, profile]) => {
       setAnalysis(analyses[0] ?? null);
-      setUserState(profile.name ? "" : ""); // profile might have state info
-      // Try to get state from last analysis
       if (analyses[0]?.state) setUserState(analyses[0].state);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if ((profile as any).is_vegetarian !== undefined) setIsVeg((profile as any).is_vegetarian);
     });
   }, []);
 
@@ -215,20 +191,10 @@ export default function DiaryPage() {
       .filter((n) => (totals[n] ?? 0) / (NUTRIENT_DAILY[n] ?? 1) < 0.6 && deficientSet.has(n))
       .slice(0, 3);
     if (missing.length === 0) return null;
-    const planMap: Record<string, string> = {
-      iron:        "Raat ko: Palak dal + Bajra roti + Nimbu paani",
-      vitamin_b12: "Raat ko: Dahi (lunch) + Egg/Paneer dish",
-      vitamin_d:   "Kal subah: 20 min dhoop + Fortified milk",
-      calcium:     "Lunch: 1 katori Dahi ya Doodh",
-      zinc:        "Snacks: Kaju/Pumpkin seeds + Dahi",
-      omega3:      "Raat ko: Flaxseed ki chutney ya Akhrot",
-      magnesium:   "Raat ko: Akhrot + Palak sabzi",
-      folate:      "Aaj: Hara dhaniya + Rajma dal",
-      vitamin_c:   "Abhi: Amla/Guava/Orange ya Nimbu paani",
-      vitamin_a:   "Raat ko: Gajar sabzi ya Papaya",
-    };
-    return missing.map((n) => planMap[n] ?? `${DEFICIENCY_LABELS[n] || n} ke liye rich foods lo`);
-  }, [totals, focusNutrients, deficientSet]);
+    const now = new Date().getHours();
+    const nextMeal = now < 10 ? "Breakfast" : now < 14 ? "Lunch" : now < 17 ? "Snacks" : "Dinner";
+    return missing.map((n) => quickSuggestion(n, nextMeal, userState));
+  }, [totals, focusNutrients, deficientSet, userState]);
 
   const sendChat = () => {
     if (!chatInput.trim()) return;
@@ -243,12 +209,21 @@ export default function DiaryPage() {
     }, 900);
   };
 
-  const seasonalRecipes = useMemo(() => getSeasonalRecipes(userState), [userState]);
+  const generatedMeals = useMemo<GeneratedMeals>(
+    () => generateMeals(userState, isVeg, [...deficientSet]),
+    [userState, isVeg, deficientSet],
+  );
 
-  // Find recipe in DB by name (partial match)
+  // Active meal slot's seasonal suggestions
+  const mealSuggestions = useMemo(() => {
+    const slot = activeMeal.toLowerCase() as keyof GeneratedMeals;
+    return (generatedMeals[slot] as string[] | undefined) ?? generatedMeals.breakfast;
+  }, [generatedMeals, activeMeal]);
+
+  // Find recipe in DB by first word (for chip add)
   const findRecipeInDB = (name: string): FoodItem | null => {
-    const nl = name.toLowerCase();
-    return RECIPE_DB.find((r) => r.name.toLowerCase().includes(nl.split(" ")[0])) ?? null;
+    const nl = name.toLowerCase().split(" ")[0];
+    return RECIPE_DB.find((r) => r.name.toLowerCase().includes(nl)) ?? null;
   };
 
   return (
@@ -334,39 +309,58 @@ export default function DiaryPage() {
           </motion.div>
         )}
 
-        {/* Seasonal Recipes */}
+        {/* AI-Generated Seasonal Meal Suggestions */}
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>
-          <div className="flex items-center gap-2 mb-3">
-            <Leaf className="w-4 h-4" style={{ color: "#00d97e" }} />
-            <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.8)" }}>
-              September Seasonal Recipes {userState ? `— ${userState}` : ""}
-            </p>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Leaf className="w-4 h-4" style={{ color: "#00d97e" }} />
+              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.8)" }}>
+                {activeMeal} Ideas — Seasonal{userState ? ` (${userState})` : ""}
+              </p>
+            </div>
+            {generatedMeals.produce.length > 0 && (
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+                {generatedMeals.produce.slice(0,3).join(", ")} in season
+              </p>
+            )}
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            {seasonalRecipes.map((name, i) => {
-              const recipe = findRecipeInDB(name);
+          <div className="space-y-1.5">
+            {mealSuggestions.map((idea, i) => {
+              const firstWord = idea.split(" ")[0].toLowerCase().replace(/[^a-z]/g,"");
+              const recipe = findRecipeInDB(firstWord);
               return (
                 <button
                   key={i}
                   onClick={() => {
-                    if (recipe) { setActiveMeal("Lunch"); addFood(recipe); }
-                    else setQuery(name.split(" ")[0]);
+                    if (recipe) addFood(recipe);
+                    else setQuery(firstWord);
+                    setShowSearch(true);
                   }}
-                  className="flex items-center justify-between p-3 rounded-xl text-left gap-2"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  className="w-full flex items-center justify-between p-3 rounded-xl text-left gap-3"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
                 >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium truncate" style={{ color: "rgba(255,255,255,0.8)" }}>{name}</p>
-                    {recipe && (
-                      <p className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>
-                        {recipe.category}
-                      </p>
-                    )}
-                  </div>
-                  <Plus className="w-3.5 h-3.5 shrink-0" style={{ color: "#00d97e" }} />
+                  <p className="text-xs flex-1" style={{ color: "rgba(255,255,255,0.7)" }}>{idea}</p>
+                  <Plus className="w-3 h-3 shrink-0" style={{ color: "#00d97e" }} />
                 </button>
               );
             })}
+          </div>
+          {/* Meal slot quick-filter chips */}
+          <div className="flex gap-1.5 mt-3 flex-wrap">
+            {MEAL_SLOTS.map((m) => (
+              <button
+                key={m}
+                onClick={() => setActiveMeal(m)}
+                className="text-[10px] px-2.5 py-1 rounded-full font-medium transition-all"
+                style={{
+                  background: activeMeal === m ? "rgba(0,217,126,0.15)" : "rgba(255,255,255,0.04)",
+                  border: activeMeal === m ? "1px solid rgba(0,217,126,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                  color: activeMeal === m ? "#00d97e" : "rgba(255,255,255,0.4)",
+                }}
+              >
+                {MEAL_EMOJI[m]} {m}
+              </button>
+            ))}
           </div>
         </motion.div>
 
