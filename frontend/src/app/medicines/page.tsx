@@ -124,8 +124,8 @@ export default function MedicinesPage() {
             Find the right medicine, fast.
           </h1>
           <p className="text-sm max-w-xl mb-5" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Search clear, doctor-reviewed information on thousands of medicines, so you always
-            know exactly what you're taking.
+            Search clear, source-cited information on thousands of medicines, so you always know
+            exactly what you're taking.
           </p>
           <div className="flex items-center gap-2 rounded-full h-11 px-4 shadow-lg max-w-lg" style={{ background: "#fff" }}>
             <Search className="w-4.5 h-4.5 shrink-0" style={{ color: MUTED }} />

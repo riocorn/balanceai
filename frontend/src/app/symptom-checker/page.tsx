@@ -1126,7 +1126,7 @@ export default function SymptomCheckerPage() {
           Describe what you're feeling. Get an answer you can trust.
         </h2>
         <p className="relative text-sm sm:text-base font-semibold text-white/85 mb-8">
-          Doctor-reviewed guidance, in your own language.
+          Real clinical evidence, in your own language — doctor review before checkout.
         </p>
         <button
           onClick={() => scrollToHero()}
