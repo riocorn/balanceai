@@ -160,13 +160,60 @@ export async function analyzeText(payload: {
   }
 }
 
+export interface ImageAnalysisResult {
+  available: boolean;
+  modality: string;
+  reason?: string;
+  top_prediction: { class: string; probability: number } | null;
+  confidence: number;
+  // Nutrient keys implicated by the top prediction — already empty unless the
+  // backend's own confidence threshold (>0.40) was cleared and the class isn't "normal".
+  nutrients: string[];
+}
+
 export async function analyzeImage(
   imageFile: File,
   modality: "nail" | "tongue" | "skin" | "eye"
-): Promise<Record<string, number>> {
+): Promise<ImageAnalysisResult> {
   const form = new FormData();
   form.append("image", imageFile);
   const { data } = await api.post(`/checkin/camera/${modality}`, form);
+  return data;
+}
+
+export interface FoodPhotoItem {
+  food_name: string;
+  confidence: number;
+  assumed_portion_g: number;
+  standard_portion_g: number;
+  portion_personalized: boolean;
+  kcal: number;
+  nutrients: Record<string, number>;
+}
+export interface FoodPhotoResult {
+  available: boolean;
+  reason?: string;
+  items: FoodPhotoItem[];
+  note?: string;
+}
+
+export interface FoodPhotoProfile {
+  weight_kg?: number; height_cm?: number; age_years?: number;
+  sex?: string; job_type?: string; exercise_type?: string; exercise_min?: number;
+}
+
+export async function analyzeFoodPhoto(
+  imageFile: File | Blob,
+  profile?: FoodPhotoProfile,
+): Promise<FoodPhotoResult> {
+  const form = new FormData();
+  form.append("image", imageFile, "meal.jpg");
+  if (profile) {
+    for (const [k, v] of Object.entries(profile)) {
+      if (v !== undefined && v !== null) form.append(k, String(v));
+    }
+  }
+  const { data } = await api.post("/checkin/food", form);
   return data;
 }
 
@@ -216,6 +263,56 @@ export const DEFICIENCY_LABELS: Record<string, string> = {
   manganese: "Manganese",
   chromium: "Chromium",
 };
+
+// ── Supplement Report (real backend: /api/supplement/report) ──────────────
+export interface SupplementInfo {
+  name: string;
+  dose: string;
+  form: string;
+  duration: string;
+  note: string;
+  why_food_fails: string;
+}
+
+export interface FoodSource {
+  name: string;
+  amount_g: number;
+  per_100g_value: number;
+}
+
+export interface SupplementRow {
+  nutrient: string;
+  display_name: string;
+  unit: string;
+  rda: number;
+  target: number;
+  requirement_range: string;
+  deficiency_level: "mild" | "moderate" | "severe";
+  probability: number;
+  without_supplement_pct: number;
+  with_supplement_pct: number;
+  supplement: SupplementInfo | null;
+  food_source: FoodSource | null;
+}
+
+export interface SupplementReport {
+  calories_kcal: number;
+  deficiency_count: number;
+  rows: SupplementRow[];
+}
+
+export async function getSupplementReport(payload: {
+  age: number;
+  gender: "male" | "female";
+  weight_kg: number;
+  height_cm: number;
+  activity_level?: "sedentary" | "light" | "moderate" | "active" | "very_active";
+  life_stage?: "normal" | "pregnant" | "lactating";
+  deficiencies: Record<string, { probability: number; deficient: boolean; threshold?: number }>;
+}): Promise<SupplementReport> {
+  const { data } = await api.post("/api/supplement/report", payload, { timeout: 8000 });
+  return data;
+}
 
 export const SYMPTOM_OPTIONS = [
   "fatigue", "hair_loss", "brittle_nails", "bone_pain", "muscle_cramps",

@@ -1,0 +1,283 @@
+{
+  "calcium": {
+    "auc": 0.8996,
+    "prevalence": 0.0087,
+    "threshold": 0.7999999999999998,
+    "features": [
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "copper": {
+    "auc": 0.8597,
+    "prevalence": 0.1174,
+    "threshold": 0.7,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "iron": {
+    "auc": 0.9422,
+    "prevalence": 0.118,
+    "threshold": 0.7499999999999998,
+    "features": [
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "magnesium": {
+    "auc": 0.9352,
+    "prevalence": 0.3074,
+    "threshold": 0.5999999999999999,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "omega3": {
+    "auc": 0.9071,
+    "prevalence": 0.3502,
+    "threshold": 0.49999999999999994,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "phosphorus": {
+    "auc": 0.7806,
+    "prevalence": 0.0123,
+    "threshold": 0.7999999999999998,
+    "features": [
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "potassium": {
+    "auc": 0.9109,
+    "prevalence": 0.4126,
+    "threshold": 0.49999999999999994,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "selenium": {
+    "auc": 0.849,
+    "prevalence": 0.05,
+    "threshold": 0.7499999999999998,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_a": {
+    "auc": 0.9293,
+    "prevalence": 0.5119,
+    "threshold": 0.44999999999999996,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_b1": {
+    "auc": 0.9029,
+    "prevalence": 0.1329,
+    "threshold": 0.7,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_b12": {
+    "auc": 0.9435,
+    "prevalence": 0.186,
+    "threshold": 0.6499999999999999,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_b2": {
+    "auc": 0.8649,
+    "prevalence": 0.0945,
+    "threshold": 0.7499999999999998,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_b3": {
+    "auc": 0.8895,
+    "prevalence": 0.0925,
+    "threshold": 0.7,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_b6": {
+    "auc": 0.8958,
+    "prevalence": 0.2105,
+    "threshold": 0.5999999999999999,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_c": {
+    "auc": 0.9375,
+    "prevalence": 0.539,
+    "threshold": 0.39999999999999997,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_d": {
+    "auc": 0.9382,
+    "prevalence": 0.2633,
+    "threshold": 0.5999999999999999,
+    "features": [
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_e": {
+    "auc": 0.8822,
+    "prevalence": 0.6247,
+    "threshold": 0.39999999999999997,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "vitamin_k": {
+    "auc": 0.9104,
+    "prevalence": 0.4883,
+    "threshold": 0.49999999999999994,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  },
+  "zinc": {
+    "auc": 0.9212,
+    "prevalence": 0.2848,
+    "threshold": 0.49999999999999994,
+    "features": [
+      "blood_sig",
+      "symptom_sig",
+      "food_sig",
+      "history_sig",
+      "visual_sig",
+      "age",
+      "female",
+      "bmi"
+    ]
+  }
+}

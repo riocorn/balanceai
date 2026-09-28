@@ -9,7 +9,6 @@ const LINKS = {
     { label: "Demo",       href: "/demo"       },
     { label: "Dashboard",  href: "/dashboard"  },
     { label: "AI Chat",    href: "/chat"       },
-    { label: "Food Diary", href: "/diary"      },
   ],
   Business: [
     { label: "Enterprise",    href: "/enterprise"   },

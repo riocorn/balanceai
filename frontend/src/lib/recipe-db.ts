@@ -1,6 +1,12 @@
 import type { FoodItem } from "./food-db";
+import { COMPREHENSIVE_FOOD_DB } from "./comprehensive-food-db";
 
-export const RECIPE_DB: FoodItem[] = [
+// State-wise dish/dairy/protein records (placeholder-quality nutrient estimates).
+// Real ICMR-NIN/USDA-sourced ingredient data (COMPREHENSIVE_FOOD_DB) is merged in
+// below and takes priority in scoring wherever it overlaps, since it is the more
+// accurate source; STATE_DISH_DB fills the gaps it doesn't cover (meat, dairy,
+// oils, and state-specific composite dishes).
+const STATE_DISH_DB: FoodItem[] = [
   { id: "punjab_sarson_da_saag", name: "Sarson Da Saag", category: "Dish", state: "Punjab", serving: "100g", nutrients: { calcium: 0.13, magnesium: 0.04, vitamin_c: 0.04, iodine: 2.25, omega3: 0.2, potassium: 0.28, phosphorus: 0.05 } },
   { id: "punjab_makki_di_roti", name: "Makki Di Roti", category: "Dish", state: "Punjab", serving: "100g", nutrients: { iron: 3.45, zinc: 2.65, calcium: 34.85, magnesium: 213.35, folate: 45.9, iodine: 3.55, omega3: 1.16, vitamin_b6: 0.49, potassium: 490.45, copper: 0.44, vitamin_e: 0.27, vitamin_b1: 0.35, vitamin_b2: 0.16, vitamin_b3: 5.23, phosphorus: 286.45 } },
   { id: "punjab_dal_makhani", name: "Dal Makhani", category: "Dish", state: "Punjab", serving: "100g", nutrients: { calcium: 0.05, magnesium: 0.06, iodine: 2.4, omega3: 0.61, potassium: 0.46, phosphorus: 0.16 } },
@@ -589,3 +595,5 @@ export const RECIPE_DB: FoodItem[] = [
   { id: "arunachal_pradesh_citrus", name: "Citrus", category: "Common Fruits", state: "Arunachal_Pradesh", serving: "100g", nutrients: { calcium: 0.01, magnesium: 0.02, iodine: 2.0, omega3: 0.17, vitamin_b6: 0.14, potassium: 0.28, phosphorus: 0.18 } },
   { id: "arunachal_pradesh_minimal", name: "Minimal", category: "Dairy", state: "Arunachal_Pradesh", serving: "100g", nutrients: { calcium: 0.03, magnesium: 0.04, vitamin_c: 0.01, iodine: 1.8, omega3: 0.72, potassium: 0.38, phosphorus: 0.09 } },
 ];
+
+export const RECIPE_DB: FoodItem[] = [...COMPREHENSIVE_FOOD_DB, ...STATE_DISH_DB];

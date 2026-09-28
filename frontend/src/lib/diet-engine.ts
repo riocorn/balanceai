@@ -2,6 +2,7 @@ import type { FoodItem } from "./food-db";
 import { NUTRIENT_DAILY } from "./food-db";
 import type { UserProfile } from "./db";
 import { portionItem, type PortionedItem, type NutritionTargets } from "./nutrition-engine";
+import { getMedicalAvoids, getMedicalBoosts, getMalabsorptionFlags } from "./disease-nutrition-map";
 
 export type { PortionedItem };
 
@@ -13,28 +14,21 @@ export interface MealPlan {
   targets?: NutritionTargets;
 }
 
-const MEDICAL_AVOID: Record<string, string[]> = {
-  diabetes:     ["sugar", "mahua", "banana", "mango", "potato", "jaggery", "aloo"],
-  bp_high:      ["pickle", "papad", "ghee", "namkeen", "bujia"],
-  kidney:       ["rajma", "chana", "phosphorus"],
-  thyroid:      ["soy", "broccoli", "cabbage"],
-  pregnancy:    [],
-  cholesterol:  ["ghee", "butter", "cream", "mutton", "pork"],
-  pcod:         ["sugar", "maida", "fried"],
-};
-
 // Keywords for matching kitchen chip names → recipe names in RECIPE_DB
 const KITCHEN_KEYWORDS: Record<string, string[]> = {
-  "atta":          ["roti", "paratha", "chapati", "wheat", "makki"],
+  "gehu atta":     ["roti", "paratha", "chapati", "wheat", "makki", "atta"],
   "chawal":        ["rice", "chawal", "khichdi", "biryani", "pulao"],
-  "dal (moong)":   ["moong", "green gram"],
-  "dal (masoor)":  ["masoor", "red lentil", "lentil"],
-  "dal (chana)":   ["chana", "chickpea", "gram"],
+  "moong dal":     ["moong", "green gram"],
+  "masoor dal":    ["masoor", "red lentil", "lentil"],
+  "chana dal":     ["chana", "chickpea", "gram"],
   "rajma":         ["rajma", "kidney bean"],
   "palak":         ["palak", "spinach", "saag"],
   "methi":         ["methi", "fenugreek"],
   "aloo":          ["aloo", "potato"],
   "tamatar":       ["tomato", "tamatar"],
+  "pyaz":          ["pyaz", "pyaaz", "onion"],
+  "lehsun":        ["lehsun", "lahsun", "garlic"],
+  "adrak":         ["adrak", "ginger"],
   "dahi":          ["dahi", "curd", "yogurt", "lassi"],
   "doodh":         ["milk", "doodh", "lassi"],
   "paneer":        ["paneer", "cheese"],
@@ -99,13 +93,9 @@ function kitchenMatch(recipe: FoodItem, kitchenItems: string[]): boolean {
   });
 }
 
-function medicalFilter(recipe: FoodItem, medConditions: string[]): boolean {
+function medicalFilter(recipe: FoodItem, medConditions: string[], avoidTerms: string[]): boolean {
   const name = recipe.name.toLowerCase();
-  for (const cond of medConditions) {
-    const avoidList = MEDICAL_AVOID[cond] ?? [];
-    if (avoidList.some((a) => name.includes(a))) return false;
-  }
-  return true;
+  return !avoidTerms.some((a) => name.includes(a));
 }
 
 // Indian meal-time rules
@@ -157,12 +147,13 @@ function pickForMeal(
   profile: UserProfile | null,
   count = 2,
   meal = "lunch",
+  avoidTerms: string[] = [],
 ): FoodItem[] {
   const nonVegTerms = ["fish", "chicken", "mutton", "pork", "beef", "egg", "meat", "prawn", "duck", "mithun", "crab", "squid"];
 
   const candidates = pool.filter((r) => {
     if (exclude.has(r.id)) return false;
-    if (!medicalFilter(r, medConditions)) return false;
+    if (!medicalFilter(r, medConditions, avoidTerms)) return false;
     if (isVeg && nonVegTerms.some((t) => r.name.toLowerCase().includes(t))) return false;
     if (!mealFilter(r, meal)) return false;
     return true;
@@ -174,15 +165,68 @@ function pickForMeal(
   const scored = source.map((r) => ({ r, score: nutrientScore(r, deficiencies, profile) }));
   scored.sort((a, b) => b.score - a.score);
 
+  // Group key for the underlying food regardless of prep state, tracked via the shared
+  // `exclude` set (prefixed so it can't collide with a real id) — avoids picking e.g.
+  // both "Moong Dal" and "Moong Dal (sprouted)" across meals in the same day's plan.
+  // COMPREHENSIVE_FOOD_DB items carry a reliable `baseId`; other sources fall back to
+  // stripping a trailing "(...)" state suffix from the name.
+  const baseName = (r: FoodItem & { baseId?: string }) =>
+    "base::" + (r.baseId ?? r.name.replace(/(\s*\([^)]*\))+\s*$/, "").trim().toLowerCase());
+
   const picked: FoodItem[] = [];
   for (const { r } of scored) {
     if (picked.length >= count) break;
-    if (!exclude.has(r.id)) {
+    const bn = baseName(r);
+    if (!exclude.has(r.id) && !exclude.has(bn)) {
       picked.push(r);
       exclude.add(r.id);
+      exclude.add(bn);
     }
   }
   return picked;
+}
+
+// Compute nutrient totals across all portioned items
+function sumNutrients(items: PortionedItem[]): Record<string, number> {
+  const totals: Record<string, number> = {};
+  for (const item of items) {
+    for (const [k, v] of Object.entries(item.nutrients_total)) {
+      totals[k] = (totals[k] ?? 0) + v;
+    }
+  }
+  return totals;
+}
+
+// Pick one booster food for a specific nutrient gap
+function pickBooster(
+  pool: FoodItem[],
+  targetNutrient: string,
+  meal: string,
+  kitchenItems: string[],
+  medConditions: string[],
+  isVeg: boolean,
+  used: Set<string>,
+  profile: UserProfile | null,
+  avoidTerms: string[] = [],
+): FoodItem | null {
+  const nonVegTerms = ["fish", "chicken", "mutton", "pork", "beef", "egg", "meat", "prawn", "duck", "mithun", "crab", "squid"];
+  const candidates = pool.filter((r) => {
+    if (used.has(r.id)) return false;
+    if (!medicalFilter(r, medConditions, avoidTerms)) return false;
+    if (isVeg && nonVegTerms.some((t) => r.name.toLowerCase().includes(t))) return false;
+    if (!mealFilter(r, meal)) return false;
+    const val = (r.nutrients[targetNutrient] ?? 0) as number;
+    return val > 0;
+  });
+  if (candidates.length === 0) return null;
+  candidates.sort((a, b) => {
+    const bv = (b.nutrients[targetNutrient] ?? 0) as number;
+    const av = (a.nutrients[targetNutrient] ?? 0) as number;
+    return bv - av;
+  });
+  // Prefer kitchen-available foods
+  const withKitchen = candidates.filter((r) => kitchenMatch(r, kitchenItems));
+  return (withKitchen[0] ?? candidates[0]);
 }
 
 export function generateDietPlan(
@@ -194,30 +238,104 @@ export function generateDietPlan(
   medConditions: string[],
   profile: UserProfile | null = null,
   targets: NutritionTargets | null = null,
+  // Low-weight signals only (e.g. Layer 4 visual-sign inference from photos —
+  // a modest-accuracy image classifier). These NEVER drive primary meal selection;
+  // they only get a chance in the lowest-priority gap-filling tier below, and only
+  // for nutrients no stronger signal already flagged.
+  weakDeficiencies: string[] = [],
 ): MealPlan {
   const statePriority = userState ? recipeDB.filter((r) => r.state === userState) : [];
   const rest = recipeDB.filter((r) => r.state !== userState);
   const pool = [...statePriority, ...rest];
   const used = new Set<string>();
 
-  const bfRaw     = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2, "breakfast");
-  const lunchRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3, "lunch");
-  const snackRaw  = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 2, "snacks");
-  const dinnerRaw = pickForMeal(pool, deficiencies, kitchenItems, medConditions, isVeg, used, profile, 3, "dinner");
+  // Merge disease-specific nutrient boosts with incoming deficiencies (deduplicated)
+  const diseaseBoosts = getMedicalBoosts(medConditions);
+  const mergedDefs = [...new Set([...deficiencies, ...diseaseBoosts])];
 
-  const portion = (raw: FoodItem[], kcalBudget: number): PortionedItem[] =>
-    raw.map((r) => portionItem(r, kcalBudget, raw.length));
+  // Build avoid terms from all selected conditions (used in medicalFilter)
+  const avoidTerms = getMedicalAvoids(medConditions);
+
+  // Malabsorption flags (informational — the engine can't fix these via diet alone,
+  // but we still try to boost the nutrient so the plan covers partial compensation)
+  const _malabs = getMalabsorptionFlags(medConditions);
+
+  // Pass 1: standard selection — 3 items each for B/L/D, 2 for snacks
+  const bfRaw     = pickForMeal(pool, mergedDefs, kitchenItems, medConditions, isVeg, used, profile, 3, "breakfast", avoidTerms);
+  const lunchRaw  = pickForMeal(pool, mergedDefs, kitchenItems, medConditions, isVeg, used, profile, 4, "lunch", avoidTerms);
+  const snackRaw  = pickForMeal(pool, mergedDefs, kitchenItems, medConditions, isVeg, used, profile, 2, "snacks", avoidTerms);
+  const dinnerRaw = pickForMeal(pool, mergedDefs, kitchenItems, medConditions, isVeg, used, profile, 4, "dinner", avoidTerms);
 
   const bfKcal  = targets?.meal_kcal.breakfast ?? 500;
   const luKcal  = targets?.meal_kcal.lunch     ?? 700;
   const snKcal  = targets?.meal_kcal.snacks    ?? 300;
   const diKcal  = targets?.meal_kcal.dinner    ?? 500;
 
+  const portion = (raw: FoodItem[], kcalBudget: number): PortionedItem[] =>
+    raw.map((r) => portionItem(r, kcalBudget, raw.length));
+
+  const bf     = portion(bfRaw,    bfKcal);
+  const lu     = portion(lunchRaw, luKcal);
+  const sn     = portion(snackRaw, snKcal);
+  const di     = portion(dinnerRaw, diKcal);
+
+  // Pass 2: gap-filling — identify nutrients still <80% RDA and add boosters
+  const rda = targets?.rda ?? NUTRIENT_DAILY;
+  const allItems = [...bf, ...lu, ...sn, ...di];
+  const totals = sumNutrients(allItems);
+
+  // Find nutrients with gaps (< 80% of RDA), sorted by worst gap first
+  const gaps = Object.keys(rda)
+    .filter((k) => {
+      const req = rda[k] ?? 0;
+      if (req <= 0) return false;
+      const pct = (totals[k] ?? 0) / req;
+      return pct < 0.80;
+    })
+    .sort((a, b) => {
+      const pctA = (totals[a] ?? 0) / (rda[a] ?? 1);
+      const pctB = (totals[b] ?? 0) / (rda[b] ?? 1);
+      return pctA - pctB; // worst gap first
+    });
+
+  // Weak signals are appended AFTER the real RDA-gap ranking — they only ever get
+  // a booster slot if the top 8 primary gaps don't already fill the list, and never
+  // for a nutrient a stronger signal (deficiencies/medConditions) already covers.
+  const weakGaps = weakDeficiencies.filter((d) => !gaps.includes(d) && !mergedDefs.includes(d));
+  const rankedGaps = [...gaps, ...weakGaps];
+
+  // Meals for booster distribution (lunch and dinner can absorb extras best)
+  const boosterMeals = ["lunch", "dinner", "breakfast", "snacks"] as const;
+  const boosterBuckets: Record<string, FoodItem[]> = { lunch: [], dinner: [], breakfast: [], snacks: [] };
+
+  for (const gap of rankedGaps.slice(0, 8)) { // address top 8 remaining gaps
+    let added = false;
+    for (const meal of boosterMeals) {
+      // Cap: no meal gets more than 2 extra booster items
+      if (boosterBuckets[meal].length >= 2) continue;
+      const booster = pickBooster(pool, gap, meal, kitchenItems, medConditions, isVeg, used, profile, avoidTerms);
+      if (booster) {
+        boosterBuckets[meal].push(booster);
+        used.add(booster.id);
+        // Mark base name used too
+        const bn = "base::" + booster.name.replace(/(\s*\([^)]*\))+\s*$/, "").trim().toLowerCase();
+        used.add(bn);
+        added = true;
+        break;
+      }
+    }
+    if (!added) continue;
+  }
+
+  // Portion and merge boosters into meals
+  const portionBooster = (raw: FoodItem[], kcalBudget: number, existingCount: number): PortionedItem[] =>
+    raw.map((r) => portionItem(r, kcalBudget * 0.4, existingCount + raw.length));
+
   return {
-    breakfast: portion(bfRaw,  bfKcal),
-    lunch:     portion(lunchRaw,  luKcal),
-    snacks:    portion(snackRaw,  snKcal),
-    dinner:    portion(dinnerRaw, diKcal),
+    breakfast: [...bf, ...portionBooster(boosterBuckets.breakfast, bfKcal, bfRaw.length)],
+    lunch:     [...lu, ...portionBooster(boosterBuckets.lunch,     luKcal, lunchRaw.length)],
+    snacks:    [...sn, ...portionBooster(boosterBuckets.snacks,    snKcal, snackRaw.length)],
+    dinner:    [...di, ...portionBooster(boosterBuckets.dinner,    diKcal, dinnerRaw.length)],
     targets:   targets ?? undefined,
   };
 }

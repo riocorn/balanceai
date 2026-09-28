@@ -40,8 +40,8 @@ function MessageBubble({ msg }: { msg: ChatMessage }) {
       <div
         className="max-w-[82%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line"
         style={{
-          background: isUser ? "#00d97e" : "rgba(255,255,255,0.06)",
-          color: isUser ? "#000" : "rgba(255,255,255,0.85)",
+          background: isUser ? "#1d5c3d" : "#e9ece9",
+          color: isUser ? "#000" : "#1a1a1a",
           borderRadius: isUser ? "18px 18px 4px 18px" : "4px 18px 18px 18px",
           fontWeight: isUser ? 500 : 400,
         }}
@@ -110,20 +110,20 @@ export default function ChatPage() {
 
   return (
     <AppShell>
-      <div className="flex flex-col h-[calc(100vh-3.5rem)] lg:h-screen max-w-2xl mx-auto">
+      <div className="flex flex-col h-[calc(100vh-3.5rem)] lg:h-screen max-w-4xl mx-auto">
         {/* Header */}
         <div
           className="flex items-center gap-3 px-5 py-4 border-b shrink-0"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          style={{ borderColor: "#e9ece9" }}
         >
           <div className="w-9 h-9 rounded-xl bg-[#00d97e] flex items-center justify-center">
             <Leaf className="w-4.5 h-4.5 text-black" />
           </div>
           <div>
-            <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>BalanceAI Health Chat</p>
+            <p className="text-sm font-bold" style={{ color: "#1a1a1a" }}>BalanceAI Health Chat</p>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00d97e] animate-pulse" />
-              <p className="text-[10px]" style={{ color: "rgba(0,217,126,0.7)" }}>Online · AI-powered</p>
+              <p className="text-[10px]" style={{ color: "#1d5c3d" }}>Online · AI-powered</p>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function ChatPage() {
               <div
                 className="rounded-2xl"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
+                  background: "#e9ece9",
                   borderRadius: "4px 18px 18px 18px",
                 }}
               >
@@ -176,8 +176,8 @@ export default function ChatPage() {
                   onClick={() => sendMessage(c)}
                   className="text-xs px-3 py-1.5 rounded-full font-medium transition-all"
                   style={{
-                    background: "rgba(0,217,126,0.08)",
-                    border: "1px solid rgba(0,217,126,0.2)",
+                    background: "#eef7f2",
+                    border: "1px solid #b6ddc9",
                     color: "rgba(0,217,126,0.85)",
                   }}
                 >
@@ -191,7 +191,7 @@ export default function ChatPage() {
         {/* Input bar */}
         <div
           className="px-4 py-3 border-t shrink-0"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          style={{ borderColor: "#e9ece9" }}
         >
           <form
             onSubmit={(e) => { e.preventDefault(); sendMessage(input); }}
@@ -205,9 +205,9 @@ export default function ChatPage() {
               disabled={typing}
               className="flex-1 px-4 py-2.5 rounded-xl text-sm outline-none"
               style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "rgba(255,255,255,0.85)",
+                background: "#f5f5f3",
+                border: "1px solid #e4e7e2",
+                color: "#1a1a1a",
               }}
             />
             <button
@@ -215,13 +215,13 @@ export default function ChatPage() {
               disabled={!input.trim() || typing}
               className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all"
               style={{
-                background: input.trim() && !typing ? "#00d97e" : "rgba(255,255,255,0.05)",
-                border: input.trim() && !typing ? "none" : "1px solid rgba(255,255,255,0.08)",
+                background: input.trim() && !typing ? "#1d5c3d" : "#f5f5f3",
+                border: input.trim() && !typing ? "none" : "1px solid #e4e7e2",
               }}
             >
               <Send
                 className="w-4 h-4"
-                style={{ color: input.trim() && !typing ? "#000" : "rgba(255,255,255,0.2)" }}
+                style={{ color: input.trim() && !typing ? "#000" : "#9aa5ae" }}
               />
             </button>
           </form>

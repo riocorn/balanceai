@@ -314,3 +314,31 @@
   50%     { transform: translateY(-8px); }
 }
 .animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ── Symptom-checker: one elevation + radius system for every card ───
+   Radius (12px) and rest-state "flat, border-only, no shadow" behaviour are
+   real getComputedStyle() measurements taken off a live 1mg product card
+   (.CategoryPage-module__cardContainer, 190x325px, border 1px solid
+   rgb(221,226,235), border-radius 12px, box-shadow: none) on 2026-09-28.
+   Shadow is only introduced on hover, matching the "lift on interaction"
+   pattern real e-pharmacy catalogs use. */
+.sc-card {
+  border-radius: 0.75rem;
+  box-shadow: none;
+  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+}
+.sc-card-interactive:hover {
+  box-shadow: 0 4px 10px rgba(11,32,39,0.06), 0 16px 34px rgba(11,32,39,0.10);
+  transform: translateY(-3px);
+  border-color: rgba(14,124,134,0.35) !important;
+}
+.sc-card-interactive:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(11,32,39,0.05), 0 8px 18px rgba(11,32,39,0.07);
+}
+.sc-icon-pop {
+  transition: transform 0.22s ease;
+}
+.sc-card-interactive:hover .sc-icon-pop {
+  transform: scale(1.08);
+}

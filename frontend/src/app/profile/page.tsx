@@ -24,7 +24,7 @@ const GENDER_LABELS: Record<string, string> = {
 
 function avatarGradient(name: string): string {
   const colors = [
-    ["#00d97e", "#06b6d4"],
+    ["#1d5c3d", "#06b6d4"],
     ["#818cf8", "#a78bfa"],
     ["#f59e0b", "#ef4444"],
     ["#34d399", "#10b981"],
@@ -123,11 +123,11 @@ export default function ProfilePage() {
 
   return (
     <AppShell>
-      <div className="px-5 sm:px-8 py-8 space-y-6 max-w-2xl mx-auto">
+      <div className="px-5 sm:px-8 py-8 space-y-6 max-w-5xl mx-auto">
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="font-display font-bold text-2xl" style={{ color: "rgba(255,255,255,0.9)" }}>
+          <h1 className="font-display font-bold text-2xl" style={{ color: "#1a1a1a" }}>
             Profile
           </h1>
         </motion.div>
@@ -138,7 +138,7 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
           className="rounded-2xl p-6 flex items-center gap-5"
-          style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+          style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
         >
           <div
             className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-black shrink-0"
@@ -155,7 +155,7 @@ export default function ProfilePage() {
                   onChange={(e) => setEditName(e.target.value)}
                   placeholder="Your name"
                   className="w-full px-3 py-2 rounded-lg text-sm outline-none"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.9)" }}
+                  style={{ background: "#e4e7e2", border: "1px solid #c4cdd6", color: "#1a1a1a" }}
                 />
                 <input
                   type="number"
@@ -164,13 +164,13 @@ export default function ProfilePage() {
                   placeholder="Age"
                   min={10} max={100}
                   className="w-24 px-3 py-2 rounded-lg text-sm outline-none"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.9)" }}
+                  style={{ background: "#e4e7e2", border: "1px solid #c4cdd6", color: "#1a1a1a" }}
                 />
                 <div className="flex gap-2">
-                  <button onClick={handleSave} disabled={saving} className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-black" style={{ background: "#00d97e" }}>
+                  <button onClick={handleSave} disabled={saving} className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-black" style={{ background: "#1d5c3d" }}>
                     <Check className="w-3 h-3" /> {saving ? "Saving..." : "Save"}
                   </button>
-                  <button onClick={() => setEditing(false)} className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium" style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.5)" }}>
+                  <button onClick={() => setEditing(false)} className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium" style={{ background: "#e9ece9", color: "#5a6571" }}>
                     <X className="w-3 h-3" /> Cancel
                   </button>
                 </div>
@@ -178,18 +178,18 @@ export default function ProfilePage() {
             ) : (
               <>
                 <div className="flex items-center gap-2 mb-1">
-                  <h2 className="text-lg font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
+                  <h2 className="text-lg font-bold" style={{ color: "#1a1a1a" }}>
                     {profile.name || "User"}
                   </h2>
                   <button
                     onClick={() => setEditing(true)}
                     className="p-1 rounded-lg"
-                    style={{ color: "rgba(255,255,255,0.3)" }}
+                    style={{ color: "#9aa5ae" }}
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <p className="text-sm" style={{ color: "#9aa5ae" }}>
                   {[profile.age && `${profile.age} yrs`, profile.gender && GENDER_LABELS[profile.gender]]
                     .filter(Boolean).join("  ·  ") || "Profile incomplete"}
                 </p>
@@ -199,7 +199,7 @@ export default function ProfilePage() {
                       <span
                         key={g}
                         className="text-[10px] px-2 py-0.5 rounded-full font-medium"
-                        style={{ background: "rgba(0,217,126,0.08)", border: "1px solid rgba(0,217,126,0.15)", color: "rgba(0,217,126,0.8)" }}
+                        style={{ background: "#eef7f2", border: "1px solid #eef7f2", color: "#1d5c3d" }}
                       >
                         {GOAL_LABELS[g] || g}
                       </span>
@@ -222,11 +222,11 @@ export default function ProfilePage() {
             <div
               key={s.label}
               className="rounded-xl p-4 flex flex-col items-center gap-1.5"
-              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+              style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
             >
               <s.icon className="w-4 h-4" style={{ color: s.color }} />
               <p className="text-xl font-black font-display" style={{ color: s.color }}>{s.value}</p>
-              <p className="text-[10px] text-center" style={{ color: "rgba(255,255,255,0.35)" }}>{s.label}</p>
+              <p className="text-[10px] text-center" style={{ color: "#9aa5ae" }}>{s.label}</p>
             </div>
           ))}
         </motion.div>
@@ -237,7 +237,7 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#9aa5ae" }}>
             Achievements ({unlocked.size}/{ACHIEVEMENTS.length})
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -251,18 +251,18 @@ export default function ProfilePage() {
                   transition={{ delay: 0.15 + i * 0.04 }}
                   className="rounded-xl p-3.5 flex flex-col items-center gap-1.5 text-center"
                   style={{
-                    background: done ? `${a.color}0d` : "rgba(255,255,255,0.03)",
-                    border: done ? `1px solid ${a.color}30` : "1px solid rgba(255,255,255,0.06)",
+                    background: done ? `${a.color}0d` : "#ffffff",
+                    border: done ? `1px solid ${a.color}30` : "1px solid #e9ece9",
                     opacity: done ? 1 : 0.45,
                   }}
                 >
                   <span className="text-2xl" style={{ filter: done ? "none" : "grayscale(100%)" }}>
                     {a.icon}
                   </span>
-                  <p className="text-xs font-bold" style={{ color: done ? a.color : "rgba(255,255,255,0.5)" }}>
+                  <p className="text-xs font-bold" style={{ color: done ? a.color : "#5a6571" }}>
                     {a.title}
                   </p>
-                  <p className="text-[9px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <p className="text-[9px]" style={{ color: "#9aa5ae" }}>
                     {a.desc}
                   </p>
                   {done && (
@@ -283,11 +283,11 @@ export default function ProfilePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28 }}
             className="rounded-xl p-4 flex items-center justify-between"
-            style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+            style={{ background: "#ffffff", border: "1px solid #e9ece9" }}
           >
             <div>
-              <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>Daily Reminder</p>
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+              <p className="text-sm font-medium" style={{ color: "#2d3748" }}>Daily Reminder</p>
+              <p className="text-xs" style={{ color: "#9aa5ae" }}>
                 Roz subah 9 baje analysis reminder
               </p>
             </div>
@@ -304,9 +304,9 @@ export default function ProfilePage() {
               }}
               className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all"
               style={{
-                background: notifEnabled ? "rgba(0,217,126,0.1)" : "rgba(255,255,255,0.05)",
-                border: notifEnabled ? "1px solid rgba(0,217,126,0.25)" : "1px solid rgba(255,255,255,0.08)",
-                color: notifEnabled ? "#00d97e" : "rgba(255,255,255,0.4)",
+                background: notifEnabled ? "#eef7f2" : "#f5f5f3",
+                border: notifEnabled ? "1px solid #b6ddc9" : "1px solid #e4e7e2",
+                color: notifEnabled ? "#1d5c3d" : "#9aa5ae",
               }}
             >
               {notifEnabled ? "✓ On" : "Enable"}
@@ -320,11 +320,11 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="rounded-xl p-4 flex items-center justify-between"
-          style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ background: "#ffffff", border: "1px solid #e9ece9" }}
         >
           <div>
-            <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>Export Data</p>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-sm font-medium" style={{ color: "#2d3748" }}>Export Data</p>
+            <p className="text-xs" style={{ color: "#9aa5ae" }}>
               Saare analyses ka CSV download karo
             </p>
           </div>
@@ -333,9 +333,9 @@ export default function ProfilePage() {
             disabled={!analyses.length}
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all"
             style={{
-              background: analyses.length ? "rgba(0,217,126,0.1)" : "rgba(255,255,255,0.04)",
-              border: analyses.length ? "1px solid rgba(0,217,126,0.25)" : "1px solid rgba(255,255,255,0.07)",
-              color: analyses.length ? "#00d97e" : "rgba(255,255,255,0.3)",
+              background: analyses.length ? "#eef7f2" : "#f8f9f8",
+              border: analyses.length ? "1px solid #b6ddc9" : "1px solid #e4e7e2",
+              color: analyses.length ? "#1d5c3d" : "#9aa5ae",
             }}
           >
             <Download className="w-3.5 h-3.5" /> Export CSV

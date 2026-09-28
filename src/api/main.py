@@ -11,7 +11,19 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "voice"))
 
 from core.config import settings
 from routers.checkin import router as checkin_router
-from routers.users import router as users_router
+from routers.nutrition_ml import router as nutrition_ml_router
+from routers.nutrition_rda import router as nutrition_rda_router
+from routers.nutrition_targets import router as nutrition_targets_router
+from routers.recipe import router as recipe_router
+from routers.pharmacy import router as pharmacy_router
+from routers.medical import router as medical_router
+
+try:
+    from routers.users import router as users_router
+    _users_ok = True
+except Exception:
+    users_router = None
+    _users_ok = False
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -37,7 +49,14 @@ async def add_timing(request: Request, call_next):
 
 
 app.include_router(checkin_router)
-app.include_router(users_router)
+if _users_ok and users_router:
+    app.include_router(users_router)
+app.include_router(nutrition_ml_router)
+app.include_router(nutrition_rda_router)
+app.include_router(nutrition_targets_router)
+app.include_router(recipe_router)
+app.include_router(pharmacy_router)
+app.include_router(medical_router)
 
 
 @app.get("/")
@@ -52,8 +71,13 @@ def root():
             "camera_nail": "POST /checkin/camera/nail",
             "camera_tongue": "POST /checkin/camera/tongue",
             "camera_eye": "POST /checkin/camera/eye",
+            "food_checkin": "POST /checkin/food",
             "full_checkin": "POST /checkin/full",
             "predict_only": "POST /checkin/predict-only",
+            "pharmacy_match": "POST /pharmacy/match",
+            "pharmacy_medicine": "GET /pharmacy/medicine/{disease_id}",
+            "pharmacy_whatsapp_link": "POST /pharmacy/whatsapp-link",
+            "medical_query": "POST /medical/query",
             "user_history": "GET /users/{id}/history",
             "balance_trend": "GET /users/{id}/trend",
             "docs": "/docs",

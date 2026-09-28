@@ -20,9 +20,9 @@ const RISK_COLORS = ["#ef4444", "#f97316", "#f59e0b", "#eab308", "#22c55e", "#10
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="px-3 py-2 rounded-xl text-xs" style={{ background: "rgba(6,6,10,0.95)", border: "1px solid rgba(255,255,255,0.1)" }}>
-      <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: 2 }}>{label}</p>
-      <p style={{ color: "#00d97e", fontWeight: 700 }}>{payload[0]?.value}% prevalence</p>
+    <div className="px-3 py-2 rounded-xl text-xs" style={{ background: "rgba(6,6,10,0.95)", border: "1px solid #e4e7e2" }}>
+      <p style={{ color: "#5a6571", marginBottom: 2 }}>{label}</p>
+      <p style={{ color: "#1d5c3d", fontWeight: 700 }}>{payload[0]?.value}% prevalence</p>
     </div>
   );
 };
@@ -80,10 +80,10 @@ export default function InsightsPage() {
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="text-sm font-semibold mb-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-sm font-semibold mb-0.5" style={{ color: "#9aa5ae" }}>
             India Nutrition Data
           </p>
-          <h1 className="font-display font-bold text-2xl" style={{ color: "rgba(255,255,255,0.9)" }}>
+          <h1 className="font-display font-bold text-2xl" style={{ color: "#1a1a1a" }}>
             Insights
           </h1>
         </motion.div>
@@ -94,15 +94,15 @@ export default function InsightsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
           className="rounded-2xl p-5"
-          style={{ background: "rgba(0,217,126,0.04)", border: "1px solid rgba(0,217,126,0.12)" }}
+          style={{ background: "#eef7f2", border: "1px solid #eef7f2" }}
         >
           <div className="flex items-start gap-3">
             <span className="text-2xl shrink-0">🌡️</span>
             <div>
-              <p className="text-sm font-bold mb-1" style={{ color: "#00d97e" }}>
+              <p className="text-sm font-bold mb-1" style={{ color: "#1d5c3d" }}>
                 {seasonalTip.title}
               </p>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="text-sm" style={{ color: "#5a6571" }}>
                 {seasonalTip.tip}
               </p>
               <div className="flex flex-wrap gap-1.5 mt-2">
@@ -110,7 +110,7 @@ export default function InsightsPage() {
                   <span
                     key={d}
                     className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
-                    style={{ background: "rgba(0,217,126,0.1)", color: "rgba(0,217,126,0.8)", border: "1px solid rgba(0,217,126,0.2)" }}
+                    style={{ background: "#eef7f2", color: "#1d5c3d", border: "1px solid #b6ddc9" }}
                   >
                     {DEFICIENCY_LABELS[d] || d}
                   </span>
@@ -126,19 +126,19 @@ export default function InsightsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="rounded-2xl p-5"
-          style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+          style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
         >
-          <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#5a6571" }}>
             India Deficiency Prevalence
           </p>
-          <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-xs mb-5" style={{ color: "#9aa5ae" }}>
             % population affected — NFHS-5, NNMB 2012
           </p>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={nationalChartData} layout="vertical" margin={{ top: 0, right: 48, left: 0, bottom: 0 }}>
-              <XAxis type="number" domain={[0, 80]} tick={{ fill: "rgba(255,255,255,0.25)", fontSize: 10 }} axisLine={false} tickLine={false} />
-              <YAxis type="category" dataKey="name" tick={{ fill: "rgba(255,255,255,0.55)", fontSize: 10 }} axisLine={false} tickLine={false} width={80} />
-              <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+              <XAxis type="number" domain={[0, 80]} tick={{ fill: "#9aa5ae", fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis type="category" dataKey="name" tick={{ fill: "#5a6571", fontSize: 10 }} axisLine={false} tickLine={false} width={80} />
+              <Tooltip content={<CustomTooltip />} cursor={{ fill: "#ffffff" }} />
               <Bar dataKey="value" radius={[0, 4, 4, 0]} maxBarSize={18}>
                 {nationalChartData.map((_, i) => (
                   <Cell key={i} fill={RISK_COLORS[i % RISK_COLORS.length]} fillOpacity={0.85} />
@@ -155,10 +155,10 @@ export default function InsightsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
             className="rounded-2xl p-5"
-            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
           >
             <div className="flex items-center justify-between mb-1">
-              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <p className="text-sm font-semibold" style={{ color: "#5a6571" }}>
                 {userState} vs National Average
               </p>
               <span
@@ -168,7 +168,7 @@ export default function InsightsPage() {
                 YOUR STATE
               </span>
             </div>
-            <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-xs mb-5" style={{ color: "#9aa5ae" }}>
               Deficiency prevalence (%) in your state
             </p>
 
@@ -181,12 +181,12 @@ export default function InsightsPage() {
                   transition={{ delay: 0.15 + i * 0.05 }}
                 >
                   <div className="flex items-center gap-3 mb-1.5">
-                    <p className="text-xs font-medium w-24 shrink-0" style={{ color: "rgba(255,255,255,0.65)" }}>
+                    <p className="text-xs font-medium w-24 shrink-0" style={{ color: "#5a6571" }}>
                       {DEFICIENCY_LABELS[d.key] || d.key}
                     </p>
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                        <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "#e9ece9" }}>
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${(d.state / 80) * 100}%` }}
@@ -198,16 +198,16 @@ export default function InsightsPage() {
                         <span className="text-[10px] font-bold w-8 text-right" style={{ color: "#818cf8" }}>{d.state}%</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.04)" }}>
+                        <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "#f8f9f8" }}>
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${(d.national / 80) * 100}%` }}
                             transition={{ delay: 0.25 + i * 0.05, duration: 0.5 }}
                             className="h-full rounded-full"
-                            style={{ background: "rgba(255,255,255,0.25)" }}
+                            style={{ background: "#9aa5ae" }}
                           />
                         </div>
-                        <span className="text-[10px] w-8 text-right" style={{ color: "rgba(255,255,255,0.3)" }}>{d.national}%</span>
+                        <span className="text-[10px] w-8 text-right" style={{ color: "#9aa5ae" }}>{d.national}%</span>
                       </div>
                     </div>
                   </div>
@@ -218,11 +218,11 @@ export default function InsightsPage() {
             <div className="flex items-center gap-4 mt-4">
               <div className="flex items-center gap-1.5">
                 <div className="w-3 h-1.5 rounded-full" style={{ background: "#818cf8" }} />
-                <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>{userState}</span>
+                <span className="text-[10px]" style={{ color: "#9aa5ae" }}>{userState}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="w-3 h-1 rounded-full" style={{ background: "rgba(255,255,255,0.25)" }} />
-                <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>National avg</span>
+                <div className="w-3 h-1 rounded-full" style={{ background: "#9aa5ae" }} />
+                <span className="text-[10px]" style={{ color: "#9aa5ae" }}>National avg</span>
               </div>
             </div>
           </motion.div>
@@ -231,7 +231,7 @@ export default function InsightsPage() {
         {!userState && (
           <div
             className="rounded-xl p-4 text-center text-sm"
-            style={{ background: "rgba(255,255,255,0.03)", border: "1px dashed rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.3)" }}
+            style={{ background: "#ffffff", border: "1px dashed #e4e7e2", color: "#9aa5ae" }}
           >
             Apna state select karo analysis mein — state-wise comparison dikhega
           </div>
@@ -243,7 +243,7 @@ export default function InsightsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#9aa5ae" }}>
             About Top Deficiencies
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -254,10 +254,10 @@ export default function InsightsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + i * 0.05 }}
                 className="rounded-xl p-4"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+                style={{ background: "#ffffff", border: "1px solid #e9ece9" }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>
                     {DEFICIENCY_LABELS[key] || key}
                   </p>
                   <span
@@ -267,7 +267,7 @@ export default function InsightsPage() {
                     {NATIONAL_PREVALENCE[key]}%
                   </span>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "#9aa5ae" }}>
                   {DEFICIENCY_DESCRIPTIONS[key]}
                 </p>
               </motion.div>
@@ -275,7 +275,7 @@ export default function InsightsPage() {
           </div>
         </motion.div>
 
-        <p className="text-xs text-center pb-4" style={{ color: "rgba(255,255,255,0.2)" }}>
+        <p className="text-xs text-center pb-4" style={{ color: "#9aa5ae" }}>
           Data source: NFHS-5 (2019-21), NNMB 2012, ICMR RDA Guidelines
         </p>
       </div>

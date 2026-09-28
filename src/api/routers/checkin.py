@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[2]))
 sys.path.insert(0, str(Path(__file__).parents[1]))
 
-from services.ml_service import process_full_checkin, analyze_image, run_deficiency_prediction, compute_balance_score, get_food_recommendations
+from services.ml_service import process_full_checkin, analyze_image, run_deficiency_prediction, compute_balance_score, get_food_recommendations, analyze_meal_photo
 
 router = APIRouter(prefix="/checkin", tags=["Check-In"])
 
@@ -78,6 +78,35 @@ async def checkin_camera(
         raise HTTPException(status_code=400, detail="Image too large (max 10MB)")
 
     result = analyze_image(img_bytes, modality)
+    return JSONResponse(content=result)
+
+
+@router.post("/food")
+async def checkin_food(
+    image: UploadFile = File(...),
+    # Optional profile — used only to personalize the assumed portion size (via
+    # TDEE) instead of a flat default. None of this is required; omitting any
+    # field falls back to the standard-serving assumption for everyone.
+    weight_kg: Optional[float] = Form(None),
+    height_cm: Optional[float] = Form(None),
+    age_years: Optional[float] = Form(None),
+    sex: Optional[str] = Form(None),
+    job_type: Optional[str] = Form(None),
+    exercise_type: Optional[str] = Form(None),
+    exercise_min: Optional[int] = Form(None),
+):
+    content_type = image.content_type or ""
+    if not any(t in content_type for t in ["jpeg", "jpg", "png", "webp"]):
+        raise HTTPException(status_code=400, detail="Image must be JPEG, PNG or WebP")
+
+    img_bytes = await image.read()
+    if len(img_bytes) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Image too large (max 10MB)")
+
+    result = analyze_meal_photo(
+        img_bytes, weight_kg=weight_kg, height_cm=height_cm, age_years=age_years,
+        sex=sex, job_type=job_type, exercise_type=exercise_type, exercise_min=exercise_min,
+    )
     return JSONResponse(content=result)
 
 

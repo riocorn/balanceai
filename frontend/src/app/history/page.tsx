@@ -107,17 +107,17 @@ export default function HistoryPage() {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-semibold mb-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-sm font-semibold mb-0.5" style={{ color: "#9aa5ae" }}>
               {analyses.length} total analyses
             </p>
-            <h1 className="font-display font-bold text-2xl" style={{ color: "rgba(255,255,255,0.9)" }}>
+            <h1 className="font-display font-bold text-2xl" style={{ color: "#1a1a1a" }}>
               History
             </h1>
           </div>
           <Link href="/analyze">
             <button
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-black"
-              style={{ background: "#00d97e" }}
+              style={{ background: "#1d5c3d" }}
             >
               <PlusCircle className="w-4 h-4" />
               New Analysis
@@ -129,7 +129,7 @@ export default function HistoryPage() {
         <motion.div
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
           className="flex gap-1 p-1 rounded-xl w-fit"
-          style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+          style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
         >
           {(["timeline", "analytics"] as const).map((t) => (
             <button
@@ -137,9 +137,9 @@ export default function HistoryPage() {
               onClick={() => setTab(t)}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium capitalize transition-all"
               style={{
-                background: tab === t ? "rgba(0,217,126,0.12)" : "transparent",
-                color: tab === t ? "#00d97e" : "rgba(255,255,255,0.4)",
-                border: tab === t ? "1px solid rgba(0,217,126,0.25)" : "1px solid transparent",
+                background: tab === t ? "#eef7f2" : "transparent",
+                color: tab === t ? "#1d5c3d" : "#9aa5ae",
+                border: tab === t ? "1px solid #b6ddc9" : "1px solid transparent",
               }}
             >
               {t === "timeline" ? <Clock className="w-3.5 h-3.5" /> : <BarChart2 className="w-3.5 h-3.5" />}
@@ -153,16 +153,16 @@ export default function HistoryPage() {
           <div className="flex flex-col items-center justify-center py-24 text-center">
             <div
               className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 text-3xl"
-              style={{ background: "rgba(0,217,126,0.08)", border: "1px solid rgba(0,217,126,0.15)" }}
+              style={{ background: "#eef7f2", border: "1px solid #eef7f2" }}
             >
               📊
             </div>
-            <p className="font-semibold mb-2" style={{ color: "rgba(255,255,255,0.7)" }}>Abhi tak koi analysis nahi</p>
-            <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.35)" }}>Pehla analysis karo — history yahin dikhegi</p>
+            <p className="font-semibold mb-2" style={{ color: "#5a6571" }}>Abhi tak koi analysis nahi</p>
+            <p className="text-sm mb-6" style={{ color: "#9aa5ae" }}>Pehla analysis karo — history yahin dikhegi</p>
             <Link href="/analyze">
               <button
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-black"
-                style={{ background: "#00d97e" }}
+                style={{ background: "#1d5c3d" }}
               >
                 <PlusCircle className="w-4 h-4" /> Analyze Karo
               </button>
@@ -188,11 +188,11 @@ export default function HistoryPage() {
                   transition={{ delay: gi * 0.06 }}
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#9aa5ae" }}>
                       {label}
                     </p>
-                    <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.05)" }} />
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>{items.length} entries</p>
+                    <div className="flex-1 h-px" style={{ background: "#f5f5f3" }} />
+                    <p className="text-xs" style={{ color: "#9aa5ae" }}>{items.length} entries</p>
                   </div>
                   <div className="space-y-2">
                     {items.map((entry) => (
@@ -222,9 +222,9 @@ export default function HistoryPage() {
                       onClick={() => setRange(r)}
                       className="px-2.5 py-1 rounded-lg text-xs font-medium transition-all"
                       style={{
-                        background: range === r ? "rgba(0,217,126,0.15)" : "rgba(255,255,255,0.04)",
-                        color: range === r ? "#00d97e" : "rgba(255,255,255,0.4)",
-                        border: range === r ? "1px solid rgba(0,217,126,0.3)" : "1px solid transparent",
+                        background: range === r ? "#eef7f2" : "#f8f9f8",
+                        color: range === r ? "#1d5c3d" : "#9aa5ae",
+                        border: range === r ? "1px solid #b6ddc9" : "1px solid transparent",
                       }}
                     >
                       {r === "all" ? "All" : `${r}d`}
@@ -245,8 +245,8 @@ export default function HistoryPage() {
                   <div
                     className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg"
                     style={{
-                      background: scoreTrend > 0 ? "rgba(34,197,94,0.08)" : scoreTrend < 0 ? "rgba(239,68,68,0.08)" : "rgba(255,255,255,0.04)",
-                      color: scoreTrend > 0 ? "#22c55e" : scoreTrend < 0 ? "#ef4444" : "rgba(255,255,255,0.3)",
+                      background: scoreTrend > 0 ? "rgba(34,197,94,0.08)" : scoreTrend < 0 ? "rgba(239,68,68,0.08)" : "#f8f9f8",
+                      color: scoreTrend > 0 ? "#22c55e" : scoreTrend < 0 ? "#ef4444" : "#9aa5ae",
                     }}
                   >
                     {scoreTrend > 0 ? <TrendingUp className="w-3 h-3" /> : scoreTrend < 0 ? <TrendingDown className="w-3 h-3" /> : <Minus className="w-3 h-3" />}
@@ -258,9 +258,9 @@ export default function HistoryPage() {
               {/* Score trend chart */}
               <div
                 className="rounded-2xl p-5"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+                style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
               >
-                <p className="text-sm font-semibold mb-4" style={{ color: "rgba(255,255,255,0.7)" }}>Score Trend</p>
+                <p className="text-sm font-semibold mb-4" style={{ color: "#5a6571" }}>Score Trend</p>
                 <TrendChart data={chartData} height={180} />
               </div>
 
@@ -268,17 +268,17 @@ export default function HistoryPage() {
               {insights.length > 0 && (
                 <div
                   className="rounded-2xl p-5"
-                  style={{ background: "rgba(0,217,126,0.04)", border: "1px solid rgba(0,217,126,0.1)" }}
+                  style={{ background: "#eef7f2", border: "1px solid #eef7f2" }}
                 >
                   <div className="flex items-center gap-2 mb-3">
-                    <Lightbulb className="w-4 h-4" style={{ color: "#00d97e" }} />
-                    <p className="text-sm font-semibold" style={{ color: "#00d97e" }}>AI Insights</p>
+                    <Lightbulb className="w-4 h-4" style={{ color: "#1d5c3d" }} />
+                    <p className="text-sm font-semibold" style={{ color: "#1d5c3d" }}>AI Insights</p>
                   </div>
                   <div className="space-y-2">
                     {insights.map((ins, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: "#00d97e" }} />
-                        <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>{ins}</p>
+                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: "#1d5c3d" }} />
+                        <p className="text-sm" style={{ color: "#5a6571" }}>{ins}</p>
                       </div>
                     ))}
                   </div>
@@ -289,11 +289,11 @@ export default function HistoryPage() {
               {topDeficiencies.length > 0 && (
                 <div
                   className="rounded-2xl p-5"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <AlertTriangle className="w-4 h-4" style={{ color: "#f59e0b" }} />
-                    <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>
+                    <p className="text-sm font-semibold" style={{ color: "#5a6571" }}>
                       Deficiency Frequency (all time)
                     </p>
                   </div>
@@ -309,10 +309,10 @@ export default function HistoryPage() {
                           transition={{ delay: i * 0.04 }}
                           className="flex items-center gap-3"
                         >
-                          <p className="text-xs font-medium w-36 shrink-0 truncate" style={{ color: "rgba(255,255,255,0.75)" }}>
+                          <p className="text-xs font-medium w-36 shrink-0 truncate" style={{ color: "#2d3748" }}>
                             {DEFICIENCY_LABELS[d.deficiency] || d.deficiency}
                           </p>
-                          <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.05)" }}>
+                          <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "#f5f5f3" }}>
                             <motion.div
                               className="h-full rounded-full"
                               style={{ background: color }}
@@ -325,7 +325,7 @@ export default function HistoryPage() {
                             <span className="text-xs font-bold" style={{ color, minWidth: 16, textAlign: "right" }}>
                               {d.count}×
                             </span>
-                            <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+                            <span className="text-[10px]" style={{ color: "#9aa5ae" }}>
                               {Math.round(d.avgProb * 100)}%
                             </span>
                           </div>
@@ -339,9 +339,9 @@ export default function HistoryPage() {
               {/* Score distribution */}
               <div
                 className="rounded-2xl p-5"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+                style={{ background: "#f8f9f8", border: "1px solid #e4e7e2" }}
               >
-                <p className="text-sm font-semibold mb-4" style={{ color: "rgba(255,255,255,0.7)" }}>Score Distribution</p>
+                <p className="text-sm font-semibold mb-4" style={{ color: "#5a6571" }}>Score Distribution</p>
                 <ScoreDistribution analyses={filteredAnalyses} />
               </div>
             </motion.div>
@@ -357,7 +357,7 @@ function ScoreDistribution({ analyses }: { analyses: AnalysisEntry[] }) {
     const b = [
       { label: "0–39", color: "#ef4444", count: 0 },
       { label: "40–69", color: "#f59e0b", count: 0 },
-      { label: "70–100", color: "#22c55e", count: 0 },
+      { label: "70–100", color: "#16a34a", count: 0 },
     ];
     analyses.forEach((a) => {
       if (a.score < 40) b[0].count++;
@@ -374,7 +374,7 @@ function ScoreDistribution({ analyses }: { analyses: AnalysisEntry[] }) {
       {buckets.map((b, i) => (
         <div key={i} className="flex-1 flex flex-col items-center gap-1.5">
           <span className="text-xs font-bold" style={{ color: b.color }}>{b.count}</span>
-          <div className="w-full rounded-t-lg overflow-hidden" style={{ height: 80, background: "rgba(255,255,255,0.04)" }}>
+          <div className="w-full rounded-t-lg overflow-hidden" style={{ height: 80, background: "#f8f9f8" }}>
             <motion.div
               className="w-full rounded-t-lg"
               style={{ background: `${b.color}40`, borderTop: `2px solid ${b.color}` }}
@@ -383,7 +383,7 @@ function ScoreDistribution({ analyses }: { analyses: AnalysisEntry[] }) {
               transition={{ delay: 0.1 + i * 0.08, duration: 0.5, ease: "easeOut" }}
             />
           </div>
-          <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>{b.label}</span>
+          <span className="text-[10px]" style={{ color: "#9aa5ae" }}>{b.label}</span>
         </div>
       ))}
     </div>

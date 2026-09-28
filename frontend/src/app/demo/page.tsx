@@ -56,7 +56,7 @@ export default function DemoPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#06060a" }}>
-      <div className="max-w-2xl mx-auto px-5 py-8 space-y-6">
+      <div className="max-w-5xl mx-auto px-5 py-8 space-y-6">
 
         {/* Top bar */}
         <div className="flex items-center justify-between">

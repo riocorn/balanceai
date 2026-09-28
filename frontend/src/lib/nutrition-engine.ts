@@ -268,6 +268,8 @@ const KCAL_PER_100G: Record<string, number> = {
   Dairy: 100, Grain: 340, Snack: 380, Beverage: 50,
   "Common Proteins": 180, "Common Fruits": 55,
   "Common Vegetables": 35, "Common Dishes": 120,
+  // COMPREHENSIVE_FOOD_DB (comprehensive-food-db.ts) categories
+  Dal: 120, Sabzi: 45, Nuts: 580, Seeds: 550, "Dry Fruits": 290, Oil: 890, Sweetener: 370,
 };
 
 // Standard serving units for common categories
@@ -280,6 +282,14 @@ const SERVING_UNIT: Record<string, { unit: string; grams: number }> = {
   Fruit:     { unit: "piece",      grams: 100 },
   Snack:     { unit: "handful",    grams: 30  },
   Beverage:  { unit: "glass",      grams: 240 },
+  // COMPREHENSIVE_FOOD_DB categories
+  Dal:        { unit: "katori",  grams: 150 },
+  Sabzi:      { unit: "katori",  grams: 150 },
+  Nuts:       { unit: "handful", grams: 28  },
+  Seeds:      { unit: "handful", grams: 15  },
+  "Dry Fruits": { unit: "handful", grams: 30 },
+  Oil:        { unit: "tbsp",    grams: 14  },
+  Sweetener:  { unit: "tbsp",    grams: 15  },
 };
 
 import type { FoodItem } from "./food-db";
