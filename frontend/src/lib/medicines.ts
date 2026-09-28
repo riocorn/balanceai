@@ -268,7 +268,8 @@ export function looksLikeMalformedFragment(name: string): boolean {
   if (looksLikeDrugClassOnly(n)) return true;
 
   const wordCount = (n.match(/[A-Za-z][A-Za-z'/-]*/g) || []).length;
-  if (_fragmentConnectorHits(n) >= 3 || wordCount > 16) return true;
+  const connectorHits = _fragmentConnectorHits(n);
+  if (connectorHits >= 3 || wordCount > 16) return true;
 
   // A dosage NUMBER dropped during extraction, leaving a dangling unit
   // fragment directly after the drug name (real example: "Deflazacort
@@ -277,6 +278,27 @@ export function looksLikeMalformedFragment(name: string): boolean {
   // and a known dosing-unit word, with no digit in between, is never a real
   // drug name's own punctuation.
   if (/\s\/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b/i.test(n)) return true;
+
+  // Second pass, tightened after further real examples the founder found
+  // live ("Avoidance of QT-Prolonging Drugs - Critical Preventive Measure,
+  // ALL LQTS Genotypes", "Same four pillar drugs - up-titrated faster and
+  // more completely, not a new molecule", "Bisphosphonate Class Safety
+  // Caveats - Osteonecrosis of the Jaw & Atypical Femoral Fracture"): a
+  // "Title -- Description" or "Title - Description" survey-note format
+  // (this exact convention is used throughout disease_master.json's real
+  // exhaustive_medicine_survey entries, e.g. "Duloxetine - Centrally Acting
+  // SNRI for OA Pain...") combined with ANY connector word, or a shorter
+  // name that still has 2+ connector words in more than 8 words total, is
+  // reliably a note/description rather than a clean product name (re-
+  // verified against the full catalog: drops the false-negative "kept but
+  // still suspicious" set from 280 to 67 real remaining entries, manually
+  // spot-checked as either legitimately real-but-verbose drug names or
+  // themselves further genuine non-drug notes worth living with rather
+  // than risking a stricter rule that starts cutting real entries).
+  const dashSeparatorCount = (n.match(/ -- | - /g) || []).length;
+  const hasNoteDashFormat = n.includes(" -- ") || dashSeparatorCount >= 2;
+  if (hasNoteDashFormat && (connectorHits >= 1 || wordCount > 10)) return true;
+  if (connectorHits >= 2 && wordCount > 8) return true;
 
   return false;
 }

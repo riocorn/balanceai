@@ -354,6 +354,17 @@ def _looks_like_malformed_fragment(name, is_validated_combination=False):
         return True
     if _BROKEN_DOSAGE_RE.search(n):
         return True
+    # Second pass, tightened after further real examples the founder found
+    # live ("Avoidance of QT-Prolonging Drugs - Critical Preventive Measure,
+    # ALL LQTS Genotypes", "Same four pillar drugs - up-titrated faster and
+    # more completely, not a new molecule") -- ported 1:1 from the identical
+    # tightening in frontend/src/lib/medicines.ts's looksLikeMalformedFragment.
+    dash_separator_count = len(re.findall(r" -- | - ", n))
+    has_note_dash_format = " -- " in n or dash_separator_count >= 2
+    if has_note_dash_format and (connector_hits >= 1 or word_count > 10):
+        return True
+    if connector_hits >= 2 and word_count > 8:
+        return True
     return False
 
 
