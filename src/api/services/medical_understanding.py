@@ -227,6 +227,44 @@ GLOSSARY_HINTS: Dict[str, str] = {
     "ungli / ungliyan / unglee": "finger(s) / toe(s) (context-dependent on hand vs foot)",
     "kamar": "lower back / waist",
     "peeth": "back (upper/mid back)",
+    # Second pass, same session, 2026-09-29: user pushed for further accuracy
+    # after the angootha fix. Systematically diffed a checklist of common
+    # Hindi body-part and symptom words against GLOSSARY_HINTS instead of
+    # waiting for more live failures -- these were confirmed absent by direct
+    # string search, not guessed. Each mapping below is standard/dictionary
+    # Hindi, not a invented term.
+    "gardan": "neck",
+    "kandha / kandhe": "shoulder(s)",
+    "kohni": "elbow",
+    "kalai": "wrist",
+    "kulha / kulhe": "hip(s)",
+    "jaangh / jaanghon": "thigh(s)",
+    "takhna / takhne": "ankle(s)",
+    "pindli": "calf / shin",
+    "daant": "tooth / teeth",
+    "zubaan": "tongue",
+    "hoth": "lips",
+    "jabda": "jaw",
+    "baal": "hair",
+    "nakhun": "nail(s)",
+    "khaal / tvacha": "skin",
+    "ganth": "lump",
+    "chot": "injury",
+    "jakhm / zakhm": "wound",
+    "peep": "pus",
+    "dil": "heart (organ, NOT emotional 'dil' idioms -- infer from medical context)",
+    "jigar": "liver",
+    "gurda / gurde": "kidney(s)",
+    "maasik dharam / mahwari": "menstruation / periods",
+    "motapa": "obesity",
+    "vajan": "weight",
+    "neend na aana / neend nahi aati": "insomnia / difficulty sleeping",
+    "yaddasht": "memory",
+    "behoshi / behosh ho jaana": "unconsciousness / fainting",
+    "kapkapi / kapkapaana": "shivering / trembling",
+    "lakwa": "paralysis (typically facial/one-sided, e.g. stroke-related)",
+    "jhanjhanahat": "tingling sensation",
+    "sunn / sunn hona": "numb / numbness",
 }
 
 _TRANSLATION_FEWSHOT = [
