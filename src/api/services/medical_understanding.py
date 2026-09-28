@@ -209,6 +209,24 @@ GLOSSARY_HINTS: Dict[str, str] = {
     "parda aa jaana": "a film/curtain-like covering appearing (over the eye)",
     "dhundla / dhundla dikhna": "blurry vision",
     "chakachaundh": "glare / dazzling sensation from bright light",
+    # Real bug found and fixed here, 2026-09-29: tested live with "mujhe
+    # gout hai, angoothe me sujan hai" (gout, toe swelling -- gout classically
+    # affects the big toe) and the model translated "angoothe" (thumb/big
+    # toe) as "knee and thigh" instead. Root cause: these basic anatomical
+    # terms were never in the glossary at all, and "ghutna / ghutne / ghutno"
+    # (knee) sitting right above in the same list -- a phonetically similar
+    # Hindi word -- is the most likely source of the model's confusion when
+    # given no explicit hint for "angoothe". Added the missing term plus
+    # several other foundational body-part words the glossary never covered
+    # (hand, foot, finger, lower back, upper back), since a symptom checker
+    # missing basic anatomy vocabulary is a real, recurring accuracy risk,
+    # not a one-off.
+    "angootha / angoothe / angutha": "thumb (if paired with haath/hand) OR big toe (if paired with pair/foot/paanv) -- infer which from context, never default to knee",
+    "haath / haathon": "hand(s) / arm(s)",
+    "pair / paanv / pairon": "foot / feet / leg(s)",
+    "ungli / ungliyan / unglee": "finger(s) / toe(s) (context-dependent on hand vs foot)",
+    "kamar": "lower back / waist",
+    "peeth": "back (upper/mid back)",
 }
 
 _TRANSLATION_FEWSHOT = [
