@@ -105,15 +105,19 @@ export default function MedicinesPage() {
           className="object-cover pointer-events-none"
           aria-hidden="true"
         />
+        {/* Real bug found and fixed here (same as /pharmacy's hero): this
+            tint sat at opacity 0.97 over the real photo, hiding it almost
+            entirely and reading as a flat gradient block instead of the
+            "real photography backdrop" the comment above describes. */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
-          style={{ background: HERO_GRADIENT, opacity: 0.97 }}
+          style={{ background: HERO_GRADIENT, opacity: 0.55 }}
         />
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
-          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.4) 0%, rgba(4,20,24,0.1) 55%, rgba(4,20,24,0) 78%)" }}
+          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.55) 0%, rgba(4,20,24,0.25) 55%, rgba(4,20,24,0.05) 78%)" }}
         />
         <div
           className="absolute inset-0 opacity-[0.08]"

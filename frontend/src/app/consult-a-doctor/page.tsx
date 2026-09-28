@@ -2,11 +2,12 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
-import { TEAL, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT } from "@/components/diag/theme";
+import { TEAL, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT, accentForKey } from "@/components/diag/theme";
 
 const CONSULT_STEPS = [
   {
@@ -43,6 +44,20 @@ export default function ConsultADoctorPage() {
       <SiteHeader active="other" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
+        {/* Real photography backdrop — a doctor checking a patient's blood
+            pressure (same already-verified Unsplash photo used on the
+            symptom-checker trust band, reused here for a consistent,
+            genuinely photographic hero instead of a flat color block). */}
+        <Image
+          src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=1600&q=75"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.75 }} />
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
@@ -96,7 +111,7 @@ export default function ConsultADoctorPage() {
               className="sc-card p-5 flex items-center gap-3"
               style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
             >
-              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ background: HERO_GRADIENT }}>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ background: accentForKey(specialty) }}>
                 <Stethoscope className="w-5 h-5 text-white" strokeWidth={2} />
               </div>
               <div className="min-w-0">
