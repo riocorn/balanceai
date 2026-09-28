@@ -417,9 +417,18 @@ export default function SiteHeader({
         </div>
 
         {/* Row B — logo + Box 2, the real AI-understanding input, positioned
-            directly beside the "BalanceAI" wordmark. */}
+            directly beside the "BalanceAI" wordmark.
+            Real bug found and fixed here, 2026-09-28: Box 2 was
+            `hidden sm:block`, and the symptom-checker page's own separate
+            hero textarea was deliberately removed in favour of this single
+            navbar box being the one real entry point into /medical/query
+            everywhere -- so below the sm breakpoint (640px, i.e. on
+            virtually every real phone in portrait mode) there was no way at
+            all to type a symptom and use the core feature of the site. Row B
+            now stacks the logo above the input on narrow screens (flex-col,
+            switching to flex-row at sm:) instead of hiding the input. */}
         <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
-          <div className="max-w-6xl mx-auto px-4 h-20 flex items-center gap-3">
+          <div className="max-w-6xl mx-auto px-4 py-3 sm:h-20 sm:py-0 flex flex-col sm:flex-row sm:items-center gap-3">
             <Link href="/" className="flex items-center gap-2 shrink-0" style={{ color: TEXT }}>
               {/* eslint-disable-next-line @next/next/no-img-element -- static local vector brand mark */}
               <img src="/illustrations/brand-mark.svg" alt="" aria-hidden="true" className="w-8 h-8 shrink-0" />
@@ -434,8 +443,9 @@ export default function SiteHeader({
             </Link>
 
             {/* Box 2 — the real AI /medical/query input, everywhere, right
-                next to the logo. */}
-            <div className="flex-1 hidden sm:block relative min-w-0">
+                next to the logo. Visible at every width (see fix note
+                above) -- stacked below the logo on mobile, inline on sm+. */}
+            <div className="flex-1 relative min-w-0">
               <p className="absolute -top-3.5 left-4 text-[9px] font-bold uppercase tracking-wide px-1 flex items-center gap-1" style={{ color: TEAL, background: SURFACE }}>
                 <Sparkles className="w-2.5 h-2.5" /> Find the Right Treatment
               </p>
