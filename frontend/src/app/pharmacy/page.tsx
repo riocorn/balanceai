@@ -100,17 +100,23 @@ export default function PharmacyIntakePage() {
           className="object-cover pointer-events-none"
           aria-hidden="true"
         />
+        {/* Real bug found and fixed here: this tint sat at opacity 0.97 over
+            the real photo, hiding ~97% of it — the "real photography
+            backdrop" comment above was true in code but not in what a
+            visitor actually saw (a flat gradient block). Brought down to
+            match the same tuned treatment used on /symptom-checker, where
+            the photo is genuinely visible outside the text column. */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
-          style={{ background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`, opacity: 0.97 }}
+          style={{ background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`, opacity: 0.4 }}
         />
         {/* Left-side scrim — the rotating headline/search copy sits on the
             left column, so it needs the strongest contrast there. */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
-          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.42) 0%, rgba(4,20,24,0.14) 50%, rgba(4,20,24,0) 72%)" }}
+          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.92) 0%, rgba(4,20,24,0.68) 45%, rgba(4,20,24,0.18) 70%, rgba(4,20,24,0) 88%)" }}
         />
         {/* decorative background texture, dense pattern like real e-pharmacy banners */}
         <div className="absolute inset-0 opacity-[0.08]" style={{
@@ -205,7 +211,10 @@ export default function PharmacyIntakePage() {
               {/* blob backdrop */}
               <div className="absolute inset-0 rounded-[2.5rem]" style={{ background: "rgba(255,255,255,0.08)", transform: "rotate(6deg)" }} />
 
-              {/* phone/chat card */}
+              {/* phone/chat card — real illustrative example copy instead of
+                  grey skeleton-loading bars standing in as permanent
+                  decoration (a real bug: skeleton bars read as "still
+                  loading" or broken, not as a finished graphic). */}
               <motion.div
                 initial={{ y: 0 }}
                 animate={{ y: [0, -8, 0] }}
@@ -217,22 +226,23 @@ export default function PharmacyIntakePage() {
                   <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "rgba(14,124,134,0.10)" }}>
                     <Sparkles className="w-3.5 h-3.5" style={{ color: GREEN }} />
                   </div>
-                  <div className="h-2 rounded-full flex-1" style={{ background: "rgba(11,32,39,0.07)" }} />
+                  <p className="text-xs font-bold" style={{ color: TEXT }}>BalanceAI</p>
                 </div>
-                <div className="space-y-2 mb-3">
-                  <div className="h-2.5 rounded-full w-full" style={{ background: "rgba(11,32,39,0.07)" }} />
-                  <div className="h-2.5 rounded-full w-4/5" style={{ background: "rgba(11,32,39,0.07)" }} />
-                  <div className="h-2.5 rounded-full w-3/5" style={{ background: "rgba(11,32,39,0.07)" }} />
+                <div className="rounded-2xl rounded-tr-sm px-3 py-2 mb-2 self-end max-w-[85%]" style={{ background: "rgba(11,32,39,0.06)" }}>
+                  <p className="text-[11px] leading-snug" style={{ color: TEXT }}>&quot;mujhe migraine hai, kai saalo se&quot;</p>
+                </div>
+                <div className="rounded-2xl rounded-tl-sm px-3 py-2 mb-3 max-w-[90%]" style={{ background: "rgba(14,124,134,0.10)" }}>
+                  <p className="text-[11px] leading-snug font-semibold" style={{ color: GREEN_DARK }}>Matched: Migraine — 9 real treatments found</p>
                 </div>
                 <div className="mt-auto rounded-xl p-3 flex items-center gap-2.5" style={{ background: "rgba(14,124,134,0.10)" }}>
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: GREEN }}>
                     <Pill className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="h-2 rounded-full w-3/4 mb-1.5" style={{ background: "rgba(29,92,61,0.25)" }} />
-                    <div className="h-2 rounded-full w-1/2" style={{ background: "rgba(29,92,61,0.15)" }} />
+                    <p className="text-[11px] font-bold truncate" style={{ color: TEXT }}>Prochlorperazine</p>
+                    <p className="text-[10px] truncate" style={{ color: MUTED }}>Symptom relief</p>
                   </div>
-                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded shrink-0" style={{ background: AMBER, color: "#fff" }}>94%</span>
+                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded shrink-0" style={{ background: AMBER, color: "#fff" }}>82%</span>
                 </div>
               </motion.div>
 
@@ -241,7 +251,7 @@ export default function PharmacyIntakePage() {
                 initial={{ y: 0 }}
                 animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                className="absolute -left-4 top-1/3 flex items-center gap-1.5 rounded-full pl-1.5 pr-3 py-1.5 shadow-xl"
+                className="absolute -left-8 -top-4 flex items-center gap-1.5 rounded-full pl-1.5 pr-3 py-1.5 shadow-xl"
                 style={{ background: "#fff" }}
               >
                 <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: WHATSAPP_GREEN }}>
