@@ -143,9 +143,13 @@ export default function PharmacyResultsPage() {
               AI-suggested medicines ({detail.medicines.length})
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {detail.medicines.map((m) => (
+              {detail.medicines.map((m, idx) => (
                 <MedicineProductCard
-                  key={m.name}
+                  // Same duplicate-name-key bug fixed on symptom-checker's
+                  // results list (real example found live: "Ertapenem +
+                  // Metronidazole" appearing twice) -- name alone isn't a
+                  // safe React key here either.
+                  key={`${m.name}-${idx}`}
                   medicine={m}
                   diseaseId={detail.id}
                   diseaseName={detail.name}

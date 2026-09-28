@@ -804,13 +804,23 @@ export default function SymptomCheckerPage() {
             <>
               {purchasableMedicines.length > 0 && (
                 <div className="space-y-4 mb-5">
-                  {purchasableMedicines.map((m) => {
+                  {purchasableMedicines.map((m, idx) => {
                     const inCart = cartItems.some((i) => i.name === cleanMedicineName(m.name));
                     const firstSource = m.sources[0];
                     const pct = m.effectiveness_pct != null ? Math.round(m.effectiveness_pct) : null;
                     return (
                       <Card
-                        key={m.name}
+                        // Real bug found live, 2026-09-29: the backend's
+                        // ranked-medicines list can legitimately contain the
+                        // same medicine name twice (e.g. "Ertapenem +
+                        // Metronidazole" at two different rows/doses), which
+                        // made React log a duplicate-key warning on every
+                        // re-render and risks silently dropping/duplicating
+                        // cards per React's own documented behavior for
+                        // non-unique keys. Name alone was never a safe key;
+                        // combining with its position in the (already
+                        // effectiveness-sorted, stable) list is.
+                        key={`${m.name}-${idx}`}
                         className="!ring-0 !py-0 sc-card sc-card-interactive p-5"
                         style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
                       >
