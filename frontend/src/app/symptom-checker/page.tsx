@@ -29,7 +29,7 @@ import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import { CATEGORY_TILES } from "@/components/diag/categories";
-import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE } from "@/components/diag/theme";
+import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL } from "@/components/diag/theme";
 
 // ---------------------------------------------------------------------------
 // Real API response shape (verified against routers/medical.py live source)
@@ -163,20 +163,22 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
 ];
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionHeading({ eyebrow, title, accent }: { eyebrow: string; title: string; accent?: string }) {
   return (
-    <div className="text-center mb-10">
+    <div className="flex items-start gap-4 mb-10">
       <span
-        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-3"
-        style={{ color: "#0A646D" }}
-      >
-        <span className="w-6 h-[3px] rounded-full" style={{ background: HERO_GRADIENT }} />
-        {eyebrow}
-        <span className="w-6 h-[3px] rounded-full" style={{ background: HERO_GRADIENT }} />
-      </span>
-      <h2 className="font-display font-bold text-3xl" style={{ color: TEXT }}>
-        {title}
-      </h2>
+        className="w-1 self-stretch rounded-full shrink-0"
+        style={{ background: accent || TEAL, minHeight: 44 }}
+        aria-hidden="true"
+      />
+      <div>
+        <p className="text-sm font-semibold mb-1" style={{ color: accent || TEAL }}>
+          {eyebrow}
+        </p>
+        <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight" style={{ color: TEXT }}>
+          {title}
+        </h2>
+      </div>
     </div>
   );
 }
@@ -635,21 +637,27 @@ export default function SymptomCheckerPage() {
             </div>
           </div>
 
-          {/* Trust ladder — glass cards floating on the colored band */}
+          {/* Trust ladder — solid cards, not translucent glass (a translucent
+              rgba(255,255,255,0.14) fill against a photo/gradient backdrop
+              reads as nearly invisible depending on what's behind it — real
+              contrast bug, not a style choice). Each card gets its own
+              accent from the secondary palette instead of uniform white
+              icons, so the strip reads as three distinct steps rather than
+              one repeated tile. */}
           <div className="relative max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 text-left">
-            {TRUST_STEPS.map(({ icon: Icon, title }) => (
+            {TRUST_STEPS.map(({ icon: Icon, title, accent }) => (
               <div
                 key={title}
-                className="rounded-2xl p-4 flex items-start gap-3 backdrop-blur-sm transition-all duration-200 hover:bg-[rgba(255,255,255,0.20)] hover:-translate-y-0.5"
-                style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.28)" }}
+                className="rounded-2xl p-4 flex items-start gap-3 transition-all duration-200 hover:-translate-y-0.5"
+                style={{ background: SURFACE, boxShadow: "0 10px 24px rgba(11,32,39,0.18)" }}
               >
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-                  style={{ background: "rgba(255,255,255,0.22)" }}
+                  style={{ background: accent }}
                 >
-                  <Icon className="w-4 h-4 text-white" />
+                  <Icon className="w-4 h-4 text-white" strokeWidth={2.25} />
                 </div>
-                <p className="text-sm font-semibold leading-snug text-white">{title}</p>
+                <p className="text-sm font-semibold leading-snug" style={{ color: TEXT }}>{title}</p>
               </div>
             ))}
           </div>
@@ -920,7 +928,7 @@ export default function SymptomCheckerPage() {
 
       {/* Category tiles */}
       <section id="categories" className="max-w-5xl mx-auto px-4 pb-20 scroll-mt-24">
-        <SectionHeading eyebrow="Browse by category" title="Browse real medicines by health area" />
+        <SectionHeading eyebrow="Browse by category" title="Browse real medicines by health area" accent={ACCENT_PURPLE} />
         {/* Horizontally scrollable circular category strip — mirrors the real
             "shop by category" structural pattern used across pharmacy/health apps.
             Each tile takes you to a real, filtered view of the medicine catalog
@@ -983,7 +991,14 @@ export default function SymptomCheckerPage() {
           aria-hidden="true"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
         />
-        <ScrollReveal className="relative max-w-5xl mx-auto grid sm:grid-cols-2 gap-4">
+        {/* Real bug found and fixed here: ScrollReveal's GSAP scroll-trigger
+            reveal left the 3rd/4th card in this grid permanently stuck at
+            partial opacity in live testing (reproduced twice) — likely the
+            trigger position going stale once the hero photo above finishes
+            loading and shifts layout. A broken half-invisible section is
+            worse than losing a stagger-in effect, so this grid renders
+            plainly instead of through ScrollReveal. */}
+        <div className="relative max-w-5xl mx-auto grid sm:grid-cols-2 gap-4">
           {TRUST_BADGES.map(({ icon: Icon, title, detail, accent }) => (
             <div
               key={title}
@@ -1006,7 +1021,7 @@ export default function SymptomCheckerPage() {
               </div>
             </div>
           ))}
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* How It Works — tinted full-bleed band for color rhythm */}
@@ -1016,7 +1031,7 @@ export default function SymptomCheckerPage() {
         style={{ background: "rgba(30,111,217,0.05)" }}
       >
         <div className="max-w-4xl mx-auto">
-          <SectionHeading eyebrow="The process" title="How It Works" />
+          <SectionHeading eyebrow="The process" title="How It Works" accent={BLUE} />
           <ScrollReveal className="grid sm:grid-cols-3 gap-6">
             {TRUST_STEPS.map(({ icon: Icon, title, detail, accent }, i) => (
               <div
@@ -1073,7 +1088,7 @@ export default function SymptomCheckerPage() {
 
       {/* FAQ */}
       <section id="faq" className="max-w-2xl mx-auto px-4 pb-20 scroll-mt-24">
-        <SectionHeading eyebrow="Questions" title="FAQ" />
+        <SectionHeading eyebrow="Questions" title="FAQ" accent={ACCENT_CORAL} />
         <ScrollReveal className="space-y-3" stagger={0.06} y={12}>
           {FAQ_ITEMS.map((item, i) => (
             <div key={item.q} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
