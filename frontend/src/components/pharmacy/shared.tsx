@@ -13,6 +13,12 @@ export const BORDER = "#E4EBEE";
 export const TEXT = "#0B2027";
 export const MUTED = "#5B7480";
 export const WHATSAPP_GREEN = "#25D366";
+// Same secondary accent palette as the rest of the marketplace
+// (components/diag/theme.ts) -- reused here so the pharmacy flow (cart,
+// checkout, product cards) reads as one colorful system instead of a
+// separate flat teal-only zone.
+export const ACCENT_AMBER = "#C98A2C";
+export const ACCENT_PURPLE = "#7C5CBF";
 
 export function ExpandableText({
   text,

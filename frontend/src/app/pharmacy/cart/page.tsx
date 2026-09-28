@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Trash2, MessageCircle, ArrowLeft, ShoppingBag, CheckCircle2 } from "lucide-react";
+import { Trash2, MessageCircle, ArrowLeft, ShoppingBag, CheckCircle2, ShieldAlert } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
-import { BG } from "@/components/diag/theme";
+import { BG, BLUE } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { getWhatsappLink } from "@/lib/pharmacy-api";
 import { GREEN, BORDER, TEXT, MUTED, WHATSAPP_GREEN, EffectivenessBadge } from "@/components/pharmacy/shared";
@@ -97,20 +97,27 @@ export default function PharmacyCartPage() {
         {/* Doctor verification gate — mandatory for every order, every time.
             Step 1 (send to doctor) must happen before Step 2 (confirm) can even
             be touched, and changing the cart resets both steps. */}
-        <div className="rounded-xl p-4 mb-4" style={{ background: "#fff", border: `1px solid ${BORDER}` }}>
-          <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>
-            Doctor Review Required — mandatory for every order
-          </p>
+        <div className="rounded-xl p-4 mb-4" style={{ background: "rgba(30,111,217,0.05)", border: `1px solid rgba(30,111,217,0.2)` }}>
+          <div className="flex items-center gap-2.5 mb-2">
+            <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: BLUE }}>
+              <ShieldAlert className="w-3.5 h-3.5 text-white" strokeWidth={2.25} />
+            </div>
+            <p className="text-sm font-semibold" style={{ color: BLUE }}>
+              Doctor Review Required — mandatory for every order
+            </p>
+          </div>
           <p className="text-xs mb-3" style={{ color: MUTED }}>
             No medicine on BalanceAI can be checked out without sending your case to a doctor on
             WhatsApp first. This applies to every order, with no exceptions.
           </p>
-          <p className="text-xs mb-3 font-semibold" style={{ color: "#b45309" }}>
-            Honesty note: Step 2 below is currently self-declared by you — BalanceAI does not yet
-            independently verify that the doctor actually replied. Full backend-verified
-            confirmation is coming soon; for now, only check the box if a doctor genuinely
-            confirmed this on WhatsApp.
-          </p>
+          <div className="rounded-lg p-3 mb-3" style={{ background: "rgba(201,138,44,0.1)", border: `1px solid rgba(201,138,44,0.3)` }}>
+            <p className="text-xs font-semibold" style={{ color: "#8a6119" }}>
+              Honesty note: Step 2 below is currently self-declared by you — BalanceAI does not yet
+              independently verify that the doctor actually replied. Full backend-verified
+              confirmation is coming soon; for now, only check the box if a doctor genuinely
+              confirmed this on WhatsApp.
+            </p>
+          </div>
 
           <div className="mb-3">
             <p className="text-[11px] font-bold uppercase tracking-wide mb-1.5" style={{ color: cart.doctorVerified || waSent ? GREEN : TEXT }}>

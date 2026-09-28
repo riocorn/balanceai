@@ -6,7 +6,7 @@ import Link from "next/link";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
-import { BG } from "@/components/diag/theme";
+import { BG, EFFECTIVENESS, HERO_GRADIENT } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { placePharmacyOrder } from "@/lib/db";
 import { GREEN, BORDER, TEXT, MUTED } from "@/components/pharmacy/shared";
@@ -72,7 +72,12 @@ export default function PharmacyCheckoutPage() {
       <main style={{ background: BG }} className="min-h-screen font-sans">
         <SiteHeader active="pharmacy" />
         <div className="max-w-md mx-auto px-5 py-20 text-center">
-          <CheckCircle2 className="w-12 h-12 mx-auto mb-4" style={{ color: GREEN }} />
+          <div
+            className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            style={{ background: `linear-gradient(135deg, ${EFFECTIVENESS} 0%, ${GREEN} 100%)`, boxShadow: "0 10px 26px rgba(31,174,122,0.3)" }}
+          >
+            <CheckCircle2 className="w-8 h-8 text-white" strokeWidth={2} />
+          </div>
           <h1 className="text-lg font-bold mb-1" style={{ color: TEXT }}>Order Placed!</h1>
           <p className="text-sm mb-1" style={{ color: MUTED }}>Order ID: <span className="font-mono font-semibold">{orderRef}</span></p>
           <p className="text-xs mb-6" style={{ color: MUTED }}>
@@ -100,14 +105,23 @@ export default function PharmacyCheckoutPage() {
 
         <p className="text-sm font-semibold mb-2" style={{ color: TEXT }}>Delivery Address</p>
         <div className="flex flex-col gap-2 mb-6">
-          <input placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)}
-            className="px-4 py-2.5 rounded-xl text-sm outline-none" style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }} />
-          <input placeholder="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)}
-            className="px-4 py-2.5 rounded-xl text-sm outline-none" style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }} />
-          <input placeholder="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)}
-            className="px-4 py-2.5 rounded-xl text-sm outline-none" style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }} />
-          <input placeholder="Address line" value={line} onChange={(e) => setLine(e.target.value)}
-            className="px-4 py-2.5 rounded-xl text-sm outline-none" style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }} />
+          {[
+            { placeholder: "Full name", value: name, set: setName },
+            { placeholder: "Phone number", value: phone, set: setPhone },
+            { placeholder: "Pincode", value: pincode, set: setPincode },
+            { placeholder: "Address line", value: line, set: setLine },
+          ].map((f) => (
+            <input
+              key={f.placeholder}
+              placeholder={f.placeholder}
+              value={f.value}
+              onChange={(e) => f.set(e.target.value)}
+              className="px-4 py-2.5 rounded-xl text-sm outline-none transition-colors duration-150"
+              style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = GREEN; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = BORDER; }}
+            />
+          ))}
         </div>
 
         <p className="text-sm font-semibold mb-2" style={{ color: TEXT }}>Payment Method</p>
@@ -128,8 +142,8 @@ export default function PharmacyCheckoutPage() {
         <button
           onClick={placeOrder}
           disabled={placing || !name.trim() || !phone.trim() || !pincode.trim() || !line.trim()}
-          className="w-full py-3.5 rounded-xl text-sm font-bold text-white disabled:opacity-40"
-          style={{ background: GREEN }}
+          className="w-full py-3.5 rounded-xl text-sm font-bold text-white disabled:opacity-40 shadow-md hover:shadow-lg transition-shadow duration-200"
+          style={{ background: HERO_GRADIENT }}
         >
           {placing ? "Placing Order..." : "Place Order"}
         </button>

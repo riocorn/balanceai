@@ -19,6 +19,9 @@ import {
   Pill,
   ArrowRight,
   Stethoscope,
+  MessageSquareQuote,
+  HelpCircle,
+  SearchX,
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { useCartStore } from "@/lib/cart-store";
@@ -29,7 +32,7 @@ import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import { CATEGORY_TILES } from "@/components/diag/categories";
-import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL } from "@/components/diag/theme";
+import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER } from "@/components/diag/theme";
 
 // ---------------------------------------------------------------------------
 // Real API response shape (verified against routers/medical.py live source)
@@ -697,32 +700,48 @@ export default function SymptomCheckerPage() {
       {result && (
         <section ref={resultsRef} className="max-w-3xl mx-auto px-4 pb-20 scroll-mt-24">
           <div
-            className="sc-card p-5 mb-5"
-            style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+            className="sc-card p-5 mb-5 flex items-start gap-3.5"
+            style={{ background: "rgba(30,111,217,0.06)", border: "1px solid rgba(30,111,217,0.22)" }}
           >
-            <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: MUTED }}>
-              Here's how we understood you:
-            </p>
-            <p className="text-base font-medium mb-3" style={{ color: TEXT }}>
-              {result.understood_as || "—"}
-            </p>
-            <button
-              onClick={() => scrollToHero()}
-              className="text-sm font-semibold underline decoration-2 underline-offset-2 transition-opacity duration-200 hover:opacity-70"
-              style={{ color: BLUE }}
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+              style={{ background: BLUE }}
             >
-              Did we get it wrong? Rewrite it
-            </button>
+              <MessageSquareQuote className="w-4 h-4 text-white" strokeWidth={2.25} />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold mb-1.5" style={{ color: BLUE }}>
+                Here's how we understood you
+              </p>
+              <p className="text-base font-medium mb-3" style={{ color: TEXT }}>
+                {result.understood_as || "—"}
+              </p>
+              <button
+                onClick={() => scrollToHero()}
+                className="text-sm font-semibold underline decoration-2 underline-offset-2 transition-opacity duration-200 hover:opacity-70"
+                style={{ color: BLUE }}
+              >
+                Did we get it wrong? Rewrite it
+              </button>
+            </div>
           </div>
 
           {result.need_more_info ? (
             <div
               className="sc-card p-5 mb-5"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+              style={{ background: "rgba(124,92,191,0.06)", border: "1px solid rgba(124,92,191,0.22)" }}
             >
-              <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: MUTED }}>
-                A couple more questions to narrow this down
-              </p>
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                  style={{ background: ACCENT_PURPLE }}
+                >
+                  <HelpCircle className="w-4 h-4 text-white" strokeWidth={2.25} />
+                </div>
+                <p className="text-sm font-semibold" style={{ color: ACCENT_PURPLE }}>
+                  A couple more questions to narrow this down
+                </p>
+              </div>
               <div className="space-y-4">
                 {result.clarifying_questions.map((q, i) => (
                   <div key={i}>
@@ -740,8 +759,10 @@ export default function SymptomCheckerPage() {
                         })
                       }
                       placeholder="Your answer..."
-                      className="w-full rounded-lg px-3.5 py-2.5 text-sm outline-none"
-                      style={{ border: "1px solid #D5DEE1", color: TEXT }}
+                      className="w-full rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors duration-150"
+                      style={{ background: SURFACE, border: "1px solid #D5DEE1", color: TEXT }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = ACCENT_PURPLE; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = "#D5DEE1"; }}
                     />
                   </div>
                 ))}
@@ -750,7 +771,7 @@ export default function SymptomCheckerPage() {
                 onClick={submitClarifyingAnswers}
                 disabled={submittingAnswers || result.clarifying_questions.some((_, i) => !(clarifyAnswers[i] || "").trim())}
                 className="mt-5 w-full sm:w-auto rounded-full px-6 py-3 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
-                style={{ background: HERO_GRADIENT }}
+                style={{ background: `linear-gradient(135deg, ${ACCENT_PURPLE} 0%, ${BLUE} 100%)` }}
               >
                 {submittingAnswers ? "Checking..." : "Continue"}
               </button>
@@ -758,7 +779,7 @@ export default function SymptomCheckerPage() {
           ) : result.matched && result.disease ? (
             <div
               className="sc-card p-5 mb-5 flex items-start gap-4"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+              style={{ background: "rgba(14,124,134,0.06)", border: "1px solid rgba(14,124,134,0.22)" }}
             >
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
@@ -783,9 +804,15 @@ export default function SymptomCheckerPage() {
             </div>
           ) : (
             <div
-              className="sc-card p-5 mb-5"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+              className="sc-card p-5 mb-5 flex items-start gap-3.5"
+              style={{ background: "rgba(201,138,44,0.06)", border: "1px solid rgba(201,138,44,0.22)" }}
             >
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                style={{ background: ACCENT_AMBER }}
+              >
+                <SearchX className="w-4 h-4 text-white" strokeWidth={2.25} />
+              </div>
               <p className="text-sm leading-relaxed" style={{ color: TEXT }}>
                 {result.message || "No confident disease match was found for this complaint."}
               </p>
