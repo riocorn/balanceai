@@ -329,11 +329,13 @@ def _looks_like_malformed_fragment(name, is_validated_combination=False):
     n = (name or "").strip()
     if not n:
         return False
+    # Case-insensitive on purpose -- see the identical fix/note in
+    # frontend/src/lib/medicines.ts's looksLikeMalformedFragment (11 more
+    # real garbage entries, e.g. "Not applicable -- devices, not medicines",
+    # were sentence-cased and slipped past a lowercase-only check).
     m = _FIRST_WORD_RE.match(n)
-    if m:
-        word = m.group(0)
-        if word == word.lower() and word.lower() in _FRAGMENT_LEADING_WORDS:
-            return True
+    if m and m.group(0).lower() in _FRAGMENT_LEADING_WORDS:
+        return True
     # A real bug found, 2026-09-28: "Ibuprofen + Aspirin + Triptan" (a real
     # migraine acute-treatment row, each named drug real) was being excluded
     # here purely because it has two "+" signs, the same signal meant to
@@ -363,7 +365,11 @@ def _looks_like_malformed_fragment(name, is_validated_combination=False):
     has_note_dash_format = " -- " in n or dash_separator_count >= 2
     if has_note_dash_format and (connector_hits >= 1 or word_count > 10):
         return True
-    if connector_hits >= 2 and word_count > 8:
+    # Third pass (founder directive: zero tolerance, "100% cleaner") --
+    # ported 1:1 from the identical tightening in
+    # frontend/src/lib/medicines.ts's looksLikeMalformedFragment; see that
+    # file for the full manual-review note on the 102 entries this catches.
+    if connector_hits >= 1 and word_count > 8:
         return True
     return False
 

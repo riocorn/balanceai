@@ -247,14 +247,20 @@ export function looksLikeMalformedFragment(name: string): boolean {
   const n = (name || "").trim();
   if (!n) return false;
 
-  // Starts with a lowercase function word (real drug names — even real
-  // lowercase generics like "paracetamol" — never start with one of these).
+  // Starts with a function word — checked case-insensitively. Originally
+  // only checked when the leading word was literally lowercase, on the
+  // theory that a real drug name is never lowercase-first; but a garbled
+  // clinical-note "name" is conventionally sentence-cased ("Not applicable
+  // -- devices, not medicines", "No Treatment for Asymptomatic Tears", "A
+  // respiratory fluoroquinolone, e.g. levofloxacin or moxifloxacin"), so
+  // capitalizing the leading word let 11 more real garbage entries slip
+  // through untouched (verified against the full catalog, 2026-09-28,
+  // founder "100% cleaner" directive). No real drug/product name is ever
+  // just a bare English function word ("A", "Not", "Same", "With", ...) on
+  // its own, so matching case-insensitively is safe.
   const firstWordMatch = /^[A-Za-z]+/.exec(n);
-  if (firstWordMatch) {
-    const word = firstWordMatch[0];
-    if (word[0] === word[0].toLowerCase() && word[0] !== word[0].toUpperCase() && _FRAGMENT_LEADING_WORDS.has(word.toLowerCase())) {
-      return true;
-    }
+  if (firstWordMatch && _FRAGMENT_LEADING_WORDS.has(firstWordMatch[0].toLowerCase())) {
+    return true;
   }
 
   // A disease staging/diagnosis-subtype label used as if it were a drug name.
@@ -298,7 +304,25 @@ export function looksLikeMalformedFragment(name: string): boolean {
   const dashSeparatorCount = (n.match(/ -- | - /g) || []).length;
   const hasNoteDashFormat = n.includes(" -- ") || dashSeparatorCount >= 2;
   if (hasNoteDashFormat && (connectorHits >= 1 || wordCount > 10)) return true;
-  if (connectorHits >= 2 && wordCount > 8) return true;
+
+  // Third pass (founder directive: zero tolerance, "100% cleaner" — a
+  // manual, item-by-item review of every one of the 102 remaining
+  // connector-hits>=1/>8-word entries found virtually all of them were
+  // still real clinical-note/protocol/guideline sentences or multi-drug
+  // lists ("Baclofen, gabapentin, pregabalin, ranolazine and carbamazepine
+  // are the other options named by the EAN guideline"; "supportive
+  // perioperative pharmacology is doctor_reference_only and not the
+  // curative agent itself" — literally a leaked internal curator-note
+  // field name). A handful of the excluded 102 are real single drugs
+  // buried under a verbose dosing sentence (e.g. "Verapamil hydrochloride
+  // sustained-release tablets, titrated from 120-/day up to 240-/day in
+  // divided doses") — deliberately accepted as the cost of guaranteeing no
+  // further narrative-sentence garbage reaches a real "Buy Now" card;
+  // real full dosing detail for any of these still lives in
+  // dosage_administration on the disease-specific pages that reference
+  // them. This lowers the connector-word bar from 2 to 1 for names already
+  // longer than 8 words.
+  if (connectorHits >= 1 && wordCount > 8) return true;
 
   return false;
 }
