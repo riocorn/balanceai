@@ -47,8 +47,18 @@ export default function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/symptom-checker#categories" style={{ color: MUTED }} className="hover:underline">
-                Browse by Health Area
+              <Link href="/wellness" style={{ color: MUTED }} className="hover:underline">
+                Wellness
+              </Link>
+            </li>
+            <li>
+              <Link href="/consult-a-doctor" style={{ color: MUTED }} className="hover:underline">
+                Consult a Doctor
+              </Link>
+            </li>
+            <li>
+              <Link href="/" style={{ color: MUTED }} className="hover:underline">
+                Free Nutrient Deficiency Scan
               </Link>
             </li>
           </ul>
@@ -106,8 +116,9 @@ export default function SiteFooter() {
         </p>
         <p className="text-xs" style={{ color: MUTED }}>
           BalanceAI is an AI-assisted information tool, not a licensed medical provider, and is not
-          intended for use in medical emergencies. Every treatment suggestion is reviewed by a doctor
-          before it is considered final.
+          intended for use in medical emergencies. Every order must be sent to a doctor on WhatsApp
+          before checkout — this review step is currently self-confirmed by you and not yet
+          independently verified by BalanceAI.
         </p>
         <p className="text-xs" style={{ color: MUTED }}>
           © 2026 BalanceAI. Made in India.

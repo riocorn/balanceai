@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft, Loader2, ShoppingCart } from "lucide-react";
-import AppShell from "@/components/app/AppShell";
+import SiteHeader from "@/components/diag/SiteHeader";
+import SiteFooter from "@/components/diag/SiteFooter";
+import { BG } from "@/components/diag/theme";
 import { getMedicineDetail, type MedicinePayload, type MatchResult } from "@/lib/pharmacy-api";
 import { useCartStore } from "@/lib/cart-store";
 import {
@@ -43,17 +45,20 @@ export default function PharmacyResultsPage() {
 
   if (loading) {
     return (
-      <AppShell>
+      <main style={{ background: BG }} className="min-h-screen font-sans">
+        <SiteHeader active="pharmacy" />
         <div className="flex items-center justify-center min-h-[60vh]">
           <Loader2 className="w-6 h-6 animate-spin" style={{ color: GREEN }} />
         </div>
-      </AppShell>
+        <SiteFooter />
+      </main>
     );
   }
 
   if (notFound || !stored) {
     return (
-      <AppShell>
+      <main style={{ background: BG }} className="min-h-screen font-sans">
+        <SiteHeader active="pharmacy" />
         <div className="max-w-lg mx-auto px-5 py-16 text-center">
           {stored?.match?.hard_emergency_flag && <HardEmergencyBanner />}
           <p className="text-sm mb-4" style={{ color: MUTED }}>
@@ -64,7 +69,8 @@ export default function PharmacyResultsPage() {
             Dobara try karein
           </Link>
         </div>
-      </AppShell>
+        <SiteFooter />
+      </main>
     );
   }
 
@@ -72,7 +78,8 @@ export default function PharmacyResultsPage() {
   const cartNames = new Set(cart.items.map((i) => i.name));
 
   return (
-    <AppShell>
+    <main style={{ background: BG }} className="min-h-screen font-sans">
+      <SiteHeader active="pharmacy" />
       <div className="max-w-3xl mx-auto px-5 py-8">
         <Link href="/pharmacy" className="inline-flex items-center gap-1 text-xs font-medium mb-4" style={{ color: MUTED }}>
           <ArrowLeft className="w-3.5 h-3.5" /> Naya search
@@ -167,6 +174,7 @@ export default function PharmacyResultsPage() {
           </>
         )}
       </div>
-    </AppShell>
+      <SiteFooter />
+    </main>
   );
 }

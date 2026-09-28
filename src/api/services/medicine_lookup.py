@@ -452,15 +452,29 @@ def is_curative_match(row_name, curative_name):
     return len(row_tokens & cur_tokens) >= 2
 
 
-# A fuzzy match is only accepted when BOTH are true:
+# A fuzzy match is only accepted when ALL are true:
 #  - the candidate medicine's own identity is substantially present in the
 #    row name (>=50% of its significant tokens), so a 1-word drug name like
 #    "Aspirin" can still match; and
 #  - the overlap is a meaningful fraction of the row name's own content
 #    (>=30%), so a long, multi-concept row name doesn't get matched to an
-#    unrelated medicine purely because they happen to share one stray word.
+#    unrelated medicine purely because they happen to share one stray word;
+#    and
+#  - real bug found and fixed here (verified by reproducing live): with only
+#    the two ratio checks above, a single shared GENERIC word was enough to
+#    pass both ratios whenever both names were themselves short -- e.g.
+#    "Total knee replacement" (row) vs. the medicine "nicotine replacement
+#    therapy" (candidate, "therapy" is a stopword) share only the one word
+#    "replacement", yet that gave cand_ratio=1/2=0.5 and row_ratio=1/3=0.33,
+#    clearing both thresholds and wrongly attaching nicotine-patch sources
+#    and mechanism text to a knee/hip replacement surgery row. Requiring
+#    overlap_count >= 2 (unless the candidate is genuinely a single real
+#    token, e.g. "Aspirin", where 1 overlapping token IS the whole identity)
+#    blocks this class of single-generic-word false match while still
+#    allowing real single-word drug names to match.
 _MIN_CANDIDATE_RATIO = 0.5
 _MIN_ROW_RATIO = 0.3
+_MIN_OVERLAP_COUNT = 2
 
 
 def _best_token_match(row_tokens, candidates):
@@ -477,6 +491,17 @@ def _best_token_match(row_tokens, candidates):
         overlap = row_tokens & cand_tokens
         overlap_count = len(overlap)
         if overlap_count == 0:
+            continue
+        # The >=2-overlap guard only applies when BOTH sides are multi-token:
+        # if either side is a single token (e.g. the row name is just
+        # "Duloxetine", or the candidate name's whole identity reduces to one
+        # word after stopword-stripping), that one token already IS that
+        # side's entire identity, so a real drug name like "Duloxetine"
+        # matching a longer candidate/row that contains it must still work
+        # (verified live: without this exception, "Duloxetine" stopped
+        # matching the disease-specific survey entry "Duloxetine - Centrally
+        # Acting SNRI for OA Pain..." entirely).
+        if overlap_count < _MIN_OVERLAP_COUNT and len(cand_tokens) > 1 and len(row_tokens) > 1:
             continue
         cand_ratio = overlap_count / len(cand_tokens)
         row_ratio = overlap_count / len(row_tokens)
@@ -500,10 +525,47 @@ def _match_medicine_details(row_name):
 
 
 def _match_survey_entry(row_name, survey_entries):
-    """Fuzzy-match row_name against a disease's own exhaustive_medicine_survey entries."""
+    """Match row_name (a short canonical medicine/treatment name, e.g.
+    "Duloxetine") against a disease's own exhaustive_medicine_survey entries.
+
+    Real bug found and fixed here, 2026-09-28 (reproduced live): this used to
+    call the same ratio-based _best_token_match() used for
+    _match_medicine_details(), but that function's _MIN_CANDIDATE_RATIO check
+    requires the CANDIDATE's tokens to be substantially covered by the row --
+    correct for _match_medicine_details (row = long disease_master.json row
+    name, candidate = short canonical drug name from the global 3,126-drug
+    index), but backwards here, where the row is the short canonical name and
+    every real survey entry name in this dataset is a long descriptive title
+    ("Duloxetine - Centrally Acting SNRI for OA Pain with Central
+    Sensitisation"). With the ratio check applied in that direction, a short
+    row like "Duloxetine" (1 token) against an 8+-token title always scored
+    cand_ratio ~0.1-0.2, well under 0.5, so the correct, disease-specific
+    survey fact (which is what should be preferred -- see get_ranked_medicines)
+    was silently unreachable for virtually every entry in the dataset, not
+    just this one.
+
+    The correct criterion for this direction is containment, not a ratio: a
+    survey entry only every needs to be an "of course" match ("Duloxetine"
+    inside a title that begins "Duloxetine - ..."), so requiring every one of
+    row_name's own significant tokens to appear in the candidate's tokens
+    (a full subset, not a fraction) is both correct and safe -- survey_entries
+    is already scoped to this one disease (10-30 entries), not the global
+    3,126-drug index, so the false-positive risk that justified a stricter
+    ratio for _match_medicine_details does not apply here.
+    """
     row_tokens = set(_normalize_tokens(row_name))
-    candidates = ((entry, set(_normalize_tokens(entry.get("name")))) for entry in survey_entries)
-    return _best_token_match(row_tokens, candidates)
+    if not row_tokens:
+        return None
+    best = None
+    best_cand_len = None
+    for entry in survey_entries:
+        cand_tokens = set(_normalize_tokens(entry.get("name")))
+        if not cand_tokens or not row_tokens.issubset(cand_tokens):
+            continue
+        if best_cand_len is None or len(cand_tokens) < best_cand_len:
+            best = entry
+            best_cand_len = len(cand_tokens)
+    return best
 
 
 # ---------------------------------------------------------------------------
@@ -868,16 +930,36 @@ def get_ranked_medicines(disease_id: str, limit: int = 10) -> list:
         raw_facts = ""
         facts_sources = []
 
-        if matched_details is not None:
+        # Real bug found and fixed here, 2026-09-28 (reproduced live): the
+        # disease's own exhaustive_medicine_survey entry for a medicine is
+        # ALWAYS specific to this exact disease (that is its entire purpose),
+        # while a medicine_details.json record is one universal per-drug
+        # record that may only document a completely different real
+        # indication for the same drug -- e.g. the one real "Duloxetine"
+        # record in medicine_details.json documents dosage/mechanism ONLY for
+        # stress urinary incontinence, so showing it under Osteoarthritis
+        # produced a technically-real but disease-irrelevant explanation
+        # ("...urethral sphincter tone...") even though the disease's own
+        # oa_duloxetine survey entry has the real, correct OA-pain mechanism
+        # (central pain-pathway modulation) right there. The disease-specific
+        # survey entry is therefore tried FIRST; medicine_details.json is
+        # used only when this disease's own survey has no real facts for the
+        # medicine at all.
+        # Match on candidate_name (the already-cleaned canonical name, e.g.
+        # "Duloxetine"), not the raw row name (e.g. "Duloxetine >=50% pain
+        # responder rate versus placebo") -- the raw row name's own
+        # statistical/trial-arm suffix is never going to be a subset of a
+        # survey entry's descriptive title, so matching on it defeats the
+        # subset check above even when the medicine itself clearly matches.
+        matched_survey = _match_survey_entry(candidate_name, survey_entries)
+        if matched_survey is not None:
+            raw_facts, facts_sources = _facts_from_survey_entry(matched_survey)
+
+        if not raw_facts and matched_details is not None:
             _, record = matched_details
             status = str(record.get("research_status") or "")
             if status.startswith("complete") or status.startswith("partial"):
                 raw_facts, facts_sources = _facts_from_medicine_details(record)
-
-        if not raw_facts:
-            matched_survey = _match_survey_entry(name, survey_entries)
-            if matched_survey is not None:
-                raw_facts, facts_sources = _facts_from_survey_entry(matched_survey)
 
         sources = []
         for s in (facts_sources + row_source):

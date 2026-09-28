@@ -80,7 +80,7 @@ interface QAPair {
 }
 
 const TICKER_ITEMS = [
-  "100% Doctor-Verified Before Any Suggestion",
+  "Doctor Review Required Before Checkout (Beta)",
   "Every Medicine Backed by Real Clinical Evidence",
   "Speak in Hindi, Hinglish or English",
   "Emergency Symptoms Flagged Instantly",
@@ -98,9 +98,9 @@ const TRUST_STEPS = [
   },
   {
     icon: Stethoscope,
-    title: "A doctor reviews it",
+    title: "Send it for doctor review",
     detail:
-      "Before anything is treated as final, a real doctor personally looks at your case and confirms it. Nothing reaches you without that check.",
+      "Before checkout, send your case to a doctor on WhatsApp. This step is beta — the reply is currently self-confirmed by you, not yet independently verified by BalanceAI.",
     accent: TEAL,
   },
   {
@@ -116,7 +116,7 @@ const TRUST_STEPS = [
 // icon+title+description band lower on the page. Each badge carries its own
 // accent from the approved secondary palette for visual variety.
 const TRUST_BADGES = [
-  { icon: Stethoscope, title: "Doctor-Reviewed", detail: "Every suggestion is checked by a real doctor before it's treated as final.", accent: TEAL },
+  { icon: Stethoscope, title: "Doctor Review (Beta)", detail: "Send every suggestion to a doctor on WhatsApp before checkout — confirmation is currently self-reported.", accent: TEAL },
   { icon: Languages, title: "Speak Freely", detail: "English, Hindi, or Hinglish — describe things exactly as you'd tell a doctor.", accent: BLUE },
   { icon: Info, title: "Clear, Honest Information", detail: "You'll see what a treatment does and how it helps, explained simply.", accent: ACCENT_PURPLE },
   { icon: ShieldCheck, title: "No Pressure", detail: "We're here to help you find the right care, not to rush you into buying anything.", accent: EFFECTIVENESS },
@@ -124,14 +124,14 @@ const TRUST_BADGES = [
 
 const HERO_SLIDES: { badge: string; headline: string; sub: string }[] = [
   {
-    badge: "Doctor-Verified Guidance",
+    badge: "Doctor Review Required (Beta)",
     headline: "Tell us what's wrong. We'll find the right treatment.",
-    sub: "Describe your symptoms in your own words — English, Hindi, or Hinglish. We'll match you with the latest, doctor-reviewed treatment for your condition.",
+    sub: "Describe your symptoms in your own words — English, Hindi, or Hinglish. Every suggestion must be sent to a doctor on WhatsApp before checkout unlocks.",
   },
   {
-    badge: "Doctor Confirmation",
-    headline: "A doctor always has the final word.",
-    sub: "A licensed doctor personally reviews every suggestion, so you never act on the wrong medicine.",
+    badge: "Doctor Confirmation (Beta)",
+    headline: "AI never has the final word alone.",
+    sub: "Send your case to a doctor over WhatsApp before you buy. Today that confirmation is self-declared by you — automatic verification is coming.",
   },
   {
     badge: "Real Medical Research",
@@ -598,10 +598,10 @@ export default function SymptomCheckerPage() {
                   </div>
                   <div className="text-left">
                     <p className="font-display font-extrabold text-base leading-tight" style={{ color: TEXT }}>
-                      Trusted Treatments, Verified by Doctors
+                      Trusted Treatments, Sent for Doctor Review
                     </p>
                     <p className="text-[11px] font-semibold mt-0.5" style={{ color: MUTED }}>
-                      Every suggestion is checked before it reaches you
+                      Checkout stays locked until you complete WhatsApp review
                     </p>
                   </div>
                 </div>

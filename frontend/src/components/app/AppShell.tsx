@@ -16,7 +16,10 @@ import InstallPrompt from "@/components/app/InstallPrompt";
 const NAV = [
   { href: "/dashboard",  label: "Dashboard"    },
   { href: "/analyze",    label: "New Analysis" },
+  { href: "/symptom-checker", label: "Find Treatment" },
   { href: "/pharmacy",   label: "Pharmacy"     },
+  { href: "/medicines",  label: "Medicines"    },
+  { href: "/wellness",   label: "Wellness"     },
   { href: "/food-history", label: "Your Medical and Food" },
   { href: "/supplement-report", label: "Supplement Report" },
   { href: "/insights",   label: "Insights"     },

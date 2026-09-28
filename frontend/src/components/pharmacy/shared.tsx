@@ -4,10 +4,14 @@ import { useState } from "react";
 import { Check, Plus, PhoneCall } from "lucide-react";
 import type { MedicineCard as MedicineCardType } from "@/lib/pharmacy-api";
 
-export const GREEN = "#1d5c3d";
-export const BORDER = "#e4e7e2";
-export const TEXT = "#1a1a1a";
-export const MUTED = "#6b7280";
+// Locked to the same BalanceAI marketplace palette used on /pharmacy and
+// /symptom-checker (--diag-primary-teal / --diag-primary-blue) so cart,
+// checkout and results stay visually consistent with the rest of the
+// pharmacy purchase flow instead of the older nutrition-app green.
+export const GREEN = "#0E7C86";
+export const BORDER = "#E4EBEE";
+export const TEXT = "#0B2027";
+export const MUTED = "#5B7480";
 export const WHATSAPP_GREEN = "#25D366";
 
 export function ExpandableText({

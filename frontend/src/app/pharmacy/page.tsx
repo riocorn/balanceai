@@ -28,12 +28,12 @@ const SLIDES = [
   {
     badge: "AI Pharmacy",
     headline: "Describe your problem, in any language",
-    desc: "Tell us how you feel, and we'll help you find the right medicine — every prescription is confirmed by a real doctor over WhatsApp before it ships.",
+    desc: "Tell us how you feel, and we'll help you find the right medicine — every order is routed to WhatsApp for doctor review before checkout unlocks.",
   },
   {
-    badge: "Doctor Verified",
-    headline: "Every medicine is confirmed by a doctor on WhatsApp",
-    desc: "A real doctor verifies your prescription before purchase — no medicine ships without confirmation.",
+    badge: "Doctor Review (Beta)",
+    headline: "Every order is sent to a doctor on WhatsApp",
+    desc: "We route your case to WhatsApp before purchase. This step is currently self-confirmed by you — BalanceAI doesn't yet independently verify the doctor's reply.",
   },
   {
     badge: "Real Effectiveness Data",
@@ -43,10 +43,10 @@ const SLIDES = [
 ];
 
 const TRUST_ITEMS = [
-  { icon: ShieldCheck, title: "Doctor-Verified", desc: "A real doctor confirms every order over WhatsApp" },
+  { icon: ShieldCheck, title: "Doctor Review (Beta)", desc: "Every order is sent to a doctor on WhatsApp — confirmation is currently self-reported, not independently verified yet" },
   { icon: Sparkles, title: "Multilingual AI", desc: "Understands Hindi, Hinglish and English alike" },
   { icon: CheckCircle2, title: "Proven Effectiveness", desc: "Backed by real clinical research" },
-  { icon: MessageCircle, title: "WhatsApp Support", desc: "Talk directly to a doctor before you purchase" },
+  { icon: MessageCircle, title: "WhatsApp Support", desc: "Send your case to a doctor before you purchase" },
 ];
 
 export default function PharmacyIntakePage() {
@@ -195,7 +195,7 @@ export default function PharmacyIntakePage() {
               <span className="w-1 h-1 rounded-full" style={{ background: "rgba(255,255,255,0.4)" }} />
               <span>Hindi/Hinglish supported</span>
               <span className="w-1 h-1 rounded-full" style={{ background: "rgba(255,255,255,0.4)" }} />
-              <span>WhatsApp doctor verify</span>
+              <span>WhatsApp doctor review (beta)</span>
             </div>
           </div>
 
@@ -247,7 +247,7 @@ export default function PharmacyIntakePage() {
                 <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: WHATSAPP_GREEN }}>
                   <MessageCircle className="w-3.5 h-3.5 text-white" />
                 </div>
-                <span className="text-[10px] font-bold" style={{ color: TEXT }}>Doctor Verified</span>
+                <span className="text-[10px] font-bold" style={{ color: TEXT }}>Doctor Review (Beta)</span>
               </motion.div>
 
               {/* floating amber accent chip */}
@@ -318,7 +318,7 @@ export default function PharmacyIntakePage() {
           {[
             { icon: Sparkles, title: "AI Understanding", desc: "Recognizes the condition from text written in any language or style" },
             { icon: ShieldCheck, title: "Proven Treatments", desc: "Backed by real clinical evidence, never a guess" },
-            { icon: MessageCircle, title: "WhatsApp Doctor Verify", desc: "A real doctor confirms your prescription over WhatsApp before purchase" },
+            { icon: MessageCircle, title: "WhatsApp Doctor Review", desc: "Send your prescription to a doctor over WhatsApp before purchase — reply is currently self-confirmed, not independently verified yet" },
           ].map(({ icon: Icon, title, desc }) => (
             <motion.div
               key={title}

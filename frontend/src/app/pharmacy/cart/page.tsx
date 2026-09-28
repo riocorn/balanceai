@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Trash2, MessageCircle, ArrowLeft, ShoppingBag, CheckCircle2 } from "lucide-react";
-import AppShell from "@/components/app/AppShell";
+import SiteHeader from "@/components/diag/SiteHeader";
+import SiteFooter from "@/components/diag/SiteFooter";
+import { BG } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { getWhatsappLink } from "@/lib/pharmacy-api";
 import { GREEN, BORDER, TEXT, MUTED, WHATSAPP_GREEN, EffectivenessBadge } from "@/components/pharmacy/shared";
@@ -39,7 +41,8 @@ export default function PharmacyCartPage() {
 
   if (cart.items.length === 0) {
     return (
-      <AppShell>
+      <main style={{ background: BG }} className="min-h-screen font-sans">
+        <SiteHeader active="pharmacy" />
         <div className="max-w-lg mx-auto px-5 py-20 text-center">
           <ShoppingBag className="w-10 h-10 mx-auto mb-3" style={{ color: MUTED }} />
           <p className="text-sm mb-4" style={{ color: MUTED }}>Your cart is empty.</p>
@@ -47,12 +50,14 @@ export default function PharmacyCartPage() {
             Describe your problem to find medicines
           </Link>
         </div>
-      </AppShell>
+        <SiteFooter />
+      </main>
     );
   }
 
   return (
-    <AppShell>
+    <main style={{ background: BG }} className="min-h-screen font-sans">
+      <SiteHeader active="pharmacy" />
       <div className="max-w-2xl mx-auto px-5 py-8 pb-32">
         <Link href="/pharmacy" className="inline-flex items-center gap-1 text-xs font-medium mb-4" style={{ color: MUTED }}>
           <ArrowLeft className="w-3.5 h-3.5" /> Add more medicines
@@ -90,11 +95,17 @@ export default function PharmacyCartPage() {
             be touched, and changing the cart resets both steps. */}
         <div className="rounded-xl p-4 mb-4" style={{ background: "#fff", border: `1px solid ${BORDER}` }}>
           <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>
-            Doctor Verification Required — mandatory for every order
+            Doctor Review Required — mandatory for every order
           </p>
           <p className="text-xs mb-3" style={{ color: MUTED }}>
-            No medicine on BalanceAI can be checked out without a doctor confirming it first.
-            This applies to every order, with no exceptions. Complete both steps below.
+            No medicine on BalanceAI can be checked out without sending your case to a doctor on
+            WhatsApp first. This applies to every order, with no exceptions.
+          </p>
+          <p className="text-xs mb-3 font-semibold" style={{ color: "#b45309" }}>
+            Honesty note: Step 2 below is currently self-declared by you — BalanceAI does not yet
+            independently verify that the doctor actually replied. Full backend-verified
+            confirmation is coming soon; for now, only check the box if a doctor genuinely
+            confirmed this on WhatsApp.
           </p>
 
           <div className="mb-3">
@@ -114,7 +125,7 @@ export default function PharmacyCartPage() {
 
           <div>
             <p className="text-[11px] font-bold uppercase tracking-wide mb-1.5" style={{ color: waSent ? TEXT : MUTED }}>
-              Step 2 of 2 — Confirm the doctor's go-ahead
+              Step 2 of 2 — Self-declare the doctor's go-ahead (not yet independently verified)
             </p>
             <label className={`flex items-start gap-2 ${waSent ? "cursor-pointer" : "cursor-not-allowed"}`}>
               <input
@@ -125,7 +136,9 @@ export default function PharmacyCartPage() {
                 className="mt-0.5"
               />
               <span className="text-xs" style={{ color: waSent ? MUTED : "#b0b6b8" }}>
-                The doctor has replied on WhatsApp and confirmed this exact prescription for me.
+                I confirm a doctor replied on WhatsApp and approved this exact prescription for me.
+                (This is a self-declaration — BalanceAI does not yet automatically verify the
+                doctor's reply.)
               </span>
             </label>
             {!waSent && (
@@ -144,10 +157,10 @@ export default function PharmacyCartPage() {
             <p className="text-xs" style={{ color: MUTED }}>{cart.items.length} medicine(s)</p>
             {cart.doctorVerified ? (
               <p className="text-xs font-semibold flex items-center gap-1" style={{ color: GREEN }}>
-                <CheckCircle2 className="w-3.5 h-3.5" /> Doctor verified
+                <CheckCircle2 className="w-3.5 h-3.5" /> Doctor go-ahead self-confirmed
               </p>
             ) : (
-              <p className="text-xs" style={{ color: "#b91c1c" }}>WhatsApp verification pending</p>
+              <p className="text-xs" style={{ color: "#b91c1c" }}>WhatsApp doctor review pending</p>
             )}
           </div>
           <button
@@ -160,6 +173,7 @@ export default function PharmacyCartPage() {
           </button>
         </div>
       </div>
-    </AppShell>
+      <SiteFooter />
+    </main>
   );
 }

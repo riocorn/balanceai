@@ -16,18 +16,18 @@ const CONSULT_STEPS = [
   },
   {
     icon: Stethoscope,
-    title: "Matched to a specialist",
-    detail: "Your case is routed to a doctor from the relevant specialty, not a generic reviewer — the same way a real referral works.",
+    title: "Sent for doctor review",
+    detail: "Your case is sent over WhatsApp for a doctor to look at — our specialty-matched routing is still being built, so today it goes to our general review line.",
   },
   {
     icon: MessageCircle,
-    title: "Confirmed over WhatsApp",
-    detail: "The doctor reviews your case personally and confirms (or adjusts) the suggestion directly with you over WhatsApp.",
+    title: "Confirmed over WhatsApp (beta)",
+    detail: "Once the doctor replies on WhatsApp, you confirm that go-ahead yourself in the app — BalanceAI doesn't yet automatically verify the reply.",
   },
   {
     icon: ShieldCheck,
     title: "Only then, medicine",
-    detail: "Nothing is dispatched until that confirmation happens — the doctor's judgment is always the final step, not the AI's.",
+    detail: "Checkout stays locked until you complete that WhatsApp step — nothing ships on the AI suggestion alone.",
   },
 ];
 
@@ -49,12 +49,13 @@ export default function ConsultADoctorPage() {
         />
         <div className="relative max-w-4xl mx-auto px-5 sm:px-8 pt-14 pb-16 text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight">
-            A real doctor confirms every case.
+            AI never has the final word — a doctor reviews every case.
           </h1>
           <p className="text-sm sm:text-base max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.88)" }}>
-            BalanceAI never lets AI have the final word. Every case is matched to a doctor from the
-            relevant specialty, who personally reviews and confirms it over WhatsApp before any
-            medicine is suggested for purchase.
+            Every case is sent to a doctor over WhatsApp before checkout unlocks. This is a beta
+            workflow: we don't yet have specialists onboarded for every specialty, and the doctor's
+            reply is currently confirmed by you, not independently verified by BalanceAI. Full
+            specialty routing and automatic verification are on our roadmap.
           </p>
         </div>
       </div>
@@ -81,11 +82,12 @@ export default function ConsultADoctorPage() {
         </div>
 
         <h2 id="doctors" className="text-xl font-bold mb-2 text-center scroll-mt-24" style={{ color: TEXT }}>
-          Meet the Doctors Reviewing Your Case
+          Specialties We're Onboarding
         </h2>
         <p className="text-sm text-center max-w-xl mx-auto mb-8" style={{ color: MUTED }}>
-          Every case is matched to a doctor from the relevant specialty before any suggestion is
-          confirmed. We're publishing our doctors' names and credentials here as they're finalised.
+          We're building out specialty-matched doctor review. No doctors are onboarded to these
+          specialties yet — today, every WhatsApp review goes to our general line. We'll publish
+          real names and credentials here as each specialty goes live.
         </p>
         <div className="grid sm:grid-cols-3 gap-4 mb-16">
           {SPECIALTIES.map((specialty) => (

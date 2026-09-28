@@ -19,6 +19,8 @@ const NAV_ITEMS = [
     href: "/analyze",
     dropdown: [
       { label: "New Analysis", href: "/analyze" },
+      { label: "Recipes",      href: "/recipes" },
+      { label: "Food History", href: "/food-history" },
     ],
   },
   {
@@ -28,6 +30,18 @@ const NAV_ITEMS = [
       { label: "Dashboard", href: "/dashboard" },
       { label: "AI Chat",   href: "/chat"      },
       { label: "Insights",  href: "/insights"  },
+      { label: "Supplement Report", href: "/supplement-report" },
+    ],
+  },
+  {
+    label: "Medicine & Pharmacy",
+    href: "/symptom-checker",
+    dropdown: [
+      { label: "Find Treatment",     href: "/symptom-checker"     },
+      { label: "Order Medicine",     href: "/pharmacy"            },
+      { label: "Medicine Catalog",   href: "/medicines"           },
+      { label: "Wellness",           href: "/wellness"            },
+      { label: "Consult a Doctor",   href: "/consult-a-doctor"    },
     ],
   },
   {
@@ -560,7 +574,7 @@ export default function LandingPage() {
       {/* ── Footer ── */}
       <footer className="border-t py-14 px-6" style={{ borderColor: BORDER, background: WHITE }}>
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-10">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: GREEN }}>
@@ -586,9 +600,14 @@ export default function LandingPage() {
                 hrefs: ["/chat", "/insights", "/dashboard", "/profile"],
               },
               {
+                heading: "Medicine & Pharmacy",
+                links: ["Find Treatment", "Order Medicine", "Medicine Catalog", "Wellness"],
+                hrefs: ["/symptom-checker", "/pharmacy", "/medicines", "/wellness"],
+              },
+              {
                 heading: "Support",
                 links: ["How It Works", "About Us", "Privacy", "Terms"],
-                hrefs: ["#how", "#about", "#", "#"],
+                hrefs: ["#how", "#about", "/legal/privacy-policy", "/legal/terms-of-service"],
               },
             ].map(({ heading, links, hrefs }) => (
               <div key={heading}>
