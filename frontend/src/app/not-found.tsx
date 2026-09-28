@@ -42,14 +42,6 @@ export default function NotFound() {
               Order Medicine
             </div>
           </Link>
-          <Link href="/">
-            <div
-              className="px-6 py-3 rounded-xl text-sm font-medium text-center"
-              style={{ background: "transparent", color: MUTED }}
-            >
-              Home Jao
-            </div>
-          </Link>
         </div>
       </motion.div>
     </div>

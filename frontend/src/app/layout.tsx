@@ -23,14 +23,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BalanceAI — 25 Nutrient Deficiencies Detected, No Blood Test",
+  title: "BalanceAI — Find the Right Treatment",
   description:
-    "AI-powered micronutrient deficiency detection from symptoms, camera, and voice. Personalised Indian diet plan. Free, offline, in Hinglish.",
-  keywords: ["nutrition AI", "deficiency detection", "Indian diet", "health", "IIT Mandi"],
+    "Describe your symptoms in your own words and get matched to real, source-cited medicines and treatments — with every order sent to a doctor on WhatsApp before checkout.",
+  keywords: ["symptom checker", "online pharmacy", "medicine", "health", "India"],
   manifest: "/manifest.json",
   openGraph: {
-    title: "BalanceAI — Know Your Nutrients. Free.",
-    description: "25 deficiencies detected in 2 minutes. No blood test. Works offline. For India.",
+    title: "BalanceAI — Find the Right Treatment",
+    description: "Describe your symptoms, get matched to real medicines, doctor review before checkout.",
     type: "website",
   },
 };

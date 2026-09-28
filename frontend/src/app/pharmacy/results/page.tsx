@@ -23,6 +23,10 @@ export default function PharmacyResultsPage() {
   const cart = useCartStore();
 
   useEffect(() => {
+    document.title = "Results — BalanceAI";
+  }, []);
+
+  useEffect(() => {
     const raw = sessionStorage.getItem("pharmacy_last_match");
     if (!raw) {
       router.replace("/pharmacy");

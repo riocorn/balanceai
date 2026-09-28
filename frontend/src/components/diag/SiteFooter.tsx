@@ -56,11 +56,6 @@ export default function SiteFooter() {
                 Consult a Doctor
               </Link>
             </li>
-            <li>
-              <Link href="/" style={{ color: MUTED }} className="hover:underline">
-                Free Nutrient Deficiency Scan
-              </Link>
-            </li>
           </ul>
         </div>
 

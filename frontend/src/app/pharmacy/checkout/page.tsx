@@ -24,6 +24,10 @@ export default function PharmacyCheckoutPage() {
   const [placing, setPlacing] = useState(false);
   const [orderRef, setOrderRef] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.title = "Checkout — BalanceAI";
+  }, []);
+
   // Real bug found and fixed here, 2026-09-28 (reproduced live): placeOrder()
   // below calls cart.clear() on success, which resets doctorVerified to
   // false and items to []. This guard effect re-runs on every state change

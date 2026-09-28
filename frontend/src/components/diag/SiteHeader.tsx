@@ -271,13 +271,6 @@ export default function SiteHeader({
             style={{ scrollbarWidth: "none" }}
           >
             <Link
-              href="/"
-              className="pb-[13px] whitespace-nowrap"
-              style={{ color: TEXT }}
-            >
-              Nutrient Scan
-            </Link>
-            <Link
               href="/symptom-checker"
               className="pb-[13px] whitespace-nowrap"
               style={
@@ -429,7 +422,7 @@ export default function SiteHeader({
             switching to flex-row at sm:) instead of hiding the input. */}
         <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
           <div className="max-w-6xl mx-auto px-4 py-3 sm:h-20 sm:py-0 flex flex-col sm:flex-row sm:items-center gap-3">
-            <Link href="/" className="flex items-center gap-2 shrink-0" style={{ color: TEXT }}>
+            <Link href="/symptom-checker" className="flex items-center gap-2 shrink-0" style={{ color: TEXT }}>
               {/* eslint-disable-next-line @next/next/no-img-element -- static local vector brand mark */}
               <img src="/illustrations/brand-mark.svg" alt="" aria-hidden="true" className="w-8 h-8 shrink-0" />
               <span className="flex items-baseline gap-1.5">

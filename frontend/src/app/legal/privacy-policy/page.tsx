@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
 import { TEXT, MUTED, BG, SURFACE, BLUE } from "@/components/diag/theme";
+
+export const metadata: Metadata = { title: "Privacy Policy — BalanceAI" };
 
 export default function PrivacyPolicyPage() {
   return (

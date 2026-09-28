@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Trash2, MessageCircle, ArrowLeft, ShoppingBag, CheckCircle2 } from "lucide-react";
@@ -16,6 +16,10 @@ export default function PharmacyCartPage() {
   const cart = useCartStore();
   const [waSent, setWaSent] = useState(false);
   const [waLoading, setWaLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = "My Cart — BalanceAI";
+  }, []);
 
   async function verifyOnWhatsapp() {
     setWaLoading(true);
