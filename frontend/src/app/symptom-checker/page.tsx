@@ -143,11 +143,11 @@ const HERO_SLIDES: { badge: string; headline: string; sub: string }[] = [
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Will an AI decide my treatment?",
-    a: "No. BalanceAI only suggests possibilities based on real medical information. A doctor always reviews and confirms before anything is considered final.",
+    a: "No. BalanceAI only suggests possibilities based on real medical information. Checkout stays locked until you send your case to a doctor on WhatsApp — this review step is currently self-confirmed by you, not yet automatically verified by BalanceAI.",
   },
   {
     q: "What happens after I get my results?",
-    a: "You can ask a doctor to confirm the suggestion. Right now a doctor reviews each case personally and replies over WhatsApp — we're working on making this faster.",
+    a: "You can send the suggestion to a doctor over our WhatsApp review line (beta — not specialty-matched yet). Once they reply, you confirm that go-ahead yourself in the app before checkout unlocks.",
   },
   {
     q: "What if my symptoms could be serious?",
@@ -1057,10 +1057,9 @@ export default function SymptomCheckerPage() {
           style={{ background: `linear-gradient(135deg, ${TEAL} 0%, ${BLUE} 100%)` }}
         >
           <Stethoscope className="w-8 h-8 text-white mx-auto mb-3" strokeWidth={2} />
-          <h3 className="text-lg font-bold text-white mb-2">Curious who reviews your case?</h3>
+          <h3 className="text-lg font-bold text-white mb-2">Curious how doctor review works?</h3>
           <p className="text-sm text-white/85 mb-5 max-w-md mx-auto">
-            See exactly how our specialty-matched doctor team confirms every suggestion before it
-            reaches you.
+            See exactly how the real WhatsApp review step works today — and what&apos;s still beta.
           </p>
           <Link
             href="/consult-a-doctor"
@@ -1171,8 +1170,8 @@ function DoctorCTA({
             Talk to a Doctor on WhatsApp
           </a>
           <p className="text-xs text-white/90 mt-3 max-w-md mx-auto leading-relaxed">
-            Don&apos;t know the exact name of your condition? A real doctor from our team will help
-            you over WhatsApp.
+            Don&apos;t know the exact name of your condition? Send it over WhatsApp (beta review
+            line) and describe what you&apos;re feeling.
           </p>
         </>
       ) : (
@@ -1182,11 +1181,12 @@ function DoctorCTA({
             className="w-full sm:w-auto rounded-full px-8 py-3.5 text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             style={{ background: "#FFFFFF", color: TEAL }}
           >
-            Ask a Doctor to Confirm This
+            Send to a Doctor on WhatsApp
           </button>
           <p className="text-xs text-white/90 mt-3 max-w-md mx-auto leading-relaxed">
-            Every case is personally reviewed by a qualified doctor from our team, matched to your
-            specific condition, before any medicine is confirmed — expect a reply shortly on WhatsApp.
+            This sends your case to our WhatsApp review line (beta — specialty matching isn't live
+            yet). Once a doctor replies, you confirm that go-ahead yourself in the app; BalanceAI
+            doesn't yet automatically verify the reply.
           </p>
         </>
       )}
