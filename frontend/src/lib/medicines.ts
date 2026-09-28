@@ -236,7 +236,7 @@ const _FRAGMENT_LEADING_WORDS = new Set([
   "alternative", "alternatives", "option", "options", "approach",
   "standard", "routine", "treat", "treatment", "management", "manage",
   "slow", "immediate", "late", "early", "single", "second", "first",
-  "third", "initial", "ongoing", "real",
+  "third", "initial", "ongoing", "real", "continued",
 ]);
 
 // Real bug found and fixed here, 2026-09-28 (user directly found multiple
@@ -315,6 +315,14 @@ export function looksLikeMalformedFragment(name: string): boolean {
   // and a known dosing-unit word, with no digit in between, is never a real
   // drug name's own punctuation.
   if (/\s\/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b/i.test(n)) return true;
+
+  // Same dropped-number data bug, different shape: a dosage RANGE whose
+  // upper bound was dropped, leaving a bare trailing hyphen right before
+  // the slash (real example found live: "Aspirin 75-/day", "Duloxetine
+  // 40-/day", "Metformin 500-/day" -- 39 more real entries match). Requires
+  // a digit immediately before the hyphen so a real hyphenated word
+  // fragment is never caught.
+  if (/\d+-\/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b/i.test(n)) return true;
 
   // Second pass, tightened after further real examples the founder found
   // live ("Avoidance of QT-Prolonging Drugs - Critical Preventive Measure,

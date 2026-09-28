@@ -322,7 +322,7 @@ _FRAGMENT_LEADING_WORDS = {
     "alternative", "alternatives", "option", "options", "approach",
     "standard", "routine", "treat", "treatment", "management", "manage",
     "slow", "immediate", "late", "early", "single", "second", "first",
-    "third", "initial", "ongoing", "real",
+    "third", "initial", "ongoing", "real", "continued",
 }
 _FIRST_WORD_RE = re.compile(r"^[A-Za-z]+")
 
@@ -350,6 +350,14 @@ _WORD_RE = re.compile(r"[A-Za-z][A-Za-z'/-]*")
 _ALPHA_WORD_RE = re.compile(r"[a-z]+")
 _BROKEN_DOSAGE_RE = re.compile(
     r"\s/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b", re.I
+)
+# Same dropped-number data bug, different shape: a dosage RANGE whose upper
+# bound was dropped, leaving a bare trailing hyphen right before the slash
+# (real example found live: "Aspirin 75-/day", "Duloxetine 40-/day",
+# "Metformin 500-/day"). Ported 1:1 from the identical addition in
+# frontend/src/lib/medicines.ts.
+_BROKEN_DOSAGE_RANGE_RE = re.compile(
+    r"\d+-/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b", re.I
 )
 
 
@@ -383,6 +391,8 @@ def _looks_like_malformed_fragment(name, is_validated_combination=False):
     if connector_hits >= 3 or word_count > 16:
         return True
     if _BROKEN_DOSAGE_RE.search(n):
+        return True
+    if _BROKEN_DOSAGE_RANGE_RE.search(n):
         return True
     # Second pass, tightened after further real examples the founder found
     # live ("Avoidance of QT-Prolonging Drugs - Critical Preventive Measure,
