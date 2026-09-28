@@ -112,6 +112,18 @@ const NON_DRUG_PATTERNS: RegExp[] = [
   /^screening\b/i,
 ];
 
+// A real surgical PROCEDURE name -- never a purchasable medicine -- doesn't
+// reliably lead with one of the NON_DRUG_PATTERNS words above (it usually
+// leads with the anatomical site or a device brand, e.g. "Ferguson closed
+// hemorrhoidectomy", "Nd:YAG Laser Peripheral Iridotomy", "VA-ECMO"), so
+// these are matched anywhere in the string by their distinctive medical
+// procedure-name suffix/acronym instead of only at the start. Found in the
+// "100% cleaner" self-audit pass, 2026-09-28: 21 real procedure/device
+// names were showing as purchasable medicines (verified against the full
+// catalog; zero real drug names contain any of these suffixes).
+const NON_DRUG_PROCEDURE_RE =
+  /(ectomy|otomy|oscopy|ostomy|plasty|rrhaphy|centesis|\bECMO\b|\bCPR\b|vessel-sealing|catheteri[sz]ation|angioplasty|defibrillat|pacemaker implant|bypass graft)/i;
+
 // Mirrors the backend's clean_medicine_name() (src/api/services/medicine_lookup.py):
 // real ranked-table / catalog "name" fields are sometimes full clinical-context
 // phrases (e.g. "Gentamicin as an optional synergistic partner") rather than a
@@ -185,6 +197,7 @@ export function isNonDrugIntervention(name: string): boolean {
   const n = (name || "").trim();
   if (!n) return false;
   if (/^not applicable$/i.test(n)) return true;
+  if (NON_DRUG_PROCEDURE_RE.test(n)) return true;
   return NON_DRUG_PATTERNS.some((re) => re.test(n));
 }
 
@@ -206,6 +219,24 @@ const _FRAGMENT_LEADING_WORDS = new Set([
   "given", "plus", "versus", "while", "after", "before", "during", "for",
   "the", "a", "an", "to", "in", "on", "at", "as", "that", "which", "this",
   "these", "those", "its", "not", "no", "same",
+  // Added in the "100% cleaner" self-audit pass, 2026-09-28: found by
+  // sampling 50 random still-kept entries after the first four cleanup
+  // passes and manually reviewing each — real remaining garbage that none
+  // of the existing rules caught: "Alternatives: cefotaxime, ceftriaxone,
+  // vancomycin" (a plain list, not one product), "Guides use of
+  // Temozolomide", "Relief of Obstructive Uropathy", "children: 80-/kg/day
+  // every 12-24 h" (a dosing-table row, not a name), "Real, important,
+  // honestly-stated residual risk" (one literally just says "Real" and
+  // nothing else). No real drug/product name starts with any of these as
+  // its whole first word.
+  "consider", "guides", "guide", "relief", "children", "adults", "infants",
+  "avoid", "add", "switch", "continue", "start", "stop", "monitor",
+  "screen", "test", "check", "assess", "evaluate", "refer", "ensure",
+  "provide", "administer", "apply", "review", "reassess", "repeat",
+  "alternative", "alternatives", "option", "options", "approach",
+  "standard", "routine", "treat", "treatment", "management", "manage",
+  "slow", "immediate", "late", "early", "single", "second", "first",
+  "third", "initial", "ongoing", "real",
 ]);
 
 // Real bug found and fixed here, 2026-09-28 (user directly found multiple

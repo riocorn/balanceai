@@ -167,11 +167,28 @@ _NON_DRUG_PATTERNS = [re.compile(p, re.I) for p in [
     r"^treatment of\b", r"^prevention of\b", r"^avoidance of\b", r"^screening\b",
 ]]
 
+# A real surgical PROCEDURE name -- never a purchasable medicine -- doesn't
+# reliably lead with one of the _NON_DRUG_PATTERNS words above (it usually
+# leads with the anatomical site or a device brand, e.g. "Ferguson closed
+# hemorrhoidectomy", "Nd:YAG Laser Peripheral Iridotomy", "VA-ECMO"), so
+# these are matched anywhere in the string by their distinctive procedure-
+# name suffix/acronym instead of only at the start. Ported 1:1 from the
+# identical addition in frontend/src/lib/medicines.ts's
+# NON_DRUG_PROCEDURE_RE -- see that file for the full note.
+_NON_DRUG_PROCEDURE_RE = re.compile(
+    r"(ectomy|otomy|oscopy|ostomy|plasty|rrhaphy|centesis|\bECMO\b|\bCPR\b|"
+    r"vessel-sealing|catheteri[sz]ation|angioplasty|defibrillat|"
+    r"pacemaker implant|bypass graft)",
+    re.I,
+)
+
 
 def _is_non_drug_intervention(name):
     n = (name or "").strip()
     if not n:
         return False
+    if _NON_DRUG_PROCEDURE_RE.search(n):
+        return True
     return any(p.search(n) for p in _NON_DRUG_PATTERNS)
 
 
@@ -295,6 +312,17 @@ _FRAGMENT_LEADING_WORDS = {
     "given", "plus", "versus", "while", "after", "before", "during", "for",
     "the", "a", "an", "to", "in", "on", "at", "as", "that", "which", "this",
     "these", "those", "its", "not", "no", "same",
+    # Added in the "100% cleaner" self-audit pass, 2026-09-28 -- ported 1:1
+    # from the identical addition in frontend/src/lib/medicines.ts, see that
+    # file for the full note.
+    "consider", "guides", "guide", "relief", "children", "adults", "infants",
+    "avoid", "add", "switch", "continue", "start", "stop", "monitor",
+    "screen", "test", "check", "assess", "evaluate", "refer", "ensure",
+    "provide", "administer", "apply", "review", "reassess", "repeat",
+    "alternative", "alternatives", "option", "options", "approach",
+    "standard", "routine", "treat", "treatment", "management", "manage",
+    "slow", "immediate", "late", "early", "single", "second", "first",
+    "third", "initial", "ongoing", "real",
 }
 _FIRST_WORD_RE = re.compile(r"^[A-Za-z]+")
 
