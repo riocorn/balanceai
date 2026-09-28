@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -56,6 +57,19 @@ export default function MedicinesByCategoryPage() {
       <SiteHeader active="medicines" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
+        {/* Real photography backdrop — same already-verified blister-pack
+            photo used on /medicines, so this sibling page isn't a flat
+            color block either. */}
+        <Image
+          src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1600&q=75"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.6 }} />
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}

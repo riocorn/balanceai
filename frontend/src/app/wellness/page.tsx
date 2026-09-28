@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Loader2, Pill, Sparkles, HeartPulse, Baby, Heart } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -165,6 +166,18 @@ export default function WellnessPage() {
       <SiteHeader active="wellness" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
+        {/* Real photography backdrop — same already-verified pharmacy shelf
+            photo used elsewhere, so the hero isn't a flat color block. */}
+        <Image
+          src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1600&q=75"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.7 }} />
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
