@@ -298,6 +298,32 @@ _FRAGMENT_LEADING_WORDS = {
 }
 _FIRST_WORD_RE = re.compile(r"^[A-Za-z]+")
 
+# Real bug found and fixed here, 2026-09-28 (user directly found multiple
+# live examples via the symptom-checker results flow: "Alternatives when
+# dexamethasone cannot be given : IV hydrocortisone or methylprednisolone at
+# equivalent dosage", "Deflazacort /kg/day" (a real medicine whose dosage
+# NUMBER was dropped during extraction, leaving a dangling unit), "combined
+# with a progestin such as medroxyprogesterone acetate in women with an
+# intact uterus"). None of these are caught by the leading-word check above
+# because they start with a capitalized word or don't start with a function
+# word at all. Ported 1:1 from the same fix in
+# frontend/src/lib/medicines.ts's looksLikeMalformedFragment() -- see that
+# file for the full verification note (183/3,126 real catalog entries
+# matched, zero real single-product names wrongly caught).
+_FRAGMENT_CONNECTOR_WORDS = {
+    "with", "in", "for", "when", "if", "or", "and", "such", "as", "combined",
+    "given", "used", "added", "per", "of", "than", "versus", "including",
+    "plus", "without", "during", "after", "before", "while", "unless",
+    "once", "until", "because", "since", "due", "via", "through", "despite",
+    "across", "among", "between", "within", "against", "towards", "upon",
+    "regarding", "concerning",
+}
+_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'/-]*")
+_ALPHA_WORD_RE = re.compile(r"[a-z]+")
+_BROKEN_DOSAGE_RE = re.compile(
+    r"\s/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b", re.I
+)
+
 
 def _looks_like_malformed_fragment(name, is_validated_combination=False):
     n = (name or "").strip()
@@ -320,6 +346,13 @@ def _looks_like_malformed_fragment(name, is_validated_combination=False):
     if not is_validated_combination and n.count("+") >= 2:
         return True
     if _looks_like_drug_class_only(n):
+        return True
+    alpha_words = _ALPHA_WORD_RE.findall(n.lower())
+    connector_hits = sum(1 for w in alpha_words if w in _FRAGMENT_CONNECTOR_WORDS)
+    word_count = len(_WORD_RE.findall(n))
+    if connector_hits >= 3 or word_count > 16:
+        return True
+    if _BROKEN_DOSAGE_RE.search(n):
         return True
     return False
 

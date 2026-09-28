@@ -208,6 +208,41 @@ const _FRAGMENT_LEADING_WORDS = new Set([
   "these", "those", "its", "not", "no", "same",
 ]);
 
+// Real bug found and fixed here, 2026-09-28 (user directly found multiple
+// live examples: "Alternatives when dexamethasone cannot be given : IV
+// hydrocortisone or methylprednisolone at equivalent dosage", "Deflazacort
+// /kg/day" (a real medicine whose dosage NUMBER was dropped during
+// extraction, leaving a dangling unit), "combined with a progestin such as
+// medroxyprogesterone acetate in women with an intact uterus"). None of
+// these are caught by the leading-word check above because they start with
+// a capitalized word ("Alternatives", "Deflazacort") or, for the
+// mid-sentence-fragment case, don't start with a function word at all. The
+// leading-word check alone only catches fragments that happen to start
+// mid-clause; a real clinical-note/protocol sentence used as a "name" is
+// better detected by how much of the WHOLE string reads as prose rather
+// than a product name: real drug/combo names essentially never contain 3+
+// of these connector words, while a clinical-note fragment reliably does
+// (verified against the full 3,126-entry catalog on 2026-09-28: 183 real
+// entries match, and manual review of every one found either a genuine
+// non-drug clinical note/protocol description or a data-extraction
+// casualty like "Deflazacort /kg/day" -- zero real, cleanly-purchasable
+// single-product names were wrongly caught). A very long name (>16 words)
+// is flagged on its own since real product names/combos never run that
+// long even without 3 connector-word hits.
+const _FRAGMENT_CONNECTOR_WORDS = new Set([
+  "with", "in", "for", "when", "if", "or", "and", "such", "as", "combined",
+  "given", "used", "added", "per", "of", "than", "versus", "including",
+  "plus", "without", "during", "after", "before", "while", "unless",
+  "once", "until", "because", "since", "due", "via", "through", "despite",
+  "across", "among", "between", "within", "against", "towards", "upon",
+  "regarding", "concerning",
+]);
+
+function _fragmentConnectorHits(n: string): number {
+  const words = n.toLowerCase().match(/[a-z]+/g) || [];
+  return words.filter((w) => _FRAGMENT_CONNECTOR_WORDS.has(w)).length;
+}
+
 export function looksLikeMalformedFragment(name: string): boolean {
   const n = (name || "").trim();
   if (!n) return false;
@@ -231,6 +266,17 @@ export function looksLikeMalformedFragment(name: string): boolean {
   if ((n.match(/\+/g) || []).length >= 2) return true;
 
   if (looksLikeDrugClassOnly(n)) return true;
+
+  const wordCount = (n.match(/[A-Za-z][A-Za-z'/-]*/g) || []).length;
+  if (_fragmentConnectorHits(n) >= 3 || wordCount > 16) return true;
+
+  // A dosage NUMBER dropped during extraction, leaving a dangling unit
+  // fragment directly after the drug name (real example: "Deflazacort
+  // /kg/day", correct dosage is really "0.9 mg/kg/day" per its own
+  // dosage_administration field) — a space immediately followed by a slash
+  // and a known dosing-unit word, with no digit in between, is never a real
+  // drug name's own punctuation.
+  if (/\s\/(kg|day|dose|doses|m2|m\^2|hr|hrs|week|weeks|ml|mg)\b/i.test(n)) return true;
 
   return false;
 }
