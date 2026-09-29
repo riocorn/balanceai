@@ -11,7 +11,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Languages,
-  Sparkles,
   Pill,
   Stethoscope,
   MessageSquareQuote,
@@ -77,13 +76,6 @@ interface QAPair {
   question: string;
   answer: string;
 }
-
-const TICKER_ITEMS = [
-  "Doctor Review Required Before Checkout (Beta)",
-  "Every Medicine Backed by Real Clinical Evidence",
-  "Speak in Hindi, Hinglish or English",
-  "Emergency Symptoms Flagged Instantly",
-];
 
 // Trust ladder / "How It Works" — doctor-first, patient-facing copy (no
 // internal methodology language).
@@ -465,27 +457,7 @@ export default function SymptomCheckerPage() {
             style={{ border: "1px solid rgba(255,255,255,0.10)" }}
           />
 
-          {/* Rotating offer/trust ticker — mirrors the promo-carousel strip real pharmacy hero
-              banners run edge-to-edge across the top of the banner */}
-          <div
-            className="relative -mx-4 mb-8 overflow-hidden ticker-wrap"
-            style={{ background: "rgba(255,255,255,0.12)", borderTop: "1px solid rgba(255,255,255,0.22)", borderBottom: "1px solid rgba(255,255,255,0.22)" }}
-            aria-hidden="true"
-          >
-            <div className="ticker-inner py-2">
-              {[...TICKER_ITEMS, ...TICKER_ITEMS].map((t, i) => (
-                <span
-                  key={i}
-                  className="flex items-center gap-2 px-6 whitespace-nowrap text-xs sm:text-sm font-semibold text-white shrink-0"
-                >
-                  <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: "rgba(255,255,255,0.85)" }} />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center text-center lg:text-left">
+          <div className="relative max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center text-center lg:text-left pt-6">
             <div>
               {/* Real root cause of a reported "washed out" hero headline:
                   mode="wait" made the outgoing slide fade all the way to
