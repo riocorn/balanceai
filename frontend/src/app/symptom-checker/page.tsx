@@ -558,9 +558,9 @@ export default function SymptomCheckerPage() {
               </div>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 mb-6">
-                {TRUST_BADGES.map(({ title }) => (
+                {TRUST_BADGES.map(({ icon: Icon, title }) => (
                   <span key={title} className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white">
-                    <ShieldCheck className="w-3.5 h-3.5 shrink-0" style={{ color: "rgba(255,255,255,0.85)" }} />
+                    <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: "rgba(255,255,255,0.85)" }} />
                     {title}
                   </span>
                 ))}
@@ -1016,10 +1016,18 @@ export default function SymptomCheckerPage() {
             />
           </div>
           <div className="divide-y divide-[rgba(255,255,255,0.18)]">
-            {TRUST_BADGES.map(({ title, detail }) => (
-              <div key={title} className="py-4 first:pt-0">
-                <p className="text-sm font-bold text-white mb-1">{title}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{detail}</p>
+            {TRUST_BADGES.map(({ icon: Icon, title, detail, accent }) => (
+              <div key={title} className="py-4 first:pt-0 flex items-start gap-3.5">
+                <span
+                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                  style={{ background: accent === TEAL ? "rgba(255,255,255,0.18)" : accent }}
+                >
+                  <Icon className="w-4 h-4 text-white" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-white mb-1">{title}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{detail}</p>
+                </div>
               </div>
             ))}
           </div>
