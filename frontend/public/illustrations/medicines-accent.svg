@@ -6,112 +6,94 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs-ma">
-    <linearGradient
-       id="badgeGradientMedicines"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="ma-stop1" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="ma-stop2" />
-    </linearGradient>
-    <clipPath
-       id="pillClipMedA">
-      <rect
-         x="18"
-         y="98"
-         width="27"
-         height="32"
-         id="rect5" />
-    </clipPath>
-    <clipPath
-       id="pillClipMedB">
-      <rect
-         x="98"
-         y="18"
-         width="19"
-         height="46"
-         id="rect8" />
-    </clipPath>
-  </defs>
+     id="defs27" />
   <circle
-     cx="170"
-     cy="34"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle12" />
-  <circle
-     cx="182"
-     cy="150"
-     r="3.5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle14" />
-  <!-- capsule 1 -->
+     cx="100"
+     cy="100"
+     r="80"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1"
+     stroke-dasharray="1 7"
+     opacity="0.16"
+     id="circle2" />
   <g
-     transform="rotate(-28 45 114)"
-     id="g20">
+     transform="rotate(-26 60 118)"
+     id="g10">
     <rect
-       x="18"
-       y="98"
-       width="54"
-       height="32"
-       rx="16"
+       x="34"
+       y="102"
+       width="52"
+       height="22"
+       rx="11"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.9"
+       id="rect4" />
+    <line
+       x1="60"
+       y1="102"
+       x2="60"
+       y2="124"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.9"
+       id="line6" />
+    <circle
+       cx="44"
+       cy="113"
+       r="2.75"
        fill="#E0475A"
-       id="rect16" />
-    <rect
-       x="18"
-       y="98"
-       width="54"
-       height="32"
-       rx="16"
-       fill="#ffffff"
-       clip-path="url(#pillClipMedA)"
-       id="rect18" />
+       id="circle8" />
   </g>
-  <!-- capsule 2 -->
   <g
-     transform="rotate(18 107 41)"
-     id="g26">
+     transform="rotate(18 130 62)"
+     id="g16">
     <rect
-       x="90"
-       y="18"
-       width="34"
-       height="46"
-       rx="17"
-       fill="url(#badgeGradientMedicines)"
-       id="rect22" />
-    <rect
-       x="90"
-       y="18"
-       width="34"
-       height="46"
-       rx="17"
-       fill="#ffffff"
-       clip-path="url(#pillClipMedB)"
-       id="rect24" />
+       x="112"
+       y="38"
+       width="26"
+       height="48"
+       rx="13"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.9"
+       id="rect12" />
+    <line
+       x1="112"
+       y1="62"
+       x2="138"
+       y2="62"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.9"
+       id="line14" />
   </g>
-  <!-- round tablet with score line -->
   <circle
-     cx="150"
-     cy="118"
-     r="30"
-     fill="#ffffff"
-     id="circle28" />
+     cx="140"
+     cy="140"
+     r="26"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.9"
+     id="circle18" />
   <line
-     x1="128"
-     y1="118"
-     x2="172"
-     y2="118"
-     stroke="#E4EBEE"
-     stroke-width="3"
-     id="line30" />
+     x1="118"
+     y1="140"
+     x2="162"
+     y2="140"
+     stroke="#ffffff"
+     stroke-width="1.75"
+     opacity="0.7"
+     id="line20" />
+  <circle
+     cx="172"
+     cy="34"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.3"
+     id="circle22" />
 </svg>

@@ -1,230 +1,211 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   viewBox="0 0 480 480"
+   viewBox="0 0 400 400"
    version="1.1"
-   id="svg64"
+   id="svg-symptom-flow"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs10">
-    <linearGradient
-       id="badgeGradient"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="stop2" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="stop4" />
-    </linearGradient>
-    <clipPath
-       id="pillClipLeft">
-      <rect
-         x="245"
-         y="328"
-         width="45"
-         height="34"
-         id="rect7" />
-    </clipPath>
-  </defs>
-  <!-- decorative texture dots -->
+     id="defs55" />
   <circle
-     cx="40"
-     cy="60"
+     cx="200"
+     cy="200"
+     r="150"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1"
+     stroke-dasharray="1 8"
+     opacity="0.14"
+     id="circle2" />
+  <!-- phone, upper-left -->
+  <rect
+     x="70"
+     y="130"
+     width="70"
+     height="122"
+     rx="14"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
+     id="rect4" />
+  <line
+     x1="70"
+     y1="222"
+     x2="140"
+     y2="222"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.6"
+     id="line6" />
+  <circle
+     cx="105"
+     cy="237"
      r="4"
-     fill="#ffffff"
-     opacity="0.35"
-     id="circle12" />
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.7"
+     id="circle8" />
+  <path
+     d="M92,164 L92,196 M105,158 L105,202 M118,170 L118,190"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linecap="round"
+     opacity="0.55"
+     id="path10" />
+  <!-- speech bubble above phone -->
+  <rect
+     x="60"
+     y="60"
+     width="92"
+     height="46"
+     rx="16"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     id="rect12" />
+  <path
+     d="M92,106 L84,122 L108,106 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     id="path14" />
   <circle
-     cx="70"
-     cy="380"
-     r="5"
+     cx="84"
+     cy="83"
+     r="3.5"
      fill="#ffffff"
-     opacity="0.3"
-     id="circle14" />
-  <circle
-     cx="30"
-     cy="260"
-     r="3"
-     fill="#ffffff"
-     opacity="0.3"
+     opacity="0.8"
      id="circle16" />
   <circle
-     cx="440"
-     cy="60"
-     r="4"
+     cx="100"
+     cy="83"
+     r="3.5"
      fill="#ffffff"
-     opacity="0.3"
+     opacity="0.8"
      id="circle18" />
   <circle
-     cx="120"
-     cy="430"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle20" />
-  <!-- person: head -->
-  <circle
-     cx="140"
-     cy="112"
-     r="34"
-     fill="#ffffff"
-     id="circle22" />
-  <!-- person: torso -->
-  <rect
-     x="95"
-     y="150"
-     width="90"
-     height="160"
-     rx="45"
-     fill="#ffffff"
-     opacity="0.96"
-     id="rect24" />
-  <!-- person: shirt accent -->
-  <rect
-     x="112"
-     y="172"
-     width="56"
-     height="88"
-     rx="20"
-     fill="#1E6FD9"
-     id="rect26" />
-  <!-- person: raised arm to phone -->
-  <path
-     d="M178,182 Q214,152 231,130"
-     stroke="#ffffff"
-     stroke-width="26"
-     stroke-linecap="round"
-     fill="none"
-     id="path28" />
-  <!-- person: hand -->
-  <circle
-     cx="233"
-     cy="130"
-     r="14"
-     fill="#ffffff"
-     id="circle30" />
-  <!-- phone -->
-  <rect
-     x="209"
-     y="54"
-     width="48"
-     height="86"
-     rx="12"
-     fill="#0E7C86"
-     id="rect32" />
-  <rect
-     x="217"
-     y="64"
-     width="32"
-     height="44"
-     rx="4"
-     fill="#ffffff"
-     opacity="0.18"
-     id="rect34" />
-  <circle
-     cx="233"
-     cy="134"
-     r="3"
-     fill="#ffffff"
-     id="circle36" />
-  <!-- speech bubble -->
-  <path
-     d="M232,66 L221,82 L246,66 Z"
-     fill="#ffffff"
-     id="path38" />
-  <rect
-     x="188"
-     y="8"
-     width="112"
-     height="60"
-     rx="18"
-     fill="#ffffff"
-     id="rect40" />
-  <circle
-     cx="214"
-     cy="38"
-     r="6.5"
-     fill="#0E7C86"
-     id="circle42" />
-  <circle
-     cx="240"
-     cy="38"
-     r="6.5"
-     fill="#1E6FD9"
-     id="circle44" />
-  <circle
-     cx="266"
-     cy="38"
-     r="6.5"
+     cx="116"
+     cy="83"
+     r="3.5"
      fill="#E0475A"
-     id="circle46" />
-  <!-- connector: bubble to review badge -->
+     id="circle20" />
+  <!-- connector to review badge -->
   <path
-     d="M300,44 Q350,58 372,138"
+     d="M140,150 L214,124"
      stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
+     stroke-width="1.4"
+     stroke-dasharray="1 5"
+     opacity="0.55"
      fill="none"
-     opacity="0.85"
-     id="path48" />
-  <!-- review badge (doctor + AI review) -->
+     id="path22" />
   <circle
-     cx="390"
-     cy="165"
-     r="46"
-     fill="url(#badgeGradient)"
-     id="circle50" />
-  <path
-     d="M364,167 H376 L382,147 L390,183 L396,155 H402 H416"
+     cx="138"
+     cy="151"
+     r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="3.4"
+     stroke-width="1.4"
+     id="circle24" />
+  <circle
+     cx="216"
+     cy="123"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle26" />
+  <!-- review badge (ring + pulse line + confirmed arc) -->
+  <circle
+     cx="270"
+     cy="150"
+     r="54"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
+     id="circle28" />
+  <path
+     d="M270,96 A54,54 0 0 1 320,168"
+     fill="none"
+     stroke="#1FAE7A"
+     stroke-width="2.5"
+     opacity="0.9"
+     id="path30" />
+  <path
+     d="M240,150 H254 L260,132 L270,168 L278,140 H284 H300"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
      stroke-linecap="round"
      stroke-linejoin="round"
-     id="path52" />
+     id="path32" />
+  <!-- connector to medicine -->
   <path
-     d="M405,141 V149 M401,145 H409"
+     d="M254,196 L206,268"
      stroke="#ffffff"
-     stroke-width="3.4"
-     stroke-linecap="round"
-     id="path54" />
-  <!-- connector: badge to medicine -->
-  <path
-     d="M382,209 Q338,262 302,312"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
+     stroke-width="1.4"
+     stroke-dasharray="1 5"
+     opacity="0.55"
      fill="none"
-     opacity="0.85"
-     id="path56" />
+     id="path34" />
+  <circle
+     cx="256"
+     cy="194"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle36" />
+  <circle
+     cx="204"
+     cy="271"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle38" />
   <!-- medicine capsule -->
   <g
-     transform="rotate(-32 290 345)"
-     id="g62">
+     transform="rotate(-28 176 312)"
+     id="g46">
     <rect
-       x="245"
-       y="328"
-       width="90"
-       height="34"
-       rx="17"
+       x="136"
+       y="296"
+       width="80"
+       height="30"
+       rx="15"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2.25"
+       id="rect40" />
+    <line
+       x1="176"
+       y1="296"
+       x2="176"
+       y2="326"
+       stroke="#ffffff"
+       stroke-width="2.25"
+       id="line42" />
+    <circle
+       cx="150"
+       cy="311"
+       r="3.5"
        fill="#E0475A"
-       id="rect58" />
-    <rect
-       x="245"
-       y="328"
-       width="90"
-       height="34"
-       rx="17"
-       fill="#ffffff"
-       clip-path="url(#pillClipLeft)"
-       id="rect60" />
+       id="circle44" />
   </g>
+  <circle
+     cx="330"
+     cy="70"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.3"
+     id="circle48" />
+  <circle
+     cx="60"
+     cy="340"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.25"
+     id="circle50" />
 </svg>

@@ -6,157 +6,289 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs-ph">
-    <linearGradient
-       id="badgeGradientPharmacy"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="ph-stop1" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="ph-stop2" />
-    </linearGradient>
-  </defs>
-  <!-- decorative texture dots -->
+     id="defs83" />
   <circle
-     cx="40"
-     cy="80"
-     r="4"
-     fill="#ffffff"
-     opacity="0.35"
+     cx="280"
+     cy="220"
+     r="178"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1"
+     stroke-dasharray="1 8"
+     opacity="0.14"
+     id="circle2" />
+  <circle
+     cx="280"
+     cy="220"
+     r="124"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     stroke-dasharray="1 6"
+     opacity="0.28"
+     id="circle4" />
+  <circle
+     cx="280"
+     cy="220"
+     r="100"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
      id="circle6" />
+  <g
+     stroke="#ffffff"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     opacity="0.8"
+     id="g32">
+    <line
+       x1="374"
+       y1="220"
+       x2="384"
+       y2="220"
+       id="line8" />
+    <line
+       x1="361"
+       y1="267"
+       x2="370"
+       y2="272"
+       id="line10" />
+    <line
+       x1="327"
+       y1="301"
+       x2="332"
+       y2="310"
+       id="line12" />
+    <line
+       x1="280"
+       y1="314"
+       x2="280"
+       y2="324"
+       id="line14" />
+    <line
+       x1="233"
+       y1="301"
+       x2="228"
+       y2="310"
+       id="line16" />
+    <line
+       x1="199"
+       y1="267"
+       x2="190"
+       y2="272"
+       id="line18" />
+    <line
+       x1="186"
+       y1="220"
+       x2="176"
+       y2="220"
+       id="line20" />
+    <line
+       x1="199"
+       y1="173"
+       x2="190"
+       y2="168"
+       id="line22" />
+    <line
+       x1="233"
+       y1="139"
+       x2="228"
+       y2="130"
+       id="line24" />
+    <line
+       x1="280"
+       y1="126"
+       x2="280"
+       y2="116"
+       id="line26" />
+    <line
+       x1="327"
+       y1="139"
+       x2="332"
+       y2="130"
+       id="line28" />
+    <line
+       x1="361"
+       y1="173"
+       x2="370"
+       y2="168"
+       id="line30" />
+  </g>
+  <!-- verified-pharmacy stamp arc -->
+  <path
+     d="M176,220 A104,104 0 0 1 233,139"
+     fill="none"
+     stroke="#C98A2C"
+     stroke-width="2.5"
+     opacity="0.85"
+     id="path34" />
   <circle
-     cx="60"
-     cy="410"
-     r="5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle8" />
-  <circle
-     cx="440"
-     cy="90"
+     cx="233"
+     cy="139"
      r="4"
+     fill="#C98A2C"
+     id="circle36" />
+  <!-- pharmacy cross, centered -->
+  <g
+     stroke="#ffffff"
+     stroke-width="2.5"
+     stroke-linecap="round"
+     id="g42">
+    <line
+       x1="280"
+       y1="188"
+       x2="280"
+       y2="252"
+       id="line38" />
+    <line
+       x1="248"
+       y1="220"
+       x2="312"
+       y2="220"
+       id="line40" />
+  </g>
+  <!-- satellite: order (bag outline), upper-left -->
+  <path
+     d="M76,108 L92,80 H140 L156,108 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     opacity="0.92"
+     id="path44" />
+  <path
+     d="M76,108 H156 L148,172 Q146,182 136,182 H96 Q86,182 84,172 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     opacity="0.92"
+     id="path46" />
+  <path
+     d="M100,108 V92 Q100,74 116,74 Q132,74 132,92 V108"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.7"
+     id="path48" />
+  <path
+     d="M156,150 L206,180"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path50" />
+  <circle
+     cx="158"
+     cy="152"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle52" />
+  <circle
+     cx="204"
+     cy="178"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle54" />
+  <text
+     x="76"
+     y="68"
+     font-family="sans-serif"
+     font-size="11"
      fill="#ffffff"
-     opacity="0.3"
-     id="circle10" />
+     opacity="0.65"
+     id="text56">order</text>
+  <!-- satellite: delivered (package outline), lower-right -->
+  <rect
+     x="352"
+     y="304"
+     width="84"
+     height="66"
+     rx="6"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.92"
+     id="rect58" />
+  <line
+     x1="352"
+     y1="326"
+     x2="436"
+     y2="326"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.6"
+     id="line60" />
+  <path
+     d="M382,304 L394,326 L406,304"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.6"
+     stroke-linejoin="round"
+     id="path62" />
   <circle
      cx="418"
-     cy="400"
-     r="3.5"
+     cy="356"
+     r="13"
+     fill="#1FAE7A"
+     id="circle64" />
+  <path
+     d="M411,356 L416,362 L426,349"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.5"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="path66" />
+  <path
+     d="M352,300 L322,268"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path68" />
+  <circle
+     cx="354"
+     cy="302"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle70" />
+  <circle
+     cx="319"
+     cy="265"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle72" />
+  <text
+     x="436"
+     y="392"
+     text-anchor="end"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.65"
+     id="text74">delivered</text>
+  <circle
+     cx="40"
+     cy="410"
+     r="2.5"
      fill="#ffffff"
      opacity="0.3"
-     id="circle12" />
-  <!-- shopping bag: order placed -->
-  <path
-     d="M100,150 L120,110 H196 L216,150 Z"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="path14" />
-  <path
-     d="M100,150 H216 L206,268 Q204,282 190,282 H126 Q112,282 110,268 Z"
-     fill="#ffffff"
-     id="path16" />
-  <path
-     d="M136,150 V128 Q136,104 158,104 Q180,104 180,128 V150"
-     fill="none"
-     stroke="#0E7C86"
-     stroke-width="8"
-     stroke-linecap="round"
-     id="path18" />
-  <!-- item-count badge on bag -->
+     id="circle76" />
   <circle
-     cx="205"
-     cy="128"
-     r="17"
-     fill="#E0475A"
-     id="circle20" />
-  <text
-     x="205"
-     y="133"
-     text-anchor="middle"
-     font-family="sans-serif"
-     font-size="16"
-     font-weight="700"
+     cx="440"
+     cy="70"
+     r="2.5"
      fill="#ffffff"
-     id="text22">3</text>
-  <!-- connector: bag to pharmacy badge -->
-  <path
-     d="M226,170 Q286,170 320,168"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.85"
-     id="path24" />
-  <!-- pharmacy-verified badge -->
-  <circle
-     cx="366"
-     cy="168"
-     r="50"
-     fill="url(#badgeGradientPharmacy)"
-     id="circle26" />
-  <path
-     d="M366,140 V196 M338,168 H394"
-     stroke="#ffffff"
-     stroke-width="10"
-     stroke-linecap="round"
-     id="path28" />
-  <!-- connector: badge to package -->
-  <path
-     d="M348,214 Q300,268 262,316"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.85"
-     id="path30" />
-  <!-- delivered package -->
-  <g
-     id="g42">
-    <rect
-       x="150"
-       y="330"
-       width="120"
-       height="96"
-       rx="10"
-       fill="#ffffff"
-       id="rect32" />
-    <path
-       d="M150,354 H270"
-       stroke="#0E7C86"
-       stroke-width="6"
-       id="path34" />
-    <path
-       d="M198,330 L210,354 L222,330"
-       fill="none"
-       stroke="#0E7C86"
-       stroke-width="4"
-       stroke-linejoin="round"
-       id="path36" />
-    <!-- delivered checkmark -->
-    <circle
-       cx="252"
-       cy="410"
-       r="24"
-       fill="#1FAE7A"
-       id="circle38" />
-    <path
-       d="M241,410 L249,419 L264,400"
-       fill="none"
-       stroke="#ffffff"
-       stroke-width="5"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       id="path40" />
-  </g>
+     opacity="0.25"
+     id="circle78" />
 </svg>

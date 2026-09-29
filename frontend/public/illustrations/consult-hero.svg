@@ -6,233 +6,353 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs-ch">
-    <linearGradient
-       id="badgeGradientConsult"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="ch-stop1" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="ch-stop2" />
-    </linearGradient>
-  </defs>
-  <!-- decorative texture dots -->
+     id="defs99" />
   <circle
-     cx="38"
-     cy="90"
-     r="4"
-     fill="#ffffff"
-     opacity="0.35"
+     cx="280"
+     cy="220"
+     r="178"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1"
+     stroke-dasharray="1 8"
+     opacity="0.14"
+     id="circle2" />
+  <circle
+     cx="280"
+     cy="220"
+     r="124"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     stroke-dasharray="1 6"
+     opacity="0.28"
+     id="circle4" />
+  <!-- primary instrument ring -->
+  <circle
+     cx="280"
+     cy="220"
+     r="100"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
      id="circle6" />
-  <circle
-     cx="60"
-     cy="400"
-     r="5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle8" />
-  <circle
-     cx="440"
-     cy="80"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle10" />
-  <!-- patient: head -->
-  <circle
-     cx="118"
-     cy="230"
-     r="34"
-     fill="#ffffff"
-     id="circle12" />
-  <!-- patient: torso -->
-  <rect
-     x="73"
-     y="268"
-     width="90"
-     height="170"
-     rx="45"
-     fill="#ffffff"
-     opacity="0.96"
-     id="rect14" />
-  <rect
-     x="90"
-     y="290"
-     width="56"
-     height="96"
-     rx="20"
-     fill="#1E6FD9"
-     id="rect16" />
-  <!-- typing/chat indicator above patient -->
-  <rect
-     x="82"
-     y="150"
-     width="76"
-     height="42"
-     rx="16"
-     fill="#ffffff"
-     id="rect18" />
-  <path
-     d="M100,190 L94,204 L114,190 Z"
-     fill="#ffffff"
-     id="path20" />
-  <circle
-     cx="105"
-     cy="171"
-     r="5.5"
-     fill="#0E7C86"
-     id="circle22" />
-  <circle
-     cx="120"
-     cy="171"
-     r="5.5"
-     fill="#1E6FD9"
-     id="circle24" />
-  <circle
-     cx="135"
-     cy="171"
-     r="5.5"
-     fill="#E0475A"
-     id="circle26" />
-  <!-- connector: patient to consult screen -->
-  <path
-     d="M195,210 Q250,170 288,164"
+  <!-- rim ticks -->
+  <g
      stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
+     stroke-width="1.6"
      stroke-linecap="round"
+     opacity="0.8"
+     id="g32">
+    <line
+       x1="374"
+       y1="220"
+       x2="384"
+       y2="220"
+       id="line8" />
+    <line
+       x1="361"
+       y1="267"
+       x2="370"
+       y2="272"
+       id="line10" />
+    <line
+       x1="327"
+       y1="301"
+       x2="332"
+       y2="310"
+       id="line12" />
+    <line
+       x1="280"
+       y1="314"
+       x2="280"
+       y2="324"
+       id="line14" />
+    <line
+       x1="233"
+       y1="301"
+       x2="228"
+       y2="310"
+       id="line16" />
+    <line
+       x1="199"
+       y1="267"
+       x2="190"
+       y2="272"
+       id="line18" />
+    <line
+       x1="186"
+       y1="220"
+       x2="176"
+       y2="220"
+       id="line20" />
+    <line
+       x1="199"
+       y1="173"
+       x2="190"
+       y2="168"
+       id="line22" />
+    <line
+       x1="233"
+       y1="139"
+       x2="228"
+       y2="130"
+       id="line24" />
+    <line
+       x1="280"
+       y1="126"
+       x2="280"
+       y2="116"
+       id="line26" />
+    <line
+       x1="327"
+       y1="139"
+       x2="332"
+       y2="130"
+       id="line28" />
+    <line
+       x1="361"
+       y1="173"
+       x2="370"
+       y2="168"
+       id="line30" />
+  </g>
+  <!-- confirmed arc (0deg to 90deg, top-right quadrant) -->
+  <path
+     d="M280,116 A104,104 0 0 1 384,220"
      fill="none"
+     stroke="#1FAE7A"
+     stroke-width="2.5"
      opacity="0.85"
-     id="path28" />
-  <!-- consult screen frame (WhatsApp/video call surface) -->
-  <rect
-     x="272"
-     y="70"
-     width="176"
-     height="220"
-     rx="20"
-     fill="#ffffff"
-     opacity="0.95"
-     id="rect30" />
-  <rect
-     x="290"
-     y="88"
-     width="140"
-     height="14"
-     rx="7"
-     fill="#E4EBEE"
-     id="rect32" />
-  <rect
-     x="290"
-     y="110"
-     width="90"
-     height="10"
-     rx="5"
-     fill="#E4EBEE"
-     id="rect34" />
-  <!-- stethoscope badge inside the screen: the "doctor" is this medical
-       glyph only — deliberately not a face, matching the honest beta
-       positioning (no real onboarded doctor is depicted). -->
+     id="path34" />
   <circle
-     cx="360"
-     cy="200"
-     r="52"
-     fill="url(#badgeGradientConsult)"
+     cx="384"
+     cy="220"
+     r="4"
+     fill="#1FAE7A"
      id="circle36" />
-  <line
-     x1="338"
-     y1="172"
-     x2="338"
-     y2="186"
+  <!-- stethoscope glyph, centered in the ring -->
+  <g
      stroke="#ffffff"
-     stroke-width="4.2"
+     stroke-width="2.25"
      stroke-linecap="round"
-     id="line38" />
-  <line
-     x1="382"
-     y1="172"
-     x2="382"
-     y2="186"
-     stroke="#ffffff"
-     stroke-width="4.2"
-     stroke-linecap="round"
-     id="line40" />
-  <path
-     d="M338,186 Q338,206 360,210 Q382,206 382,186"
+     fill="none"
+     id="g46">
+    <line
+       x1="258"
+       y1="184"
+       x2="258"
+       y2="200"
+       id="line38" />
+    <line
+       x1="302"
+       y1="184"
+       x2="302"
+       y2="200"
+       id="line40" />
+    <path
+       d="M258,200 Q258,224 280,228 Q302,224 302,200"
+       id="path42" />
+    <line
+       x1="280"
+       y1="228"
+       x2="280"
+       y2="252"
+       id="line44" />
+  </g>
+  <circle
+     cx="280"
+     cy="262"
+     r="11"
      fill="none"
      stroke="#ffffff"
-     stroke-width="4.2"
-     stroke-linecap="round"
-     id="path42" />
-  <line
-     x1="360"
-     y1="210"
-     x2="360"
-     y2="228"
-     stroke="#ffffff"
-     stroke-width="4.2"
-     stroke-linecap="round"
-     id="line44" />
-  <circle
-     cx="360"
-     cy="238"
-     r="11"
-     fill="#ffffff"
-     id="circle46" />
-  <circle
-     cx="360"
-     cy="238"
-     r="5"
-     fill="#0E7C86"
+     stroke-width="2.25"
      id="circle48" />
-  <!-- beta tag on the screen -->
+  <circle
+     cx="280"
+     cy="262"
+     r="3.5"
+     fill="#ffffff"
+     id="circle50" />
+  <!-- satellite: your case (document outline), upper-left -->
   <rect
-     x="290"
-     y="256"
-     width="66"
-     height="22"
-     rx="11"
-     fill="rgba(14,124,134,0.12)"
-     id="rect50" />
+     x="58"
+     y="76"
+     width="76"
+     height="94"
+     rx="8"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.92"
+     id="rect52" />
+  <line
+     x1="74"
+     y1="100"
+     x2="118"
+     y2="100"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.55"
+     id="line54" />
+  <line
+     x1="74"
+     y1="116"
+     x2="118"
+     y2="116"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.55"
+     id="line56" />
+  <line
+     x1="74"
+     y1="132"
+     x2="102"
+     y2="132"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.55"
+     id="line58" />
+  <path
+     d="M134,150 L192,178"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path60" />
+  <circle
+     cx="134"
+     cy="150"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle62" />
+  <circle
+     cx="195"
+     cy="180"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle64" />
   <text
-     x="323"
-     y="271"
+     x="58"
+     y="66"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.65"
+     id="text66">your case</text>
+  <!-- satellite: whatsapp (chat outline), lower-right -->
+  <rect
+     x="360"
+     y="300"
+     width="80"
+     height="48"
+     rx="15"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.92"
+     id="rect68" />
+  <path
+     d="M382,348 L374,364 L398,348 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     opacity="0.92"
+     id="path70" />
+  <circle
+     cx="386"
+     cy="324"
+     r="3"
+     fill="#1FAE7A"
+     id="circle72" />
+  <circle
+     cx="400"
+     cy="324"
+     r="3"
+     fill="#ffffff"
+     opacity="0.6"
+     id="circle74" />
+  <circle
+     cx="414"
+     cy="324"
+     r="3"
+     fill="#ffffff"
+     opacity="0.6"
+     id="circle76" />
+  <path
+     d="M360,296 L332,270"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path78" />
+  <circle
+     cx="362"
+     cy="298"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle80" />
+  <circle
+     cx="329"
+     cy="267"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle82" />
+  <text
+     x="440"
+     y="378"
+     text-anchor="end"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.65"
+     id="text84">whatsapp review</text>
+  <!-- honest beta note near the ring -->
+  <path
+     d="M280,320 L280,352"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     stroke-dasharray="1 5"
+     opacity="0.5"
+     id="path86" />
+  <circle
+     cx="280"
+     cy="356"
+     r="2.5"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     opacity="0.8"
+     id="circle88" />
+  <text
+     x="280"
+     y="374"
      text-anchor="middle"
      font-family="sans-serif"
      font-size="11"
-     font-weight="700"
-     fill="#0E7C86"
-     id="text52">BETA</text>
-  <!-- connector: screen down to confirmed capsule -->
-  <path
-     d="M330,300 Q290,352 258,392"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.85"
-     id="path54" />
-  <!-- confirmed check -->
+     fill="#ffffff"
+     opacity="0.65"
+     id="text90">beta — self-confirmed</text>
   <circle
-     cx="238"
+     cx="40"
      cy="410"
-     r="26"
-     fill="#1FAE7A"
-     id="circle56" />
-  <path
-     d="M226,410 L235,419 L252,398"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="5"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     id="path58" />
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.3"
+     id="circle92" />
+  <circle
+     cx="440"
+     cy="70"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.25"
+     id="circle94" />
 </svg>

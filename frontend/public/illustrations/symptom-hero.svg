@@ -6,245 +6,320 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs-sh">
-    <linearGradient
-       id="badgeGradientHero"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="sh-stop1" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="sh-stop2" />
-    </linearGradient>
-    <clipPath
-       id="pillClipLeftHero">
-      <rect
-         x="245"
-         y="328"
-         width="45"
-         height="34"
-         id="sh-rect1" />
-    </clipPath>
-  </defs>
-  <!-- decorative texture dots -->
+     id="defs87" />
+  <!-- faint full-orbit construction circle -->
   <circle
-     cx="36"
-     cy="70"
-     r="4"
-     fill="#ffffff"
-     opacity="0.35"
-     id="circle8" />
-  <circle
-     cx="64"
-     cy="400"
-     r="5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle10" />
-  <circle
-     cx="26"
-     cy="250"
-     r="3"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle12" />
-  <circle
-     cx="446"
-     cy="70"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle14" />
-  <circle
-     cx="128"
-     cy="440"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle16" />
-  <!-- person: head -->
-  <circle
-     cx="130"
-     cy="150"
-     r="34"
-     fill="#ffffff"
-     id="circle18" />
-  <!-- person: torso -->
-  <rect
-     x="85"
-     y="188"
-     width="90"
-     height="170"
-     rx="45"
-     fill="#ffffff"
-     opacity="0.96"
-     id="rect20" />
-  <!-- person: shirt accent -->
-  <rect
-     x="102"
-     y="210"
-     width="56"
-     height="96"
-     rx="20"
-     fill="#1E6FD9"
-     id="rect22" />
-  <!-- person: raised arm holding mic -->
-  <path
-     d="M168,220 Q206,196 224,176"
-     stroke="#ffffff"
-     stroke-width="26"
-     stroke-linecap="round"
+     cx="280"
+     cy="220"
+     r="178"
      fill="none"
-     id="path24" />
-  <!-- hand -->
+     stroke="#ffffff"
+     stroke-width="1"
+     stroke-dasharray="1 8"
+     opacity="0.14"
+     id="circle2" />
+  <!-- secondary construction ring -->
   <circle
-     cx="226"
-     cy="176"
-     r="14"
+     cx="280"
+     cy="220"
+     r="124"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     stroke-dasharray="1 6"
+     opacity="0.28"
+     id="circle4" />
+  <!-- scan-sweep trail -->
+  <path
+     d="M280,220 L280,116 A104,104 0 0 1 332,130 Z"
      fill="#ffffff"
-     id="circle26" />
-  <!-- microphone (held near mouth height) -->
+     opacity="0.07"
+     id="path6" />
+  <line
+     x1="280"
+     y1="220"
+     x2="332"
+     y2="130"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.45"
+     id="line8" />
+  <!-- primary instrument ring -->
+  <circle
+     cx="280"
+     cy="220"
+     r="100"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2.25"
+     id="circle10" />
+  <!-- rim tick marks (12, every 30deg) -->
   <g
-     id="g40">
-    <rect
-       x="216"
-       y="118"
-       width="30"
-       height="52"
-       rx="15"
-       fill="#0E7C86"
-       id="rect28" />
+     stroke="#ffffff"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     opacity="0.8"
+     id="g36">
     <line
-       x1="223"
-       y1="130"
-       x2="239"
+       x1="374"
+       y1="220"
+       x2="384"
+       y2="220"
+       id="line12" />
+    <line
+       x1="361"
+       y1="267"
+       x2="370"
+       y2="272"
+       id="line14" />
+    <line
+       x1="327"
+       y1="301"
+       x2="332"
+       y2="310"
+       id="line16" />
+    <line
+       x1="280"
+       y1="314"
+       x2="280"
+       y2="324"
+       id="line18" />
+    <line
+       x1="233"
+       y1="301"
+       x2="228"
+       y2="310"
+       id="line20" />
+    <line
+       x1="199"
+       y1="267"
+       x2="190"
+       y2="272"
+       id="line22" />
+    <line
+       x1="186"
+       y1="220"
+       x2="176"
+       y2="220"
+       id="line24" />
+    <line
+       x1="199"
+       y1="173"
+       x2="190"
+       y2="168"
+       id="line26" />
+    <line
+       x1="233"
+       y1="139"
+       x2="228"
        y2="130"
-       stroke="#ffffff"
-       stroke-width="3"
-       stroke-linecap="round"
-       opacity="0.85"
+       id="line28" />
+    <line
+       x1="280"
+       y1="126"
+       x2="280"
+       y2="116"
        id="line30" />
     <line
-       x1="223"
-       y1="140"
-       x2="239"
-       y2="140"
-       stroke="#ffffff"
-       stroke-width="3"
-       stroke-linecap="round"
-       opacity="0.85"
+       x1="327"
+       y1="139"
+       x2="332"
+       y2="130"
        id="line32" />
     <line
-       x1="223"
-       y1="150"
-       x2="239"
-       y2="150"
-       stroke="#ffffff"
-       stroke-width="3"
-       stroke-linecap="round"
-       opacity="0.85"
+       x1="361"
+       y1="173"
+       x2="370"
+       y2="168"
        id="line34" />
-    <path
-       d="M209,166 Q231,182 253,166"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       fill="none"
-       id="path36" />
-    <line
-       x1="231"
-       y1="182"
-       x2="231"
-       y2="196"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line38" />
   </g>
-  <!-- soundwave arcs, radiating from mic -->
+  <!-- pulse / waveform trace through the dial -->
   <path
-     d="M258,100 Q276,132 258,166"
-     stroke="#ffffff"
-     stroke-width="3.4"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.55"
-     id="path42" />
-  <path
-     d="M274,86 Q302,132 274,180"
-     stroke="#ffffff"
-     stroke-width="3.4"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.32"
-     id="path44" />
-  <!-- connector: mic to review badge -->
-  <path
-     d="M296,110 Q346,90 372,138"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
-     fill="none"
-     opacity="0.85"
-     id="path46" />
-  <!-- review badge (AI + doctor review) -->
-  <circle
-     cx="390"
-     cy="165"
-     r="46"
-     fill="url(#badgeGradientHero)"
-     id="circle48" />
-  <path
-     d="M364,167 H376 L382,147 L390,183 L396,155 H402 H416"
+     d="M195,220 L222,220 L233,186 L246,252 L257,204 L266,220 L299,220 L309,209 L320,226 L330,220 L365,220"
      fill="none"
      stroke="#ffffff"
-     stroke-width="3.4"
+     stroke-width="2.5"
      stroke-linecap="round"
      stroke-linejoin="round"
-     id="path50" />
+     id="path38" />
+  <!-- flagged anomaly node + leader -->
+  <circle
+     cx="233"
+     cy="186"
+     r="4.5"
+     fill="#E0475A"
+     id="circle40" />
   <path
-     d="M405,141 V149 M401,145 H409"
+     d="M233,186 L172,146"
      stroke="#ffffff"
-     stroke-width="3.4"
-     stroke-linecap="round"
-     id="path52" />
-  <!-- connector: badge to medicine -->
-  <path
-     d="M382,209 Q338,262 302,312"
-     stroke="#ffffff"
-     stroke-width="3"
-     stroke-dasharray="2 9"
-     stroke-linecap="round"
+     stroke-width="1.25"
+     stroke-dasharray="1 5"
+     opacity="0.55"
      fill="none"
-     opacity="0.85"
-     id="path54" />
-  <!-- medicine capsule -->
+     id="path42" />
+  <circle
+     cx="168"
+     cy="143"
+     r="2.5"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.25"
+     opacity="0.8"
+     id="circle44" />
+  <text
+     x="160"
+     y="140"
+     text-anchor="end"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.72"
+     id="text46">flagged</text>
+  <!-- satellite: your words (speech outline), upper-left -->
+  <rect
+     x="52"
+     y="70"
+     width="92"
+     height="50"
+     rx="14"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     opacity="0.92"
+     id="rect48" />
+  <path
+     d="M78,120 L70,136 L92,120 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     opacity="0.92"
+     id="path50" />
+  <line
+     x1="70"
+     y1="88"
+     x2="126"
+     y2="88"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.5"
+     id="line52" />
+  <line
+     x1="70"
+     y1="100"
+     x2="110"
+     y2="100"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.5"
+     id="line54" />
+  <path
+     d="M144,104 L200,150"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path56" />
+  <circle
+     cx="144"
+     cy="104"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle58" />
+  <circle
+     cx="203"
+     cy="153"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle60" />
+  <text
+     x="52"
+     y="60"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.65"
+     id="text62">your words</text>
+  <!-- satellite: medicine (capsule outline), lower-right -->
   <g
-     transform="rotate(-32 290 345)"
-     id="g60">
+     transform="rotate(-24 392 344)"
+     id="g70">
     <rect
-       x="245"
-       y="328"
-       width="90"
-       height="34"
-       rx="17"
+       x="352"
+       y="326"
+       width="80"
+       height="30"
+       rx="15"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.92"
+       id="rect64" />
+    <line
+       x1="392"
+       y1="326"
+       x2="392"
+       y2="356"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.92"
+       id="line66" />
+    <circle
+       cx="365"
+       cy="341"
+       r="3.5"
        fill="#E0475A"
-       id="rect56" />
-    <rect
-       x="245"
-       y="328"
-       width="90"
-       height="34"
-       rx="17"
-       fill="#ffffff"
-       clip-path="url(#pillClipLeftHero)"
-       id="rect58" />
+       id="circle68" />
   </g>
+  <path
+     d="M356,308 L322,270"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     opacity="0.5"
+     fill="none"
+     id="path72" />
+  <circle
+     cx="358"
+     cy="311"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle74" />
+  <circle
+     cx="318"
+     cy="266"
+     r="2.75"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="1.4"
+     id="circle76" />
+  <text
+     x="405"
+     y="392"
+     text-anchor="middle"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#ffffff"
+     opacity="0.65"
+     id="text78">medicine</text>
+  <!-- sparse corner texture -->
+  <circle
+     cx="40"
+     cy="410"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.3"
+     id="circle80" />
+  <circle
+     cx="430"
+     cy="70"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.25"
+     id="circle82" />
 </svg>

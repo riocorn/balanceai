@@ -6,216 +6,214 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs-wh">
-    <linearGradient
-       id="badgeGradientWellness"
-       x1="0"
-       y1="0"
-       x2="1"
-       y2="1">
-      <stop
-         offset="0"
-         stop-color="#0E7C86"
-         id="wh-stop1" />
-      <stop
-         offset="1"
-         stop-color="#1E6FD9"
-         id="wh-stop2" />
-    </linearGradient>
-  </defs>
-  <!-- decorative texture dots -->
-  <circle
-     cx="46"
-     cy="100"
-     r="4"
-     fill="#ffffff"
-     opacity="0.35"
-     id="circle6" />
-  <circle
-     cx="56"
-     cy="420"
-     r="5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle8" />
-  <circle
-     cx="432"
-     cy="110"
-     r="4"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle10" />
-  <circle
-     cx="420"
-     cy="410"
-     r="3.5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle12" />
-  <!-- sun/vitality badge, radiating rays -->
-  <g
-     opacity="0.9"
-     id="g24">
-    <line
-       x1="240"
-       y1="30"
-       x2="240"
-       y2="46"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line14" />
-    <line
-       x1="196"
-       y1="42"
-       x2="204"
-       y2="56"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line16" />
-    <line
-       x1="284"
-       y1="42"
-       x2="276"
-       y2="56"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line18" />
-    <line
-       x1="168"
-       y1="76"
-       x2="182"
-       y2="82"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line20" />
-    <line
-       x1="312"
-       y1="76"
-       x2="298"
-       y2="82"
-       stroke="#ffffff"
-       stroke-width="4"
-       stroke-linecap="round"
-       id="line22" />
-  </g>
+     id="defs57" />
   <circle
      cx="240"
-     cy="100"
-     r="34"
-     fill="url(#badgeGradientWellness)"
-     id="circle26" />
-  <!-- stand from badge down to the fulcrum -->
-  <rect
-     x="232"
-     y="132"
-     width="16"
-     height="150"
-     rx="8"
-     fill="#ffffff"
-     id="rect28" />
-  <!-- pivot -->
-  <circle
-     cx="240"
-     cy="188"
-     r="11"
-     fill="#ffffff"
-     id="circle30" />
-  <!-- beam -->
-  <rect
-     x="108"
-     y="181"
-     width="264"
-     height="14"
-     rx="7"
-     fill="#ffffff"
-     id="rect32" />
-  <!-- left chain + pan -->
-  <line
-     x1="120"
-     y1="195"
-     x2="112"
-     y2="260"
-     stroke="#ffffff"
-     stroke-width="3"
-     opacity="0.85"
-     id="line34" />
-  <line
-     x1="132"
-     y1="195"
-     x2="140"
-     y2="260"
-     stroke="#ffffff"
-     stroke-width="3"
-     opacity="0.85"
-     id="line36" />
-  <path
-     d="M100,262 Q126,286 152,262"
+     cy="240"
+     r="178"
      fill="none"
      stroke="#ffffff"
-     stroke-width="4"
-     stroke-linecap="round"
-     id="path38" />
-  <!-- leaf, resting on the left pan -->
-  <path
-     d="M126,222 Q158,232 152,266 Q118,262 116,232 Q118,224 126,222 Z"
-     fill="#1FAE7A"
-     id="path40" />
-  <line
-     x1="122"
-     y1="230"
-     x2="148"
-     y2="258"
+     stroke-width="1"
+     stroke-dasharray="1 8"
+     opacity="0.14"
+     id="circle2" />
+  <!-- sun: ring + tick rays, same instrument language as the other heroes -->
+  <circle
+     cx="240"
+     cy="96"
+     r="28"
+     fill="none"
      stroke="#ffffff"
      stroke-width="2"
-     opacity="0.6"
-     id="line42" />
-  <!-- right chain + pan -->
-  <line
-     x1="360"
-     y1="195"
-     x2="368"
-     y2="260"
+     id="circle4" />
+  <g
      stroke="#ffffff"
-     stroke-width="3"
-     opacity="0.85"
-     id="line44" />
+     stroke-width="1.6"
+     stroke-linecap="round"
+     opacity="0.75"
+     id="g16">
+    <line
+       x1="240"
+       y1="52"
+       x2="240"
+       y2="42"
+       id="line6" />
+    <line
+       x1="204"
+       y1="68"
+       x2="197"
+       y2="61"
+       id="line8" />
+    <line
+       x1="276"
+       y1="68"
+       x2="283"
+       y2="61"
+       id="line10" />
+    <line
+       x1="190"
+       y1="96"
+       x2="180"
+       y2="96"
+       id="line12" />
+    <line
+       x1="290"
+       y1="96"
+       x2="300"
+       y2="96"
+       id="line14" />
+  </g>
+  <!-- stand -->
   <line
-     x1="348"
-     y1="195"
-     x2="340"
-     y2="260"
+     x1="240"
+     y1="124"
+     x2="240"
+     y2="252"
      stroke="#ffffff"
-     stroke-width="3"
-     opacity="0.85"
-     id="line46" />
-  <path
-     d="M328,262 Q354,286 380,262"
+     stroke-width="2.25"
+     id="line18" />
+  <circle
+     cx="240"
+     cy="252"
+     r="7"
      fill="none"
      stroke="#ffffff"
-     stroke-width="4"
+     stroke-width="2.25"
+     id="circle20" />
+  <!-- beam -->
+  <line
+     x1="118"
+     y1="252"
+     x2="362"
+     y2="252"
+     stroke="#ffffff"
+     stroke-width="2.25"
      stroke-linecap="round"
-     id="path48" />
-  <!-- heart, resting on the right pan -->
+     id="line22" />
+  <!-- left pan: leaf -->
+  <line
+     x1="130"
+     y1="256"
+     x2="122"
+     y2="322"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.75"
+     id="line24" />
+  <line
+     x1="142"
+     y1="256"
+     x2="150"
+     y2="322"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.75"
+     id="line26" />
   <path
-     d="M354,226 C346,216 328,222 328,238 C328,252 354,268 354,268 C354,268 380,252 380,238 C380,222 362,216 354,226 Z"
-     fill="#E0475A"
-     id="path50" />
-  <!-- base plinth -->
+     d="M110,324 Q136,346 162,324"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linecap="round"
+     id="path28" />
   <path
-     d="M204,390 L276,390 L296,430 H184 Z"
+     d="M136,278 Q166,290 160,320 Q130,314 126,286 Q128,280 136,278 Z"
+     fill="none"
+     stroke="#1FAE7A"
+     stroke-width="2.25"
+     stroke-linejoin="round"
+     id="path30" />
+  <line
+     x1="133"
+     y1="286"
+     x2="155"
+     y2="312"
+     stroke="#1FAE7A"
+     stroke-width="1.25"
+     opacity="0.7"
+     id="line32" />
+  <!-- right pan: heart -->
+  <line
+     x1="350"
+     y1="256"
+     x2="358"
+     y2="322"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.75"
+     id="line34" />
+  <line
+     x1="338"
+     y1="256"
+     x2="330"
+     y2="322"
+     stroke="#ffffff"
+     stroke-width="1.5"
+     opacity="0.75"
+     id="line36" />
+  <path
+     d="M318,324 Q344,346 370,324"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linecap="round"
+     id="path38" />
+  <path
+     d="M344,286 C338,278 324,282 324,296 C324,308 344,322 344,322 C344,322 364,308 364,296 C364,282 350,278 344,286 Z"
+     fill="none"
+     stroke="#E0475A"
+     stroke-width="2.25"
+     stroke-linejoin="round"
+     id="path40" />
+  <!-- base -->
+  <path
+     d="M208,398 L272,398 L288,432 H192 Z"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="2"
+     stroke-linejoin="round"
+     opacity="0.85"
+     id="path42" />
+  <line
+     x1="176"
+     y1="432"
+     x2="304"
+     y2="432"
+     stroke="#ffffff"
+     stroke-width="2.25"
+     stroke-linecap="round"
+     id="line44" />
+  <!-- balance labels -->
+  <text
+     x="90"
+     y="340"
+     text-anchor="middle"
+     font-family="sans-serif"
+     font-size="11"
      fill="#ffffff"
-     opacity="0.9"
-     id="path52" />
-  <rect
-     x="176"
-     y="428"
-     width="128"
-     height="16"
-     rx="8"
+     opacity="0.6"
+     id="text46">nutrition</text>
+  <text
+     x="390"
+     y="340"
+     text-anchor="middle"
+     font-family="sans-serif"
+     font-size="11"
      fill="#ffffff"
-     id="rect54" />
+     opacity="0.6"
+     id="text48">health</text>
+  <circle
+     cx="60"
+     cy="90"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.3"
+     id="circle50" />
+  <circle
+     cx="420"
+     cy="420"
+     r="2.5"
+     fill="#ffffff"
+     opacity="0.25"
+     id="circle52" />
 </svg>

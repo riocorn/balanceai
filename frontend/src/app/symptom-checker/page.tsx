@@ -1007,9 +1007,24 @@ export default function SymptomCheckerPage() {
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
         />
         <div className="relative max-w-5xl mx-auto grid sm:grid-cols-[1fr_1.2fr] gap-10 items-start">
-          <h2 className="font-display font-bold text-white leading-[1.05]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>
-            Why people trust BalanceAI with what they tell it.
-          </h2>
+          <div>
+            <h2 className="font-display font-bold text-white leading-[1.05] mb-8" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>
+              Why people trust BalanceAI with what they tell it.
+            </h2>
+            {/* Custom vector illustration (hand-built — see
+                public/illustrations/README.md): a verification-seal dial
+                with a completed arc + checkmark, filling what was previously
+                a large empty gradient field under this headline. */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- static
+                local decorative SVG; next/image's raster pipeline isn't used
+                for hand-authored vector assets. */}
+            <img
+              src="/illustrations/trust-mark.svg"
+              alt=""
+              aria-hidden="true"
+              className="hidden sm:block w-32 h-32 opacity-90"
+            />
+          </div>
           <div className="divide-y divide-[rgba(255,255,255,0.18)]">
             {TRUST_BADGES.map(({ title, detail }) => (
               <div key={title} className="py-4 first:pt-0">
