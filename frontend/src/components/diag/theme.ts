@@ -32,7 +32,11 @@ export const EFFECTIVENESS = "#2F9E5B";
 export const EFFECTIVENESS_TEXT = "#1F6B3E";
 export const EMERGENCY = "#D92D20"; // reserved exclusively for the emergency banner
 export const BORDER = "#E4E7E2";
-export const HERO_GRADIENT = `linear-gradient(135deg, ${TEAL} 0%, ${TEAL} 58%, ${BLUE} 100%)`;
+// Flat solid fill, not a gradient — the landing page's own dark sections
+// (`style={{ background: GREEN }}`) never use a gradient, so this keeps the
+// two frontends visually identical rather than diag pages reading as a
+// separate, gradient-branded surface.
+export const HERO_GRADIENT = TEAL;
 
 // ---------------------------------------------------------------------------
 // Secondary accent palette — founder-approved 2026-09-28 to break the

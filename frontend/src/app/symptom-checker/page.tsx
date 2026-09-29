@@ -999,7 +999,7 @@ export default function SymptomCheckerPage() {
           actually earns trust: one confident claim, then the specifics. */}
       <section
         className="relative w-full py-16 px-4 overflow-hidden"
-        style={{ background: `linear-gradient(120deg, ${TEAL} 0%, ${TEAL} 35%, ${BLUE} 100%)` }}
+        style={{ background: TEAL }}
       >
         <div
           className="absolute inset-0 opacity-[0.10] pointer-events-none"
@@ -1140,10 +1140,11 @@ export default function SymptomCheckerPage() {
         </ScrollReveal>
       </section>
 
-      {/* Final CTA band — layered gradient + texture, not a flat fill */}
+      {/* Final CTA band — flat solid fill, matching the landing page's own
+          dark sections (which never use a gradient) */}
       <section
         className="relative py-20 px-4 text-center overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${TEAL} 0%, ${BLUE} 65%, ${BLUE} 100%)` }}
+        style={{ background: TEAL }}
       >
         <div
           className="absolute inset-0 opacity-[0.09] pointer-events-none"

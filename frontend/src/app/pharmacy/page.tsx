@@ -89,7 +89,7 @@ export default function PharmacyIntakePage() {
           2026-09-29): a solid brand gradient field with a dense dot-grid
           texture and two soft outline rings, matching the same device used
           on /symptom-checker so the two entry points feel like one site. ── */}
-      <div className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)` }}>
+      <div className="relative overflow-hidden" style={{ background: GREEN }}>
         <div className="absolute inset-0 opacity-[0.10] pointer-events-none" style={{
           backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)",
           backgroundSize: "22px 22px",
@@ -252,7 +252,7 @@ export default function PharmacyIntakePage() {
           one system instead of two differently-templated pages. */}
       <section
         className="relative w-full py-16 px-4 overflow-hidden mt-10"
-        style={{ background: `linear-gradient(120deg, ${GREEN} 0%, ${GREEN} 35%, ${GREEN_DARK} 100%)` }}
+        style={{ background: GREEN }}
       >
         <div
           className="absolute inset-0 opacity-[0.10] pointer-events-none"
