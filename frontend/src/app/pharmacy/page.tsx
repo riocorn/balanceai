@@ -104,10 +104,6 @@ export default function PharmacyIntakePage() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
               >
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold mb-4" style={{ background: "rgba(255,255,255,0.16)", color: "#fff" }}>
-                  <Sparkles className="w-3.5 h-3.5" />
-                  {active.badge}
-                </div>
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold mb-3 text-white leading-[1.05] tracking-tight">
                   {active.headline}
                 </h1>

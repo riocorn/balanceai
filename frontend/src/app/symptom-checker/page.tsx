@@ -464,12 +464,6 @@ export default function SymptomCheckerPage() {
                   exit={{ opacity: 0.9, y: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
                 >
-                  <span
-                    className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full mb-5 backdrop-blur-sm"
-                    style={{ background: "rgba(255,255,255,0.18)", color: "#FFFFFF", border: "1px solid rgba(255,255,255,0.35)" }}
-                  >
-                    {HERO_SLIDES[slide].badge}
-                  </span>
                   <h1
                     className="font-display font-bold leading-[1.05] mb-4 text-white tracking-tight"
                     style={{ fontSize: "clamp(2.25rem, 6vw, 4rem)" }}
