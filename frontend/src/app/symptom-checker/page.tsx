@@ -552,7 +552,7 @@ export default function SymptomCheckerPage() {
                 story as the final CTA band below in the mic/soundwave
                 variant. Replaces three separate icon-in-square tiles that
                 repeated the identical pattern used on /consult-a-doctor. */}
-            <div className="flex items-center justify-center" aria-hidden="true">
+            <div className="relative flex items-center justify-center" aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element -- static
                   local decorative SVG; next/image's raster pipeline isn't
                   used for hand-authored vector assets. */}
@@ -561,6 +561,18 @@ export default function SymptomCheckerPage() {
                 alt=""
                 className="w-full max-w-[460px] sm:max-w-[560px] h-auto"
                 style={{ filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.22))" }}
+              />
+              {/* Second illustration kept alongside the first, not replaced —
+                  the app-flow phone mockup, as a smaller floating detail
+                  card inset over the corner of the product illustration. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static
+                  local decorative SVG; next/image's raster pipeline isn't
+                  used for hand-authored vector assets. */}
+              <img
+                src="/illustrations/symptom-hero-phone.svg"
+                alt=""
+                className="hidden sm:block absolute -bottom-6 -left-4 w-[190px] h-auto"
+                style={{ filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.28))" }}
               />
             </div>
           </div>
