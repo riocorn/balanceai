@@ -4,6 +4,7 @@ import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
 import { TEXT, MUTED, BG, SURFACE, BLUE } from "@/components/diag/theme";
+import { FOCUS_RING } from "@/components/diag/tokens";
 
 export const metadata: Metadata = { title: "Privacy Policy — BalanceAI" };
 
@@ -32,7 +33,7 @@ export default function PrivacyPolicyPage() {
           <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
             We're continuing to expand this policy as BalanceAI grows. If you have any questions
             about your data in the meantime, reach out any time at{" "}
-            <a href="mailto:contact@balanceai.example" className="underline" style={{ color: BLUE }}>contact@balanceai.example</a>.
+            <a href="mailto:contact@balanceai.example" className={`underline hover:opacity-75 rounded transition-opacity duration-200 ${FOCUS_RING}`} style={{ color: BLUE }}>contact@balanceai.example</a>.
           </p>
         </Card>
       </div>

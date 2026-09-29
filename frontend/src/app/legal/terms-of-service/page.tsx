@@ -4,6 +4,7 @@ import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
 import { TEXT, MUTED, BG, SURFACE, BLUE, ACCENT_PURPLE } from "@/components/diag/theme";
+import { FOCUS_RING } from "@/components/diag/tokens";
 
 export const metadata: Metadata = { title: "Terms of Service — BalanceAI" };
 
@@ -33,7 +34,7 @@ export default function TermsOfServicePage() {
           <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
             These terms will continue to be expanded as BalanceAI grows. Questions in the meantime are
             always welcome at{" "}
-            <a href="mailto:contact@balanceai.example" className="underline" style={{ color: BLUE }}>contact@balanceai.example</a>.
+            <a href="mailto:contact@balanceai.example" className={`underline hover:opacity-75 rounded transition-opacity duration-200 ${FOCUS_RING}`} style={{ color: BLUE }}>contact@balanceai.example</a>.
           </p>
         </Card>
       </div>
