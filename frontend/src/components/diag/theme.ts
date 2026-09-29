@@ -3,10 +3,21 @@
 // (symptom-checker, pharmacy, medicines catalog, legal pages). Locked palette
 // — do not introduce new hex values here without founder sign-off, and never
 // use EMERGENCY outside the emergency banner (grep-checked before every ship).
+//
+// Founder-authorized palette deepen, 2026-09-29 (live instruction, full
+// redesign session): the previous TEAL/BG pairing (#0E7C86 on a cold pale
+// #F7FAFB) read as the same pastel-teal-on-white every health template
+// defaults to. TEAL is now a genuinely deep, confident teal instead of a
+// mid-tone one, BG is a warm off-white instead of a cold blue-tinted one
+// (SURFACE stays pure white so cards still pop off it), and HERO_GRADIENT
+// leans mostly on TEAL with BLUE only as a small kicker at the edge instead
+// of an even 50/50 blend — one deliberate base color plus a supporting
+// accent, not two colors diluting each other. TEXT/MUTED/BORDER unchanged;
+// contrast re-checked against the new values below.
 // ---------------------------------------------------------------------------
-export const TEAL = "#0E7C86";
+export const TEAL = "#0A5259";
 export const BLUE = "#1E6FD9";
-export const BG = "#F7FAFB";
+export const BG = "#FAF7F1";
 export const SURFACE = "#FFFFFF";
 export const TEXT = "#0B2027";
 export const MUTED = "#5B7480";
@@ -18,7 +29,7 @@ export const EFFECTIVENESS = "#1FAE7A";
 export const EFFECTIVENESS_TEXT = "#157A52";
 export const EMERGENCY = "#D92D20"; // reserved exclusively for the emergency banner
 export const BORDER = "#E4EBEE";
-export const HERO_GRADIENT = `linear-gradient(135deg, ${TEAL} 0%, ${BLUE} 100%)`;
+export const HERO_GRADIENT = `linear-gradient(135deg, ${TEAL} 0%, ${TEAL} 58%, ${BLUE} 100%)`;
 
 // ---------------------------------------------------------------------------
 // Secondary accent palette — founder-approved 2026-09-28 to break the

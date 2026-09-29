@@ -11,17 +11,21 @@ import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import CategoryRail from "@/components/diag/CategoryRail";
 import { matchSymptoms } from "@/lib/pharmacy-api";
+import {
+  TEAL as GREEN,
+  BLUE as GREEN_DARK,
+  EFFECTIVENESS as AMBER,
+  BORDER,
+  TEXT,
+  MUTED,
+  BG,
+} from "@/components/diag/theme";
 
-// Aligned to the locked BalanceAI palette (--diag-primary-teal / --diag-primary-blue /
-// --diag-effectiveness) so /pharmacy shares the same design language as /symptom-checker.
-const GREEN = "#0E7C86"; // locked teal
-const GREEN_DARK = "#1E6FD9"; // locked blue
-const AMBER = "#1FAE7A"; // locked effectiveness green (was a non-palette amber accent)
-const BORDER = "#E4EBEE";
-const TEXT = "#0B2027";
-const MUTED = "#5B7480";
+// Real values now pulled from the single shared palette in theme.ts
+// (imported and aliased above) instead of a locally hardcoded copy — the
+// hardcoded copy is what let this page silently drift out of sync with a
+// 2026-09-29 palette deepen until it was caught and fixed here.
 const WHATSAPP_GREEN = "#25D366";
-const BG = "#F7FAFB";
 
 const SLIDES = [
   {

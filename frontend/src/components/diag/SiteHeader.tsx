@@ -302,7 +302,7 @@ export default function SiteHeader({
             <a
               href="/symptom-checker#how-it-works"
               style={{ color: TEXT }}
-              className="hidden md:inline whitespace-nowrap transition-colors duration-200 hover:text-[#0E7C86]"
+              className="hidden md:inline whitespace-nowrap transition-colors duration-200 hover:text-[#0A5259]"
             >
               How It Works
             </a>
@@ -399,7 +399,7 @@ export default function SiteHeader({
 
             <span className="ml-auto flex items-center gap-5 shrink-0">
               <span
-                className="cursor-pointer transition-colors duration-200 hover:text-[#0E7C86]"
+                className="cursor-pointer transition-colors duration-200 hover:text-[#0A5259]"
                 style={{ color: TEXT }}
                 title="Login/Sign Up is not implemented yet — placeholder only"
               >
@@ -487,7 +487,7 @@ export default function SiteHeader({
               <button
                 key={label}
                 onClick={() => goToSymptomCheckerAutoSubmit(starter)}
-                className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-[#0E7C86]"
+                className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-[#0A5259]"
                 style={{ color: MUTED }}
               >
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />

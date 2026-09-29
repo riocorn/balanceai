@@ -4,15 +4,17 @@ import { useState } from "react";
 import { Check, Plus, PhoneCall } from "lucide-react";
 import type { MedicineCard as MedicineCardType } from "@/lib/pharmacy-api";
 import { TRANSITION } from "@/components/diag/tokens";
+import { TEAL, BORDER as THEME_BORDER, TEXT as THEME_TEXT, MUTED as THEME_MUTED } from "@/components/diag/theme";
 
-// Locked to the same BalanceAI marketplace palette used on /pharmacy and
-// /symptom-checker (--diag-primary-teal / --diag-primary-blue) so cart,
-// checkout and results stay visually consistent with the rest of the
-// pharmacy purchase flow instead of the older nutrition-app green.
-export const GREEN = "#0E7C86";
-export const BORDER = "#E4EBEE";
-export const TEXT = "#0B2027";
-export const MUTED = "#5B7480";
+// Re-exported from the single shared palette in theme.ts (not a hardcoded
+// copy) so cart, checkout and results always stay in sync with the rest of
+// the pharmacy purchase flow -- this file's own hardcoded hex copy is what
+// let it silently drift out of sync with the 2026-09-29 palette deepen
+// until it was caught and fixed here.
+export const GREEN = TEAL;
+export const BORDER = THEME_BORDER;
+export const TEXT = THEME_TEXT;
+export const MUTED = THEME_MUTED;
 export const WHATSAPP_GREEN = "#25D366";
 // Same secondary accent palette as the rest of the marketplace
 // (components/diag/theme.ts) -- reused here so the pharmacy flow (cart,
