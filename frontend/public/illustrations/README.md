@@ -60,3 +60,14 @@ rounded-cap stroke paths only, hand-authored as SVG then cleaned with
   "nothing is here yet" is best said by an outline standing in for an
   absence, not a fully rendered object. Don't copy the outline treatment
   into a hero illustration; it belongs to empty/zero states only.
+- `not-found-pin.svg` — small `200x200` corner-accent piece (same scale
+  convention as `medicines-accent.svg`, not the full `480x480` hero canvas),
+  used on `/404` (`not-found.tsx`) in place of the generic lucide
+  `Stethoscope` icon it replaced. A map-pin `badgeGradient` badge (the dead
+  end) with a broken `ACCENT_AMBER` ring around it, forking via two dashed
+  connectors into the same two ways back the page's own buttons offer: a
+  capsule (Order Medicine) and a pulse line (Find Treatment). Connector/dot
+  colors are muted teal instead of white here since the piece floats
+  directly on the page's light `BG`, not on a colored hero band — same
+  grammar, adapted for a transparent small accent (see `medicines-accent.svg`
+  for the same adaptation).

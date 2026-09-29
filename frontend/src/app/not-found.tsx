@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Stethoscope } from "lucide-react";
 import { TEAL, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT } from "@/components/diag/theme";
 
 export default function NotFound() {
@@ -13,9 +12,17 @@ export default function NotFound() {
         animate={{ opacity: 1, y: 0 }}
         className="space-y-6 max-w-sm"
       >
-        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto" style={{ background: HERO_GRADIENT }}>
-          <Stethoscope className="w-8 h-8 text-white" strokeWidth={2} />
-        </div>
+        {/* Custom illustration (see public/illustrations/README.md): a map
+            pin marking the dead end, with a broken amber path ring, forking
+            into the same two ways back offered by the buttons below (a
+            medicine capsule for Order Medicine, a pulse line for Find
+            Treatment) — small accent size, not a full hero. */}
+        <img
+          src="/illustrations/not-found-pin.svg"
+          alt=""
+          aria-hidden="true"
+          className="w-28 h-28 mx-auto"
+        />
         <div>
           <p className="text-8xl font-black font-display mb-3" style={{ color: "rgba(11,32,39,0.08)" }}>404</p>
           <h1 className="text-2xl font-bold font-display mb-2" style={{ color: TEXT }}>
