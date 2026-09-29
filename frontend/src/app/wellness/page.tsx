@@ -171,7 +171,6 @@ export default function WellnessPage() {
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
         {/* Typography-led hero — solid gradient field + dot-grid texture,
             no stock photography (redesign, 2026-09-29). */}
-        <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-14 pb-14 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
           <div className="text-center lg:text-left">
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">Wellness</h1>

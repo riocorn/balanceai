@@ -92,8 +92,6 @@ export default function PharmacyIntakePage() {
           texture and two soft outline rings, matching the same device used
           on /symptom-checker so the two entry points feel like one site. ── */}
       <div className="relative overflow-hidden" style={{ background: GREEN }}>
-        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
-        <div className="absolute -left-16 bottom-0 w-64 h-64 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.10)" }} />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-6 sm:pt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* ── Left: rotating bold text block + search ── */}

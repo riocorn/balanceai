@@ -59,7 +59,6 @@ export default function ConsultADoctorPage() {
             /symptom-checker and /pharmacy, so all three primary entry
             points read as one considered layout system rather than
             interchangeable banner templates. */}
-        <div className="absolute -right-24 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         <div className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-16 pb-16 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div className="text-center lg:text-left">
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight leading-[1.05]">
@@ -99,7 +98,7 @@ export default function ConsultADoctorPage() {
         </h2>
         <div className="grid sm:grid-cols-2 gap-4 mb-16">
           {CONSULT_STEPS.map(({ icon: Icon, title, detail }, i) => (
-            <Card key={title} className="!ring-0 !py-0 sc-card sc-card-interactive p-5 flex items-start gap-4" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
+            <Card key={title} className="!ring-0 !py-0 sc-card sc-card-interactive p-5 flex items-start gap-4 relative" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-xs font-extrabold text-white" style={{ background: HERO_GRADIENT }}>
                 {i + 1}
               </div>
@@ -110,6 +109,18 @@ export default function ConsultADoctorPage() {
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: MUTED }}>{detail}</p>
               </div>
+              {/* Real WhatsApp confirmation step gets its own illustration from
+                  the colorful library — the exact real mechanism this card
+                  describes, not decoration for its own sake. */}
+              {i === 2 && (
+                // eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG
+                <img
+                  src="/illustrations/library/whatsapp-review.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute top-3 right-3 w-12 h-12 opacity-90"
+                />
+              )}
             </Card>
           ))}
         </div>

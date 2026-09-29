@@ -96,7 +96,6 @@ export default function MedicinesPage() {
           (redesign, 2026-09-29), same device used across the redesigned
           pages so the site reads as one system. ── */}
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         {/* Custom vector illustration (hand-built — see
             public/illustrations/README.md): a small corner accent, not a
             full hero illustration — this hero's real focal element is the

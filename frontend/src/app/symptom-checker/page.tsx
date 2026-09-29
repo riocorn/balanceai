@@ -446,16 +446,6 @@ export default function SymptomCheckerPage() {
               dot-grid texture (a considered graphic device, not a blurred
               "SaaS gradient blob"), and two large soft rings that echo the
               logo's pulse mark rather than any photographic content. */}
-          <div
-            className="absolute -right-32 -top-40 w-[30rem] h-[30rem] rounded-full pointer-events-none"
-            aria-hidden="true"
-            style={{ border: "1px solid rgba(255,255,255,0.14)" }}
-          />
-          <div
-            className="absolute -right-16 -top-16 w-72 h-72 rounded-full pointer-events-none"
-            aria-hidden="true"
-            style={{ border: "1px solid rgba(255,255,255,0.10)" }}
-          />
 
           <div className="relative max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center text-center lg:text-left pt-6">
             <div>
