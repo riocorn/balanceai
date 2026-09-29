@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /history
+Disallow: /food-history
+Disallow: /pharmacy/cart
+Disallow: /pharmacy/checkout
 
 Sitemap: https://balanceai.app/sitemap.xml

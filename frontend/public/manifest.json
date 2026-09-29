@@ -1,11 +1,11 @@
 {
-  "name": "BalanceAI — Nutrition Deficiency Detector",
+  "name": "BalanceAI — Symptom Checker, Doctor Review & Medicine",
   "short_name": "BalanceAI",
-  "description": "25 nutrient deficiencies detected in 2 minutes. No blood test. Free. For India.",
+  "description": "Describe your symptoms, get matched to real medicines with doctor review on WhatsApp before checkout, plus free AI nutrition deficiency detection.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#06060a",
-  "theme_color": "#06060a",
+  "background_color": "#F5EDE0",
+  "theme_color": "#1D5C3D",
   "orientation": "portrait-primary",
   "categories": ["health", "medical", "lifestyle"],
   "lang": "en-IN",
@@ -25,17 +25,24 @@
   ],
   "shortcuts": [
     {
-      "name": "New Analysis",
-      "short_name": "Analyze",
-      "description": "Start a new nutrition analysis",
-      "url": "/analyze",
+      "name": "Find Treatment",
+      "short_name": "Symptoms",
+      "description": "Describe your symptoms and find real medicines",
+      "url": "/symptom-checker",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Dashboard",
-      "short_name": "Dashboard",
-      "description": "View your health dashboard",
-      "url": "/dashboard",
+      "name": "Order Medicine",
+      "short_name": "Pharmacy",
+      "description": "Order medicine with doctor review",
+      "url": "/pharmacy",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "New Nutrition Analysis",
+      "short_name": "Analyze",
+      "description": "Start a new nutrition analysis",
+      "url": "/analyze",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
