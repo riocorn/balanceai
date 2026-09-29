@@ -17,15 +17,15 @@ const FOOTER_LINK_STYLE = { color: MUTED, transition: TRANSITION_ALL };
 // of a bolted-on template footer.
 export default function SiteFooter() {
   return (
-    <footer style={{ background: SURFACE, borderTop: `3px solid ${TEAL}` }} className="px-4 py-14">
+    <footer style={{ background: SURFACE, borderTop: `1px solid ${BORDER}` }} className="px-4 py-14">
       <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
         <div>
-          <p className="flex items-center gap-2 font-display font-extrabold text-lg mb-4" style={{ color: TEXT }}>
+          <p className="flex items-center gap-2 font-bold text-lg mb-4" style={{ color: TEAL }}>
             {/* eslint-disable-next-line @next/next/no-img-element -- static local vector brand mark */}
             <img src="/illustrations/brand-mark.svg" alt="" aria-hidden="true" className="w-7 h-7 shrink-0" />
-            Balance<span style={{ color: TEAL }}>AI</span>
+            BalanceAI
           </p>
-          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
+          <p className="font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Company
           </p>
           <p className="text-sm leading-relaxed mb-4" style={{ color: MUTED }}>
@@ -42,7 +42,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
+          <p className="font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Product
           </p>
           <ul className="space-y-2.5 text-sm">
@@ -75,7 +75,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
+          <p className="font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Support
           </p>
           <ul className="space-y-2.5 text-sm">
@@ -98,7 +98,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
+          <p className="font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Legal
           </p>
           <ul className="space-y-2.5 text-sm">
