@@ -1,373 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   viewBox="0 0 480 480"
-   version="1.1"
-   id="svg-consult-hero"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs99" />
-  <style>
-    @keyframes typingDot { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
-    .typing-dot { animation: typingDot 1.4s ease-in-out infinite; transform-origin: center; }
-    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .radar-sweep { animation: radarSweep 4s linear infinite; transform-origin: 280px 220px; }
-  </style>
-  <circle
-     cx="280"
-     cy="220"
-     r="178"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="1"
-     stroke-dasharray="1 8"
-     opacity="0.14"
-     id="circle2" />
-  <circle
-     cx="280"
-     cy="220"
-     r="124"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="1.75"
-     stroke-dasharray="1 6"
-     opacity="0.28"
-     id="circle4" />
-  <!-- scan-sweep, continuously rotating -->
-  <g class="radar-sweep">
-    <path d="M280,220 L280,120 A100,100 0 0 1 344,151 Z" fill="#ffffff" opacity="0.1" />
-    <line x1="280" y1="220" x2="344" y2="151" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+<svg viewBox="0 0 480 540" xmlns="http://www.w3.org/2000/svg" id="svg-consult-hero">
+<title>Case to doctor confirmation, animated</title>
+<style>
+.float{animation:bob 5s ease-in-out infinite}
+.float.d1{animation-delay:-1.2s}.float.d2{animation-delay:-2.4s}.float.d3{animation-delay:-3.6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.tick{stroke-dasharray:26;stroke-dashoffset:26;animation:tick 3s ease-in-out infinite}
+@keyframes tick{0%,10%{stroke-dashoffset:26}30%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:26}}
+.typing{animation:typedot 1.4s ease-in-out infinite}
+.typing.t2{animation-delay:.2s}.typing.t3{animation-delay:.4s}
+@keyframes typedot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+.ring.r2{animation-delay:-1.2s}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.8);opacity:0}}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:tw 2.8s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.1)}}
+.t{font-family:sans-serif}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.tick{stroke-dashoffset:0}}
+</style>
+
+<path d="M240 40 C 360 30 450 130 445 260 C 440 400 350 480 235 478 C 120 476 40 390 45 255 C 50 130 130 50 240 40 Z" fill="#ffffff" opacity="0.05"/>
+
+<g stroke-linecap="round" fill="none">
+  <g class="twinkle" stroke="#ffffff" stroke-width="3" opacity="0.5"><path d="M36 120 H52 M44 112 V128"/></g>
+  <g class="twinkle" stroke="#7C5CBF" stroke-width="3" style="animation-delay:-1s"><path d="M420 90 H436 M428 82 V98"/></g>
+  <g class="twinkle" stroke="#ffffff" stroke-width="3" opacity="0.4" style="animation-delay:-2s"><path d="M30 440 H46 M38 432 V448"/></g>
+</g>
+
+<!-- floating stethoscope badge, upper-left -->
+<g class="float d1">
+  <circle cx="86" cy="110" r="46" fill="#0F3D2E"/>
+  <g class="pulse">
+    <circle cx="72" cy="92" r="7" fill="#2F9E5B"/>
+    <circle cx="100" cy="92" r="7" fill="#2F9E5B"/>
+    <path d="M72,99 Q72,120 86,126 Q100,120 100,99" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="86" y1="126" x2="86" y2="136" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="86" cy="140" r="7" fill="#ffffff"/>
   </g>
-  <!-- primary instrument ring -->
-  <circle
-     cx="280"
-     cy="220"
-     r="100"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="3.5"
-     id="circle6" />
-  <!-- rim ticks -->
-  <g
-     stroke="#ffffff"
-     stroke-width="2.2"
-     stroke-linecap="round"
-     opacity="0.8"
-     id="g32">
-    <line
-       x1="374"
-       y1="220"
-       x2="384"
-       y2="220"
-       id="line8" />
-    <line
-       x1="361"
-       y1="267"
-       x2="370"
-       y2="272"
-       id="line10" />
-    <line
-       x1="327"
-       y1="301"
-       x2="332"
-       y2="310"
-       id="line12" />
-    <line
-       x1="280"
-       y1="314"
-       x2="280"
-       y2="324"
-       id="line14" />
-    <line
-       x1="233"
-       y1="301"
-       x2="228"
-       y2="310"
-       id="line16" />
-    <line
-       x1="199"
-       y1="267"
-       x2="190"
-       y2="272"
-       id="line18" />
-    <line
-       x1="186"
-       y1="220"
-       x2="176"
-       y2="220"
-       id="line20" />
-    <line
-       x1="199"
-       y1="173"
-       x2="190"
-       y2="168"
-       id="line22" />
-    <line
-       x1="233"
-       y1="139"
-       x2="228"
-       y2="130"
-       id="line24" />
-    <line
-       x1="280"
-       y1="126"
-       x2="280"
-       y2="116"
-       id="line26" />
-    <line
-       x1="327"
-       y1="139"
-       x2="332"
-       y2="130"
-       id="line28" />
-    <line
-       x1="361"
-       y1="173"
-       x2="370"
-       y2="168"
-       id="line30" />
-  </g>
-  <!-- confirmed arc (0deg to 90deg, top-right quadrant) -->
-  <path
-     d="M280,116 A104,104 0 0 1 384,220"
-     fill="none"
-     stroke="#2F9E5B"
-     stroke-width="3.75"
-     opacity="0.85"
-     id="path34" />
-  <circle
-     cx="384"
-     cy="220"
-     r="4"
-     fill="#2F9E5B"
-     id="circle36" />
-  <!-- stethoscope glyph, centered in the ring -->
-  <g
-     stroke="#ffffff"
-     stroke-width="3.5"
-     stroke-linecap="round"
-     fill="none"
-     id="g46">
-    <line
-       x1="258"
-       y1="184"
-       x2="258"
-       y2="200"
-       id="line38" />
-    <line
-       x1="302"
-       y1="184"
-       x2="302"
-       y2="200"
-       id="line40" />
-    <path
-       d="M258,200 Q258,224 280,228 Q302,224 302,200"
-       id="path42" />
-    <line
-       x1="280"
-       y1="228"
-       x2="280"
-       y2="252"
-       id="line44" />
-  </g>
-  <circle
-     cx="280"
-     cy="262"
-     r="11"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="3.5"
-     id="circle48" />
-  <circle
-     cx="280"
-     cy="262"
-     r="3.5"
-     fill="#ffffff"
-     id="circle50" />
-  <!-- satellite: your case (document outline), upper-left -->
-  <rect
-     x="58"
-     y="76"
-     width="76"
-     height="94"
-     rx="8"
-     fill="none"
-     stroke="#7C5CBF"
-     stroke-width="3"
-     opacity="0.95"
-     id="rect52" />
-  <line
-     x1="74"
-     y1="100"
-     x2="118"
-     y2="100"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.55"
-     id="line54" />
-  <line
-     x1="74"
-     y1="116"
-     x2="118"
-     y2="116"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.55"
-     id="line56" />
-  <line
-     x1="74"
-     y1="132"
-     x2="102"
-     y2="132"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.55"
-     id="line58" />
-  <path
-     d="M134,150 L192,178"
-     stroke="#ffffff"
-     stroke-width="2"
-     opacity="0.5"
-     fill="none"
-     id="path60" />
-  <circle
-     cx="134"
-     cy="150"
-     r="2.75"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     id="circle62" />
-  <circle
-     cx="195"
-     cy="180"
-     r="2.75"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     id="circle64" />
-  <text
-     x="58"
-     y="66"
-     font-family="sans-serif"
-     font-size="11"
-     fill="#ffffff"
-     opacity="0.65"
-     id="text66">your case</text>
-  <!-- satellite: whatsapp (chat outline), lower-right -->
-  <rect
-     x="360"
-     y="300"
-     width="80"
-     height="48"
-     rx="15"
-     fill="none"
-     stroke="#5B6EE1"
-     stroke-width="3"
-     opacity="0.95"
-     id="rect68" />
-  <path
-     d="M382,348 L374,364 L398,348 Z"
-     fill="none"
-     stroke="#5B6EE1"
-     stroke-width="3"
-     stroke-linejoin="round"
-     opacity="0.95"
-     id="path70" />
-  <circle
-     cx="386"
-     cy="324"
-     r="3"
-     fill="#2F9E5B"
-     id="circle72"
-     class="typing-dot"
-     style="animation-delay:0s" />
-  <circle
-     cx="400"
-     cy="324"
-     r="3"
-     fill="#C98A2C"
-     id="circle74"
-     class="typing-dot"
-     style="animation-delay:0.2s" />
-  <circle
-     cx="414"
-     cy="324"
-     r="3"
-     fill="#E0475A"
-     id="circle76"
-     class="typing-dot"
-     style="animation-delay:0.4s" />
-  <path
-     d="M360,296 L332,270"
-     stroke="#ffffff"
-     stroke-width="2"
-     opacity="0.5"
-     fill="none"
-     id="path78" />
-  <circle
-     cx="362"
-     cy="298"
-     r="2.75"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     id="circle80" />
-  <circle
-     cx="329"
-     cy="267"
-     r="2.75"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     id="circle82" />
-  <text
-     x="440"
-     y="378"
-     text-anchor="end"
-     font-family="sans-serif"
-     font-size="11"
-     fill="#ffffff"
-     opacity="0.65"
-     id="text84">whatsapp review</text>
-  <!-- honest beta note near the ring -->
-  <path
-     d="M280,320 L280,352"
-     stroke="#ffffff"
-     stroke-width="1.75"
-     stroke-dasharray="1 5"
-     opacity="0.5"
-     id="path86" />
-  <circle
-     cx="280"
-     cy="356"
-     r="2.5"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="1.75"
-     opacity="0.8"
-     id="circle88" />
-  <text
-     x="280"
-     y="374"
-     text-anchor="middle"
-     font-family="sans-serif"
-     font-size="11"
-     fill="#ffffff"
-     opacity="0.65"
-     id="text90">beta — self-confirmed</text>
-  <circle
-     cx="40"
-     cy="410"
-     r="2.5"
-     fill="#ffffff"
-     opacity="0.3"
-     id="circle92" />
-  <circle
-     cx="440"
-     cy="70"
-     r="2.5"
-     fill="#ffffff"
-     opacity="0.25"
-     id="circle94" />
+</g>
+
+<!-- floating document/case badge, upper-right -->
+<g class="float d2">
+  <circle cx="404" cy="108" r="50" fill="#0F3D2E"/>
+  <rect x="384" y="84" width="40" height="48" rx="6" fill="none" stroke="#7C5CBF" stroke-width="4"/>
+  <line x1="392" y1="98" x2="416" y2="98" stroke="#7C5CBF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="392" y1="108" x2="416" y2="108" stroke="#7C5CBF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="392" y1="118" x2="408" y2="118" stroke="#7C5CBF" stroke-width="3" stroke-linecap="round"/>
+</g>
+
+<!-- phone mockup: the real consultation flow -->
+<g class="float">
+  <rect x="140" y="150" width="200" height="360" rx="34" fill="#0F3D2E"/>
+  <rect x="150" y="162" width="180" height="336" rx="24" fill="#ffffff"/>
+  <rect x="216" y="168" width="48" height="7" rx="3.5" fill="#0F3D2E"/>
+
+  <rect x="164" y="188" width="152" height="30" rx="15" fill="#F5EDE0"/>
+  <text class="t" x="178" y="207" font-size="10" fill="#5B7480">Describe your case...</text>
+
+  <rect x="164" y="230" width="152" height="66" rx="14" fill="#F1F9F5"/>
+  <text class="t" x="176" y="250" font-size="9.5" font-weight="700" fill="#1D5C3D">Your case</text>
+  <text class="t" x="176" y="264" font-size="8.5" fill="#5B7480">Sent for doctor review</text>
+  <rect x="176" y="276" width="128" height="6" rx="3" fill="#DCECE0"/>
+  <rect x="176" y="286" width="90" height="6" rx="3" fill="#E7EFE7"/>
+
+  <!-- whatsapp chat bubble with typing dots -->
+  <rect x="164" y="308" width="152" height="60" rx="16" fill="#25D366"/>
+  <circle cx="184" cy="332" r="4" fill="#ffffff" class="typing"/>
+  <circle cx="198" cy="332" r="4" fill="#ffffff" class="typing t2"/>
+  <circle cx="212" cy="332" r="4" fill="#ffffff" class="typing t3"/>
+  <text class="t" x="176" y="352" font-size="8.5" font-weight="700" fill="#ffffff">Reviewing on WhatsApp</text>
+
+  <rect x="164" y="380" width="152" height="96" rx="16" fill="#0F3D2E"/>
+  <circle cx="188" cy="408" r="14" fill="#2F9E5B"/>
+  <path class="tick" d="M181,408 L186,414 L196,400" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="t" x="210" y="405" font-size="10" font-weight="700" fill="#ffffff">Confirmed (beta)</text>
+  <text class="t" x="210" y="419" font-size="8.5" fill="#9FC2AE">Self-confirmed by you</text>
+  <rect x="184" y="440" width="112" height="26" rx="13" fill="#F5EDE0"/>
+  <text class="t" x="240" y="457" font-size="8.5" font-weight="700" fill="#1D5C3D" text-anchor="middle">Checkout unlocked</text>
+</g>
+
+<!-- floating heart badge, lower-left -->
+<g class="float d3">
+  <circle cx="70" cy="420" r="40" fill="#0F3D2E"/>
+  <path class="pulse" d="M70 438 C 48 422 54 400 70 410 C 86 400 92 422 70 438 Z" fill="#E0475A"/>
+  <circle class="ring" cx="70" cy="420" r="44" fill="none" stroke="#E0475A" stroke-width="2" opacity="0.5"/>
+  <circle class="ring r2" cx="70" cy="420" r="44" fill="none" stroke="#E0475A" stroke-width="2" opacity="0.5"/>
+</g>
+
+<!-- floating honest-beta badge, lower-right -->
+<g class="float d2">
+  <rect x="374" y="392" width="90" height="46" rx="14" fill="#0F3D2E"/>
+  <circle cx="396" cy="415" r="11" fill="#C98A2C"/>
+  <text class="t" x="396" y="419" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">i</text>
+  <text class="t" x="412" y="412" font-size="8.5" font-weight="700" fill="#ffffff">No fake</text>
+  <text class="t" x="412" y="423" font-size="8.5" font-weight="700" fill="#ffffff">doctor</text>
+</g>
 </svg>
