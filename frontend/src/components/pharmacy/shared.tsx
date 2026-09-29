@@ -113,7 +113,7 @@ export function MedicineProductCard({
     >
       {isCurative && (
         <span
-          className="text-[10px] font-bold uppercase tracking-wide w-fit px-2 py-0.5 rounded"
+          className="text-xs font-bold w-fit px-2 py-0.5 rounded"
           style={{ background: "#eef7f2", color: GREEN }}
         >
           Real curative option
@@ -149,7 +149,7 @@ export function MedicineProductCard({
           }}
         >
           {inCart ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-          {inCart ? "ADDED" : "ADD"}
+          {inCart ? "Added" : "Add"}
         </button>
       </div>
     </div>

@@ -126,7 +126,7 @@ export default function PharmacyResultsPage() {
 
             {detail.curative_option && (
               <div className="rounded-xl p-4 mb-4" style={{ background: "#fff", border: `2px solid ${GREEN}` }}>
-                <p className="text-[10px] font-bold uppercase tracking-wide mb-1" style={{ color: GREEN }}>
+                <p className="text-xs font-bold mb-1" style={{ color: GREEN }}>
                   Real curative option
                 </p>
                 <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>{detail.curative_option.name}</p>

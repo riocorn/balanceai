@@ -625,30 +625,12 @@ export default function SymptomCheckerPage() {
             </div>
           </div>
 
-          {/* Trust ladder — solid cards, not translucent glass (a translucent
-              rgba(255,255,255,0.14) fill against a photo/gradient backdrop
-              reads as nearly invisible depending on what's behind it — real
-              contrast bug, not a style choice). Each card gets its own
-              accent from the secondary palette instead of uniform white
-              icons, so the strip reads as three distinct steps rather than
-              one repeated tile. */}
-          <div className="relative max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 text-left">
-            {TRUST_STEPS.map(({ icon: Icon, title, accent }) => (
-              <div
-                key={title}
-                className="rounded-2xl p-4 flex items-start gap-3 transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: SURFACE, boxShadow: "0 10px 24px rgba(11,32,39,0.18)" }}
-              >
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-                  style={{ background: accent }}
-                >
-                  <Icon className="w-4 h-4 text-white" strokeWidth={2.25} />
-                </div>
-                <p className="text-sm font-semibold leading-snug" style={{ color: TEXT }}>{title}</p>
-              </div>
-            ))}
-          </div>
+          {/* Redesign, 2026-09-29: dropped the 3-card icon-in-circle "trust
+              ladder" that used to sit here — it duplicated the numbered
+              How It Works rail further down the page (same three steps,
+              same icons) and was exactly the generic SaaS-card-grid pattern
+              this redesign is removing everywhere else. The hero now ends
+              on the trust seal above instead of a second, redundant grid. */}
         </div>
 
         {/* Status card, floating over the bottom edge of the colored band —
@@ -959,10 +941,12 @@ export default function SymptomCheckerPage() {
         <CategoryRail linkToMedicines />
       </section>
 
-      {/* Trust claims band — layered gradient + texture, not a flat fill or
-          stock photo (redesign, 2026-09-29). */}
+      {/* Trust claims band — redesigned, 2026-09-29, from a 2x2 icon-circle
+          card grid (the generic "SaaS card kit" tell) into an asymmetric
+          headline + list split, closer to how a considered product page
+          actually earns trust: one confident claim, then the specifics. */}
       <section
-        className="relative w-full py-14 px-4 overflow-hidden"
+        className="relative w-full py-16 px-4 overflow-hidden"
         style={{ background: `linear-gradient(120deg, ${TEAL} 0%, ${TEAL} 35%, ${BLUE} 100%)` }}
       >
         <div
@@ -970,36 +954,18 @@ export default function SymptomCheckerPage() {
           aria-hidden="true"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
         />
-        {/* Real bug found and fixed here: ScrollReveal's GSAP scroll-trigger
-            reveal left the 3rd/4th card in this grid permanently stuck at
-            partial opacity in live testing (reproduced twice) — likely the
-            trigger position going stale once the hero photo above finishes
-            loading and shifts layout. A broken half-invisible section is
-            worse than losing a stagger-in effect, so this grid renders
-            plainly instead of through ScrollReveal. */}
-        <div className="relative max-w-5xl mx-auto grid sm:grid-cols-2 gap-4">
-          {TRUST_BADGES.map(({ icon: Icon, title, detail, accent }) => (
-            <div
-              key={title}
-              className="group sc-card sc-card-interactive p-5 flex items-start gap-4"
-              style={{ background: SURFACE, boxShadow: "0 14px 30px rgba(11,32,39,0.20)" }}
-            >
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-6"
-                style={{ background: `linear-gradient(135deg, ${accent} 0%, ${TEAL} 100%)`, boxShadow: "0 6px 14px rgba(11,32,39,0.20)" }}
-              >
-                <Icon className="w-5 h-5 text-white" strokeWidth={2.25} />
+        <div className="relative max-w-5xl mx-auto grid sm:grid-cols-[1fr_1.2fr] gap-10 items-start">
+          <h2 className="font-display font-bold text-white leading-[1.05]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>
+            Why people trust BalanceAI with what they tell it.
+          </h2>
+          <div className="divide-y divide-[rgba(255,255,255,0.18)]">
+            {TRUST_BADGES.map(({ title, detail }) => (
+              <div key={title} className="py-4 first:pt-0">
+                <p className="text-sm font-bold text-white mb-1">{title}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{detail}</p>
               </div>
-              <div>
-                <p className="text-sm font-bold mb-1" style={{ color: TEXT }}>
-                  {title}
-                </p>
-                <p className="text-xs leading-relaxed" style={{ color: MUTED }}>
-                  {detail}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
