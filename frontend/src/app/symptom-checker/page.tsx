@@ -1061,34 +1061,46 @@ export default function SymptomCheckerPage() {
         </div>
       </section>
 
-      {/* How It Works — tinted full-bleed band for color rhythm */}
-      <section
-        id="how-it-works"
-        className="w-full py-20 px-4 scroll-mt-24"
-        style={{ background: "rgba(30,111,217,0.05)" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <SectionHeading eyebrow="The process" title="How It Works" accent={BLUE} />
-          <ScrollReveal className="grid sm:grid-cols-3 gap-6">
+      {/* How It Works — a real connected sequence (describe -> doctor review
+          -> treatment), so it earns a numbered rail rather than three
+          identical floating-badge cards. Numerals are set in the display
+          serif as a genuine type-driven device (ghost-weight, large scale)
+          instead of a small colored pill repeated on each card, and a single
+          running rule ties the three stages together left-to-right on
+          desktop / top-to-bottom on mobile, reading as one continuous
+          journey instead of three interchangeable tiles. */}
+      <section id="how-it-works" className="w-full py-24 px-4 scroll-mt-24" style={{ background: SURFACE }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-14 max-w-lg">
+            <p className="text-sm font-semibold mb-2" style={{ color: BLUE }}>How it works</p>
+            <h2 className="font-display leading-[1.08] text-3xl sm:text-4xl" style={{ color: TEXT }}>
+              From what you feel to what you take —{" "}
+              <span style={{ color: BLUE, fontStyle: "italic" }}>three real steps.</span>
+            </h2>
+          </div>
+          <div className="relative grid sm:grid-cols-3 gap-10 sm:gap-8">
+            <div
+              className="hidden sm:block absolute top-7 left-0 right-0 h-px"
+              style={{ background: "linear-gradient(90deg, #E4EBEE 0%, #E4EBEE 100%)" }}
+              aria-hidden="true"
+            />
             {TRUST_STEPS.map(({ icon: Icon, title, detail, accent }, i) => (
-              <div
-                key={title}
-                className="relative sc-card sc-card-interactive p-6 pt-8 text-center"
-                style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
-              >
-                <span
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-extrabold px-3 py-1 rounded-full text-white"
-                  style={{ background: `linear-gradient(135deg, ${accent} 0%, ${TEAL} 100%)`, boxShadow: "0 6px 14px rgba(11,32,39,0.25)" }}
-                >
-                  STEP {String(i + 1).padStart(2, "0")}
-                </span>
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ background: `linear-gradient(135deg, ${accent} 0%, ${TEAL} 100%)`, boxShadow: "0 8px 18px rgba(11,32,39,0.20)" }}
-                >
-                  <Icon className="w-6 h-6 text-white" strokeWidth={2} />
+              <div key={title} className="relative">
+                <div className="flex items-center gap-4 sm:block">
+                  <span
+                    className="font-display shrink-0 leading-none select-none"
+                    style={{ fontSize: "3.25rem", color: accent, opacity: 0.28 }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div
+                    className="relative z-10 w-11 h-11 rounded-full flex items-center justify-center shrink-0 sm:-mt-9 sm:ml-11"
+                    style={{ background: accent, boxShadow: `0 8px 18px ${accent}40` }}
+                  >
+                    <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+                  </div>
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ color: TEXT }}>
+                <h3 className="text-lg font-semibold mt-4 mb-2" style={{ color: TEXT }}>
                   {title}
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
@@ -1096,7 +1108,7 @@ export default function SymptomCheckerPage() {
                 </p>
               </div>
             ))}
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
