@@ -32,7 +32,7 @@ import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import { CATEGORY_TILES } from "@/components/diag/categories";
-import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER, BORDER, DISEASE_COUNT, MEDICINE_COUNT } from "@/components/diag/theme";
+import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER } from "@/components/diag/theme";
 
 // ---------------------------------------------------------------------------
 // Real API response shape (verified against routers/medical.py live source)
@@ -444,24 +444,79 @@ export default function SymptomCheckerPage() {
         </div>
       )}
 
-      {/* Hero — deliberately NOT a flat gradient-band-with-text-dropped-on-top
-          (the previous shape, kept even through 2 color-only passes). Real
-          asymmetric split instead: a plain white typography column that
-          gets to breathe, cut hard against a solid saturated color panel —
-          the panel carries the photo/illustration, the type carries the
-          message. One headline, one supporting line, one CTA-adjacent trust
-          line — the old version stacked a slide badge + headline + sub +
-          carousel dots + a trust-badges row + a trust-seal card + a 3-icon
-          flow ALL inside one gradient band, which is real clutter regardless
-          of color. That's been redistributed: the icon-flow lives in the
-          color panel now, TRUST_STEPS moved to its own section below with
-          room to breathe instead of being crammed under the fold. */}
+      {/* Hero */}
       <section ref={heroSectionRef} className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
-          {/* Left: pure typography, plain background — the entire point is
-              contrast with the old busy-photo-plus-scrim-plus-dots hero. */}
-          <div className="relative px-4 sm:px-10 lg:px-14 pt-16 pb-14 lg:py-24 flex flex-col justify-center" style={{ background: BG }}>
-            <div className="max-w-xl">
+        {/* Full-bleed colored band */}
+        <div
+          className="relative overflow-hidden pt-14 pb-36 sm:pb-40 px-4 rounded-b-[32px] sm:rounded-b-[48px]"
+          style={{ background: HERO_GRADIENT }}
+        >
+          {/* Real photography backdrop — doctors reviewing a case together,
+              tinted with the brand gradient so the white headline text stays
+              fully legible (Unsplash, license-clear, verified 2026-09-28). */}
+          <Image
+            src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1600&q=75"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover pointer-events-none"
+            aria-hidden="true"
+          />
+          {/* A near-opaque overlay across the WHOLE hero previously hid the
+              real photo almost entirely (read as a flat gradient again,
+              defeating the point of using real photography). The brand tint
+              is now light and even, and the actual contrast work is done by
+              the localized scrim below — strong only behind the left-aligned
+              text column, fading out so the photo is genuinely visible on
+              the right/illustration side. */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.38 }} />
+          {/* Left-side scrim — the headline/search copy is left-aligned, so it
+              needs the strongest contrast on that side; the photo is left
+              clearly visible toward the right/illustration column. */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{ background: "linear-gradient(100deg, rgba(3,15,18,0.82) 0%, rgba(3,15,18,0.66) 42%, rgba(3,15,18,0.25) 68%, rgba(3,15,18,0) 88%)" }}
+          />
+          {/* Dense dot-grid texture — deliberately not a soft blurred "SaaS
+              gradient blob"; matches the tighter, information-dense visual
+              language of real e-pharmacy hero banners */}
+          <div
+            className="absolute inset-0 opacity-[0.10] pointer-events-none"
+            aria-hidden="true"
+            style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "20px 20px" }}
+          />
+
+          {/* Rotating offer/trust ticker — mirrors the promo-carousel strip real pharmacy hero
+              banners run edge-to-edge across the top of the banner */}
+          <div
+            className="relative -mx-4 mb-8 overflow-hidden ticker-wrap"
+            style={{ background: "rgba(255,255,255,0.12)", borderTop: "1px solid rgba(255,255,255,0.22)", borderBottom: "1px solid rgba(255,255,255,0.22)" }}
+            aria-hidden="true"
+          >
+            <div className="ticker-inner py-2">
+              {[...TICKER_ITEMS, ...TICKER_ITEMS].map((t, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-2 px-6 whitespace-nowrap text-xs sm:text-sm font-semibold text-white shrink-0"
+                >
+                  <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: "rgba(255,255,255,0.85)" }} />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center text-center lg:text-left">
+            <div>
+              {/* Real root cause of a reported "washed out" hero headline:
+                  mode="wait" made the outgoing slide fade all the way to
+                  opacity 0 BEFORE the incoming one faded back in, creating a
+                  real ~0.7s low-contrast window every 5s (easy to catch in a
+                  glance or a screenshot). Opacity now only dips to 0.9 for a
+                  brief 150ms, instead of a full 0 -> 1 crossfade — the
+                  headline stays high-contrast at every instant. */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={slide}
@@ -471,42 +526,33 @@ export default function SymptomCheckerPage() {
                   transition={{ duration: 0.15, ease: "easeOut" }}
                 >
                   <span
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-7"
-                    style={{ background: "rgba(14,124,134,0.1)", color: TEAL }}
+                    className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full mb-5 backdrop-blur-sm"
+                    style={{ background: "rgba(255,255,255,0.18)", color: "#FFFFFF", border: "1px solid rgba(255,255,255,0.35)" }}
                   >
-                    <ShieldCheck className="w-3.5 h-3.5" />
                     {HERO_SLIDES[slide].badge}
                   </span>
                   <h1
-                    className="font-display leading-[0.98] mb-6"
-                    style={{ color: TEXT }}
+                    className="font-display font-bold leading-tight mb-4 text-white"
+                    style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}
                   >
-                    <span className="block font-bold" style={{ fontSize: "clamp(2.25rem, 4.4vw, 3.5rem)" }}>
-                      {HERO_SLIDES[slide].headline.split(".")[0]}.
-                    </span>
-                    {HERO_SLIDES[slide].headline.split(".")[1] && (
-                      <span
-                        className="block italic font-medium mt-1"
-                        style={{ fontSize: "clamp(2.25rem, 4.4vw, 3.5rem)", color: TEAL }}
-                      >
-                        {HERO_SLIDES[slide].headline.split(".")[1].trim()}
-                      </span>
-                    )}
+                    {HERO_SLIDES[slide].headline}
                   </h1>
-                  <p className="text-lg leading-relaxed mb-8 max-w-md" style={{ color: MUTED }}>
+                  <p className="text-base leading-relaxed mb-5 max-w-xl mx-auto lg:mx-0" style={{ color: "rgba(255,255,255,0.92)" }}>
                     {HERO_SLIDES[slide].sub}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex items-center gap-4 mb-10">
+              {/* carousel controls — real-measured dot + arrow mechanic (Netmeds
+                  hero: circular semi-transparent chevrons + pill-shaped active dot) */}
+              <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
                 <button
-                  onClick={() => scrollToHero()}
-                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition-transform duration-200 hover:-translate-y-0.5"
-                  style={{ background: HERO_GRADIENT, boxShadow: "0 10px 24px rgba(14,124,134,0.32)" }}
+                  aria-label="Previous"
+                  onClick={() => setSlide((s) => (s - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+                  className="w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-[rgba(255,255,255,0.22)]"
+                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
                 >
-                  Describe your symptoms
-                  <ArrowRight className="w-4 h-4" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
                 <div className="flex items-center gap-1.5">
                   {HERO_SLIDES.map((_, i) => (
@@ -515,118 +561,117 @@ export default function SymptomCheckerPage() {
                       aria-label={`Slide ${i + 1}`}
                       onClick={() => setSlide(i)}
                       className="flex items-center justify-center rounded-full transition-all duration-200"
-                      style={{ width: 22, height: 22 }}
+                      style={{ width: 24, height: 24 }}
                     >
                       <span
                         className="rounded-full transition-all duration-200"
-                        style={{ width: i === slide ? 18 : 6, height: 6, background: i === slide ? TEAL : "#D5DEE1" }}
+                        style={{ width: i === slide ? 20 : 6, height: 6, background: i === slide ? EFFECTIVENESS : "rgba(255,255,255,0.35)" }}
                       />
                     </button>
                   ))}
                 </div>
+                <button
+                  aria-label="Next"
+                  onClick={() => setSlide((s) => (s + 1) % HERO_SLIDES.length)}
+                  className="w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-[rgba(255,255,255,0.22)]"
+                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
 
-              {/* Single trust line — replaces the old badges-row + trust-seal
-                  card + icon-flow triple-up; one honest, specific claim with
-                  real numbers instead of three overlapping reassurances. */}
-              <div className="flex items-center gap-3 pt-6" style={{ borderTop: `1px solid ${BORDER}` }}>
-                <div className="flex -space-x-2">
-                  {[TEAL, BLUE, ACCENT_PURPLE].map((c) => (
-                    <div key={c} className="w-8 h-8 rounded-full border-2 flex items-center justify-center" style={{ background: c, borderColor: SURFACE }}>
-                      <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm font-semibold" style={{ color: TEXT }}>
-                  {DISEASE_COUNT} conditions researched, {MEDICINE_COUNT.toLocaleString()} medicines cross-checked — every suggestion still goes to a doctor before checkout.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: solid color panel — the photo now sits inside a hard-
-              edged frame ON the color, not washed out behind translucent
-              text scrims. Genuinely different shape from the old full-bleed
-              photo-gradient hero. */}
-          <div className="relative min-h-[320px] lg:min-h-0 overflow-hidden" style={{ background: HERO_GRADIENT }}>
-            <div
-              className="absolute inset-0 opacity-[0.12] pointer-events-none"
-              aria-hidden="true"
-              style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
-            />
-            <div className="relative h-full flex flex-col items-center justify-center gap-8 px-8 py-14">
-              <div className="relative w-full max-w-sm aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-1">
-                <Image
-                  src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1200&q=75"
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 40vw"
-                  className="object-cover"
-                  aria-hidden="true"
-                />
-              </div>
-
-              {/* Bold illustration: speak -> AI+doctor -> medicine, now a
-                  compact floating card instead of loose icons stacked over
-                  a photo. */}
-              <div
-                className="flex items-center gap-2 sm:gap-3 rounded-2xl px-4 py-3 -rotate-1"
-                style={{ background: SURFACE, boxShadow: "0 18px 40px rgba(3,15,18,0.35)" }}
-                aria-hidden="true"
-              >
-                {[
-                  { Icon: Mic, label: "Bolo" },
-                  { Icon: Bot, label: "AI + Doctor" },
-                  { Icon: Pill, label: "Medicine" },
-                ].map(({ Icon, label }, idx, arr) => (
-                  <div key={label} className="flex items-center gap-2 sm:gap-3">
-                    <div className="flex flex-col items-center gap-1">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center"
-                        style={{ background: idx === 1 ? BLUE : TEAL }}
-                      >
-                        <Icon className="w-4.5 h-4.5 text-white" style={{ width: 18, height: 18 }} />
-                      </div>
-                      <span className="text-[10px] font-semibold whitespace-nowrap" style={{ color: TEXT }}>
-                        {label}
-                      </span>
-                    </div>
-                    {idx < arr.length - 1 && (
-                      <ArrowRight className="w-4 h-4 shrink-0" style={{ color: MUTED }} />
-                    )}
-                  </div>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 mb-6">
+                {TRUST_BADGES.map(({ title }) => (
+                  <span key={title} className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white">
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0" style={{ color: "rgba(255,255,255,0.85)" }} />
+                    {title}
+                  </span>
                 ))}
               </div>
+
+              {/* Trust seal — commercial framing, not a dataset statistic */}
+              <div className="flex justify-center lg:justify-start">
+                <div
+                  className="flex items-center gap-3 rounded-2xl px-5 py-3.5 transition-all duration-200 hover:-translate-y-1"
+                  style={{ background: SURFACE, boxShadow: "0 14px 30px rgba(11,32,39,0.22)" }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: HERO_GRADIENT }}
+                  >
+                    <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.25} />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-display font-extrabold text-base leading-tight" style={{ color: TEXT }}>
+                      Trusted Treatments, Sent for Doctor Review
+                    </p>
+                    <p className="text-[11px] font-semibold mt-0.5" style={{ color: MUTED }}>
+                      Checkout stays locked until you complete WhatsApp review
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bold illustration: speak -> AI+doctor -> medicine */}
+            <div className="flex items-center justify-center gap-2 sm:gap-4" aria-hidden="true">
+              {[
+                { Icon: Mic, label: "Bolo" },
+                { Icon: Bot, label: "AI + Doctor" },
+                { Icon: Pill, label: "Medicine" },
+              ].map(({ Icon, label }, idx, arr) => (
+                <div key={label} className="flex items-center gap-2 sm:gap-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <div
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                      style={{ background: "#FFFFFF" }}
+                    >
+                      <Icon className="w-7 h-7 sm:w-9 sm:h-9" style={{ color: idx === 1 ? BLUE : TEAL }} />
+                    </div>
+                    <span className="text-[11px] sm:text-xs font-semibold text-white whitespace-nowrap">
+                      {label}
+                    </span>
+                  </div>
+                  {idx < arr.length - 1 && (
+                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" style={{ color: "rgba(255,255,255,0.75)" }} />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Rotating trust ticker — now a slim, single-line strip sitting on
-            the seam between the two hero panels instead of inside the
-            gradient band competing with the headline. */}
-        <div
-          className="relative overflow-hidden ticker-wrap border-y"
-          style={{ background: SURFACE, borderColor: BORDER }}
-          aria-hidden="true"
-        >
-          <div className="ticker-inner py-2.5">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((t, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-2 px-6 whitespace-nowrap text-xs sm:text-sm font-semibold shrink-0"
-                style={{ color: MUTED }}
+          {/* Trust ladder — solid cards, not translucent glass (a translucent
+              rgba(255,255,255,0.14) fill against a photo/gradient backdrop
+              reads as nearly invisible depending on what's behind it — real
+              contrast bug, not a style choice). Each card gets its own
+              accent from the secondary palette instead of uniform white
+              icons, so the strip reads as three distinct steps rather than
+              one repeated tile. */}
+          <div className="relative max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 text-left">
+            {TRUST_STEPS.map(({ icon: Icon, title, accent }) => (
+              <div
+                key={title}
+                className="rounded-2xl p-4 flex items-start gap-3 transition-all duration-200 hover:-translate-y-0.5"
+                style={{ background: SURFACE, boxShadow: "0 10px 24px rgba(11,32,39,0.18)" }}
               >
-                <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: TEAL }} />
-                {t}
-              </span>
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                  style={{ background: accent }}
+                >
+                  <Icon className="w-4 h-4 text-white" strokeWidth={2.25} />
+                </div>
+                <p className="text-sm font-semibold leading-snug" style={{ color: TEXT }}>{title}</p>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Status card — surfaces real loading/error feedback for a query
-            submitted from the navbar's AI input while already on this page. */}
-        <div className="relative max-w-3xl mx-auto px-4 mt-8">
+        {/* Status card, floating over the bottom edge of the colored band —
+            the actual input now lives in the shared navbar next to the logo
+            (the site's one real AI input box); this card just surfaces
+            real loading/error feedback for a query submitted from there
+            while already on this page. */}
+        <div className="relative max-w-3xl mx-auto px-4 -mt-24 sm:-mt-28 pb-16">
           <div
             ref={heroCardRef}
             className={`rounded-2xl p-4 sm:p-6 transition-all duration-700 ease-out ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
@@ -647,29 +692,6 @@ export default function SymptomCheckerPage() {
                 {error}
               </p>
             )}
-          </div>
-        </div>
-
-        {/* Trust ladder — pulled out of the gradient band into its own
-            section with real room to breathe, right after the hero instead
-            of crammed under the fold competing with badges/seal/carousel. */}
-        <div className="max-w-5xl mx-auto px-4 pt-14 pb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {TRUST_STEPS.map(({ icon: Icon, title, accent }) => (
-              <div
-                key={title}
-                className="rounded-2xl p-4 flex items-start gap-3 transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: SURFACE, border: `1px solid ${BORDER}`, boxShadow: "0 10px 24px rgba(11,32,39,0.06)" }}
-              >
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-                  style={{ background: accent }}
-                >
-                  <Icon className="w-4 h-4 text-white" strokeWidth={2.25} />
-                </div>
-                <p className="text-sm font-semibold leading-snug" style={{ color: TEXT }}>{title}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
