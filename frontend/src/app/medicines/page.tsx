@@ -102,6 +102,19 @@ export default function MedicinesPage() {
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
         <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        {/* Custom vector illustration (hand-built — see
+            public/illustrations/README.md): a small corner accent, not a
+            full hero illustration — this hero's real focal element is the
+            search bar below, so the graphic stays out of its way. */}
+        {/* eslint-disable-next-line @next/next/no-img-element -- static
+            local decorative SVG; next/image's raster pipeline isn't used
+            for hand-authored vector assets. */}
+        <img
+          src="/illustrations/medicines-accent.svg"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-6 right-6 sm:right-10 w-24 sm:w-32 h-auto opacity-90 pointer-events-none"
+        />
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">
             Find the right medicine, fast.

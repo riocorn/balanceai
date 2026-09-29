@@ -51,3 +51,12 @@ rounded-cap stroke paths only, hand-authored as SVG then cleaned with
 - `medicines-accent.svg` — small corner accent (overlapping capsules), scaled
   down, for the medicines catalog hero, which keeps its search bar as the
   primary focal element.
+- `empty-cart.svg` — the one deliberate variant of the grammar above: an
+  **outline/ghost** rendering (stroke-only shapes, no flat fills, opacity
+  turned down) instead of the usual flat-filled scene, used only for the
+  empty-cart state on `/pharmacy/cart`. It still reuses the same
+  `badgeGradient`, the same dashed-connector language and the same
+  decorative-dot texture — only the fill treatment changes — because
+  "nothing is here yet" is best said by an outline standing in for an
+  absence, not a fully rendered object. Don't copy the outline treatment
+  into a hero illustration; it belongs to empty/zero states only.
