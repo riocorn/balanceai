@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, MessageCircle, Sparkles, CheckCircle2,
-  Pill, ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -22,12 +22,6 @@ import {
   SURFACE,
 } from "@/components/diag/theme";
 import { TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
-
-// Real values now pulled from the single shared palette in theme.ts
-// (imported and aliased above) instead of a locally hardcoded copy — the
-// hardcoded copy is what let this page silently drift out of sync with a
-// 2026-09-29 palette deepen until it was caught and fixed here.
-const WHATSAPP_GREEN = "#25D366";
 
 const SLIDES = [
   {
@@ -183,75 +177,22 @@ export default function PharmacyIntakePage() {
             </div>
           </div>
 
-          {/* ── Right: bold graphic — device mockup + floating badges ── */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="relative w-64 sm:w-72" style={{ aspectRatio: "0.82" }}>
-              {/* blob backdrop */}
-              <div className="absolute inset-0 rounded-[2.5rem]" style={{ background: "rgba(255,255,255,0.08)", transform: "rotate(6deg)" }} />
-
-              {/* phone/chat card — real illustrative example copy instead of
-                  grey skeleton-loading bars standing in as permanent
-                  decoration (a real bug: skeleton bars read as "still
-                  loading" or broken, not as a finished graphic). */}
-              <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-3 rounded-[2rem] p-4 flex flex-col shadow-2xl"
-                style={{ background: "#fff" }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "rgba(14,124,134,0.10)" }}>
-                    <Sparkles className="w-3.5 h-3.5" style={{ color: GREEN }} />
-                  </div>
-                  <p className="text-xs font-bold" style={{ color: TEXT }}>BalanceAI</p>
-                </div>
-                <div className="rounded-2xl rounded-tr-sm px-3 py-2 mb-2 self-end max-w-[85%]" style={{ background: "rgba(11,32,39,0.06)" }}>
-                  <p className="text-[11px] leading-snug" style={{ color: TEXT }}>&quot;mujhe migraine hai, kai saalo se&quot;</p>
-                </div>
-                <div className="rounded-2xl rounded-tl-sm px-3 py-2 mb-3 max-w-[90%]" style={{ background: "rgba(14,124,134,0.10)" }}>
-                  <p className="text-[11px] leading-snug font-semibold" style={{ color: GREEN_DARK }}>Matched: Migraine — 9 real treatments found</p>
-                </div>
-                <div className="mt-auto rounded-xl p-3 flex items-center gap-2.5" style={{ background: "rgba(14,124,134,0.10)" }}>
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: GREEN }}>
-                    <Pill className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-bold truncate" style={{ color: TEXT }}>Prochlorperazine</p>
-                    <p className="text-[10px] truncate" style={{ color: MUTED }}>Symptom relief</p>
-                  </div>
-                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded shrink-0" style={{ background: AMBER, color: "#fff" }}>82%</span>
-                </div>
-              </motion.div>
-
-              {/* floating WhatsApp-verify badge */}
-              <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                className="absolute -left-8 -top-4 flex items-center gap-1.5 rounded-full pl-1.5 pr-3 py-1.5 shadow-xl"
-                style={{ background: "#fff" }}
-              >
-                <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: WHATSAPP_GREEN }}>
-                  <MessageCircle className="w-3.5 h-3.5 text-white" />
-                </div>
-                <span className="text-[10px] font-bold" style={{ color: TEXT }}>Doctor Review (Beta)</span>
-              </motion.div>
-
-              {/* floating amber accent chip */}
-              <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="absolute -right-2 -bottom-3 flex items-center gap-1.5 rounded-full pl-1.5 pr-3 py-1.5 shadow-xl"
-                style={{ background: "#fff" }}
-              >
-                <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: AMBER }}>
-                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                </div>
-                <span className="text-[10px] font-bold" style={{ color: TEXT }}>Clinically Proven</span>
-              </motion.div>
-            </div>
+          {/* Custom vector illustration (hand-built — see
+              public/illustrations/README.md): order -> pharmacy-verified
+              badge (cross) -> delivered package (checkmark). A pharmacy
+              fulfillment story, distinct from the AI-matching chat mockup
+              this replaces (which duplicated the same "chat card" idea
+              already used on /symptom-checker). */}
+          <div className="order-1 md:order-2 flex justify-center md:justify-end" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static
+                local decorative SVG; next/image's raster pipeline isn't used
+                for hand-authored vector assets. */}
+            <img
+              src="/illustrations/pharmacy-hero.svg"
+              alt=""
+              className="w-full max-w-[280px] sm:max-w-[340px] h-auto"
+              style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
+            />
           </div>
         </div>
       </div>
