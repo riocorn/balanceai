@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, Loader2, X, ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight, AlertCircle, SearchX } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
@@ -10,7 +10,7 @@ import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/lib/cart-store";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT, accentForKey } from "@/components/diag/theme";
-import { CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
+import { CTA_RADIUS, TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
 import {
   type Medicine,
   fetchAllMedicines,
@@ -110,7 +110,10 @@ export default function MedicinesPage() {
             Search clear, source-cited information on thousands of medicines, so you always know
             exactly what you're taking.
           </p>
-          <div className="flex items-center gap-2 rounded-full h-11 px-4 shadow-lg max-w-lg" style={{ background: "#fff" }}>
+          <div
+            className="flex items-center gap-2 rounded-full h-11 px-4 shadow-lg max-w-lg focus-within:shadow-[0_0_0_3px_rgba(255,255,255,0.4),0_14px_30px_rgba(11,32,39,0.22)]"
+            style={{ background: "#fff", transition: TRANSITION_ALL }}
+          >
             <Search className="w-4.5 h-4.5 shrink-0" style={{ color: MUTED }} />
             <input
               value={query}
@@ -120,7 +123,7 @@ export default function MedicinesPage() {
               style={{ color: TEXT }}
             />
             {query && (
-              <button onClick={() => setQuery("")} aria-label="Clear search">
+              <button onClick={() => setQuery("")} aria-label="Clear search" className={`rounded-full p-0.5 hover:opacity-70 ${FOCUS_RING}`} style={{ transition: TRANSITION_ALL }}>
                 <X className="w-4 h-4" style={{ color: MUTED }} />
               </button>
             )}
@@ -136,8 +139,8 @@ export default function MedicinesPage() {
             <div className="max-h-[65vh] overflow-y-auto pr-1 space-y-1">
               <button
                 onClick={() => setCategory(null)}
-                className="w-full text-left text-sm px-2.5 py-1.5 rounded-lg flex items-center justify-between"
-                style={{ background: category === null ? "rgba(14,124,134,0.10)" : "transparent", color: category === null ? TEAL : TEXT, fontWeight: category === null ? 700 : 500 }}
+                className={`w-full text-left text-sm px-2.5 py-1.5 rounded-lg flex items-center justify-between hover:bg-[rgba(10,82,89,0.06)] ${FOCUS_RING}`}
+                style={{ background: category === null ? "rgba(14,124,134,0.10)" : "transparent", color: category === null ? TEAL : TEXT, fontWeight: category === null ? 700 : 500, transition: TRANSITION_ALL }}
               >
                 <span>All Medicines</span>
                 <span className="text-xs" style={{ color: MUTED }}>{indexed.length}</span>
@@ -146,8 +149,8 @@ export default function MedicinesPage() {
                 <button
                   key={name}
                   onClick={() => setCategory(category === name ? null : name)}
-                  className="w-full text-left text-sm px-2.5 py-1.5 rounded-lg flex items-center justify-between gap-2"
-                  style={{ background: category === name ? "rgba(14,124,134,0.10)" : "transparent", color: category === name ? TEAL : TEXT, fontWeight: category === name ? 700 : 500 }}
+                  className={`w-full text-left text-sm px-2.5 py-1.5 rounded-lg flex items-center justify-between gap-2 hover:bg-[rgba(10,82,89,0.06)] ${FOCUS_RING}`}
+                  style={{ background: category === name ? "rgba(14,124,134,0.10)" : "transparent", color: category === name ? TEAL : TEXT, fontWeight: category === name ? 700 : 500, transition: TRANSITION_ALL }}
                 >
                   <span className="truncate">{name}</span>
                   <span className="text-xs shrink-0" style={{ color: MUTED }}>{count}</span>
@@ -162,8 +165,8 @@ export default function MedicinesPage() {
           <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:thin]">
             <button
               onClick={() => setCategory(null)}
-              className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-              style={{ background: category === null ? TEAL : "#fff", color: category === null ? "#fff" : TEXT, border: `1px solid ${category === null ? TEAL : "#E4EBEE"}` }}
+              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
+              style={{ background: category === null ? TEAL : "#fff", color: category === null ? "#fff" : TEXT, border: `1px solid ${category === null ? TEAL : "#E4EBEE"}`, transition: TRANSITION_ALL }}
             >
               All
             </button>
@@ -171,16 +174,16 @@ export default function MedicinesPage() {
               <button
                 key={name}
                 onClick={() => setCategory(category === name ? null : name)}
-                className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-                style={{ background: category === name ? TEAL : "#fff", color: category === name ? "#fff" : TEXT, border: `1px solid ${category === name ? TEAL : "#E4EBEE"}` }}
+                className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
+                style={{ background: category === name ? TEAL : "#fff", color: category === name ? "#fff" : TEXT, border: `1px solid ${category === name ? TEAL : "#E4EBEE"}`, transition: TRANSITION_ALL }}
               >
                 {name}
               </button>
             ))}
             <button
               onClick={() => setShowAllCategories((v) => !v)}
-              className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-              style={{ background: "#fff", color: BLUE, border: `1px solid #E4EBEE` }}
+              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
+              style={{ background: "#fff", color: BLUE, border: `1px solid #E4EBEE`, transition: TRANSITION_ALL }}
             >
               {showAllCategories ? "Hide" : `+${Math.max(0, categories.length - TOP_CHIP_COUNT)} more`}
             </button>
@@ -191,8 +194,8 @@ export default function MedicinesPage() {
                 <button
                   key={name}
                   onClick={() => { setCategory(category === name ? null : name); setShowAllCategories(false); }}
-                  className="text-left text-xs px-2 py-1 rounded-lg truncate"
-                  style={{ background: category === name ? "rgba(14,124,134,0.10)" : "transparent", color: category === name ? TEAL : TEXT }}
+                  className={`text-left text-xs px-2 py-1 rounded-lg truncate hover:bg-[rgba(10,82,89,0.06)] ${FOCUS_RING}`}
+                  style={{ background: category === name ? "rgba(14,124,134,0.10)" : "transparent", color: category === name ? TEAL : TEXT, transition: TRANSITION_ALL }}
                 >
                   {name} <span style={{ color: MUTED }}>({count})</span>
                 </button>
@@ -214,28 +217,42 @@ export default function MedicinesPage() {
               ) : "Loading real medicine data…"}
             </p>
             {category && (
-              <button onClick={() => setCategory(null)} className="text-xs font-semibold flex items-center gap-1" style={{ color: BLUE }}>
+              <button onClick={() => setCategory(null)} className={`text-xs font-semibold flex items-center gap-1 rounded hover:opacity-75 ${FOCUS_RING}`} style={{ color: BLUE, transition: TRANSITION_ALL }}>
                 <X className="w-3 h-3" /> Clear category
               </button>
             )}
           </div>
 
           {error && (
-            <div className="rounded-xl p-4 flex items-start gap-2" style={{ background: "#fdecec", border: "1px solid #f5b5b5" }}>
+            <div className="sc-card p-4 flex items-start gap-2" style={{ background: "#fdecec", border: "1px solid #f5b5b5" }}>
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" style={{ color: "#b91c1c" }} />
               <p className="text-sm" style={{ color: "#7f1d1d" }}>{error}</p>
             </div>
           )}
 
           {!all && !error && (
-            <div className="flex items-center justify-center py-24">
-              <Loader2 className="w-6 h-6 animate-spin" style={{ color: TEAL }} />
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" aria-live="polite" aria-label="Loading medicines">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                  <div className="sk h-1" />
+                  <div className="p-3">
+                    <div className="sk aspect-square rounded-xl mb-3" />
+                    <div className="sk h-2.5 w-1/2 rounded-full mb-2" />
+                    <div className="sk h-3.5 w-4/5 rounded-full mb-1.5" />
+                    <div className="sk h-3.5 w-3/5 rounded-full" />
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 
           {all && !error && filtered.length === 0 && (
-            <div className="rounded-xl p-8 text-center" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
-              <p className="text-sm" style={{ color: MUTED }}>No medicines matched your search. Try a different name or category.</p>
+            <div className="sc-card p-10 text-center" style={{ background: SURFACE, border: "1px dashed #C7D3D8" }}>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: "#EEF3F5" }}>
+                <SearchX className="w-5 h-5" style={{ color: MUTED }} strokeWidth={1.75} />
+              </div>
+              <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>No medicines matched</p>
+              <p className="text-sm" style={{ color: MUTED }}>Try a different name or category.</p>
             </div>
           )}
 
@@ -289,13 +306,13 @@ export default function MedicinesPage() {
                             })
                           }
                           disabled={inCart}
-                          className={`text-xs font-medium ${CTA_RADIUS} px-3.5 py-1.5 border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60`}
-                          style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION }}
+                          className={`text-xs font-medium ${CTA_RADIUS} px-3.5 py-1.5 border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60 ${FOCUS_RING}`}
+                          style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION_ALL }}
                           title="Placeholder — no real payment/checkout is implemented yet"
                         >
                           {inCart ? "Added" : "Buy Now"}
                         </button>
-                        <Link href={`/medicines/${encodeURIComponent(med.slug)}`} className="text-[11px] font-semibold shrink-0" style={{ color: TEAL }}>
+                        <Link href={`/medicines/${encodeURIComponent(med.slug)}`} className={`text-[11px] font-semibold shrink-0 rounded hover:opacity-75 ${FOCUS_RING}`} style={{ color: TEAL, transition: TRANSITION_ALL }}>
                           View details →
                         </Link>
                       </div>
@@ -309,8 +326,8 @@ export default function MedicinesPage() {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={safePage <= 1}
-                  className="w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30"
-                  style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#0A5259] hover:-translate-y-0.5 ${FOCUS_RING}`}
+                  style={{ background: SURFACE, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
                 >
                   <ChevronLeft className="w-4 h-4" style={{ color: TEXT }} />
                 </button>
@@ -320,8 +337,8 @@ export default function MedicinesPage() {
                 <button
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={safePage >= totalPages}
-                  className="w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30"
-                  style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#0A5259] hover:-translate-y-0.5 ${FOCUS_RING}`}
+                  style={{ background: SURFACE, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
                 >
                   <ChevronRight className="w-4 h-4" style={{ color: TEXT }} />
                 </button>
