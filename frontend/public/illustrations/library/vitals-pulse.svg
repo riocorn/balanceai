@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 160 160"
+   version="1.1"
+   id="svg-vitals-pulse"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15" />
+  <circle
+     cx="80"
+     cy="80"
+     r="66"
+     fill="none"
+     stroke="#E0475A"
+     stroke-width="1"
+     stroke-dasharray="1 6"
+     opacity="0.14"
+     id="circle2" />
+  <path
+     d="M22,80 H50 L60,50 L74,110 L86,66 L94,80 H138"
+     fill="none"
+     stroke="#E0475A"
+     stroke-width="4"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="path4" />
+  <rect
+     x="66"
+     y="118"
+     width="10"
+     height="26"
+     rx="5"
+     fill="#5B7480"
+     opacity="0.25"
+     id="rect6" />
+  <rect
+     x="66"
+     y="118"
+     width="10"
+     height="16"
+     rx="5"
+     fill="#E0475A"
+     id="rect8" />
+  <circle
+     cx="71"
+     cy="140"
+     r="9"
+     fill="#E0475A"
+     id="circle10" />
+</svg>

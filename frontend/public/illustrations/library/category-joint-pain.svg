@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 160 160"
+   version="1.1"
+   id="svg-category-joint"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15" />
+  <circle
+     cx="80"
+     cy="80"
+     r="66"
+     fill="none"
+     stroke="#C98A2C"
+     stroke-width="1"
+     stroke-dasharray="1 6"
+     opacity="0.16"
+     id="circle2" />
+  <rect
+     x="24"
+     y="40"
+     width="56"
+     height="30"
+     rx="15"
+     fill="none"
+     stroke="#C98A2C"
+     stroke-width="3.5"
+     transform="rotate(-20 52 55)"
+     id="rect4" />
+  <rect
+     x="80"
+     y="90"
+     width="56"
+     height="30"
+     rx="15"
+     fill="none"
+     stroke="#C98A2C"
+     stroke-width="3.5"
+     transform="rotate(-20 108 105)"
+     id="rect6" />
+  <circle
+     cx="80"
+     cy="80"
+     r="11"
+     fill="#C98A2C"
+     fill-opacity="0.85"
+     id="circle8" />
+  <path
+     d="M60,70 L100,90"
+     stroke="#C98A2C"
+     stroke-width="2"
+     stroke-dasharray="2 4"
+     opacity="0.6"
+     id="path10" />
+</svg>

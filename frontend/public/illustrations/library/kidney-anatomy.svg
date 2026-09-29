@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 280 260"
+   version="1.1"
+   id="svg-kidney-anatomy"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs27" />
+  <circle
+     cx="140"
+     cy="120"
+     r="105"
+     fill="none"
+     stroke="#8C3550"
+     stroke-width="1"
+     stroke-dasharray="1 7"
+     opacity="0.14"
+     id="circle2" />
+  <path
+     d="M118,50 C160,50 180,80 180,112 C180,128 168,132 168,120 C168,104 156,96 140,96 C120,96 106,116 106,140 C106,172 130,194 160,194 C170,194 176,186 172,178"
+     fill="#8C3550"
+     fill-opacity="0.1"
+     stroke="#8C3550"
+     stroke-width="2.5"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path4" />
+  <path
+     d="M118,50 C90,54 76,84 80,118 C84,152 100,182 130,194 C104,196 82,178 74,146 C66,112 78,66 118,50 Z"
+     fill="#8C3550"
+     fill-opacity="0.1"
+     stroke="#8C3550"
+     stroke-width="2.5"
+     stroke-linejoin="round"
+     id="path6" />
+  <path
+     d="M96,90 Q106,110 100,132"
+     stroke="#6E2740"
+     stroke-width="1.5"
+     opacity="0.5"
+     fill="none"
+     id="path8" />
+  <path
+     d="M160,194 Q166,214 160,230"
+     stroke="#8C3550"
+     stroke-width="4"
+     stroke-linecap="round"
+     fill="none"
+     id="path10" />
+  <path
+     d="M168,120 L214,112"
+     stroke="#6E2740"
+     stroke-width="1.25"
+     stroke-dasharray="1 5"
+     opacity="0.6"
+     fill="none"
+     id="path12" />
+  <circle
+     cx="218"
+     cy="111"
+     r="2.5"
+     fill="none"
+     stroke="#6E2740"
+     stroke-width="1.25"
+     id="circle14" />
+  <text
+     x="222"
+     y="115"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#6E2740"
+     opacity="0.85"
+     id="text16">renal pelvis</text>
+  <path
+     d="M160,230 L200,242"
+     stroke="#6E2740"
+     stroke-width="1.25"
+     stroke-dasharray="1 5"
+     opacity="0.6"
+     fill="none"
+     id="path18" />
+  <circle
+     cx="204"
+     cy="244"
+     r="2.5"
+     fill="none"
+     stroke="#6E2740"
+     stroke-width="1.25"
+     id="circle20" />
+  <text
+     x="208"
+     y="248"
+     font-family="sans-serif"
+     font-size="11"
+     fill="#6E2740"
+     opacity="0.85"
+     id="text22">ureter</text>
+</svg>

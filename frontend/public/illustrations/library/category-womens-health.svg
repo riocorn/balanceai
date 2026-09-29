@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 160 160"
+   version="1.1"
+   id="svg-category-womens-health"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15" />
+  <circle
+     cx="80"
+     cy="80"
+     r="66"
+     fill="none"
+     stroke="#C15B8C"
+     stroke-width="1"
+     stroke-dasharray="1 6"
+     opacity="0.16"
+     id="circle2" />
+  <circle
+     cx="80"
+     cy="62"
+     r="34"
+     fill="#C15B8C"
+     fill-opacity="0.14"
+     stroke="#C15B8C"
+     stroke-width="3.5"
+     id="circle4" />
+  <line
+     x1="80"
+     y1="96"
+     x2="80"
+     y2="132"
+     stroke="#C15B8C"
+     stroke-width="4"
+     stroke-linecap="round"
+     id="line6" />
+  <line
+     x1="62"
+     y1="114"
+     x2="98"
+     y2="114"
+     stroke="#C15B8C"
+     stroke-width="4"
+     stroke-linecap="round"
+     id="line8" />
+  <path
+     d="M64,58 Q80,44 96,58"
+     fill="none"
+     stroke="#8A3A5E"
+     stroke-width="2"
+     opacity="0.55"
+     id="path10" />
+</svg>

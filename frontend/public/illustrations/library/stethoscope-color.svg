@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 160 160"
+   version="1.1"
+   id="svg-stethoscope-color"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs21" />
+  <circle
+     cx="80"
+     cy="80"
+     r="66"
+     fill="none"
+     stroke="#1D5C3D"
+     stroke-width="1"
+     stroke-dasharray="1 6"
+     opacity="0.14"
+     id="circle2" />
+  <line
+     x1="48"
+     y1="30"
+     x2="48"
+     y2="52"
+     stroke="#1D5C3D"
+     stroke-width="6"
+     stroke-linecap="round"
+     id="line4" />
+  <line
+     x1="112"
+     y1="30"
+     x2="112"
+     y2="52"
+     stroke="#1D5C3D"
+     stroke-width="6"
+     stroke-linecap="round"
+     id="line6" />
+  <path
+     d="M48,52 Q48,84 80,88 Q112,84 112,52"
+     fill="none"
+     stroke="#1D5C3D"
+     stroke-width="6"
+     stroke-linecap="round"
+     id="path8" />
+  <line
+     x1="80"
+     y1="88"
+     x2="80"
+     y2="112"
+     stroke="#1D5C3D"
+     stroke-width="6"
+     stroke-linecap="round"
+     id="line10" />
+  <circle
+     cx="80"
+     cy="126"
+     r="16"
+     fill="#F5EDE0"
+     stroke="#1D5C3D"
+     stroke-width="5"
+     id="circle12" />
+  <circle
+     cx="80"
+     cy="126"
+     r="6"
+     fill="#2D7A58"
+     id="circle14" />
+  <circle
+     cx="126"
+     cy="70"
+     r="7"
+     fill="#2D7A58"
+     id="circle16" />
+</svg>

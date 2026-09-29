@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 160 160"
+   version="1.1"
+   id="svg-whatsapp-review"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs17" />
+  <circle
+     cx="80"
+     cy="80"
+     r="66"
+     fill="none"
+     stroke="#25D366"
+     stroke-width="1"
+     stroke-dasharray="1 6"
+     opacity="0.14"
+     id="circle2" />
+  <path
+     d="M36,50 Q36,34 52,34 H108 Q124,34 124,50 V88 Q124,104 108,104 H66 L44,124 L48,104 H52 Q36,104 36,88 Z"
+     fill="#DDF5E4"
+     stroke="#128C4A"
+     stroke-width="3"
+     stroke-linejoin="round"
+     id="path4" />
+  <line
+     x1="56"
+     y1="56"
+     x2="104"
+     y2="56"
+     stroke="#128C4A"
+     stroke-width="3"
+     stroke-linecap="round"
+     opacity="0.55"
+     id="line6" />
+  <line
+     x1="56"
+     y1="70"
+     x2="88"
+     y2="70"
+     stroke="#128C4A"
+     stroke-width="3"
+     stroke-linecap="round"
+     opacity="0.55"
+     id="line8" />
+  <circle
+     cx="112"
+     cy="112"
+     r="20"
+     fill="#25D366"
+     id="circle10" />
+  <path
+     d="M102,112 L110,120 L124,102"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="4"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="path12" />
+</svg>
