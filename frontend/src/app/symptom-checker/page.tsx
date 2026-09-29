@@ -32,6 +32,7 @@ import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import CategoryRail from "@/components/diag/CategoryRail";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER } from "@/components/diag/theme";
+import { CTA_BASE, CTA_HERO_BASE, CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
 
 // ---------------------------------------------------------------------------
 // Real API response shape (verified against routers/medical.py live source)
@@ -737,8 +738,8 @@ export default function SymptomCheckerPage() {
               <button
                 onClick={submitClarifyingAnswers}
                 disabled={submittingAnswers || result.clarifying_questions.some((_, i) => !(clarifyAnswers[i] || "").trim())}
-                className="mt-5 w-full sm:w-auto rounded-full px-6 py-3 text-sm font-bold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
-                style={{ background: `linear-gradient(135deg, ${ACCENT_PURPLE} 0%, ${BLUE} 100%)` }}
+                className={`${CTA_BASE} mt-5 w-full sm:w-auto ${CTA_RADIUS} text-white hover:brightness-110 disabled:opacity-50 disabled:hover:brightness-100`}
+                style={{ background: `linear-gradient(135deg, ${ACCENT_PURPLE} 0%, ${BLUE} 100%)`, transition: TRANSITION }}
               >
                 {submittingAnswers ? "Checking..." : "Continue"}
               </button>
@@ -900,8 +901,8 @@ export default function SymptomCheckerPage() {
                           <button
                             onClick={() => addToCart(cleanMedicineName(m.name), result.disease!.name, result.disease!.id, m.effectiveness_pct, m.is_curative)}
                             disabled={inCart}
-                            className="mt-4 text-sm font-semibold rounded-full px-5 py-2 border transition-all duration-200 hover:bg-[rgba(30,111,217,0.08)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:translate-y-0"
-                            style={{ borderColor: BLUE, color: BLUE, background: "transparent" }}
+                            className={`mt-4 h-10 px-5 text-sm font-medium ${CTA_RADIUS} border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60 disabled:hover:bg-transparent`}
+                            style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION }}
                             title="Placeholder — no real payment/checkout is implemented yet"
                           >
                             {inCart ? "Added to cart" : "Buy Now"}
@@ -1035,8 +1036,8 @@ export default function SymptomCheckerPage() {
           </p>
           <Link
             href="/consult-a-doctor"
-            className="inline-block rounded-full px-6 py-2.5 text-sm font-bold transition-transform duration-200 hover:-translate-y-0.5"
-            style={{ background: "#FFFFFF", color: TEAL }}
+            className={`inline-flex items-center justify-center h-11 px-6 text-sm font-medium ${CTA_RADIUS} hover:brightness-95`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
           >
             Meet Our Doctors
           </Link>
@@ -1102,8 +1103,8 @@ export default function SymptomCheckerPage() {
         </p>
         <button
           onClick={() => scrollToHero()}
-          className="relative rounded-full px-10 py-4 text-base font-extrabold shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:brightness-105 active:translate-y-0 transition-all duration-200"
-          style={{ background: "#FFFFFF", color: TEAL }}
+          className={`relative ${CTA_HERO_BASE} ${CTA_RADIUS} hover:brightness-95`}
+          style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
         >
           Check My Symptoms
         </button>
@@ -1136,8 +1137,8 @@ function DoctorCTA({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClick}
-            className="inline-block w-full sm:w-auto rounded-full px-8 py-3.5 text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-            style={{ background: "#FFFFFF", color: TEAL }}
+            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
           >
             Talk to a Doctor on WhatsApp
           </a>
@@ -1150,8 +1151,8 @@ function DoctorCTA({
         <>
           <button
             onClick={onClick}
-            className="w-full sm:w-auto rounded-full px-8 py-3.5 text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-            style={{ background: "#FFFFFF", color: TEAL }}
+            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
           >
             Send to a Doctor on WhatsApp
           </button>
