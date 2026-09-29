@@ -10,6 +10,7 @@ import { BG, BLUE } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { getWhatsappLink } from "@/lib/pharmacy-api";
 import { GREEN, BORDER, TEXT, MUTED, WHATSAPP_GREEN, EffectivenessBadge } from "@/components/pharmacy/shared";
+import { CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
 
 export default function PharmacyCartPage() {
   const router = useRouter();
@@ -126,8 +127,8 @@ export default function PharmacyCartPage() {
             <button
               onClick={verifyOnWhatsapp}
               disabled={waLoading}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white"
-              style={{ background: WHATSAPP_GREEN }}
+              className={`w-full h-11 flex items-center justify-center gap-2 ${CTA_RADIUS} text-sm font-medium text-white hover:brightness-105`}
+              style={{ background: WHATSAPP_GREEN, transition: TRANSITION }}
             >
               <MessageCircle className="w-4 h-4" />
               {waSent ? "Resend on WhatsApp" : "Send for Doctor Verification on WhatsApp"}
@@ -177,8 +178,8 @@ export default function PharmacyCartPage() {
           <button
             onClick={() => router.push("/pharmacy/checkout")}
             disabled={!cart.doctorVerified}
-            className="px-6 py-3 rounded-xl text-sm font-bold text-white disabled:opacity-40 transition-all"
-            style={{ background: GREEN }}
+            className={`h-11 px-6 ${CTA_RADIUS} text-sm font-medium text-white disabled:opacity-40 hover:brightness-110`}
+            style={{ background: GREEN, transition: TRANSITION }}
           >
             Proceed to Checkout
           </button>

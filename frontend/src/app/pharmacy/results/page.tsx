@@ -13,6 +13,7 @@ import {
   GREEN, BORDER, TEXT, MUTED,
   ExpandableText, MedicineProductCard, HardEmergencyBanner,
 } from "@/components/pharmacy/shared";
+import { CTA_RADIUS, TRANSITION, ELEVATED_SHADOW } from "@/components/diag/tokens";
 
 export default function PharmacyResultsPage() {
   const router = useRouter();
@@ -172,8 +173,8 @@ export default function PharmacyResultsPage() {
             {cart.items.length > 0 && (
               <Link
                 href="/pharmacy/cart"
-                className="fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white shadow-lg"
-                style={{ background: GREEN }}
+                className={`fixed bottom-5 left-1/2 -translate-x-1/2 h-11 flex items-center gap-2 px-6 ${CTA_RADIUS} text-sm font-medium text-white hover:brightness-110`}
+                style={{ background: GREEN, boxShadow: ELEVATED_SHADOW, transition: TRANSITION }}
               >
                 <ShoppingCart className="w-4 h-4" />
                 Cart dekhein ({cart.items.length})

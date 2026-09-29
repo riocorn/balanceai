@@ -10,6 +10,7 @@ import { BG, EFFECTIVENESS, HERO_GRADIENT } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { placePharmacyOrder } from "@/lib/db";
 import { GREEN, BORDER, TEXT, MUTED } from "@/components/pharmacy/shared";
+import { CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
 
 type PaymentMethod = "cod" | "upi" | "card";
 
@@ -142,8 +143,8 @@ export default function PharmacyCheckoutPage() {
         <button
           onClick={placeOrder}
           disabled={placing || !name.trim() || !phone.trim() || !pincode.trim() || !line.trim()}
-          className="w-full py-3.5 rounded-xl text-sm font-bold text-white disabled:opacity-40 shadow-md hover:shadow-lg transition-shadow duration-200"
-          style={{ background: HERO_GRADIENT }}
+          className={`w-full h-12 ${CTA_RADIUS} text-[15px] font-medium text-white disabled:opacity-40 hover:brightness-110`}
+          style={{ background: HERO_GRADIENT, transition: TRANSITION }}
         >
           {placing ? "Placing Order..." : "Place Order"}
         </button>

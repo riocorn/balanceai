@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Plus, PhoneCall } from "lucide-react";
 import type { MedicineCard as MedicineCardType } from "@/lib/pharmacy-api";
+import { TRANSITION } from "@/components/diag/tokens";
 
 // Locked to the same BalanceAI marketplace palette used on /pharmacy and
 // /symptom-checker (--diag-primary-teal / --diag-primary-blue) so cart,
@@ -141,11 +142,12 @@ export function MedicineProductCard({
         <button
           onClick={onAdd}
           disabled={inCart}
-          className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-bold border transition-all disabled:opacity-100"
+          className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-medium border disabled:opacity-100"
           style={{
             background: inCart ? "#eef7f2" : "#fff",
             color: GREEN,
             borderColor: GREEN,
+            transition: TRANSITION,
           }}
         >
           {inCart ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
