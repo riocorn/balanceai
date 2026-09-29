@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Check, Plus, PhoneCall } from "lucide-react";
 import type { MedicineCard as MedicineCardType } from "@/lib/pharmacy-api";
-import { TRANSITION } from "@/components/diag/tokens";
-import { TEAL, BORDER as THEME_BORDER, TEXT as THEME_TEXT, MUTED as THEME_MUTED } from "@/components/diag/theme";
+import { TRANSITION_ALL, FOCUS_RING, CTA_RADIUS } from "@/components/diag/tokens";
+import { TEAL, BORDER as THEME_BORDER, TEXT as THEME_TEXT, MUTED as THEME_MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, SURFACE } from "@/components/diag/theme";
+import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 
 // Re-exported from the single shared palette in theme.ts (not a hardcoded
 // copy) so cart, checkout and results always stay in sync with the rest of
@@ -45,8 +46,8 @@ export function ExpandableText({
       {needsTruncate && (
         <button
           onClick={() => setOpen((o) => !o)}
-          className="font-semibold underline underline-offset-2"
-          style={{ color: GREEN }}
+          className={`font-semibold underline underline-offset-2 rounded hover:opacity-75 ${FOCUS_RING}`}
+          style={{ color: GREEN, transition: TRANSITION_ALL }}
         >
           {open ? "kam dikhayein" : "poora padhein"}
         </button>
@@ -63,12 +64,20 @@ export function ExpandableText({
  * an unlikely specific disease that may carry no emergency text of its own.
  */
 export function HardEmergencyBanner() {
+  // Real color-consistency fix, tier 2 (2026-09-29): this banner was
+  // hardcoded to a different dark maroon (#7f1d1d) than the one true
+  // EMERGENCY red reserved for every other emergency surface on the site
+  // (symptom-checker's banner, theme.ts's own grep-checked rule) — the two
+  // reds sitting side by side across pages was a real, visible brand
+  // inconsistency. Now pulls the same EMERGENCY token.
   return (
     <div
       className="rounded-xl p-4 mb-4 flex items-start gap-3"
-      style={{ background: "#7f1d1d", color: "#fff" }}
+      style={{ background: EMERGENCY, color: "#fff" }}
     >
-      <PhoneCall className="w-5 h-5 shrink-0 mt-0.5" />
+      <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(255,255,255,0.18)" }}>
+        <PhoneCall className="w-4 h-4" strokeWidth={2.25} />
+      </div>
       <div>
         <p className="text-sm font-bold mb-1">Ye emergency jaisa lag raha hai</p>
         <p className="text-xs leading-relaxed opacity-90">
@@ -82,8 +91,8 @@ export function HardEmergencyBanner() {
 
 export function EffectivenessBadge({ pct }: { pct: number | null }) {
   if (pct === null || pct === undefined) return null;
-  const color = pct >= 85 ? "#0f7a3d" : pct >= 60 ? "#b7791f" : "#b91c1c";
-  const bg = pct >= 85 ? "#eaf7ef" : pct >= 60 ? "#fdf3e0" : "#fdecec";
+  const color = pct >= 85 ? EFFECTIVENESS_TEXT : pct >= 60 ? ACCENT_AMBER : "#B42318";
+  const bg = pct >= 85 ? "rgba(31,174,122,0.12)" : pct >= 60 ? "rgba(201,138,44,0.12)" : "rgba(180,35,24,0.08)";
   return (
     <span
       className="text-[11px] font-bold px-2 py-1 rounded-full shrink-0"
@@ -94,6 +103,14 @@ export function EffectivenessBadge({ pct }: { pct: number | null }) {
   );
 }
 
+// Rebuilt tier 2 (2026-09-29): this card was a flat, plain
+// border-only rectangle with no icon, no effectiveness bar and no
+// hover/focus states at all — visibly a generation behind the matching
+// symptom-checker medicine card it sits one click away from in the same
+// purchase journey. Now shares that exact card system (sc-card hover-lift,
+// icon avatar + curative pill overlay, effectiveness progress bar, focus
+// ring on Add) so the two feel like one product, not two different eras of
+// the same site.
 export function MedicineProductCard({
   medicine,
   diseaseId,
@@ -109,47 +126,74 @@ export function MedicineProductCard({
   onAdd: () => void;
   isCurative?: boolean;
 }) {
+  const pct = medicine.effectiveness_pct != null ? Math.round(medicine.effectiveness_pct) : null;
   return (
     <div
-      className="rounded-xl p-4 flex flex-col gap-2 relative"
-      style={{ background: "#fff", border: `1px solid ${BORDER}` }}
+      className="sc-card sc-card-interactive p-4 flex flex-col gap-3 relative"
+      style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
     >
-      {isCurative && (
-        <span
-          className="text-xs font-bold w-fit px-2 py-0.5 rounded"
-          style={{ background: "#eef7f2", color: GREEN }}
-        >
-          Real curative option
-        </span>
+      <div className="flex items-start gap-3">
+        <div className="relative w-12 h-12 shrink-0">
+          <MedicinePackPlaceholder />
+          <div
+            className="sc-icon-pop absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center border-2"
+            style={{
+              background: isCurative ? `linear-gradient(135deg, ${EFFECTIVENESS} 0%, ${GREEN} 100%)` : GREEN,
+              borderColor: SURFACE,
+            }}
+          >
+            <Plus className="w-2.5 h-2.5 text-white" strokeWidth={2.5} />
+          </div>
+        </div>
+        <div className="min-w-0 flex-1">
+          {isCurative && (
+            <span
+              className="inline-block mb-1 text-[10px] font-bold px-2 py-0.5 rounded-full"
+              style={{ background: "rgba(31,174,122,0.12)", color: EFFECTIVENESS_TEXT }}
+            >
+              Real curative option
+            </span>
+          )}
+          <p className="text-sm font-semibold leading-snug" style={{ color: TEXT }}>
+            {medicine.name}
+          </p>
+          {medicine.type && (
+            <p className="text-[11px] font-medium mt-0.5" style={{ color: MUTED }}>
+              {medicine.type}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {pct != null && (
+        <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: "#E4EBEE" }}>
+          <div
+            className="h-full rounded-full"
+            style={{ width: `${Math.min(100, Math.max(0, pct))}%`, background: EFFECTIVENESS }}
+          />
+        </div>
       )}
-      <p className="text-sm font-semibold leading-snug pr-2" style={{ color: TEXT }}>
-        {medicine.name}
-      </p>
-      {medicine.type && (
-        <p className="text-[11px] font-medium" style={{ color: MUTED }}>
-          {medicine.type}
-        </p>
-      )}
+
       {medicine.mechanism && (
         <ExpandableText
           text={medicine.mechanism}
           collapsedChars={180}
           className="text-xs leading-relaxed"
-          style={{ color: "#374151" }}
+          style={{ color: MUTED }}
         />
       )}
       {/* price-row slot, e-pharmacy pattern: metric badge left, small ADD pill right */}
-      <div className="flex items-center justify-between mt-1 pt-2 border-t" style={{ borderColor: BORDER }}>
+      <div className="flex items-center justify-between gap-3 pt-2 border-t" style={{ borderColor: "#EEF3F5" }}>
         <EffectivenessBadge pct={medicine.effectiveness_pct} />
         <button
           onClick={onAdd}
           disabled={inCart}
-          className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-medium border disabled:opacity-100"
+          className={`flex items-center gap-1 px-3.5 py-1.5 ${CTA_RADIUS} text-xs font-medium border hover:bg-[rgba(10,82,89,0.06)] disabled:opacity-100 disabled:hover:bg-[#EEF7F2] shrink-0 ${FOCUS_RING}`}
           style={{
-            background: inCart ? "#eef7f2" : "#fff",
+            background: inCart ? "#EEF7F2" : "transparent",
             color: GREEN,
             borderColor: GREEN,
-            transition: TRANSITION,
+            transition: TRANSITION_ALL,
           }}
         >
           {inCart ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}

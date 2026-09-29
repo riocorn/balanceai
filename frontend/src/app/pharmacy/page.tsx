@@ -19,7 +19,9 @@ import {
   TEXT,
   MUTED,
   BG,
+  SURFACE,
 } from "@/components/diag/theme";
+import { TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
 
 // Real values now pulled from the single shared palette in theme.ts
 // (imported and aliased above) instead of a locally hardcoded copy — the
@@ -130,8 +132,8 @@ export default function PharmacyIntakePage() {
               <button
                 aria-label="Previous"
                 onClick={() => setSlide((s) => (s - 1 + SLIDES.length) % SLIDES.length)}
-                className="w-7 h-7 rounded-full flex items-center justify-center transition-all"
-                style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
+                className={`w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.22)] ${FOCUS_RING} focus-ring-on-dark`}
+                style={{ background: "rgba(255,255,255,0.14)", color: "#fff", transition: TRANSITION_ALL }}
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -141,15 +143,16 @@ export default function PharmacyIntakePage() {
                     key={i}
                     aria-label={`Slide ${i + 1}`}
                     onClick={() => setSlide(i)}
-                    className="flex items-center justify-center rounded-full transition-all"
-                    style={{ width: 24, height: 24 }}
+                    className={`flex items-center justify-center rounded-full ${FOCUS_RING} focus-ring-on-dark`}
+                    style={{ width: 24, height: 24, transition: TRANSITION_ALL }}
                   >
                     <span
-                      className="rounded-full transition-all"
+                      className="rounded-full"
                       style={{
                         width: i === slide ? 20 : 6,
                         height: 6,
                         background: i === slide ? AMBER : "rgba(255,255,255,0.35)",
+                        transition: TRANSITION_ALL,
                       }}
                     />
                   </button>
@@ -158,8 +161,8 @@ export default function PharmacyIntakePage() {
               <button
                 aria-label="Next"
                 onClick={() => setSlide((s) => (s + 1) % SLIDES.length)}
-                className="w-7 h-7 rounded-full flex items-center justify-center transition-all"
-                style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
+                className={`w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.22)] ${FOCUS_RING} focus-ring-on-dark`}
+                style={{ background: "rgba(255,255,255,0.14)", color: "#fff", transition: TRANSITION_ALL }}
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -260,6 +263,42 @@ export default function PharmacyIntakePage() {
           <CategoryRail onSelect={(starter) => submit(starter)} disabled={loading} />
           {error && <p className="text-xs mt-3" style={{ color: "#B42318" }}>{error}</p>}
         </div>
+
+        {/* Real loading state for the matchSymptoms() call this page waits
+            on before it navigates away (15-100s, per founder research) —
+            previously the ONLY feedback here was the category tiles going
+            disabled, with nothing else on screen communicating that
+            anything was happening. Same progress-bar + content-shaped
+            skeleton language as /symptom-checker, so a person who's used
+            one recognizes the other instantly. */}
+        {loading && (
+          <div aria-live="polite" className="mt-6 max-w-2xl">
+            <div className="sc-card p-4 sm:p-5" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+              <p className="text-sm font-semibold" style={{ color: TEXT }}>Finding your medicine...</p>
+              <div className="sc-progress-track mt-3">
+                <div className="sc-progress-bar" />
+              </div>
+              <p className="text-xs mt-2.5" style={{ color: MUTED }}>
+                This can take anywhere from 15 seconds to a couple of minutes while we match your
+                case against real clinical data.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4" aria-hidden="true">
+              {[0, 1].map((i) => (
+                <div key={i} className="sc-card p-4" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+                  <div className="flex items-start gap-3">
+                    <div className="sk w-12 h-12 rounded-xl shrink-0" />
+                    <div className="flex-1 space-y-2 pt-1">
+                      <div className="sk h-3.5 w-3/4 rounded-full" />
+                      <div className="sk h-2.5 w-1/2 rounded-full" />
+                    </div>
+                  </div>
+                  <div className="sk h-1.5 w-full rounded-full mt-3" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       </div>
 

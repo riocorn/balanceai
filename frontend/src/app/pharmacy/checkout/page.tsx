@@ -6,11 +6,11 @@ import Link from "next/link";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
-import { BG, EFFECTIVENESS, HERO_GRADIENT } from "@/components/diag/theme";
+import { BG, EFFECTIVENESS, HERO_GRADIENT, SURFACE } from "@/components/diag/theme";
 import { useCartStore } from "@/lib/cart-store";
 import { placePharmacyOrder } from "@/lib/db";
 import { GREEN, BORDER, TEXT, MUTED } from "@/components/pharmacy/shared";
-import { CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
+import { CTA_RADIUS, TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
 
 type PaymentMethod = "cod" | "upi" | "card";
 
@@ -85,7 +85,7 @@ export default function PharmacyCheckoutPage() {
             Aapke self-confirmed WhatsApp doctor go-ahead ke basis par order darj ho gaya hai.
             Abhi yeh step BalanceAI dwara automatically verify nahi kiya jaata.
           </p>
-          <Link href="/pharmacy" className="text-sm font-semibold underline" style={{ color: GREEN }}>
+          <Link href="/pharmacy" className={`text-sm font-semibold underline hover:opacity-75 rounded ${FOCUS_RING}`} style={{ color: GREEN, transition: TRANSITION_ALL }}>
             Wapas Pharmacy jaayein
           </Link>
         </div>
@@ -98,7 +98,7 @@ export default function PharmacyCheckoutPage() {
     <main style={{ background: BG }} className="min-h-screen font-sans">
       <SiteHeader active="pharmacy" />
       <div className="max-w-lg mx-auto px-5 py-8 pb-10">
-        <Link href="/pharmacy/cart" className="inline-flex items-center gap-1 text-xs font-medium mb-4" style={{ color: MUTED }}>
+        <Link href="/pharmacy/cart" className={`inline-flex items-center gap-1 text-xs font-medium mb-4 rounded hover:opacity-75 ${FOCUS_RING}`} style={{ color: MUTED, transition: TRANSITION_ALL }}>
           <ArrowLeft className="w-3.5 h-3.5" /> Cart par wapas jaayein
         </Link>
 
@@ -117,10 +117,10 @@ export default function PharmacyCheckoutPage() {
               placeholder={f.placeholder}
               value={f.value}
               onChange={(e) => f.set(e.target.value)}
-              className="px-4 py-2.5 rounded-xl text-sm outline-none transition-colors duration-150"
-              style={{ background: "#fff", border: `1px solid ${BORDER}`, color: TEXT }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = GREEN; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = BORDER; }}
+              className="px-4 py-2.5 rounded-xl text-sm outline-none"
+              style={{ background: SURFACE, border: `1px solid ${BORDER}`, color: TEXT, transition: TRANSITION_ALL }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = GREEN; e.currentTarget.style.boxShadow = `0 0 0 3px rgba(10,82,89,0.12)`; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.boxShadow = "none"; }}
             />
           ))}
         </div>
@@ -132,9 +132,27 @@ export default function PharmacyCheckoutPage() {
             { id: "upi", label: "UPI (real gateway pending merchant setup)" },
             { id: "card", label: "Card (real gateway pending merchant setup)" },
           ] as { id: PaymentMethod; label: string }[]).map((opt) => (
-            <label key={opt.id} className="flex items-center gap-2 px-4 py-2.5 rounded-xl cursor-pointer"
-              style={{ background: "#fff", border: `1px solid ${payment === opt.id ? GREEN : BORDER}` }}>
-              <input type="radio" name="payment" checked={payment === opt.id} onChange={() => setPayment(opt.id)} />
+            <label
+              key={opt.id}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl cursor-pointer hover:bg-[rgba(10,82,89,0.03)]"
+              style={{ background: SURFACE, border: `1px solid ${payment === opt.id ? GREEN : BORDER}`, transition: TRANSITION_ALL }}
+            >
+              <span className="relative shrink-0">
+                <input
+                  type="radio"
+                  name="payment"
+                  checked={payment === opt.id}
+                  onChange={() => setPayment(opt.id)}
+                  className="cb-input sr-only"
+                />
+                <span
+                  className="cb-box flex items-center justify-center w-[18px] h-[18px] rounded-full border-2"
+                  style={{ borderColor: payment === opt.id ? GREEN : BORDER, transition: TRANSITION_ALL }}
+                  aria-hidden="true"
+                >
+                  {payment === opt.id && <span className="w-2 h-2 rounded-full" style={{ background: GREEN }} />}
+                </span>
+              </span>
               <span className="text-sm" style={{ color: TEXT }}>{opt.label}</span>
             </label>
           ))}
@@ -143,8 +161,8 @@ export default function PharmacyCheckoutPage() {
         <button
           onClick={placeOrder}
           disabled={placing || !name.trim() || !phone.trim() || !pincode.trim() || !line.trim()}
-          className={`w-full h-12 ${CTA_RADIUS} text-[15px] font-medium text-white disabled:opacity-40 hover:brightness-110`}
-          style={{ background: HERO_GRADIENT, transition: TRANSITION }}
+          className={`w-full h-12 ${CTA_RADIUS} text-[15px] font-medium text-white disabled:opacity-40 hover:brightness-110 ${FOCUS_RING}`}
+          style={{ background: HERO_GRADIENT, transition: TRANSITION_ALL }}
         >
           {placing ? "Placing Order..." : "Place Order"}
         </button>
