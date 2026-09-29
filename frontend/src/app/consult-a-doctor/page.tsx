@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList } from "lucide-react";
+import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList, Activity, Ear, Sparkles, Brain, Bone, Baby, HeartHandshake } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
@@ -32,7 +32,16 @@ const CONSULT_STEPS = [
   },
 ];
 
-const SPECIALTIES = ["General Medicine", "Gastroenterology", "ENT", "Dermatology", "Neurology", "Orthopedics", "Gynecology", "Psychiatry"];
+const SPECIALTIES = [
+  { name: "General Medicine", icon: Stethoscope },
+  { name: "Gastroenterology", icon: Activity },
+  { name: "ENT", icon: Ear },
+  { name: "Dermatology", icon: Sparkles },
+  { name: "Neurology", icon: Brain },
+  { name: "Orthopedics", icon: Bone },
+  { name: "Gynecology", icon: Baby },
+  { name: "Psychiatry", icon: HeartHandshake },
+];
 
 export default function ConsultADoctorPage() {
   useEffect(() => {
@@ -114,17 +123,17 @@ export default function ConsultADoctorPage() {
           real names and credentials here as each specialty goes live.
         </p>
         <div className="grid sm:grid-cols-3 gap-4 mb-16">
-          {SPECIALTIES.map((specialty) => (
+          {SPECIALTIES.map(({ name, icon: Icon }) => (
             <div
-              key={specialty}
+              key={name}
               className="sc-card p-5 flex items-center gap-3"
               style={{ background: SURFACE, border: "1px solid #E4E7E2" }}
             >
-              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ background: accentForKey(specialty) }}>
-                <Stethoscope className="w-5 h-5 text-white" strokeWidth={2} />
+              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ background: accentForKey(name) }}>
+                <Icon className="w-5 h-5 text-white" strokeWidth={2} />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold" style={{ color: TEXT }}>{specialty}</p>
+                <p className="text-sm font-bold" style={{ color: TEXT }}>{name}</p>
                 <p className="text-xs" style={{ color: MUTED }}>Details coming soon</p>
               </div>
             </div>

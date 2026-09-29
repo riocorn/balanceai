@@ -110,16 +110,19 @@ const RELATED_HEALTH_AREAS = [
     name: "Iron Deficiency Anaemia",
     detail: "The most common nutritional deficiency — fatigue, breathlessness and pallor are the usual first signs.",
     starter: "I feel very tired and breathless, and I think I might be anaemic",
+    icon: "/illustrations/library/iron.svg",
   },
   {
     name: "Obesity and Metabolic Syndrome",
     detail: "A real, common condition covered in our medical data — weight, blood sugar and cholesterol are assessed together.",
     starter: "I'm overweight and want to understand my metabolic health",
+    icon: "/illustrations/library/vitals-pulse.svg",
   },
   {
     name: "Osteoporosis",
     detail: "Bone-density loss that's preventable and treatable when caught early, especially after menopause or with age.",
     starter: "I'm worried about my bone health and osteoporosis risk",
+    icon: "/illustrations/library/calcium.svg",
   },
 ];
 
@@ -287,6 +290,8 @@ export default function WellnessPage() {
                 className={`block rounded-xl ${FOCUS_RING}`}
               >
                 <Card className="!ring-0 !py-0 sc-card sc-card-interactive h-full p-5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG */}
+                  <img src={area.icon} alt="" aria-hidden="true" className="w-10 h-10 mb-3" />
                   <p className="text-sm font-bold mb-1.5" style={{ color: TEXT }}>{area.name}</p>
                   <p className="text-xs leading-relaxed" style={{ color: MUTED }}>{area.detail}</p>
                 </Card>

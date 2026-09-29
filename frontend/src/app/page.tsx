@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { Leaf, Shield, Zap, Microscope, ChefHat, TrendingUp, MessageCircle, Star, ChevronDown } from "lucide-react";
+import { Leaf, Shield, Zap, Microscope, ChefHat, TrendingUp, MessageCircle, Star, ChevronDown, Award, GraduationCap, Users, MapPin, Gift } from "lucide-react";
 
 const GREEN    = "#1d5c3d";
 const CREAM    = "#d4b896";
@@ -398,11 +398,19 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {["ICMR-NIN 2017", "IIT Mandi", "10,000+ Users", "25+ Nutrients", "29 States", "Free Forever"].map((item) => (
-              <div key={item}
-                className="rounded-xl flex items-center justify-center p-6 text-center text-sm font-semibold"
+            {[
+              { label: "ICMR-NIN 2017", icon: Award },
+              { label: "IIT Mandi", icon: GraduationCap },
+              { label: "10,000+ Users", icon: Users },
+              { label: "25+ Nutrients", icon: Microscope },
+              { label: "29 States", icon: MapPin },
+              { label: "Free Forever", icon: Gift },
+            ].map(({ label, icon: Icon }) => (
+              <div key={label}
+                className="rounded-xl flex flex-col items-center justify-center gap-2 p-6 text-center text-sm font-semibold"
                 style={{ background: "rgba(255,255,255,0.1)", color: "#a8c5b5", border: "1px solid rgba(255,255,255,0.1)" }}>
-                {item}
+                <Icon className="w-5 h-5" style={{ color: CREAM }} />
+                {label}
               </div>
             ))}
           </div>

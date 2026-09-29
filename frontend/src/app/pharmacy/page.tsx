@@ -15,6 +15,8 @@ import {
   TEAL as GREEN,
   BLUE as GREEN_DARK,
   EFFECTIVENESS as AMBER,
+  ACCENT_CORAL,
+  ACCENT_PURPLE,
   BORDER,
   TEXT,
   MUTED,
@@ -270,10 +272,18 @@ export default function PharmacyIntakePage() {
             />
           </div>
           <div className="divide-y divide-[rgba(255,255,255,0.18)]">
-            {TRUST_ITEMS.map(({ title, desc }) => (
-              <div key={title} className="py-4 first:pt-0">
-                <p className="text-sm font-bold text-white mb-1">{title}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{desc}</p>
+            {TRUST_ITEMS.map(({ icon: Icon, title, desc }, i) => (
+              <div key={title} className="py-4 first:pt-0 flex items-start gap-3.5">
+                <span
+                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                  style={{ background: [ACCENT_CORAL, "rgba(255,255,255,0.18)", AMBER, ACCENT_PURPLE][i % 4] }}
+                >
+                  <Icon className="w-4 h-4 text-white" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-white mb-1">{title}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{desc}</p>
+                </div>
               </div>
             ))}
           </div>
