@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs83" />
+  <style>
+    @keyframes pulseCheck { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+    .pulse-check { animation: pulseCheck 1.8s ease-in-out infinite; transform-origin: 418px 356px; transform-box: fill-box; }
+  </style>
   <circle
      cx="280"
      cy="220"
@@ -231,20 +235,22 @@
      opacity="0.6"
      stroke-linejoin="round"
      id="path62" />
-  <circle
-     cx="418"
-     cy="356"
-     r="13"
-     fill="#2F9E5B"
-     id="circle64" />
-  <path
-     d="M411,356 L416,362 L426,349"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2.5"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     id="path66" />
+  <g class="pulse-check">
+    <circle
+       cx="418"
+       cy="356"
+       r="13"
+       fill="#2F9E5B"
+       id="circle64" />
+    <path
+       d="M411,356 L416,362 L426,349"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2.5"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       id="path66" />
+  </g>
   <path
      d="M352,300 L322,268"
      stroke="#ffffff"

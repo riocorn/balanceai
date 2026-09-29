@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs27" />
+  <style>
+    @keyframes pulseDot { 0%, 100% { r: 2.75; opacity: 1; } 50% { r: 4.5; opacity: 0.55; } }
+    .pulse-dot { animation: pulseDot 1.6s ease-in-out infinite; }
+  </style>
   <circle
      cx="100"
      cy="100"
@@ -45,7 +49,8 @@
        cy="113"
        r="2.75"
        fill="#E0475A"
-       id="circle8" />
+       id="circle8"
+       class="pulse-dot" />
   </g>
   <g
      transform="rotate(18 130 62)"

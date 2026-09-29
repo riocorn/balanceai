@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs75" />
+  <style>
+    @keyframes pulseNode { 0%, 100% { r: 5; opacity: 1; } 50% { r: 8; opacity: 0.55; } }
+    .pulse-node { animation: pulseNode 1.6s ease-in-out infinite; }
+  </style>
   <circle
      cx="160"
      cy="150"
@@ -211,7 +215,8 @@
      cy="162"
      r="5"
      fill="#c99a4a"
-     id="circle62" />
+     id="circle62"
+     class="pulse-node" />
   <path
      d="M181,162 L232,184"
      stroke="#1d5c3d"

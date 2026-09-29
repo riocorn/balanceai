@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs99" />
+  <style>
+    @keyframes typingDot { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+    .typing-dot { animation: typingDot 1.4s ease-in-out infinite; transform-origin: center; }
+  </style>
   <circle
      cx="280"
      cy="220"
@@ -268,21 +272,25 @@
      cy="324"
      r="3"
      fill="#2F9E5B"
-     id="circle72" />
+     id="circle72"
+     class="typing-dot"
+     style="animation-delay:0s" />
   <circle
      cx="400"
      cy="324"
      r="3"
      fill="#ffffff"
-     opacity="0.6"
-     id="circle74" />
+     id="circle74"
+     class="typing-dot"
+     style="animation-delay:0.2s" />
   <circle
      cx="414"
      cy="324"
      r="3"
      fill="#ffffff"
-     opacity="0.6"
-     id="circle76" />
+     id="circle76"
+     class="typing-dot"
+     style="animation-delay:0.4s" />
   <path
      d="M360,296 L332,270"
      stroke="#ffffff"

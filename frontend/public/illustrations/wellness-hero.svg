@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs57" />
+  <style>
+    @keyframes balanceRock { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+    .balance-beam { animation: balanceRock 4s ease-in-out infinite; transform-origin: 240px 252px; }
+  </style>
   <circle
      cx="240"
      cy="240"
@@ -80,91 +84,93 @@
      stroke="#ffffff"
      stroke-width="2.25"
      id="circle20" />
-  <!-- beam -->
-  <line
-     x1="118"
-     y1="252"
-     x2="362"
-     y2="252"
-     stroke="#ffffff"
-     stroke-width="2.25"
-     stroke-linecap="round"
-     id="line22" />
-  <!-- left pan: leaf -->
-  <line
-     x1="130"
-     y1="256"
-     x2="122"
-     y2="322"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.75"
-     id="line24" />
-  <line
-     x1="142"
-     y1="256"
-     x2="150"
-     y2="322"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.75"
-     id="line26" />
-  <path
-     d="M110,324 Q136,346 162,324"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     stroke-linecap="round"
-     id="path28" />
-  <path
-     d="M136,278 Q166,290 160,320 Q130,314 126,286 Q128,280 136,278 Z"
-     fill="none"
-     stroke="#2F9E5B"
-     stroke-width="2.25"
-     stroke-linejoin="round"
-     id="path30" />
-  <line
-     x1="133"
-     y1="286"
-     x2="155"
-     y2="312"
-     stroke="#2F9E5B"
-     stroke-width="1.25"
-     opacity="0.7"
-     id="line32" />
-  <!-- right pan: heart -->
-  <line
-     x1="350"
-     y1="256"
-     x2="358"
-     y2="322"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.75"
-     id="line34" />
-  <line
-     x1="338"
-     y1="256"
-     x2="330"
-     y2="322"
-     stroke="#ffffff"
-     stroke-width="1.5"
-     opacity="0.75"
-     id="line36" />
-  <path
-     d="M318,324 Q344,346 370,324"
-     fill="none"
-     stroke="#ffffff"
-     stroke-width="2"
-     stroke-linecap="round"
-     id="path38" />
-  <path
-     d="M344,286 C338,278 324,282 324,296 C324,308 344,322 344,322 C344,322 364,308 364,296 C364,282 350,278 344,286 Z"
-     fill="none"
-     stroke="#E0475A"
-     stroke-width="2.25"
-     stroke-linejoin="round"
-     id="path40" />
+  <g class="balance-beam">
+    <!-- beam -->
+    <line
+       x1="118"
+       y1="252"
+       x2="362"
+       y2="252"
+       stroke="#ffffff"
+       stroke-width="2.25"
+       stroke-linecap="round"
+       id="line22" />
+    <!-- left pan: leaf -->
+    <line
+       x1="130"
+       y1="256"
+       x2="122"
+       y2="322"
+       stroke="#ffffff"
+       stroke-width="1.5"
+       opacity="0.75"
+       id="line24" />
+    <line
+       x1="142"
+       y1="256"
+       x2="150"
+       y2="322"
+       stroke="#ffffff"
+       stroke-width="1.5"
+       opacity="0.75"
+       id="line26" />
+    <path
+       d="M110,324 Q136,346 162,324"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2"
+       stroke-linecap="round"
+       id="path28" />
+    <path
+       d="M136,278 Q166,290 160,320 Q130,314 126,286 Q128,280 136,278 Z"
+       fill="none"
+       stroke="#2F9E5B"
+       stroke-width="2.25"
+       stroke-linejoin="round"
+       id="path30" />
+    <line
+       x1="133"
+       y1="286"
+       x2="155"
+       y2="312"
+       stroke="#2F9E5B"
+       stroke-width="1.25"
+       opacity="0.7"
+       id="line32" />
+    <!-- right pan: heart -->
+    <line
+       x1="350"
+       y1="256"
+       x2="358"
+       y2="322"
+       stroke="#ffffff"
+       stroke-width="1.5"
+       opacity="0.75"
+       id="line34" />
+    <line
+       x1="338"
+       y1="256"
+       x2="330"
+       y2="322"
+       stroke="#ffffff"
+       stroke-width="1.5"
+       opacity="0.75"
+       id="line36" />
+    <path
+       d="M318,324 Q344,346 370,324"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="2"
+       stroke-linecap="round"
+       id="path38" />
+    <path
+       d="M344,286 C338,278 324,282 324,296 C324,308 344,322 344,322 C344,322 364,308 364,296 C364,282 350,278 344,286 Z"
+       fill="none"
+       stroke="#E0475A"
+       stroke-width="2.25"
+       stroke-linejoin="round"
+       id="path40" />
+  </g>
   <!-- base -->
   <path
      d="M208,398 L272,398 L288,432 H192 Z"

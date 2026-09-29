@@ -7,6 +7,10 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs87" />
+  <style>
+    @keyframes pulseNode { 0%, 100% { r: 4.5; opacity: 1; } 50% { r: 7; opacity: 0.55; } }
+    .pulse-node { animation: pulseNode 1.6s ease-in-out infinite; }
+  </style>
   <!-- faint full-orbit construction circle -->
   <circle
      cx="280"
@@ -148,7 +152,8 @@
      cy="186"
      r="4.5"
      fill="#E0475A"
-     id="circle40" />
+     id="circle40"
+     class="pulse-node" />
   <path
      d="M233,186 L172,146"
      stroke="#ffffff"
