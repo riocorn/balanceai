@@ -257,48 +257,38 @@ export default function PharmacyIntakePage() {
           {error && <p className="text-xs mt-3" style={{ color: "#B42318" }}>{error}</p>}
         </div>
 
-        {/* ── Trust badge strip — dense 4-up row with separators, real e-pharmacy "why us" pattern ── */}
-        <div className="sc-card mt-8 grid grid-cols-2 sm:grid-cols-4" style={{ background: "#fff", border: `1px solid ${BORDER}` }}>
-          {TRUST_ITEMS.map(({ icon: Icon, title, desc }, i) => (
-            <div
-              key={title}
-              className="group flex flex-col items-start gap-2 p-4 transition-colors duration-200 hover:bg-[rgba(14,124,134,0.04)]"
-              style={{
-                borderRight: i % 2 === 0 ? `1px solid ${BORDER}` : undefined,
-                borderTop: i >= 2 ? `1px solid ${BORDER}` : undefined,
-              }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-200 group-hover:scale-110" style={{ background: "rgba(14,124,134,0.10)" }}>
-                <Icon className="w-4 h-4" style={{ color: GREEN }} />
-              </div>
-              <p className="text-xs font-bold leading-tight" style={{ color: TEXT }}>{title}</p>
-              <p className="text-[11px] leading-snug" style={{ color: MUTED }}>{desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 mb-10">
-          {[
-            { icon: Sparkles, title: "AI Understanding", desc: "Recognizes the condition from text written in any language or style" },
-            { icon: ShieldCheck, title: "Proven Treatments", desc: "Backed by real clinical evidence, never a guess" },
-            { icon: MessageCircle, title: "WhatsApp Doctor Review", desc: "Send your prescription to a doctor over WhatsApp before purchase — reply is currently self-confirmed, not independently verified yet" },
-          ].map(({ icon: Icon, title, desc }) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="group sc-card sc-card-interactive p-4"
-              style={{ background: "#fff", border: `1px solid ${BORDER}` }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-2 transition-transform duration-200 group-hover:scale-110" style={{ background: "rgba(14,124,134,0.10)" }}>
-                <Icon className="w-4 h-4" style={{ color: GREEN }} />
-              </div>
-              <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>{title}</p>
-              <p className="text-xs" style={{ color: MUTED }}>{desc}</p>
-            </motion.div>
-          ))}
-        </div>
       </div>
+
+      {/* Trust band — redesigned, 2026-09-29: the page used to run two
+          separate icon-in-circle card grids back to back here, with real
+          content overlap between them (both covered "AI understands any
+          language" and "WhatsApp doctor review" separately). Consolidated
+          into one asymmetric headline + list band, matching the same
+          treatment used on /symptom-checker so the two entry points read as
+          one system instead of two differently-templated pages. */}
+      <section
+        className="relative w-full py-16 px-4 overflow-hidden mt-10"
+        style={{ background: `linear-gradient(120deg, ${GREEN} 0%, ${GREEN} 35%, ${GREEN_DARK} 100%)` }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
+          aria-hidden="true"
+          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
+        />
+        <div className="relative max-w-5xl mx-auto grid sm:grid-cols-[1fr_1.2fr] gap-10 items-start">
+          <h2 className="font-display font-bold text-white leading-[1.05]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>
+            Why people trust BalanceAI to find their medicine.
+          </h2>
+          <div className="divide-y divide-[rgba(255,255,255,0.18)]">
+            {TRUST_ITEMS.map(({ title, desc }) => (
+              <div key={title} className="py-4 first:pt-0">
+                <p className="text-sm font-bold text-white mb-1">{title}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <SiteFooter />
     </main>
   );
