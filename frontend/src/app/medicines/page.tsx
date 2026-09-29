@@ -96,11 +96,6 @@ export default function MedicinesPage() {
           (redesign, 2026-09-29), same device used across the redesigned
           pages so the site reads as one system. ── */}
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        <div
-          className="absolute inset-0 opacity-[0.10] pointer-events-none"
-          aria-hidden="true"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
-        />
         <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         {/* Custom vector illustration (hand-built — see
             public/illustrations/README.md): a small corner accent, not a

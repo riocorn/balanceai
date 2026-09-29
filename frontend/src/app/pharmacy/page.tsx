@@ -90,10 +90,6 @@ export default function PharmacyIntakePage() {
           texture and two soft outline rings, matching the same device used
           on /symptom-checker so the two entry points feel like one site. ── */}
       <div className="relative overflow-hidden" style={{ background: GREEN }}>
-        <div className="absolute inset-0 opacity-[0.10] pointer-events-none" style={{
-          backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)",
-          backgroundSize: "22px 22px",
-        }} />
         <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         <div className="absolute -left-16 bottom-0 w-64 h-64 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.10)" }} />
 
@@ -254,11 +250,6 @@ export default function PharmacyIntakePage() {
         className="relative w-full py-16 px-4 overflow-hidden mt-10"
         style={{ background: GREEN }}
       >
-        <div
-          className="absolute inset-0 opacity-[0.10] pointer-events-none"
-          aria-hidden="true"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
-        />
         <div className="relative max-w-5xl mx-auto grid sm:grid-cols-[1fr_1.2fr] gap-10 items-start">
           <div>
             <h2 className="font-display font-bold text-white leading-[1.05] mb-8" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>

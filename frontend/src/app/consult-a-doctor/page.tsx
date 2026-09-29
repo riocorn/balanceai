@@ -50,11 +50,6 @@ export default function ConsultADoctorPage() {
             /symptom-checker and /pharmacy, so all three primary entry
             points read as one considered layout system rather than
             interchangeable banner templates. */}
-        <div
-          className="absolute inset-0 opacity-[0.10] pointer-events-none"
-          aria-hidden="true"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
-        />
         <div className="absolute -right-24 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
         <div className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-16 pb-16 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div className="text-center lg:text-left">

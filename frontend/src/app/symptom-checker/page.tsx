@@ -455,11 +455,6 @@ export default function SymptomCheckerPage() {
               "SaaS gradient blob"), and two large soft rings that echo the
               logo's pulse mark rather than any photographic content. */}
           <div
-            className="absolute inset-0 opacity-[0.12] pointer-events-none"
-            aria-hidden="true"
-            style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
-          />
-          <div
             className="absolute -right-32 -top-40 w-[30rem] h-[30rem] rounded-full pointer-events-none"
             aria-hidden="true"
             style={{ border: "1px solid rgba(255,255,255,0.14)" }}
@@ -1001,11 +996,6 @@ export default function SymptomCheckerPage() {
         className="relative w-full py-16 px-4 overflow-hidden"
         style={{ background: TEAL }}
       >
-        <div
-          className="absolute inset-0 opacity-[0.10] pointer-events-none"
-          aria-hidden="true"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
-        />
         <div className="relative max-w-5xl mx-auto grid sm:grid-cols-[1fr_1.2fr] gap-10 items-start">
           <div>
             <h2 className="font-display font-bold text-white leading-[1.05] mb-8" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}>
@@ -1146,11 +1136,6 @@ export default function SymptomCheckerPage() {
         className="relative py-20 px-4 text-center overflow-hidden"
         style={{ background: TEAL }}
       >
-        <div
-          className="absolute inset-0 opacity-[0.09] pointer-events-none"
-          aria-hidden="true"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "26px 26px" }}
-        />
         {/* Custom vector illustration (hand-built, cleaned/optimized via
             Inkscape CLI — public/illustrations/symptom-flow.svg) depicting
             the real product flow: describe your symptoms -> doctor + AI
