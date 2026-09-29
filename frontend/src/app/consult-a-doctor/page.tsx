@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList, ArrowRight } from "lucide-react";
+import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
@@ -68,28 +68,23 @@ export default function ConsultADoctorPage() {
               specialty routing and automatic verification are on our roadmap.
             </p>
           </div>
-          {/* Real product flow, not a stock photo of a generic doctor: the
-              same three-icon relationship used on /symptom-checker, applied
-              to this page's own real sequence — you describe your case,
-              WhatsApp carries it to a doctor, you get a confirmed go-ahead. */}
-          <div className="flex items-center justify-center gap-2 sm:gap-4" aria-hidden="true">
-            {[
-              { Icon: ClipboardList, label: "Your case" },
-              { Icon: MessageCircle, label: "WhatsApp" },
-              { Icon: ShieldCheck, label: "Confirmed" },
-            ].map(({ Icon, label }, idx, arr) => (
-              <div key={label} className="flex items-center gap-2 sm:gap-4">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: "#FFFFFF" }}>
-                    <Icon className="w-7 h-7 sm:w-9 sm:h-9" style={{ color: idx === 1 ? "#25D366" : TEAL }} />
-                  </div>
-                  <span className="text-[11px] sm:text-xs font-semibold text-white whitespace-nowrap">{label}</span>
-                </div>
-                {idx < arr.length - 1 && (
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" style={{ color: "rgba(255,255,255,0.75)" }} />
-                )}
-              </div>
-            ))}
+          {/* Custom vector illustration (hand-built — see
+              public/illustrations/README.md): patient -> consult screen ->
+              a stethoscope badge standing in for "a doctor". Deliberately no
+              face is drawn anywhere, matching the honest beta positioning —
+              no real onboarded doctor is depicted. Replaces the three-icon
+              tile row that was an exact duplicate of /symptom-checker's old
+              hero pattern. */}
+          <div className="flex items-center justify-center" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static
+                local decorative SVG; next/image's raster pipeline isn't used
+                for hand-authored vector assets. */}
+            <img
+              src="/illustrations/consult-hero.svg"
+              alt=""
+              className="w-full max-w-[280px] sm:max-w-[340px] h-auto"
+              style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
+            />
           </div>
         </div>
       </div>
