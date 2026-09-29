@@ -174,13 +174,30 @@ export default function WellnessPage() {
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
         <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">Wellness</h1>
-          <p className="text-sm sm:text-base max-w-xl" style={{ color: "rgba(255,255,255,0.88)" }}>
-            Real, commonly used products from our catalog across sexual wellness, vitamins &amp;
-            supplements, personal care, women&apos;s health, and mom &amp; baby care — for genuine
-            preventive health, not general &quot;boosting&quot;.
-          </p>
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-14 pb-14 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">Wellness</h1>
+            <p className="text-sm sm:text-base max-w-xl mx-auto lg:mx-0" style={{ color: "rgba(255,255,255,0.88)" }}>
+              Real, commonly used products from our catalog across sexual wellness, vitamins &amp;
+              supplements, personal care, women&apos;s health, and mom &amp; baby care — for genuine
+              preventive health, not general &quot;boosting&quot;.
+            </p>
+          </div>
+          {/* Custom vector illustration (hand-built — see
+              public/illustrations/README.md): a balance scale (leaf vs.
+              heart) — a deliberate nod to the product name "BalanceAI"
+              rather than a generic leaf/plant wellness cliché. */}
+          <div className="flex items-center justify-center" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static
+                local decorative SVG; next/image's raster pipeline isn't used
+                for hand-authored vector assets. */}
+            <img
+              src="/illustrations/wellness-hero.svg"
+              alt=""
+              className="w-full max-w-[260px] sm:max-w-[300px] h-auto"
+              style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
+            />
+          </div>
         </div>
       </div>
 
