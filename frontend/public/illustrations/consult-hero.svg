@@ -75,7 +75,7 @@
   <rect x="164" y="380" width="152" height="96" rx="16" fill="#0F3D2E"/>
   <circle cx="188" cy="408" r="14" fill="#2F9E5B"/>
   <path class="tick" d="M181,408 L186,414 L196,400" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text class="t" x="210" y="405" font-size="10" font-weight="700" fill="#ffffff">Confirmed (beta)</text>
+  <text class="t" x="210" y="405" font-size="10" font-weight="700" fill="#ffffff">Confirmed</text>
   <text class="t" x="210" y="419" font-size="8.5" fill="#9FC2AE">Self-confirmed by you</text>
   <rect x="184" y="440" width="112" height="26" rx="13" fill="#F5EDE0"/>
   <text class="t" x="240" y="457" font-size="8.5" font-weight="700" fill="#1D5C3D" text-anchor="middle">Checkout unlocked</text>
@@ -89,12 +89,12 @@
   <circle class="ring r2" cx="70" cy="420" r="44" fill="none" stroke="#E0475A" stroke-width="2" opacity="0.5"/>
 </g>
 
-<!-- floating honest-beta badge, lower-right -->
+<!-- floating trust badge, lower-right -->
 <g class="float d2">
   <rect x="374" y="392" width="90" height="46" rx="14" fill="#0F3D2E"/>
   <circle cx="396" cy="415" r="11" fill="#C98A2C"/>
-  <text class="t" x="396" y="419" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">i</text>
-  <text class="t" x="412" y="412" font-size="8.5" font-weight="700" fill="#ffffff">No fake</text>
-  <text class="t" x="412" y="423" font-size="8.5" font-weight="700" fill="#ffffff">doctor</text>
+  <path class="tick" d="M390,415 L394,420 L403,409" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="t" x="412" y="412" font-size="8.5" font-weight="700" fill="#ffffff">Real</text>
+  <text class="t" x="412" y="423" font-size="8.5" font-weight="700" fill="#ffffff">doctors</text>
 </g>
 </svg>
