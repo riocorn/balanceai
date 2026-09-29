@@ -15,6 +15,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT } from "./theme";
+import { FOCUS_RING, TRANSITION_ALL } from "./tokens";
 import { CATEGORY_TILES } from "./categories";
 import {
   ensureSearchIndex,
@@ -272,12 +273,11 @@ export default function SiteHeader({
           >
             <Link
               href="/symptom-checker"
-              className="pb-[13px] whitespace-nowrap"
-              style={
-                active === "symptoms"
-                  ? { color: TEAL, borderBottom: `2px solid ${TEAL}` }
-                  : { color: TEXT }
-              }
+              className={`pb-[13px] whitespace-nowrap rounded-t hover:text-[#0A5259] ${FOCUS_RING}`}
+              style={{
+                ...(active === "symptoms" ? { color: TEAL, borderBottom: `2px solid ${TEAL}` } : { color: TEXT }),
+                transition: TRANSITION_ALL,
+              }}
             >
               Find Treatment
             </Link>
@@ -301,8 +301,8 @@ export default function SiteHeader({
             />
             <a
               href="/symptom-checker#how-it-works"
-              style={{ color: TEXT }}
-              className="hidden md:inline whitespace-nowrap transition-colors duration-200 hover:text-[#0A5259]"
+              style={{ color: TEXT, transition: TRANSITION_ALL }}
+              className={`hidden md:inline whitespace-nowrap rounded hover:text-[#0A5259] ${FOCUS_RING}`}
             >
               How It Works
             </a>
@@ -326,8 +326,8 @@ export default function SiteHeader({
                   e.preventDefault();
                   handleMedSubmit();
                 }}
-                className="flex items-center gap-1.5 rounded-full h-7 px-3 transition-shadow duration-200 focus-within:ring-2"
-                style={{ background: BG, border: "1px solid #E4EBEE" }}
+                className="flex items-center gap-1.5 rounded-full h-7 px-3 focus-within:shadow-[0_0_0_3px_rgba(10,82,89,0.16)]"
+                style={{ background: BG, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
               >
                 <Search className="w-3 h-3 shrink-0" style={{ color: MUTED }} />
                 <input
@@ -366,8 +366,8 @@ export default function SiteHeader({
                             type="button"
                             onClick={() => pickMedicine(m)}
                             onMouseEnter={() => setMedHighlightedIndex(idx)}
-                            className="w-full flex items-center gap-2.5 text-left px-4 py-2 text-sm transition-colors duration-150"
-                            style={{ color: TEXT, background: active ? "rgba(14,124,134,0.08)" : "transparent" }}
+                            className={`w-full flex items-center gap-2.5 text-left px-4 py-2 text-sm ${FOCUS_RING}`}
+                            style={{ color: TEXT, background: active ? "rgba(14,124,134,0.08)" : "transparent", transition: TRANSITION_ALL }}
                           >
                             <Pill className="w-3.5 h-3.5 shrink-0" style={{ color: TEAL }} />
                             <span className="truncate">{m.displayName}</span>
@@ -385,7 +385,7 @@ export default function SiteHeader({
               )}
             </div>
 
-            <Link href="/pharmacy/cart" aria-label="View cart" className="relative shrink-0 transition-transform duration-200 hover:scale-110">
+            <Link href="/pharmacy/cart" aria-label="View cart" className={`relative shrink-0 rounded hover:scale-110 ${FOCUS_RING}`} style={{ transition: TRANSITION_ALL }}>
               <ShoppingCart className="w-4 h-4" style={{ color: TEXT }} />
               {cartCount > 0 && (
                 <span
@@ -443,8 +443,8 @@ export default function SiteHeader({
                   e.preventDefault();
                   handleSymptomSubmit();
                 }}
-                className="flex items-center gap-2 rounded-full h-11 pl-4 pr-1.5 transition-shadow duration-200 focus-within:ring-2"
-                style={{ background: "rgba(14,124,134,0.05)", border: `1px solid rgba(14,124,134,0.35)` }}
+                className="flex items-center gap-2 rounded-full h-11 pl-4 pr-1.5 focus-within:shadow-[0_0_0_3px_rgba(10,82,89,0.16)]"
+                style={{ background: "rgba(14,124,134,0.05)", border: `1px solid rgba(14,124,134,0.35)`, transition: TRANSITION_ALL }}
               >
                 <Sparkles className="w-4 h-4 shrink-0" style={{ color: TEAL }} />
                 <input
@@ -457,8 +457,8 @@ export default function SiteHeader({
                 <button
                   type="submit"
                   aria-label="Check symptoms with AI"
-                  className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-transform duration-200 hover:-translate-y-0.5"
-                  style={{ background: HERO_GRADIENT }}
+                  className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white hover:-translate-y-0.5 ${FOCUS_RING}`}
+                  style={{ background: HERO_GRADIENT, transition: TRANSITION_ALL }}
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -487,8 +487,8 @@ export default function SiteHeader({
               <button
                 key={label}
                 onClick={() => goToSymptomCheckerAutoSubmit(starter)}
-                className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-[#0A5259]"
-                style={{ color: MUTED }}
+                className={`flex items-center gap-1.5 whitespace-nowrap rounded hover:text-[#0A5259] ${FOCUS_RING}`}
+                style={{ color: MUTED, transition: TRANSITION_ALL }}
               >
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />
                 {label}
