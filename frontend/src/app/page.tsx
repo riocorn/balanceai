@@ -223,7 +223,7 @@ export default function LandingPage() {
               {/* eslint-disable-next-line @next/next/no-img-element -- static
                   local decorative SVG; next/image's raster pipeline isn't
                   used for hand-authored vector assets. */}
-              <img src="/illustrations/nutrition-scan.svg" alt="" aria-hidden="true" className="w-52 h-auto mx-auto" />
+              <img src="/illustrations/nutrition-scan.svg" alt="" aria-hidden="true" className="w-72 sm:w-80 h-auto mx-auto" />
               <p className="font-bold text-2xl" style={{ color: GREEN }}>25+</p>
               <p className="text-sm font-medium" style={{ color: SUB }}>Nutrient deficiencies<br />detected in 2 minutes</p>
               <div className="flex gap-1 justify-center">

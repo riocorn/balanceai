@@ -10,6 +10,8 @@
   <style>
     @keyframes pulseNode { 0%, 100% { r: 5; opacity: 1; } 50% { r: 8; opacity: 0.55; } }
     .pulse-node { animation: pulseNode 1.6s ease-in-out infinite; }
+    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .radar-sweep { animation: radarSweep 4s linear infinite; transform-origin: 160px 150px; }
   </style>
   <circle
      cx="160"
@@ -28,11 +30,11 @@
      r="95"
      fill="none"
      stroke="#1d5c3d"
-     stroke-width="2"
+     stroke-width="3"
      id="circle4" />
   <g
      stroke="#1d5c3d"
-     stroke-width="1.4"
+     stroke-width="2"
      stroke-linecap="round"
      opacity="0.75"
      id="g30">
@@ -109,6 +111,11 @@
        y2="101"
        id="line28" />
   </g>
+  <!-- scan-sweep, continuously rotating -->
+  <g class="radar-sweep">
+    <path d="M160,150 L160,55 A95,95 0 0 1 227,82 Z" fill="#1d5c3d" opacity="0.08" />
+    <line x1="160" y1="150" x2="227" y2="82" stroke="#1d5c3d" stroke-width="2" opacity="0.5" />
+  </g>
   <!-- radar grid -->
   <circle
      cx="160"
@@ -176,38 +183,38 @@
      fill="#1d5c3d"
      fill-opacity="0.08"
      stroke="#1d5c3d"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      id="path50" />
   <circle
      cx="160"
      cy="90.5"
-     r="3"
-     fill="#1d5c3d"
+     r="4.5"
+     fill="#7C5CBF"
      id="circle52" />
   <circle
      cx="202"
      cy="125.5"
-     r="3"
-     fill="#1d5c3d"
+     r="4.5"
+     fill="#2D7A58"
      id="circle54" />
   <circle
      cx="160"
      cy="202.5"
-     r="3"
-     fill="#1d5c3d"
+     r="4.5"
+     fill="#E0475A"
      id="circle56" />
   <circle
      cx="120.6"
      cy="172.75"
-     r="3"
-     fill="#1d5c3d"
+     r="4.5"
+     fill="#C98A2C"
      id="circle58" />
   <circle
      cx="111.5"
      cy="122"
-     r="3"
-     fill="#1d5c3d"
+     r="4.5"
+     fill="#5B6EE1"
      id="circle60" />
   <!-- flagged deficiency node -->
   <circle
