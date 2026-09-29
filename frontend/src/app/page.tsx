@@ -77,7 +77,7 @@ export default function LandingPage() {
       {/* ── Announcement bar ── */}
       <div className="w-full text-center py-2.5 px-4 text-sm font-medium"
         style={{ background: CREAM_BG, color: GREEN }}>
-        AI-powered nutrition deficiency detection in minutes · No blood test · Free · Made for India
+        Free AI nutrition deficiency detection, built for India — no blood test required
       </div>
 
       {/* ── Navigation ── */}
@@ -188,7 +188,7 @@ export default function LandingPage() {
           <div className="flex flex-wrap gap-4 mb-10">
             <Link href="/analyze">
               <button
-                className="px-8 py-3.5 rounded-lg text-sm font-bold uppercase tracking-wide"
+                className="px-8 py-3.5 rounded-lg text-sm font-semibold"
                 style={{ background: GREEN, color: WHITE }}
               >
                 Start Free Analysis
@@ -196,7 +196,7 @@ export default function LandingPage() {
             </Link>
             <a href="#how">
               <button
-                className="px-8 py-3.5 rounded-lg text-sm font-bold uppercase tracking-wide border-2"
+                className="px-8 py-3.5 rounded-lg text-sm font-semibold border-2"
                 style={{ borderColor: GREEN, color: GREEN, background: "transparent" }}
               >
                 How It Works
@@ -215,10 +215,15 @@ export default function LandingPage() {
             style={{ background: CREAM_BG }}
           >
             <div className="text-center space-y-4 p-8">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto"
-                style={{ background: GREEN }}>
-                <Leaf className="w-10 h-10 text-white" />
-              </div>
+              {/* Custom vector illustration (hand-built — see
+                  public/illustrations/README.md): a nutrient radar scan,
+                  one flagged deficiency called out with a real leader-line
+                  label. Replaces a plain Leaf icon in a box, which carried
+                  no real content about what the product actually does. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static
+                  local decorative SVG; next/image's raster pipeline isn't
+                  used for hand-authored vector assets. */}
+              <img src="/illustrations/nutrition-scan.svg" alt="" aria-hidden="true" className="w-52 h-auto mx-auto" />
               <p className="font-bold text-2xl" style={{ color: GREEN }}>25+</p>
               <p className="text-sm font-medium" style={{ color: SUB }}>Nutrient deficiencies<br />detected in 2 minutes</p>
               <div className="flex gap-1 justify-center">
@@ -270,7 +275,7 @@ export default function LandingPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/analyze">
               <button
-                className="px-8 py-3.5 rounded-lg text-sm font-bold uppercase tracking-wide"
+                className="px-8 py-3.5 rounded-lg text-sm font-semibold"
                 style={{ background: CREAM, color: GREEN }}
               >
                 Start Your Analysis
@@ -278,7 +283,7 @@ export default function LandingPage() {
             </Link>
             <a href="#about">
               <button
-                className="px-8 py-3.5 rounded-lg text-sm font-bold uppercase tracking-wide border-2"
+                className="px-8 py-3.5 rounded-lg text-sm font-semibold border-2"
                 style={{ borderColor: CREAM, color: CREAM, background: "transparent" }}
               >
                 About Us
@@ -348,7 +353,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link href="/analyze">
               <button
-                className="px-8 py-3.5 rounded-lg text-sm font-bold uppercase tracking-wide"
+                className="px-8 py-3.5 rounded-lg text-sm font-semibold"
                 style={{ background: GREEN, color: WHITE }}>
                 Try It Free
               </button>
@@ -385,7 +390,7 @@ export default function LandingPage() {
               ))}
             </ul>
             <Link href="/dashboard">
-              <button className="px-7 py-3 rounded-lg text-sm font-bold uppercase tracking-wide"
+              <button className="px-7 py-3 rounded-lg text-sm font-semibold"
                 style={{ background: CREAM, color: GREEN }}>
                 See More
               </button>
@@ -410,7 +415,15 @@ export default function LandingPage() {
           <div className="rounded-2xl aspect-square max-w-md flex items-center justify-center"
             style={{ background: CREAM_BG }}>
             <div className="text-center p-10 space-y-6">
-              <div className="text-6xl">🌿</div>
+              {/* Custom vector illustration (hand-built — see
+                  public/illustrations/README.md): a camera-scan viewfinder
+                  reading a hand for visual deficiency signs (nails, tongue,
+                  skin) — the actual mechanism this section's copy describes.
+                  Replaces a plain 🌿 emoji, which carried no real content. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static
+                  local decorative SVG; next/image's raster pipeline isn't
+                  used for hand-authored vector assets. */}
+              <img src="/illustrations/vision-scan.svg" alt="" aria-hidden="true" className="w-36 h-auto mx-auto" />
               <p className="font-bold text-xl" style={{ color: GREEN }}>No lab tests.<br />No guesswork.</p>
               <p className="text-sm" style={{ color: SUB }}>AI that reads your symptoms and gives you a precision nutrition plan</p>
             </div>
@@ -440,7 +453,7 @@ export default function LandingPage() {
               ))}
             </ul>
             <Link href="/analyze">
-              <button className="px-7 py-3 rounded-lg text-sm font-bold uppercase tracking-wide"
+              <button className="px-7 py-3 rounded-lg text-sm font-semibold"
                 style={{ background: GREEN, color: WHITE }}>
                 See More
               </button>
@@ -494,7 +507,7 @@ export default function LandingPage() {
           <div className="mt-14">
             <Link href="/analyze">
               <button
-                className="px-10 py-4 rounded-lg text-sm font-bold uppercase tracking-widest"
+                className="px-10 py-4 rounded-lg text-sm font-semibold"
                 style={{ background: CREAM, color: GREEN }}
               >
                 Start Free Analysis
@@ -556,13 +569,13 @@ export default function LandingPage() {
           </div>
           <div className="flex gap-4">
             <Link href="/chat">
-              <button className="px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide"
+              <button className="px-8 py-3 rounded-lg text-sm font-semibold"
                 style={{ background: GREEN, color: WHITE }}>
                 Ask AI
               </button>
             </Link>
             <Link href="/dashboard">
-              <button className="px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide border-2"
+              <button className="px-8 py-3 rounded-lg text-sm font-semibold border-2"
                 style={{ borderColor: GREEN, color: GREEN, background: "transparent" }}>
                 Get Started
               </button>
@@ -611,7 +624,7 @@ export default function LandingPage() {
               },
             ].map(({ heading, links, hrefs }) => (
               <div key={heading}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: GREEN }}>{heading}</p>
+                <p className="text-sm font-bold mb-4" style={{ color: GREEN }}>{heading}</p>
                 <ul className="space-y-2.5">
                   {links.map((label, i) => (
                     <li key={label}>

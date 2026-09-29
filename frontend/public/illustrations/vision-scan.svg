@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 280 280"
+   version="1.1"
+   id="svg-vision-scan"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs31" />
+  <!-- camera-frame viewfinder, corner brackets -->
+  <g
+     stroke="#1d5c3d"
+     stroke-width="2.5"
+     stroke-linecap="round"
+     fill="none"
+     id="g10">
+    <path
+       d="M50,90 V60 Q50,50 60,50 H90"
+       id="path2" />
+    <path
+       d="M190,50 H220 Q230,50 230,60 V90"
+       id="path4" />
+    <path
+       d="M230,190 V220 Q230,230 220,230 H190"
+       id="path6" />
+    <path
+       d="M90,230 H60 Q50,230 50,220 V190"
+       id="path8" />
+  </g>
+  <!-- faint grid -->
+  <g
+     stroke="#1d5c3d"
+     stroke-width="1"
+     opacity="0.15"
+     id="g16">
+    <line
+       x1="50"
+       y1="140"
+       x2="230"
+       y2="140"
+       id="line12" />
+    <line
+       x1="140"
+       y1="50"
+       x2="140"
+       y2="230"
+       id="line14" />
+  </g>
+  <!-- hand outline, being scanned -->
+  <path
+     d="M110,190 V120 Q110,112 118,112 Q126,112 126,120 V150         M126,150 V104 Q126,96 134,96 Q142,96 142,104 V150         M142,150 V108 Q142,100 150,100 Q158,100 158,108 V150         M158,150 V116 Q158,108 166,108 Q174,108 174,116 V160         Q174,190 150,196 Q120,200 110,178 Z"
+     fill="none"
+     stroke="#1d5c3d"
+     stroke-width="2.25"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path18" />
+  <!-- flagged nail highlight -->
+  <rect
+     x="122"
+     y="112"
+     width="8"
+     height="10"
+     rx="2"
+     fill="#c99a4a"
+     opacity="0.9"
+     id="rect20" />
+  <!-- scan sweep line -->
+  <line
+     x1="60"
+     y1="170"
+     x2="220"
+     y2="170"
+     stroke="#1d5c3d"
+     stroke-width="1.5"
+     stroke-dasharray="1 6"
+     opacity="0.6"
+     id="line22" />
+  <circle
+     cx="228"
+     cy="66"
+     r="2.5"
+     fill="#1d5c3d"
+     opacity="0.3"
+     id="circle24" />
+  <circle
+     cx="52"
+     cy="214"
+     r="2.5"
+     fill="#1d5c3d"
+     opacity="0.3"
+     id="circle26" />
+</svg>
