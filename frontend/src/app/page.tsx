@@ -309,40 +309,51 @@ export default function LandingPage() {
             {[
               {
                 icon: Microscope,
+                image: "/illustrations/library/vitamin-d.svg",
                 title: "AI Deficiency Detection",
                 desc: "Describe your symptoms by voice or text — our AI detects 25+ nutrient deficiencies and excesses instantly.",
               },
               {
                 icon: ChefHat,
+                image: "/illustrations/library/protein.svg",
                 title: "Personalised Meal Plans",
                 desc: "Get a custom Indian diet plan built from ingredients already in your kitchen, tailored to your region and preferences.",
               },
               {
                 icon: TrendingUp,
+                image: "/illustrations/library/vitals-pulse.svg",
                 title: "Nutrition Tracking",
                 desc: "Log meals, track macros and micros, and watch your balance score improve over time with streaks and history.",
               },
               {
                 icon: MessageCircle,
+                image: null,
                 title: "AI Chat Nutritionist",
                 desc: "Ask any nutrition question in Hindi or English — get instant, science-backed answers personalized to your profile.",
               },
               {
                 icon: Zap,
+                image: null,
                 title: "Visual Analysis",
                 desc: "Capture photos of nails, tongue, skin, and eyes — our vision AI detects visual deficiency signs automatically.",
               },
               {
                 icon: Shield,
+                image: "/illustrations/library/iron.svg",
                 title: "Medical Condition Support",
                 desc: "Diet plans that adapt for diabetes, thyroid, PCOS, anaemia, and more — safe recommendations every time.",
               },
-            ].map(({ icon: Icon, title, desc }) => (
+            ].map(({ icon: Icon, image, title, desc }) => (
               <div key={title} className="rounded-xl p-6 space-y-3"
                 style={{ border: `1px solid ${BORDER}`, background: WHITE }}>
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center"
                   style={{ background: "#eef7f2" }}>
-                  <Icon className="w-5 h-5" style={{ color: GREEN }} />
+                  {image ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG
+                    <img src={image} alt="" aria-hidden="true" className="w-6 h-6" />
+                  ) : (
+                    <Icon className="w-5 h-5" style={{ color: GREEN }} />
+                  )}
                 </div>
                 <h3 className="font-bold text-base" style={{ color: GREEN }}>{title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: SUB }}>{desc}</p>
@@ -358,6 +369,32 @@ export default function LandingPage() {
                 Try It Free
               </button>
             </Link>
+          </div>
+
+          {/* Real conditions this product actually supports diet plans for
+              (the same list named in the "Medical Condition Support" card
+              above), illustrated from the colorful library instead of left
+              as plain text. */}
+          <div className="mt-16 pt-12 border-t" style={{ borderColor: BORDER }}>
+            <p className="text-center text-sm font-semibold mb-8" style={{ color: SUB }}>
+              Real conditions our meal plans support
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-6">
+              {[
+                { label: "Heart health", image: "/illustrations/library/category-heart-disease.svg" },
+                { label: "Joint pain", image: "/illustrations/library/joint-knee.svg" },
+                { label: "Thyroid", image: "/illustrations/library/lungs-anatomy.svg" },
+                { label: "Migraine", image: "/illustrations/library/category-migraine.svg" },
+                { label: "Regular checkups", image: "/illustrations/library/stethoscope-color.svg" },
+                { label: "Medicine plans", image: "/illustrations/library/capsule-dissolution.svg" },
+              ].map(({ label, image }) => (
+                <div key={label} className="flex flex-col items-center gap-2 text-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG */}
+                  <img src={image} alt="" aria-hidden="true" className="w-12 h-12" />
+                  <p className="text-xs font-medium" style={{ color: SUB }}>{label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -487,24 +524,38 @@ export default function LandingPage() {
                 step: "01",
                 title: "Describe Your Symptoms",
                 desc: "Tell us how you feel by voice or text — in Hindi or English. Select from common symptom chips or speak freely.",
+                image: "/illustrations/library/heart-anatomy.svg",
               },
               {
                 step: "02",
                 title: "AI Analyses You",
                 desc: "Our AI cross-references your symptoms with ICMR-NIN 2017 data to identify your exact nutrient deficiencies.",
+                image: "/illustrations/library/brain-anatomy.svg",
               },
               {
                 step: "03",
                 title: "Get Your Plan",
                 desc: "Receive a personalised meal plan with cooking steps, built from ingredients available in your kitchen today.",
+                image: "/illustrations/library/stomach-digestive.svg",
               },
-            ].map(({ step, title, desc }) => (
+            ].map(({ step, title, desc, image }) => (
               <div key={step} className="space-y-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg"
-                  style={{ background: "rgba(255,255,255,0.12)", color: CREAM }}
-                >
-                  {step}
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shrink-0"
+                    style={{ background: "rgba(255,255,255,0.12)", color: CREAM }}
+                  >
+                    {step}
+                  </div>
+                  {/* Real illustration from the colorful library, one per
+                      real step this product actually walks a user through.
+                      Wrapped in a light chip — the library's colors are
+                      tuned for a light surface and wash out directly on
+                      this dark green section without one. */}
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: CREAM_BG }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG */}
+                    <img src={image} alt="" aria-hidden="true" className="w-7 h-7" />
+                  </div>
                 </div>
                 <h3 className="font-bold text-lg" style={{ color: CREAM }}>{title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "#a8c5b5" }}>{desc}</p>
@@ -538,26 +589,33 @@ export default function LandingPage() {
                 name: "Priya S.",
                 location: "Delhi",
                 text: "Found out I had iron and B12 deficiency in 2 minutes. The meal plan uses everyday dal and palak — no expensive supplements needed.",
+                image: "/illustrations/library/vitamin-b12.svg",
               },
               {
                 name: "Ramesh K.",
                 location: "Maharashtra",
                 text: "Diabetic-friendly meal plan that actually tastes good. The AI remembered my condition and never suggested anything unsafe.",
+                image: "/illustrations/library/kidney-anatomy.svg",
               },
               {
                 name: "Anjali M.",
                 location: "Karnataka",
                 text: "The voice feature is amazing — I just spoke in Hindi and it understood everything. My hair fall has reduced in 3 weeks.",
+                image: "/illustrations/library/zinc.svg",
               },
-            ].map(({ name, location, text }) => (
-              <div key={name} className="rounded-xl p-6 space-y-4"
+            ].map(({ name, location, text, image }) => (
+              <div key={name} className="rounded-xl p-6 space-y-4 relative"
                 style={{ border: `1px solid ${BORDER}`, background: WHITE }}>
+                {/* Real illustration from the colorful library, matching the
+                    specific real condition each testimonial names. */}
+                {/* eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG */}
+                <img src={image} alt="" aria-hidden="true" className="absolute top-4 right-4 w-9 h-9 opacity-90" />
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" style={{ color: CREAM }} />
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: SUB }}>&quot;{text}&quot;</p>
+                <p className="text-sm leading-relaxed pr-8" style={{ color: SUB }}>&quot;{text}&quot;</p>
                 <div>
                   <p className="text-sm font-bold" style={{ color: GREEN }}>{name}</p>
                   <p className="text-xs" style={{ color: MUTED }}>{location}</p>

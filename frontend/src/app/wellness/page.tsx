@@ -245,6 +245,16 @@ export default function WellnessPage() {
                     <h2 className="text-lg font-bold" style={{ color: TEXT }}>{group.label}</h2>
                     <p className="text-xs" style={{ color: MUTED }}>{total.toLocaleString("en-IN")} real items in our catalog</p>
                   </div>
+                  {/* Real illustration from the colorful library, one per
+                      section it's genuinely about — not on every section. */}
+                  {group.anchorId === "vitamins-supplements" && (
+                    // eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG
+                    <img src="/illustrations/library/vitamin-d.svg" alt="" aria-hidden="true" className="w-10 h-10 shrink-0 hidden sm:block" />
+                  )}
+                  {group.anchorId === "womens-health" && (
+                    // eslint-disable-next-line @next/next/no-img-element -- static local decorative SVG
+                    <img src="/illustrations/library/category-womens-health.svg" alt="" aria-hidden="true" className="w-10 h-10 shrink-0 hidden sm:block" />
+                  )}
                 </div>
                 <Link
                   href={`/medicines?q=${encodeURIComponent(group.searchLinkQuery)}`}
