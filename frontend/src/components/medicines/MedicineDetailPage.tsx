@@ -12,21 +12,20 @@ import {
   Clock,
   ExternalLink,
   ChevronRight,
-  Loader2,
+  Wine,
+  Baby,
+  HeartHandshake,
+  Car,
+  Droplet,
+  FlaskConical,
 } from "lucide-react";
-// Phosphor Icons — used specifically for the safety-advice category icons
-// (lucide-react has no dedicated kidney/liver icon; Phosphor's broader set
-// covers these better). Weight is pinned to "regular" (pure outline)
-// everywhere Phosphor is used, matching lucide-react's outline style used
-// throughout the rest of the site — "duotone"'s filled/two-tone look was a
-// real visual mismatch flagged in review.
-import { Wine, Baby, HeartHandshake, Car, Droplet, FlaskConical } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/lib/cart-store";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS_TEXT, accentForKey } from "@/components/diag/theme";
+import { CTA_RADIUS, FOCUS_RING, TRANSITION_ALL } from "@/components/diag/tokens";
 import {
   type Medicine,
   fetchAllMedicines,
@@ -141,8 +140,19 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
     return (
       <main style={{ background: BG }} className="min-h-screen font-sans">
         <SiteHeader active="medicines" />
-        <div className="flex items-center justify-center py-32">
-          <Loader2 className="w-6 h-6 animate-spin" style={{ color: TEAL }} />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6" aria-live="polite" aria-label="Loading medicine">
+          <div className="sk h-3 w-56 rounded-full mb-5" />
+          <div className="flex flex-col sm:flex-row gap-6 mb-6">
+            <div className="w-full sm:w-48 shrink-0">
+              <div className="sk aspect-square rounded-2xl" />
+            </div>
+            <div className="flex-1 space-y-3">
+              <div className="sk h-8 w-3/4 rounded-full" />
+              <div className="sk h-10 w-32 rounded-lg" />
+            </div>
+          </div>
+          <div className="sk h-24 w-full rounded-2xl mb-4" />
+          <div className="sk h-40 w-full rounded-2xl" />
         </div>
         <SiteFooter />
       </main>
@@ -157,7 +167,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
           <p className="text-sm mb-4" style={{ color: MUTED }}>
             This medicine was not found in our catalog.
           </p>
-          <Link href="/medicines" className="text-sm font-semibold" style={{ color: BLUE }}>
+          <Link href="/medicines" className={`text-sm font-semibold rounded hover:opacity-75 ${FOCUS_RING}`} style={{ color: BLUE, transition: TRANSITION_ALL }}>
             ← Back to full catalog
           </Link>
         </div>
@@ -189,9 +199,9 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
         {/* Breadcrumb — real 1mg pattern */}
         <nav className="flex items-center gap-1.5 text-xs font-medium mb-5 overflow-x-auto whitespace-nowrap" style={{ color: MUTED }}>
-          <Link href="/medicines" className="hover:underline" style={{ color: MUTED }}>Home</Link>
+          <Link href="/medicines" className={`hover:underline rounded ${FOCUS_RING}`} style={{ color: MUTED, transition: TRANSITION_ALL }}>Home</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
-          <Link href="/medicines" className="hover:underline" style={{ color: MUTED }}>Medicines</Link>
+          <Link href="/medicines" className={`hover:underline rounded ${FOCUS_RING}`} style={{ color: MUTED, transition: TRANSITION_ALL }}>Medicines</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
           <span className="hover:underline">{categoryLabel(medicine.category)}</span>
           <ChevronRight className="w-3 h-3 shrink-0" />
@@ -227,8 +237,8 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
                 })
               }
               disabled={cartItems.some((i) => i.name === cleanMedicineName(medicine.name))}
-              className="rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
-              style={{ background: `linear-gradient(135deg, ${TEAL} 0%, ${BLUE} 100%)` }}
+              className={`${CTA_RADIUS} px-6 py-2.5 text-sm font-bold text-white hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 ${FOCUS_RING}`}
+              style={{ background: `linear-gradient(135deg, ${TEAL} 0%, ${BLUE} 100%)`, transition: TRANSITION_ALL }}
               title="Placeholder — no real payment/checkout is implemented yet"
             >
               {cartItems.some((i) => i.name === cleanMedicineName(medicine.name)) ? "Added to Cart" : "Buy Now"}
@@ -441,7 +451,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
           <Section icon={Pill} title="Related medicines for the same condition">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {related.map((m) => (
-                <Link key={m.slug} href={`/medicines/${encodeURIComponent(m.slug)}`} className="block">
+                <Link key={m.slug} href={`/medicines/${encodeURIComponent(m.slug)}`} className={`block rounded-xl ${FOCUS_RING}`}>
                   <Card className="!ring-0 !py-0 sc-card sc-card-interactive p-3 h-full" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
                     <div className="w-full mb-2"><MedicinePackPlaceholder accentColor={accentForKey(categoryLabel(m.category))} /></div>
                     <p className="text-xs font-bold leading-snug line-clamp-2" style={{ color: TEXT }}>{cleanMedicineName(m.name)}</p>
@@ -459,7 +469,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
               {medicine.sources.map((s, i) => (
                 <li key={i} className="text-xs break-words">
                   {isHttpUrl(s) ? (
-                    <a href={s} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: BLUE }}>
+                    <a href={s} target="_blank" rel="noopener noreferrer" className={`underline hover:opacity-70 rounded ${FOCUS_RING}`} style={{ color: BLUE, transition: TRANSITION_ALL }}>
                       {s}
                     </a>
                   ) : (
