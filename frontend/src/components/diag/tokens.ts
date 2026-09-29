@@ -33,6 +33,21 @@ export const ELEVATED_SHADOW = "0 1px 2px rgba(11,32,39,0.04), 0 4px 12px rgba(1
 export const EASE = "cubic-bezier(0.45,0.05,0.55,0.95)";
 export const TRANSITION = `background-color 220ms ${EASE}, border-color 220ms ${EASE}, color 220ms ${EASE}`;
 export const TRANSITION_STYLE: CSSProperties = { transition: TRANSITION };
+// Same easing family, extended to transform/box-shadow — for controls that
+// lift, scale or shadow on hover (carousel arrows, icon buttons, elevated
+// CTAs) so every piece of motion on the diag surface shares one curve,
+// never a bare Tailwind default (`transition-colors`/`transition-all` with
+// no explicit ease resolves to Tailwind's own cubic-bezier, not ours).
+export const TRANSITION_ALL = `background-color 220ms ${EASE}, border-color 220ms ${EASE}, color 220ms ${EASE}, transform 220ms ${EASE}, box-shadow 220ms ${EASE}, opacity 220ms ${EASE}`;
+export const TRANSITION_ALL_STYLE: CSSProperties = { transition: TRANSITION_ALL };
+
+// Real keyboard-focus state — every interactive element on the diag surface
+// (button, link, input, chip, tab) uses this instead of the browser default
+// blue/green outline (the base layer's `outline-ring/50` resolves to the
+// shadcn primary token, an oklch green with no relation to brand TEAL).
+// Applied via the `.focus-ring` class in globals.css, which also removes
+// the mismatched default outline so it never double-renders.
+export const FOCUS_RING = "focus-ring";
 
 // CTA button base classes — fill (primary) or outline (secondary) at the
 // same size, per the researched spec (primary vs secondary is fill vs

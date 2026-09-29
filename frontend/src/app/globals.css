@@ -342,3 +342,75 @@
 .sc-card-interactive:hover .sc-icon-pop {
   transform: scale(1.08);
 }
+
+/* ── Real keyboard-focus state, brand-consistent ─────────────────────
+   Audited 2026-09-29: every button/link/input on the diag surface either
+   fell back to the shadcn `outline-ring/50` default (an oklch green with
+   no relation to brand TEAL) or set no visible focus state at all. This
+   is the one focus treatment for the whole diag surface — a 2px brand-teal
+   ring offset from the element, visible on :focus-visible only (never on
+   a plain mouse click), so it never fights a card's own hover shadow. */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #FAF7F1, 0 0 0 4px #0A5259;
+}
+/* Variant for controls that sit directly on a TEAL/BLUE gradient field
+   (hero buttons, banner CTAs) — the offset ring uses white instead of the
+   page background so it stays visible against a dark fill. */
+.focus-ring-on-dark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(10,82,89,0.9), 0 0 0 4px #FFFFFF;
+}
+
+/* ── Skeleton shimmer — real loading state for slow LLM calls (symptom-
+   checker results, pharmacy match: 10s-3min) ───────────────────────────
+   Replaces a bare spinner with content-shaped placeholders that shimmer,
+   so the page communicates "this exact layout is coming" rather than an
+   ambiguous generic wait. Shimmer sweeps left-to-right once every 1.8s. */
+@keyframes skeletonSheen {
+  0%   { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
+}
+.sk {
+  position: relative;
+  overflow: hidden;
+  background: #EEF3F5;
+  background-image: linear-gradient(100deg, #EEF3F5 30%, #E4EBEE 50%, #EEF3F5 70%);
+  background-size: 200% 100%;
+  animation: skeletonSheen 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sk { animation: none; }
+}
+
+/* Indeterminate progress bar — replaces a spinning Loader2 icon for the
+   symptom-checker/pharmacy waits (a real LLM call, 10s-3min). A spinner
+   communicates "working" but not "long"; a sliding bar within a track
+   reads as real progress-in-a-known-space even though the exact duration
+   is unknown, and pairs with the skeleton below instead of floating
+   disconnected above it. */
+@keyframes progressSlide {
+  0%   { left: -35%; width: 35%; }
+  50%  { left: 30%;  width: 45%; }
+  100% { left: 100%; width: 35%; }
+}
+.sc-progress-track {
+  position: relative;
+  overflow: hidden;
+  height: 3px;
+  border-radius: 999px;
+  background: #E4EBEE;
+}
+.sc-progress-bar {
+  position: absolute;
+  top: 0; bottom: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0A5259, #1E6FD9);
+  animation: progressSlide 1.6s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-progress-bar { animation: none; left: 0; width: 40%; }
+}

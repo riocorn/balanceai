@@ -10,7 +10,6 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Loader2,
   Languages,
   Sparkles,
   Mic,
@@ -32,7 +31,7 @@ import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import CategoryRail from "@/components/diag/CategoryRail";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER } from "@/components/diag/theme";
-import { CTA_BASE, CTA_HERO_BASE, CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
+import { CTA_BASE, CTA_HERO_BASE, CTA_RADIUS, TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
 
 // ---------------------------------------------------------------------------
 // Real API response shape (verified against routers/medical.py live source)
@@ -535,8 +534,8 @@ export default function SymptomCheckerPage() {
                 <button
                   aria-label="Previous"
                   onClick={() => setSlide((s) => (s - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                  className="w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-[rgba(255,255,255,0.22)]"
-                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.22)] ${FOCUS_RING} focus-ring-on-dark`}
+                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff", transition: TRANSITION_ALL }}
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -546,12 +545,12 @@ export default function SymptomCheckerPage() {
                       key={i}
                       aria-label={`Slide ${i + 1}`}
                       onClick={() => setSlide(i)}
-                      className="flex items-center justify-center rounded-full transition-all duration-200"
-                      style={{ width: 24, height: 24 }}
+                      className={`flex items-center justify-center rounded-full ${FOCUS_RING} focus-ring-on-dark`}
+                      style={{ width: 24, height: 24, transition: TRANSITION_ALL }}
                     >
                       <span
-                        className="rounded-full transition-all duration-200"
-                        style={{ width: i === slide ? 20 : 6, height: 6, background: i === slide ? EFFECTIVENESS : "rgba(255,255,255,0.35)" }}
+                        className="rounded-full"
+                        style={{ width: i === slide ? 20 : 6, height: 6, background: i === slide ? EFFECTIVENESS : "rgba(255,255,255,0.35)", transition: TRANSITION_ALL }}
                       />
                     </button>
                   ))}
@@ -559,8 +558,8 @@ export default function SymptomCheckerPage() {
                 <button
                   aria-label="Next"
                   onClick={() => setSlide((s) => (s + 1) % HERO_SLIDES.length)}
-                  className="w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-[rgba(255,255,255,0.22)]"
-                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff" }}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.22)] ${FOCUS_RING} focus-ring-on-dark`}
+                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff", transition: TRANSITION_ALL }}
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -646,14 +645,18 @@ export default function SymptomCheckerPage() {
             style={{ background: SURFACE, border: "1px solid #E4EBEE", boxShadow: "0 20px 45px rgba(11,32,39,0.18)" }}
           >
             <p className="flex items-center gap-2 text-sm font-semibold" style={{ color: TEXT }}>
-              {loading && <Loader2 className="w-4 h-4 animate-spin" style={{ color: TEAL }} />}
               {loading ? "Checking your symptoms..." : "Grounded in real, up-to-date medical evidence — never a guess."}
             </p>
             {loading && (
-              <p className="text-xs mt-2" style={{ color: MUTED }}>
-                This can take anywhere from 10 seconds to 2–3 minutes while we carefully check a real
-                medical knowledge base.
-              </p>
+              <>
+                <div className="sc-progress-track mt-3" role="progressbar" aria-label="Checking your symptoms">
+                  <div className="sc-progress-bar" />
+                </div>
+                <p className="text-xs mt-2.5" style={{ color: MUTED }}>
+                  This can take anywhere from 10 seconds to 2–3 minutes while we carefully check a real
+                  medical knowledge base.
+                </p>
+              </>
             )}
             {error && (
               <p className="text-xs mt-3 font-medium" style={{ color: "#B42318" }}>
@@ -663,6 +666,45 @@ export default function SymptomCheckerPage() {
           </div>
         </div>
       </section>
+
+      {/* Loading skeleton — content-shaped placeholder for the results
+          section below (understood-as card, disease match, 2 medicine
+          cards), shown for the real 10s-3min /medical/query wait. Replaces
+          the previous behaviour of showing nothing here but a spinner up
+          in the hero card, which read as a generic/cheap wait state for a
+          call this slow. Not shown once real results exist. */}
+      {loading && !result && (
+        <section aria-hidden="true" className="max-w-3xl mx-auto px-4 pb-20">
+          <div className="sc-card p-5 mb-5 flex items-start gap-3.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+            <div className="sk w-9 h-9 rounded-full shrink-0" />
+            <div className="min-w-0 flex-1 space-y-2.5 pt-1">
+              <div className="sk h-3 w-40 rounded-full" />
+              <div className="sk h-4 w-4/5 rounded-full" />
+            </div>
+          </div>
+          <div className="space-y-4">
+            {[0, 1].map((i) => (
+              <div key={i} className="sc-card p-5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                <div className="flex items-start gap-4">
+                  <div className="sk w-16 h-16 rounded-2xl shrink-0" />
+                  <div className="flex-1 min-w-0 space-y-2.5 pt-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="sk h-4 w-2/3 rounded-full" />
+                      <div className="sk h-6 w-10 rounded-full shrink-0" />
+                    </div>
+                    <div className="sk h-3 w-24 rounded-full" />
+                  </div>
+                </div>
+                <div className="sk h-2 w-full rounded-full mt-4" />
+                <div className="space-y-2 mt-4">
+                  <div className="sk h-3 w-full rounded-full" />
+                  <div className="sk h-3 w-5/6 rounded-full" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Results section */}
       {result && (
@@ -686,8 +728,8 @@ export default function SymptomCheckerPage() {
               </p>
               <button
                 onClick={() => scrollToHero()}
-                className="text-sm font-semibold underline decoration-2 underline-offset-2 transition-opacity duration-200 hover:opacity-70"
-                style={{ color: BLUE }}
+                className={`text-sm font-semibold underline decoration-2 underline-offset-2 hover:opacity-70 rounded ${FOCUS_RING}`}
+                style={{ color: BLUE, transition: TRANSITION_ALL }}
               >
                 Did we get it wrong? Rewrite it
               </button>
@@ -727,10 +769,10 @@ export default function SymptomCheckerPage() {
                         })
                       }
                       placeholder="Your answer..."
-                      className="w-full rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors duration-150"
-                      style={{ background: SURFACE, border: "1px solid #D5DEE1", color: TEXT }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = ACCENT_PURPLE; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = "#D5DEE1"; }}
+                      className="w-full rounded-lg px-3.5 py-2.5 text-sm outline-none"
+                      style={{ background: SURFACE, border: "1px solid #D5DEE1", color: TEXT, transition: TRANSITION_ALL, boxShadow: "none" }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = ACCENT_PURPLE; e.currentTarget.style.boxShadow = `0 0 0 3px ${ACCENT_PURPLE}26`; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = "#D5DEE1"; e.currentTarget.style.boxShadow = "none"; }}
                     />
                   </div>
                 ))}
@@ -738,8 +780,8 @@ export default function SymptomCheckerPage() {
               <button
                 onClick={submitClarifyingAnswers}
                 disabled={submittingAnswers || result.clarifying_questions.some((_, i) => !(clarifyAnswers[i] || "").trim())}
-                className={`${CTA_BASE} mt-5 w-full sm:w-auto ${CTA_RADIUS} text-white hover:brightness-110 disabled:opacity-50 disabled:hover:brightness-100`}
-                style={{ background: `linear-gradient(135deg, ${ACCENT_PURPLE} 0%, ${BLUE} 100%)`, transition: TRANSITION }}
+                className={`${CTA_BASE} mt-5 w-full sm:w-auto ${CTA_RADIUS} text-white hover:brightness-110 disabled:opacity-50 disabled:hover:brightness-100 ${FOCUS_RING}`}
+                style={{ background: `linear-gradient(135deg, ${ACCENT_PURPLE} 0%, ${BLUE} 100%)`, transition: TRANSITION_ALL }}
               >
                 {submittingAnswers ? "Checking..." : "Continue"}
               </button>
@@ -797,7 +839,27 @@ export default function SymptomCheckerPage() {
 
           {result.matched && (
             <>
-              {purchasableMedicines.length > 0 && (
+              {purchasableMedicines.length === 0 ? (
+                <div
+                  className="sc-card p-6 mb-5 text-center"
+                  style={{ background: SURFACE, border: "1px dashed #C7D3D8" }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-3"
+                    style={{ background: "#EEF3F5" }}
+                  >
+                    <Pill className="w-5 h-5" style={{ color: MUTED }} strokeWidth={1.75} />
+                  </div>
+                  <p className="text-sm font-semibold mb-1.5" style={{ color: TEXT }}>
+                    No purchasable medicine for this condition yet
+                  </p>
+                  <p className="text-xs leading-relaxed max-w-sm mx-auto" style={{ color: MUTED }}>
+                    The care our records show for this condition is non-drug (diet, lifestyle or a
+                    procedure) — nothing we can add to your cart. A doctor can walk you through what
+                    that involves.
+                  </p>
+                </div>
+              ) : (
                 <div className="space-y-4 mb-5">
                   {purchasableMedicines.map((m, idx) => {
                     const inCart = cartItems.some((i) => i.name === cleanMedicineName(m.name));
@@ -886,8 +948,8 @@ export default function SymptomCheckerPage() {
                                 href={firstSource}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline transition-opacity duration-200 hover:opacity-70"
-                                style={{ color: BLUE }}
+                                className={`underline hover:opacity-70 rounded ${FOCUS_RING}`}
+                                style={{ color: BLUE, transition: TRANSITION_ALL }}
                               >
                                 {firstSource}
                               </a>
@@ -901,8 +963,8 @@ export default function SymptomCheckerPage() {
                           <button
                             onClick={() => addToCart(cleanMedicineName(m.name), result.disease!.name, result.disease!.id, m.effectiveness_pct, m.is_curative)}
                             disabled={inCart}
-                            className={`mt-4 h-10 px-5 text-sm font-medium ${CTA_RADIUS} border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60 disabled:hover:bg-transparent`}
-                            style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION }}
+                            className={`mt-4 h-10 px-5 text-sm font-medium ${CTA_RADIUS} border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60 disabled:hover:bg-transparent ${FOCUS_RING}`}
+                            style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION_ALL }}
                             title="Placeholder — no real payment/checkout is implemented yet"
                           >
                             {inCart ? "Added to cart" : "Buy Now"}
@@ -1036,8 +1098,8 @@ export default function SymptomCheckerPage() {
           </p>
           <Link
             href="/consult-a-doctor"
-            className={`inline-flex items-center justify-center h-11 px-6 text-sm font-medium ${CTA_RADIUS} hover:brightness-95`}
-            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
+            className={`inline-flex items-center justify-center h-11 px-6 text-sm font-medium ${CTA_RADIUS} hover:brightness-95 ${FOCUS_RING} focus-ring-on-dark`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION_ALL }}
           >
             Meet Our Doctors
           </Link>
@@ -1052,7 +1114,9 @@ export default function SymptomCheckerPage() {
             <div key={item.q} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left cursor-pointer transition-colors duration-200 hover:bg-[rgba(14,124,134,0.04)] focus-visible:outline-none focus-visible:bg-[rgba(14,124,134,0.06)]"
+                aria-expanded={openFaq === i}
+                className={`w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left cursor-pointer hover:bg-[rgba(14,124,134,0.04)] focus-visible:bg-[rgba(14,124,134,0.06)] ${FOCUS_RING}`}
+                style={{ transition: TRANSITION_ALL }}
               >
                 <span className="text-sm font-semibold" style={{ color: TEXT }}>
                   {item.q}
@@ -1103,8 +1167,8 @@ export default function SymptomCheckerPage() {
         </p>
         <button
           onClick={() => scrollToHero()}
-          className={`relative ${CTA_HERO_BASE} ${CTA_RADIUS} hover:brightness-95`}
-          style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
+          className={`relative ${CTA_HERO_BASE} ${CTA_RADIUS} hover:brightness-95 ${FOCUS_RING} focus-ring-on-dark`}
+          style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION_ALL }}
         >
           Check My Symptoms
         </button>
@@ -1137,8 +1201,8 @@ function DoctorCTA({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClick}
-            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95`}
-            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
+            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95 ${FOCUS_RING} focus-ring-on-dark`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION_ALL }}
           >
             Talk to a Doctor on WhatsApp
           </a>
@@ -1151,8 +1215,8 @@ function DoctorCTA({
         <>
           <button
             onClick={onClick}
-            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95`}
-            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION }}
+            className={`${CTA_HERO_BASE} w-full sm:w-auto ${CTA_RADIUS} hover:brightness-95 ${FOCUS_RING} focus-ring-on-dark`}
+            style={{ background: "#FFFFFF", color: TEAL, transition: TRANSITION_ALL }}
           >
             Send to a Doctor on WhatsApp
           </button>

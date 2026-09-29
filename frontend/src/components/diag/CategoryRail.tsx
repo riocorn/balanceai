@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CATEGORY_TILES } from "./categories";
 import { TEXT, SURFACE, BORDER } from "./theme";
+import { FOCUS_RING, TRANSITION_ALL } from "./tokens";
 
 // Single restrained category-rail treatment, shared by every page that shows
 // the 7 health-area tiles (symptom-checker, pharmacy). Replaces the earlier
@@ -30,8 +31,8 @@ export default function CategoryRail({
         const content = (
           <>
             <div
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 group-hover:-translate-y-1"
-              style={{ background: SURFACE, border: `1.5px solid ${BORDER}` }}
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:shadow-[0_8px_18px_rgba(11,32,39,0.12)] group-focus-visible:-translate-y-1"
+              style={{ background: SURFACE, border: `1.5px solid ${BORDER}`, transition: TRANSITION_ALL }}
             >
               <Icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: accent }} strokeWidth={1.75} />
             </div>
@@ -40,7 +41,7 @@ export default function CategoryRail({
             </span>
           </>
         );
-        const className = "group flex flex-col items-center gap-2.5 shrink-0 w-20 sm:w-auto transition-transform disabled:opacity-40";
+        const className = `group flex flex-col items-center gap-2.5 shrink-0 w-20 sm:w-auto rounded-xl disabled:opacity-40 ${FOCUS_RING}`;
         return linkToMedicines ? (
           <Link key={label} href={`/medicines?q=${encodeURIComponent(medicinesQuery)}`} className={className}>
             {content}

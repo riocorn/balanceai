@@ -20,7 +20,7 @@ import {
 // everywhere Phosphor is used, matching lucide-react's outline style used
 // throughout the rest of the site — "duotone"'s filled/two-tone look was a
 // real visual mismatch flagged in review.
-import { Wine, Baby, HandHeart, Car, Drop, Flask } from "@phosphor-icons/react";
+import { Wine, Baby, HeartHandshake, Car, Droplet, FlaskConical } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
@@ -62,10 +62,10 @@ function safetyStatusColor(status: string) {
 const SAFETY_CATEGORY_ICON: Record<string, React.ElementType> = {
   alcohol: Wine,
   pregnancy: Baby,
-  breastfeeding: HandHeart,
+  breastfeeding: HeartHandshake,
   driving: Car,
-  kidney: Drop,
-  liver: Flask,
+  kidney: Droplet,
+  liver: FlaskConical,
 };
 
 // ---------------------------------------------------------------------------
@@ -364,7 +364,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
                       <Card key={key} className="!ring-0 !py-0 sc-card p-3.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
                         <div className="flex items-center justify-between gap-2 mb-1">
                           <span className="flex items-center gap-2 text-sm font-bold capitalize" style={{ color: TEXT }}>
-                            <CategoryIcon size={18} weight="regular" color={MUTED} />
+                            <CategoryIcon className="w-[18px] h-[18px]" strokeWidth={1.9} style={{ color: MUTED }} />
                             {key.replace(/_/g, " ")}
                           </span>
                           {val?.status && colors && (
