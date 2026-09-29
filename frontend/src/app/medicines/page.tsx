@@ -10,6 +10,7 @@ import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/lib/cart-store";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT, accentForKey } from "@/components/diag/theme";
+import { CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
 import {
   type Medicine,
   fetchAllMedicines,
@@ -288,8 +289,8 @@ export default function MedicinesPage() {
                             })
                           }
                           disabled={inCart}
-                          className="text-xs font-bold rounded-full px-3.5 py-1.5 border transition-all duration-200 hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60"
-                          style={{ borderColor: BLUE, color: BLUE, background: "transparent" }}
+                          className={`text-xs font-medium ${CTA_RADIUS} px-3.5 py-1.5 border hover:bg-[rgba(30,111,217,0.08)] disabled:opacity-60`}
+                          style={{ borderColor: BLUE, color: BLUE, background: "transparent", transition: TRANSITION }}
                           title="Placeholder — no real payment/checkout is implemented yet"
                         >
                           {inCart ? "Added" : "Buy Now"}
