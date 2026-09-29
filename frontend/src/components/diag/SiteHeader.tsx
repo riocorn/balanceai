@@ -481,13 +481,14 @@ export default function SiteHeader({
             className="max-w-6xl mx-auto px-4 h-10 flex items-center gap-6 text-xs font-semibold overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
           >
-            {CATEGORY_TILES.map(({ label, starter }) => (
+            {CATEGORY_TILES.map(({ label, starter, accent, icon: Icon }) => (
               <button
                 key={label}
                 onClick={() => goToSymptomCheckerAutoSubmit(starter)}
-                className="whitespace-nowrap transition-colors duration-200 hover:text-[#0E7C86]"
-                style={{ color: MUTED }}
+                className="flex items-center gap-1.5 whitespace-nowrap transition-opacity duration-200 hover:opacity-70"
+                style={{ color: accent }}
               >
+                <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: accent }} />
                 {label}
               </button>
             ))}
