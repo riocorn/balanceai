@@ -281,7 +281,7 @@ export default function PharmacyIntakePage() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* ── Category rail — circular icon badges, dense horizontal-scroll, 1mg/Netmeds "shop by category" pattern ── */}
         <div className="-mt-1 sm:mt-0 pt-6">
-          <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: MUTED }}>Browse by health area</p>
+          <p className="text-sm font-semibold mb-3" style={{ color: GREEN_DARK }}>Browse by health area</p>
           <div className="flex sm:grid sm:grid-cols-6 gap-4 sm:gap-3 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 -mx-5 px-5 sm:mx-0 sm:px-0">
             {CATEGORY_TILES.map(({ icon: Icon, label, accent, starter, image }) => (
               <button
@@ -305,7 +305,7 @@ export default function PharmacyIntakePage() {
         </div>
 
         {/* ── Trust badge strip — dense 4-up row with separators, real e-pharmacy "why us" pattern ── */}
-        <div className="sc-card mt-8 grid grid-cols-2 sm:grid-cols-4" style={{ background: "#fff", border: `1px solid ${BORDER}` }}>
+        <div className="sc-card mt-8 mb-12 grid grid-cols-2 sm:grid-cols-4" style={{ background: "#fff", border: `1px solid ${BORDER}` }}>
           {TRUST_ITEMS.map(({ icon: Icon, title, desc }, i) => (
             <div
               key={title}
@@ -324,27 +324,6 @@ export default function PharmacyIntakePage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 mb-10">
-          {[
-            { icon: Sparkles, title: "AI Understanding", desc: "Recognizes the condition from text written in any language or style" },
-            { icon: ShieldCheck, title: "Proven Treatments", desc: "Backed by real clinical evidence, never a guess" },
-            { icon: MessageCircle, title: "WhatsApp Doctor Review", desc: "Send your prescription to a doctor over WhatsApp before purchase — reply is currently self-confirmed, not independently verified yet" },
-          ].map(({ icon: Icon, title, desc }) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="group sc-card sc-card-interactive p-4"
-              style={{ background: "#fff", border: `1px solid ${BORDER}` }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-2 transition-transform duration-200 group-hover:scale-110" style={{ background: "rgba(14,124,134,0.10)" }}>
-                <Icon className="w-4 h-4" style={{ color: GREEN }} />
-              </div>
-              <p className="text-sm font-semibold mb-1" style={{ color: TEXT }}>{title}</p>
-              <p className="text-xs" style={{ color: MUTED }}>{desc}</p>
-            </motion.div>
-          ))}
-        </div>
       </div>
       <SiteFooter />
     </main>
