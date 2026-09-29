@@ -565,7 +565,7 @@ export default function SymptomCheckerPage() {
               <img
                 src="/illustrations/symptom-hero.svg"
                 alt=""
-                className="w-full max-w-[280px] sm:max-w-[340px] h-auto"
+                className="w-full max-w-[380px] sm:max-w-[480px] h-auto"
                 style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
               />
             </div>

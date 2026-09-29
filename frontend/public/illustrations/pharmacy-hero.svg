@@ -10,7 +10,13 @@
   <style>
     @keyframes pulseCheck { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
     .pulse-check { animation: pulseCheck 1.8s ease-in-out infinite; transform-origin: 418px 356px; transform-box: fill-box; }
+    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .radar-sweep { animation: radarSweep 4s linear infinite; transform-origin: 280px 220px; }
   </style>
+  <g class="radar-sweep">
+    <path d="M280,220 L280,120 A100,100 0 0 1 344,151 Z" fill="#ffffff" opacity="0.1" />
+    <line x1="280" y1="220" x2="344" y2="151" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+  </g>
   <circle
      cx="280"
      cy="220"
@@ -27,7 +33,7 @@
      r="124"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      stroke-dasharray="1 6"
      opacity="0.28"
      id="circle4" />
@@ -37,11 +43,11 @@
      r="100"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="circle6" />
   <g
      stroke="#ffffff"
-     stroke-width="1.6"
+     stroke-width="2.2"
      stroke-linecap="round"
      opacity="0.8"
      id="g32">
@@ -123,7 +129,7 @@
      d="M176,220 A104,104 0 0 1 233,139"
      fill="none"
      stroke="#C98A2C"
-     stroke-width="2.5"
+     stroke-width="3.75"
      opacity="0.85"
      id="path34" />
   <circle
@@ -135,7 +141,7 @@
   <!-- pharmacy cross, centered -->
   <g
      stroke="#ffffff"
-     stroke-width="2.5"
+     stroke-width="3.75"
      stroke-linecap="round"
      id="g42">
     <line
@@ -156,7 +162,7 @@
      d="M76,108 L92,80 H140 L156,108 Z"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      opacity="0.92"
      id="path44" />
@@ -164,7 +170,7 @@
      d="M76,108 H156 L148,172 Q146,182 136,182 H96 Q86,182 84,172 Z"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      opacity="0.92"
      id="path46" />
@@ -172,13 +178,13 @@
      d="M100,108 V92 Q100,74 116,74 Q132,74 132,92 V108"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      opacity="0.7"
      id="path48" />
   <path
      d="M156,150 L206,180"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path50" />
@@ -188,7 +194,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle52" />
   <circle
      cx="204"
@@ -196,7 +202,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle54" />
   <text
      x="76"
@@ -215,7 +221,7 @@
      rx="6"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      opacity="0.92"
      id="rect58" />
   <line
@@ -246,7 +252,7 @@
        d="M411,356 L416,362 L426,349"
        fill="none"
        stroke="#ffffff"
-       stroke-width="2.5"
+       stroke-width="3.75"
        stroke-linecap="round"
        stroke-linejoin="round"
        id="path66" />
@@ -254,7 +260,7 @@
   <path
      d="M352,300 L322,268"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path68" />
@@ -264,7 +270,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle70" />
   <circle
      cx="319"
@@ -272,7 +278,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle72" />
   <text
      x="436"

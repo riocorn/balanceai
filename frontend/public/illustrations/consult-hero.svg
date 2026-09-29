@@ -10,6 +10,8 @@
   <style>
     @keyframes typingDot { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
     .typing-dot { animation: typingDot 1.4s ease-in-out infinite; transform-origin: center; }
+    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .radar-sweep { animation: radarSweep 4s linear infinite; transform-origin: 280px 220px; }
   </style>
   <circle
      cx="280"
@@ -27,10 +29,15 @@
      r="124"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      stroke-dasharray="1 6"
      opacity="0.28"
      id="circle4" />
+  <!-- scan-sweep, continuously rotating -->
+  <g class="radar-sweep">
+    <path d="M280,220 L280,120 A100,100 0 0 1 344,151 Z" fill="#ffffff" opacity="0.1" />
+    <line x1="280" y1="220" x2="344" y2="151" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+  </g>
   <!-- primary instrument ring -->
   <circle
      cx="280"
@@ -38,12 +45,12 @@
      r="100"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="circle6" />
   <!-- rim ticks -->
   <g
      stroke="#ffffff"
-     stroke-width="1.6"
+     stroke-width="2.2"
      stroke-linecap="round"
      opacity="0.8"
      id="g32">
@@ -125,7 +132,7 @@
      d="M280,116 A104,104 0 0 1 384,220"
      fill="none"
      stroke="#2F9E5B"
-     stroke-width="2.5"
+     stroke-width="3.75"
      opacity="0.85"
      id="path34" />
   <circle
@@ -137,7 +144,7 @@
   <!-- stethoscope glyph, centered in the ring -->
   <g
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      stroke-linecap="round"
      fill="none"
      id="g46">
@@ -169,7 +176,7 @@
      r="11"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="circle48" />
   <circle
      cx="280"
@@ -186,7 +193,7 @@
      rx="8"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      opacity="0.92"
      id="rect52" />
   <line
@@ -219,7 +226,7 @@
   <path
      d="M134,150 L192,178"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path60" />
@@ -229,7 +236,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle62" />
   <circle
      cx="195"
@@ -237,7 +244,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle64" />
   <text
      x="58"
@@ -256,14 +263,14 @@
      rx="15"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      opacity="0.92"
      id="rect68" />
   <path
      d="M382,348 L374,364 L398,348 Z"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      opacity="0.92"
      id="path70" />
@@ -294,7 +301,7 @@
   <path
      d="M360,296 L332,270"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path78" />
@@ -304,7 +311,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle80" />
   <circle
      cx="329"
@@ -312,7 +319,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle82" />
   <text
      x="440"
@@ -327,7 +334,7 @@
   <path
      d="M280,320 L280,352"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      stroke-dasharray="1 5"
      opacity="0.5"
      id="path86" />
@@ -337,7 +344,7 @@
      r="2.5"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      opacity="0.8"
      id="circle88" />
   <text

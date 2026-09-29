@@ -10,6 +10,8 @@
   <style>
     @keyframes pulseNode { 0%, 100% { r: 4.5; opacity: 1; } 50% { r: 7; opacity: 0.55; } }
     .pulse-node { animation: pulseNode 1.6s ease-in-out infinite; }
+    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .radar-sweep { animation: radarSweep 4s linear infinite; transform-origin: 280px 220px; }
   </style>
   <!-- faint full-orbit construction circle -->
   <circle
@@ -29,25 +31,27 @@
      r="124"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      stroke-dasharray="1 6"
      opacity="0.28"
      id="circle4" />
-  <!-- scan-sweep trail -->
-  <path
-     d="M280,220 L280,116 A104,104 0 0 1 332,130 Z"
-     fill="#ffffff"
-     opacity="0.07"
-     id="path6" />
-  <line
-     x1="280"
-     y1="220"
-     x2="332"
-     y2="130"
-     stroke="#ffffff"
-     stroke-width="1.4"
-     opacity="0.45"
-     id="line8" />
+  <!-- scan-sweep trail, continuously rotating -->
+  <g class="radar-sweep">
+    <path
+       d="M280,220 L280,116 A104,104 0 0 1 332,130 Z"
+       fill="#ffffff"
+       opacity="0.1"
+       id="path6" />
+    <line
+       x1="280"
+       y1="220"
+       x2="332"
+       y2="130"
+       stroke="#ffffff"
+       stroke-width="2"
+       opacity="0.6"
+       id="line8" />
+  </g>
   <!-- primary instrument ring -->
   <circle
      cx="280"
@@ -55,12 +59,12 @@
      r="100"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="circle10" />
   <!-- rim tick marks (12, every 30deg) -->
   <g
      stroke="#ffffff"
-     stroke-width="1.6"
+     stroke-width="2.2"
      stroke-linecap="round"
      opacity="0.8"
      id="g36">
@@ -142,7 +146,7 @@
      d="M195,220 L222,220 L233,186 L246,252 L257,204 L266,220 L299,220 L309,209 L320,226 L330,220 L365,220"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.5"
+     stroke-width="3.75"
      stroke-linecap="round"
      stroke-linejoin="round"
      id="path38" />
@@ -157,7 +161,7 @@
   <path
      d="M233,186 L172,146"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      stroke-dasharray="1 5"
      opacity="0.55"
      fill="none"
@@ -168,7 +172,7 @@
      r="2.5"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.25"
+     stroke-width="1.75"
      opacity="0.8"
      id="circle44" />
   <text
@@ -189,14 +193,14 @@
      rx="14"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      opacity="0.92"
      id="rect48" />
   <path
      d="M78,120 L70,136 L92,120 Z"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      opacity="0.92"
      id="path50" />
@@ -221,7 +225,7 @@
   <path
      d="M144,104 L200,150"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path56" />
@@ -231,7 +235,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle58" />
   <circle
      cx="203"
@@ -239,7 +243,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle60" />
   <text
      x="52"
@@ -261,7 +265,7 @@
        rx="15"
        fill="none"
        stroke="#ffffff"
-       stroke-width="2"
+       stroke-width="3"
        opacity="0.92"
        id="rect64" />
     <line
@@ -270,7 +274,7 @@
        x2="392"
        y2="356"
        stroke="#ffffff"
-       stroke-width="2"
+       stroke-width="3"
        opacity="0.92"
        id="line66" />
     <circle
@@ -283,7 +287,7 @@
   <path
      d="M356,308 L322,270"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      opacity="0.5"
      fill="none"
      id="path72" />
@@ -293,7 +297,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle74" />
   <circle
      cx="318"
@@ -301,7 +305,7 @@
      r="2.75"
      fill="none"
      stroke="#ffffff"
-     stroke-width="1.4"
+     stroke-width="2"
      id="circle76" />
   <text
      x="405"

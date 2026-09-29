@@ -191,7 +191,7 @@ export default function WellnessPage() {
             <img
               src="/illustrations/wellness-hero.svg"
               alt=""
-              className="w-full max-w-[260px] sm:max-w-[300px] h-auto"
+              className="w-full max-w-[340px] sm:max-w-[420px] h-auto"
               style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
             />
           </div>

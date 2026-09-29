@@ -28,11 +28,11 @@
      r="28"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      id="circle4" />
   <g
      stroke="#ffffff"
-     stroke-width="1.6"
+     stroke-width="2.2"
      stroke-linecap="round"
      opacity="0.75"
      id="g16">
@@ -74,7 +74,7 @@
      x2="240"
      y2="252"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="line18" />
   <circle
      cx="240"
@@ -82,7 +82,7 @@
      r="7"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      id="circle20" />
   <g class="balance-beam">
     <!-- beam -->
@@ -92,7 +92,7 @@
        x2="362"
        y2="252"
        stroke="#ffffff"
-       stroke-width="2.25"
+       stroke-width="3.5"
        stroke-linecap="round"
        id="line22" />
     <!-- left pan: leaf -->
@@ -118,14 +118,14 @@
        d="M110,324 Q136,346 162,324"
        fill="none"
        stroke="#ffffff"
-       stroke-width="2"
+       stroke-width="3"
        stroke-linecap="round"
        id="path28" />
     <path
        d="M136,278 Q166,290 160,320 Q130,314 126,286 Q128,280 136,278 Z"
        fill="none"
        stroke="#2F9E5B"
-       stroke-width="2.25"
+       stroke-width="3.5"
        stroke-linejoin="round"
        id="path30" />
     <line
@@ -134,7 +134,7 @@
        x2="155"
        y2="312"
        stroke="#2F9E5B"
-       stroke-width="1.25"
+       stroke-width="1.75"
        opacity="0.7"
        id="line32" />
     <!-- right pan: heart -->
@@ -160,14 +160,14 @@
        d="M318,324 Q344,346 370,324"
        fill="none"
        stroke="#ffffff"
-       stroke-width="2"
+       stroke-width="3"
        stroke-linecap="round"
        id="path38" />
     <path
        d="M344,286 C338,278 324,282 324,296 C324,308 344,322 344,322 C344,322 364,308 364,296 C364,282 350,278 344,286 Z"
        fill="none"
        stroke="#E0475A"
-       stroke-width="2.25"
+       stroke-width="3.5"
        stroke-linejoin="round"
        id="path40" />
   </g>
@@ -176,7 +176,7 @@
      d="M208,398 L272,398 L288,432 H192 Z"
      fill="none"
      stroke="#ffffff"
-     stroke-width="2"
+     stroke-width="3"
      stroke-linejoin="round"
      opacity="0.85"
      id="path42" />
@@ -186,7 +186,7 @@
      x2="304"
      y2="432"
      stroke="#ffffff"
-     stroke-width="2.25"
+     stroke-width="3.5"
      stroke-linecap="round"
      id="line44" />
   <!-- balance labels -->
