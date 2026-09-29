@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { TEAL, MUTED, TEXT, SURFACE, BORDER } from "./theme";
 
-// Real 4-column footer structure — measured/observed on Netmeds
-// (COMPANY / OUR POLICIES / SHOPPING / SOCIAL, bold uppercase column headers,
-// plain link lists) — filled with our own real routes and copy only.
+// Real 4-column footer structure. Redesign, 2026-09-29: column headers were
+// tracked-out ALL-CAPS labels (Netmeds' own convention, but flagged by the
+// design skill as one of the commonest generated-page tells) — replaced
+// with the same font-display treatment used for every other heading on the
+// site, so the footer reads as part of one considered type system instead
+// of a bolted-on template footer.
 export default function SiteFooter() {
   return (
     <footer style={{ background: SURFACE, borderTop: `3px solid ${TEAL}` }} className="px-4 py-14">
@@ -14,7 +17,7 @@ export default function SiteFooter() {
             <img src="/illustrations/brand-mark.svg" alt="" aria-hidden="true" className="w-7 h-7 shrink-0" />
             Balance<span style={{ color: TEAL }}>AI</span>
           </p>
-          <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: TEAL }}>
+          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Company
           </p>
           <p className="text-sm leading-relaxed mb-4" style={{ color: MUTED }}>
@@ -27,7 +30,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: TEAL }}>
+          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Product
           </p>
           <ul className="space-y-2.5 text-sm">
@@ -60,7 +63,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: TEAL }}>
+          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Support
           </p>
           <ul className="space-y-2.5 text-sm">
@@ -83,7 +86,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: TEAL }}>
+          <p className="font-display font-semibold text-sm mb-4" style={{ color: TEAL }}>
             Legal
           </p>
           <ul className="space-y-2.5 text-sm">
