@@ -7,7 +7,7 @@ import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { Card } from "@/components/ui/card";
 import { TEAL, BG, SURFACE, TEXT, MUTED, HERO_GRADIENT, accentForKey } from "@/components/diag/theme";
-import { CTA_HERO_BASE, CTA_RADIUS, TRANSITION } from "@/components/diag/tokens";
+import { CTA_HERO_BASE, CTA_RADIUS, TRANSITION_ALL, FOCUS_RING } from "@/components/diag/tokens";
 
 const CONSULT_STEPS = [
   {
@@ -144,8 +144,8 @@ export default function ConsultADoctorPage() {
         <div className="text-center">
           <Link
             href="/symptom-checker"
-            className={`${CTA_HERO_BASE} ${CTA_RADIUS} text-white hover:brightness-110`}
-            style={{ background: HERO_GRADIENT, transition: TRANSITION }}
+            className={`${CTA_HERO_BASE} ${CTA_RADIUS} text-white hover:brightness-110 ${FOCUS_RING}`}
+            style={{ background: HERO_GRADIENT, transition: TRANSITION_ALL }}
           >
             Start Your Consultation
           </Link>
