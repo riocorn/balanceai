@@ -36,7 +36,7 @@ export default function MedicinePackPlaceholder({
       className={`relative w-full aspect-square rounded-xl flex items-center justify-center overflow-hidden ${className}`}
       style={{
         background: `linear-gradient(155deg, ${hexToRgba(accentColor, 0.14)} 0%, ${hexToRgba(accentColor, 0.05)} 100%)`,
-        border: "1px solid #E4EBEE",
+        border: "1px solid #E4E7E2",
       }}
       aria-hidden="true"
     >

@@ -21,7 +21,7 @@ export default function MedicalDisclaimerPage() {
     <main style={{ background: BG, minHeight: "100vh" }} className="font-sans">
       <SiteHeader active="other" />
       <div className="max-w-2xl mx-auto px-4 py-14">
-        <Card className="!ring-0 !py-0 sc-card p-6 sm:p-8 overflow-hidden relative" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+        <Card className="!ring-0 !py-0 sc-card p-6 sm:p-8 overflow-hidden relative" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
           <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: ACCENT_AMBER }} />
           <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ background: "rgba(201,138,44,0.1)" }}>
             <ShieldAlert className="w-4.5 h-4.5" style={{ color: ACCENT_AMBER }} strokeWidth={2.25} />

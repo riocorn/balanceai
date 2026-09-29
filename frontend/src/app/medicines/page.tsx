@@ -147,7 +147,7 @@ export default function MedicinesPage() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6">
         {/* ── Category sidebar (desktop) ── */}
         <aside className="hidden lg:block">
-          <div className="sticky top-20 rounded-2xl p-4" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+          <div className="sticky top-20 rounded-2xl p-4" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
             <p className="text-sm font-semibold mb-3" style={{ color: MUTED }}>Browse by category</p>
             <div className="max-h-[65vh] overflow-y-auto pr-1 space-y-1">
               <button
@@ -178,8 +178,8 @@ export default function MedicinesPage() {
           <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:thin]">
             <button
               onClick={() => setCategory(null)}
-              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
-              style={{ background: category === null ? TEAL : "#fff", color: category === null ? "#fff" : TEXT, border: `1px solid ${category === null ? TEAL : "#E4EBEE"}`, transition: TRANSITION_ALL }}
+              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#1D5C3D] ${FOCUS_RING}`}
+              style={{ background: category === null ? TEAL : "#fff", color: category === null ? "#fff" : TEXT, border: `1px solid ${category === null ? TEAL : "#E4E7E2"}`, transition: TRANSITION_ALL }}
             >
               All
             </button>
@@ -187,22 +187,22 @@ export default function MedicinesPage() {
               <button
                 key={name}
                 onClick={() => setCategory(category === name ? null : name)}
-                className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
-                style={{ background: category === name ? TEAL : "#fff", color: category === name ? "#fff" : TEXT, border: `1px solid ${category === name ? TEAL : "#E4EBEE"}`, transition: TRANSITION_ALL }}
+                className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#1D5C3D] ${FOCUS_RING}`}
+                style={{ background: category === name ? TEAL : "#fff", color: category === name ? "#fff" : TEXT, border: `1px solid ${category === name ? TEAL : "#E4E7E2"}`, transition: TRANSITION_ALL }}
               >
                 {name}
               </button>
             ))}
             <button
               onClick={() => setShowAllCategories((v) => !v)}
-              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#0A5259] ${FOCUS_RING}`}
-              style={{ background: "#fff", color: BLUE, border: `1px solid #E4EBEE`, transition: TRANSITION_ALL }}
+              className={`shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap hover:border-[#1D5C3D] ${FOCUS_RING}`}
+              style={{ background: "#fff", color: BLUE, border: `1px solid #E4E7E2`, transition: TRANSITION_ALL }}
             >
               {showAllCategories ? "Hide" : `+${Math.max(0, categories.length - TOP_CHIP_COUNT)} more`}
             </button>
           </div>
           {showAllCategories && (
-            <div className="rounded-xl p-3 mb-2 max-h-56 overflow-y-auto grid grid-cols-2 gap-1.5" style={{ background: "#fff", border: "1px solid #E4EBEE" }}>
+            <div className="rounded-xl p-3 mb-2 max-h-56 overflow-y-auto grid grid-cols-2 gap-1.5" style={{ background: "#fff", border: "1px solid #E4E7E2" }}>
               {categories.map(({ name, count }) => (
                 <button
                   key={name}
@@ -246,7 +246,7 @@ export default function MedicinesPage() {
           {!all && !error && (
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" aria-live="polite" aria-label="Loading medicines">
               {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                <div key={i} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                   <div className="sk h-1" />
                   <div className="p-3">
                     <div className="sk aspect-square rounded-xl mb-3" />
@@ -281,7 +281,7 @@ export default function MedicinesPage() {
                   const catLabel = categoryLabel(med.category);
                   const accent = accentForKey(catLabel);
                   return (
-                    <Card key={med.slug} className="!ring-0 !py-0 sc-card sc-card-interactive h-full flex flex-col overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                    <Card key={med.slug} className="!ring-0 !py-0 sc-card sc-card-interactive h-full flex flex-col overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                       <div className="h-1" style={{ background: accent }} aria-hidden="true" />
                       <Link href={`/medicines/${encodeURIComponent(med.slug)}`} className="block">
                         <div className="p-3 pb-0">
@@ -339,8 +339,8 @@ export default function MedicinesPage() {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={safePage <= 1}
-                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#0A5259] hover:-translate-y-0.5 ${FOCUS_RING}`}
-                  style={{ background: SURFACE, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#1D5C3D] hover:-translate-y-0.5 ${FOCUS_RING}`}
+                  style={{ background: SURFACE, border: "1px solid #E4E7E2", transition: TRANSITION_ALL }}
                 >
                   <ChevronLeft className="w-4 h-4" style={{ color: TEXT }} />
                 </button>
@@ -350,8 +350,8 @@ export default function MedicinesPage() {
                 <button
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={safePage >= totalPages}
-                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#0A5259] hover:-translate-y-0.5 ${FOCUS_RING}`}
-                  style={{ background: SURFACE, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center disabled:opacity-30 hover:border-[#1D5C3D] hover:-translate-y-0.5 ${FOCUS_RING}`}
+                  style={{ background: SURFACE, border: "1px solid #E4E7E2", transition: TRANSITION_ALL }}
                 >
                   <ChevronRight className="w-4 h-4" style={{ color: TEXT }} />
                 </button>

@@ -95,7 +95,7 @@ export default function ConsultADoctorPage() {
         </h2>
         <div className="grid sm:grid-cols-2 gap-4 mb-16">
           {CONSULT_STEPS.map(({ icon: Icon, title, detail }, i) => (
-            <Card key={title} className="!ring-0 !py-0 sc-card sc-card-interactive p-5 flex items-start gap-4" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+            <Card key={title} className="!ring-0 !py-0 sc-card sc-card-interactive p-5 flex items-start gap-4" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-xs font-extrabold text-white" style={{ background: HERO_GRADIENT }}>
                 {i + 1}
               </div>
@@ -123,7 +123,7 @@ export default function ConsultADoctorPage() {
             <div
               key={specialty}
               className="sc-card p-5 flex items-center gap-3"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+              style={{ background: SURFACE, border: "1px solid #E4E7E2" }}
             >
               <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ background: accentForKey(specialty) }}>
                 <Stethoscope className="w-5 h-5 text-white" strokeWidth={2} />

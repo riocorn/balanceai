@@ -12,7 +12,7 @@
      cy="120"
      r="98"
      fill="none"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="1"
      stroke-dasharray="1 7"
      opacity="0.18"
@@ -21,21 +21,21 @@
   <path
      d="M62,96 L78,58 H162 L178,96 Z"
      fill="none"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="2.25"
      stroke-linejoin="round"
      id="path4" />
   <path
      d="M62,96 H178 L168,182 Q166,194 154,194 H86 Q74,194 72,182 Z"
      fill="none"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="2.25"
      stroke-linejoin="round"
      id="path6" />
   <path
      d="M88,96 V74 Q88,50 120,50 Q152,50 152,74 V96"
      fill="none"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="2.25"
      opacity="0.8"
      id="path8" />
@@ -45,7 +45,7 @@
      y1="118"
      x2="148"
      y2="118"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="1.5"
      stroke-dasharray="2 6"
      opacity="0.3"
@@ -55,7 +55,7 @@
      y1="142"
      x2="144"
      y2="142"
-     stroke="#0A5259"
+     stroke="#1D5C3D"
      stroke-width="1.5"
      stroke-dasharray="2 6"
      opacity="0.3"
@@ -72,7 +72,7 @@
        height="18"
        rx="9"
        fill="none"
-       stroke="#1E6FD9"
+       stroke="#2D7A58"
        stroke-width="1.75"
        stroke-dasharray="2 4"
        id="rect14" />

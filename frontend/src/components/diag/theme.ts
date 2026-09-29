@@ -4,31 +4,34 @@
 // — do not introduce new hex values here without founder sign-off, and never
 // use EMERGENCY outside the emergency banner (grep-checked before every ship).
 //
-// Founder-authorized palette deepen, 2026-09-29 (live instruction, full
-// redesign session): the previous TEAL/BG pairing (#0E7C86 on a cold pale
-// #F7FAFB) read as the same pastel-teal-on-white every health template
-// defaults to. TEAL is now a genuinely deep, confident teal instead of a
-// mid-tone one, BG is a warm off-white instead of a cold blue-tinted one
-// (SURFACE stays pure white so cards still pop off it), and HERO_GRADIENT
-// leans mostly on TEAL with BLUE only as a small kicker at the edge instead
-// of an even 50/50 blend — one deliberate base color plus a supporting
-// accent, not two colors diluting each other. TEXT/MUTED/BORDER unchanged;
-// contrast re-checked against the new values below.
+// Founder directive, 2026-09-29 (live instruction): unify the diag surface's
+// palette with the root landing page's (src/app/page.tsx) established
+// GREEN/CREAM system instead of the earlier standalone teal/blue system, so
+// the whole site — landing page, symptom-checker, pharmacy, consult-a-doctor,
+// wellness, medicines, cart/checkout, 404 — reads as one frontend. Token
+// NAMES are unchanged (every page/component already imports TEAL/BLUE/BG/etc
+// by name), only the hex VALUES change, so this one file re-skins the entire
+// diag surface without touching each page individually. TEAL now equals the
+// landing page's GREEN (#1d5c3d); BLUE is repurposed as a secondary, lighter
+// green (matching the landing page's #2d7a58 icon-box border tone) rather
+// than an unrelated blue; BG matches the landing page's CREAM_BG (#f5ede0);
+// TEXT/MUTED match the landing page's TEXT/SUB. Contrast re-checked against
+// every new value below.
 // ---------------------------------------------------------------------------
-export const TEAL = "#0A5259";
-export const BLUE = "#1E6FD9";
-export const BG = "#FAF7F1";
+export const TEAL = "#1D5C3D";
+export const BLUE = "#2D7A58";
+export const BG = "#F5EDE0";
 export const SURFACE = "#FFFFFF";
-export const TEXT = "#0B2027";
-export const MUTED = "#5B7480";
-export const EFFECTIVENESS = "#1FAE7A";
+export const TEXT = "#1A1A1A";
+export const MUTED = "#3D5249";
+export const EFFECTIVENESS = "#2F9E5B";
 // Darker shade of the same effectiveness green, for use as TEXT on light
 // backgrounds only (the base EFFECTIVENESS hex is reserved for fills/badges/
 // progress-bars; used as small text on white it fails WCAG AA contrast —
 // verified via Lighthouse 2026-09-28). Never used as a background.
-export const EFFECTIVENESS_TEXT = "#157A52";
+export const EFFECTIVENESS_TEXT = "#1F6B3E";
 export const EMERGENCY = "#D92D20"; // reserved exclusively for the emergency banner
-export const BORDER = "#E4EBEE";
+export const BORDER = "#E4E7E2";
 export const HERO_GRADIENT = `linear-gradient(135deg, ${TEAL} 0%, ${TEAL} 58%, ${BLUE} 100%)`;
 
 // ---------------------------------------------------------------------------

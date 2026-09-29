@@ -120,7 +120,7 @@
   <path
      d="M280,116 A104,104 0 0 1 384,220"
      fill="none"
-     stroke="#1FAE7A"
+     stroke="#2F9E5B"
      stroke-width="2.5"
      opacity="0.85"
      id="path34" />
@@ -128,7 +128,7 @@
      cx="384"
      cy="220"
      r="4"
-     fill="#1FAE7A"
+     fill="#2F9E5B"
      id="circle36" />
   <!-- stethoscope glyph, centered in the ring -->
   <g
@@ -267,7 +267,7 @@
      cx="386"
      cy="324"
      r="3"
-     fill="#1FAE7A"
+     fill="#2F9E5B"
      id="circle72" />
   <circle
      cx="400"

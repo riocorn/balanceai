@@ -68,7 +68,7 @@ function NavDropdown({
           <NavigationMenuContent className="!bg-transparent !shadow-none !ring-0 !p-0">
             <div
               className="w-72 rounded-xl p-1.5"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE", boxShadow: "0 16px 32px rgba(11,32,39,0.16)" }}
+              style={{ background: SURFACE, border: "1px solid #E4E7E2", boxShadow: "0 16px 32px rgba(11,32,39,0.16)" }}
             >
               {items.map((item) => (
                 <NavigationMenuLink
@@ -266,14 +266,14 @@ export default function SiteHeader({
 
       <div style={{ background: SURFACE }}>
         {/* Row A — primary nav strip */}
-        <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
+        <div className="w-full border-b" style={{ borderColor: "#E4E7E2" }}>
           <div
             className="max-w-6xl mx-auto px-4 h-11 flex items-center gap-3 text-xs sm:text-sm font-bold overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
           >
             <Link
               href="/symptom-checker"
-              className={`pb-[13px] whitespace-nowrap rounded-t hover:text-[#0A5259] ${FOCUS_RING}`}
+              className={`pb-[13px] whitespace-nowrap rounded-t hover:text-[#1D5C3D] ${FOCUS_RING}`}
               style={{
                 ...(active === "symptoms" ? { color: TEAL, borderBottom: `2px solid ${TEAL}` } : { color: TEXT }),
                 transition: TRANSITION_ALL,
@@ -302,7 +302,7 @@ export default function SiteHeader({
             <a
               href="/symptom-checker#how-it-works"
               style={{ color: TEXT, transition: TRANSITION_ALL }}
-              className={`hidden md:inline whitespace-nowrap rounded hover:text-[#0A5259] ${FOCUS_RING}`}
+              className={`hidden md:inline whitespace-nowrap rounded hover:text-[#1D5C3D] ${FOCUS_RING}`}
             >
               How It Works
             </a>
@@ -327,7 +327,7 @@ export default function SiteHeader({
                   handleMedSubmit();
                 }}
                 className="flex items-center gap-1.5 rounded-full h-7 px-3 focus-within:shadow-[0_0_0_3px_rgba(10,82,89,0.16)]"
-                style={{ background: BG, border: "1px solid #E4EBEE", transition: TRANSITION_ALL }}
+                style={{ background: BG, border: "1px solid #E4E7E2", transition: TRANSITION_ALL }}
               >
                 <Search className="w-3 h-3 shrink-0" style={{ color: MUTED }} />
                 <input
@@ -352,7 +352,7 @@ export default function SiteHeader({
                     top: medDropdownRect.top,
                     right: medDropdownRect.right,
                     background: SURFACE,
-                    border: "1px solid #E4EBEE",
+                    border: "1px solid #E4E7E2",
                     boxShadow: "0 16px 32px rgba(11,32,39,0.16)",
                   }}
                 >
@@ -399,7 +399,7 @@ export default function SiteHeader({
 
             <span className="ml-auto flex items-center gap-5 shrink-0">
               <span
-                className="cursor-pointer transition-colors duration-200 hover:text-[#0A5259]"
+                className="cursor-pointer transition-colors duration-200 hover:text-[#1D5C3D]"
                 style={{ color: TEXT }}
                 title="Login/Sign Up is not implemented yet — placeholder only"
               >
@@ -420,7 +420,7 @@ export default function SiteHeader({
             all to type a symptom and use the core feature of the site. Row B
             now stacks the logo above the input on narrow screens (flex-col,
             switching to flex-row at sm:) instead of hiding the input. */}
-        <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
+        <div className="w-full border-b" style={{ borderColor: "#E4E7E2" }}>
           <div className="max-w-6xl mx-auto px-4 py-3 sm:h-20 sm:py-0 flex flex-col sm:flex-row sm:items-center gap-3">
             <Link href="/symptom-checker" className="flex items-center gap-2 shrink-0" style={{ color: TEXT }}>
               {/* eslint-disable-next-line @next/next/no-img-element -- static local vector brand mark */}
@@ -478,7 +478,7 @@ export default function SiteHeader({
             color means something instead of being decorative. Link text
             itself stays in the same near-black ink as the rest of the nav,
             quieter than coloring the whole label. */}
-        <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
+        <div className="w-full border-b" style={{ borderColor: "#E4E7E2" }}>
           <div
             className="max-w-6xl mx-auto px-4 h-10 flex items-center gap-5 text-xs font-medium overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
@@ -487,7 +487,7 @@ export default function SiteHeader({
               <button
                 key={label}
                 onClick={() => goToSymptomCheckerAutoSubmit(starter)}
-                className={`flex items-center gap-1.5 whitespace-nowrap rounded hover:text-[#0A5259] ${FOCUS_RING}`}
+                className={`flex items-center gap-1.5 whitespace-nowrap rounded hover:text-[#1D5C3D] ${FOCUS_RING}`}
                 style={{ color: MUTED, transition: TRANSITION_ALL }}
               >
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />

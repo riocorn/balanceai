@@ -631,7 +631,7 @@ export default function SymptomCheckerPage() {
           <div
             ref={heroCardRef}
             className={`rounded-2xl p-4 sm:p-6 transition-all duration-700 ease-out ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-            style={{ background: SURFACE, border: "1px solid #E4EBEE", boxShadow: "0 20px 45px rgba(11,32,39,0.18)" }}
+            style={{ background: SURFACE, border: "1px solid #E4E7E2", boxShadow: "0 20px 45px rgba(11,32,39,0.18)" }}
           >
             <p className="flex items-center gap-2 text-sm font-semibold" style={{ color: TEXT }}>
               {loading ? "Checking your symptoms..." : "Grounded in real, up-to-date medical evidence — never a guess."}
@@ -664,7 +664,7 @@ export default function SymptomCheckerPage() {
           call this slow. Not shown once real results exist. */}
       {loading && !result && (
         <section aria-hidden="true" className="max-w-3xl mx-auto px-4 pb-20">
-          <div className="sc-card p-5 mb-5 flex items-start gap-3.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+          <div className="sc-card p-5 mb-5 flex items-start gap-3.5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
             <div className="sk w-9 h-9 rounded-full shrink-0" />
             <div className="min-w-0 flex-1 space-y-2.5 pt-1">
               <div className="sk h-3 w-40 rounded-full" />
@@ -673,7 +673,7 @@ export default function SymptomCheckerPage() {
           </div>
           <div className="space-y-4">
             {[0, 1].map((i) => (
-              <div key={i} className="sc-card p-5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+              <div key={i} className="sc-card p-5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                 <div className="flex items-start gap-4">
                   <div className="sk w-16 h-16 rounded-2xl shrink-0" />
                   <div className="flex-1 min-w-0 space-y-2.5 pt-1">
@@ -868,7 +868,7 @@ export default function SymptomCheckerPage() {
                         // effectiveness-sorted, stable) list is.
                         key={`${m.name}-${idx}`}
                         className="!ring-0 !py-0 sc-card sc-card-interactive p-5"
-                        style={{ background: SURFACE, border: "1px solid #E4EBEE" }}
+                        style={{ background: SURFACE, border: "1px solid #E4E7E2" }}
                       >
                         <div className="flex items-start gap-4">
                           <div className="relative w-16 h-16 shrink-0">
@@ -916,7 +916,7 @@ export default function SymptomCheckerPage() {
                         {pct != null && (
                           <div
                             className="w-full h-2 rounded-full overflow-hidden mt-4"
-                            style={{ background: "#E4EBEE" }}
+                            style={{ background: "#E4E7E2" }}
                           >
                             <div
                               className="h-full rounded-full"
@@ -967,7 +967,7 @@ export default function SymptomCheckerPage() {
 
               <div
                 className="rounded-2xl p-4 mb-5 flex items-start gap-3"
-                style={{ background: "#EEF3F5", border: "1px solid #E4EBEE" }}
+                style={{ background: "#EEF3F5", border: "1px solid #E4E7E2" }}
               >
                 <Info className="w-4 h-4 shrink-0 mt-0.5" style={{ color: MUTED }} />
                 <p className="text-xs leading-relaxed" style={{ color: MUTED }}>
@@ -1056,7 +1056,7 @@ export default function SymptomCheckerPage() {
           <div className="relative grid sm:grid-cols-3 gap-10 sm:gap-8">
             <div
               className="hidden sm:block absolute top-7 left-0 right-0 h-px"
-              style={{ background: "linear-gradient(90deg, #E4EBEE 0%, #E4EBEE 100%)" }}
+              style={{ background: "linear-gradient(90deg, #E4E7E2 0%, #E4E7E2 100%)" }}
               aria-hidden="true"
             />
             {TRUST_STEPS.map(({ icon: Icon, title, detail, accent }, i) => (
@@ -1115,7 +1115,7 @@ export default function SymptomCheckerPage() {
         <SectionHeading eyebrow="Questions" title="FAQ" accent={ACCENT_CORAL} />
         <ScrollReveal className="space-y-3" stagger={0.06} y={12}>
           {FAQ_ITEMS.map((item, i) => (
-            <div key={item.q} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+            <div key={item.q} className="sc-card overflow-hidden" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 aria-expanded={openFaq === i}

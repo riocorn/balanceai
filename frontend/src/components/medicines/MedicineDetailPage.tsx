@@ -250,7 +250,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
             self-commentary: matches 1mg's Genuine / Prescription required /
             NPPA Regulated 3-up row structurally, but every line is written
             the way a real pharmacy talks to a patient. */}
-        <Card className="!ring-0 !py-0 sc-card grid grid-cols-1 sm:grid-cols-3 mb-8" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+        <Card className="!ring-0 !py-0 sc-card grid grid-cols-1 sm:grid-cols-3 mb-8" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
           {[
             { icon: Stethoscope, title: "Doctor-Reviewed", sub: "Confirm with your doctor before starting" },
             { icon: ShieldCheck, title: "Know Before You Start", sub: "Side effects and precautions are listed below" },
@@ -259,7 +259,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
             <div
               key={title}
               className="flex items-start gap-2.5 p-4"
-              style={{ borderTop: i > 0 ? undefined : undefined, borderLeft: i > 0 ? "1px solid #E4EBEE" : undefined }}
+              style={{ borderTop: i > 0 ? undefined : undefined, borderLeft: i > 0 ? "1px solid #E4E7E2" : undefined }}
             >
               <Icon className="w-4 h-4 shrink-0 mt-0.5" style={{ color: TEAL }} />
               <div className="min-w-0">
@@ -283,7 +283,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
                 </ul>
               </Section>
             )}
-            <div className="rounded-xl p-4 mb-8 flex items-start gap-2" style={{ background: "#EEF3F5", border: "1px solid #E4EBEE" }}>
+            <div className="rounded-xl p-4 mb-8 flex items-start gap-2" style={{ background: "#EEF3F5", border: "1px solid #E4E7E2" }}>
               <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5" style={{ color: TEAL }} />
               <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
                 Ask your doctor whether this device is the right fit for you, and get proper
@@ -294,7 +294,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
         ) : (
           <>
             {medicine.note && (
-              <div className="rounded-xl p-3 mb-6 flex items-start gap-2" style={{ background: "#EEF3F5", border: "1px solid #E4EBEE" }}>
+              <div className="rounded-xl p-3 mb-6 flex items-start gap-2" style={{ background: "#EEF3F5", border: "1px solid #E4E7E2" }}>
                 <Info className="w-4 h-4 shrink-0 mt-0.5" style={{ color: MUTED }} />
                 <p className="text-xs leading-relaxed" style={{ color: MUTED }}>{medicine.note}</p>
               </div>
@@ -371,7 +371,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
                     const colors = val?.status ? safetyStatusColor(val.status) : null;
                     const CategoryIcon = SAFETY_CATEGORY_ICON[key.toLowerCase()] || ShieldCheck;
                     return (
-                      <Card key={key} className="!ring-0 !py-0 sc-card p-3.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                      <Card key={key} className="!ring-0 !py-0 sc-card p-3.5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                         <div className="flex items-center justify-between gap-2 mb-1">
                           <span className="flex items-center gap-2 text-sm font-bold capitalize" style={{ color: TEXT }}>
                             <CategoryIcon className="w-[18px] h-[18px]" strokeWidth={1.9} style={{ color: MUTED }} />
@@ -393,7 +393,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
 
             {medicine.fact_box && Object.values(medicine.fact_box).some(Boolean) && (
               <Section icon={BookOpen} title="Fact Box">
-                <Card className="!ring-0 !py-0 sc-card p-4" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                <Card className="!ring-0 !py-0 sc-card p-4" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                   <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {medicine.fact_box.chemical_class && (
                       <div><dt className="text-[10px] font-semibold uppercase tracking-wide" style={{ color: MUTED }}>Chemical class</dt><dd className="text-sm" style={{ color: TEXT }}>{medicine.fact_box.chemical_class}</dd></div>
@@ -416,7 +416,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
               <Section icon={AlertTriangle} title="Interaction with drugs">
                 <div className="space-y-2.5">
                   {medicine.drug_interactions.map((di, i) => (
-                    <Card key={i} className="!ring-0 !py-0 sc-card p-3.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                    <Card key={i} className="!ring-0 !py-0 sc-card p-3.5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-sm font-bold" style={{ color: TEXT }}>{di.with}</span>
                         {di.severity && (
@@ -452,7 +452,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {related.map((m) => (
                 <Link key={m.slug} href={`/medicines/${encodeURIComponent(m.slug)}`} className={`block rounded-xl ${FOCUS_RING}`}>
-                  <Card className="!ring-0 !py-0 sc-card sc-card-interactive p-3 h-full" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                  <Card className="!ring-0 !py-0 sc-card sc-card-interactive p-3 h-full" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                     <div className="w-full mb-2"><MedicinePackPlaceholder accentColor={accentForKey(categoryLabel(m.category))} /></div>
                     <p className="text-xs font-bold leading-snug line-clamp-2" style={{ color: TEXT }}>{cleanMedicineName(m.name)}</p>
                     <p className="text-[10px] mt-0.5 truncate" style={{ color: MUTED }}>{categoryLabel(m.category)}</p>
@@ -481,7 +481,7 @@ export default function MedicineDetailPage({ slug }: { slug: string }) {
           </Section>
         )}
 
-        <p className="text-[11px] leading-relaxed mt-2 pt-4 border-t" style={{ color: MUTED, borderColor: "#E4EBEE" }}>
+        <p className="text-[11px] leading-relaxed mt-2 pt-4 border-t" style={{ color: MUTED, borderColor: "#E4E7E2" }}>
           This information is for reference only, compiled from the sources listed above. It is not
           a substitute for professional medical advice — please consult a doctor before starting,
           stopping or changing any medicine.

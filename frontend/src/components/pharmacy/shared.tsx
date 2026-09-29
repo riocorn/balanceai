@@ -166,7 +166,7 @@ export function MedicineProductCard({
       </div>
 
       {pct != null && (
-        <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: "#E4EBEE" }}>
+        <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: "#E4E7E2" }}>
           <div
             className="h-full rounded-full"
             style={{ width: `${Math.min(100, Math.max(0, pct))}%`, background: EFFECTIVENESS }}

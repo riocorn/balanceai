@@ -6,7 +6,7 @@ import { FOCUS_RING, TRANSITION_ALL } from "./tokens";
 // (color shift + underline together, plus a real keyboard-focus ring)
 // instead of the previous bare `hover:underline` with no color change and
 // no visible focus state at all.
-const FOOTER_LINK_CLASS = `rounded hover:text-[#0A5259] ${FOCUS_RING}`;
+const FOOTER_LINK_CLASS = `rounded hover:text-[#1D5C3D] ${FOCUS_RING}`;
 const FOOTER_LINK_STYLE = { color: MUTED, transition: TRANSITION_ALL };
 
 // Real 4-column footer structure. Redesign, 2026-09-29: column headers were

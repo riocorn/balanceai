@@ -15,11 +15,11 @@
        y2="1">
       <stop
          offset="0"
-         stop-color="#0E7C86"
+         stop-color="#2D7A58"
          id="stop2" />
       <stop
          offset="1"
-         stop-color="#1E6FD9"
+         stop-color="#2D7A58"
          id="stop4" />
     </linearGradient>
   </defs>

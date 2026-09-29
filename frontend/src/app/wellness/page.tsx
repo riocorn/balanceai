@@ -221,7 +221,7 @@ export default function WellnessPage() {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="sc-card p-2.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                    <div key={i} className="sc-card p-2.5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                       <div className="sk aspect-square rounded-xl mb-2" />
                       <div className="sk h-3 w-4/5 rounded-full" />
                     </div>
@@ -264,7 +264,7 @@ export default function WellnessPage() {
                   const displayName = cleanMedicineName(m.name);
                   return (
                     <Link key={m.slug} href={`/medicines/${encodeURIComponent(m.slug)}`} className={`block rounded-xl ${FOCUS_RING}`}>
-                      <Card className="!ring-0 !py-0 sc-card sc-card-interactive h-full p-2.5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                      <Card className="!ring-0 !py-0 sc-card sc-card-interactive h-full p-2.5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                         <div className="mb-2"><MedicinePackPlaceholder accentColor={group.accent} /></div>
                         <p className="text-xs font-bold leading-snug line-clamp-2" style={{ color: TEXT }}>{displayName}</p>
                       </Card>
@@ -291,7 +291,7 @@ export default function WellnessPage() {
                 href={`/symptom-checker?q=${encodeURIComponent(area.starter)}`}
                 className={`block rounded-xl ${FOCUS_RING}`}
               >
-                <Card className="!ring-0 !py-0 sc-card sc-card-interactive h-full p-5" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
+                <Card className="!ring-0 !py-0 sc-card sc-card-interactive h-full p-5" style={{ background: SURFACE, border: "1px solid #E4E7E2" }}>
                   <p className="text-sm font-bold mb-1.5" style={{ color: TEXT }}>{area.name}</p>
                   <p className="text-xs leading-relaxed" style={{ color: MUTED }}>{area.detail}</p>
                 </Card>

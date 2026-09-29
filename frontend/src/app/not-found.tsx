@@ -44,7 +44,7 @@ export default function NotFound() {
           <Link href="/pharmacy">
             <div
               className="px-6 py-3 rounded-xl text-sm font-medium text-center"
-              style={{ background: SURFACE, border: "1px solid #E4EBEE", color: TEAL }}
+              style={{ background: SURFACE, border: "1px solid #E4E7E2", color: TEAL }}
             >
               Order Medicine
             </div>

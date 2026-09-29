@@ -355,7 +355,7 @@
 }
 .focus-ring:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #FAF7F1, 0 0 0 4px #0A5259;
+  box-shadow: 0 0 0 2px #F5EDE0, 0 0 0 4px #1D5C3D;
 }
 /* Variant for controls that sit directly on a TEAL/BLUE gradient field
    (hero buttons, banner CTAs) — the offset ring uses white instead of the
@@ -368,7 +368,7 @@
    sibling (checkbox/radio) — the input stays sr-only for real keyboard/
    screen-reader semantics, this ring lands on the visible box next to it. */
 .cb-input:focus-visible + .cb-box {
-  box-shadow: 0 0 0 2px #FAF7F1, 0 0 0 4px #0A5259;
+  box-shadow: 0 0 0 2px #F5EDE0, 0 0 0 4px #1D5C3D;
 }
 
 /* ── Skeleton shimmer — real loading state for slow LLM calls (symptom-
@@ -384,7 +384,7 @@
   position: relative;
   overflow: hidden;
   background: #EEF3F5;
-  background-image: linear-gradient(100deg, #EEF3F5 30%, #E4EBEE 50%, #EEF3F5 70%);
+  background-image: linear-gradient(100deg, #EEF3F5 30%, #E4E7E2 50%, #EEF3F5 70%);
   background-size: 200% 100%;
   animation: skeletonSheen 1.8s ease-in-out infinite;
 }
@@ -408,13 +408,13 @@
   overflow: hidden;
   height: 3px;
   border-radius: 999px;
-  background: #E4EBEE;
+  background: #E4E7E2;
 }
 .sc-progress-bar {
   position: absolute;
   top: 0; bottom: 0;
   border-radius: 999px;
-  background: linear-gradient(90deg, #0A5259, #1E6FD9);
+  background: linear-gradient(90deg, #1D5C3D, #2D7A58);
   animation: progressSlide 1.6s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
 }
 @media (prefers-reduced-motion: reduce) {
