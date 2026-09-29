@@ -153,7 +153,7 @@ export default function MedicinesPage() {
         {/* ── Category sidebar (desktop) ── */}
         <aside className="hidden lg:block">
           <div className="sticky top-20 rounded-2xl p-4" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
-            <p className="text-sm font-semibold mb-3" style={{ color: TEAL }}>Browse by category</p>
+            <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: MUTED }}>Browse by category</p>
             <div className="max-h-[65vh] overflow-y-auto pr-1 space-y-1">
               <button
                 onClick={() => setCategory(null)}

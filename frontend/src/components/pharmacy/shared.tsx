@@ -45,7 +45,7 @@ export function ExpandableText({
           className="font-semibold underline underline-offset-2"
           style={{ color: GREEN }}
         >
-          {open ? "Show less" : "Read more"}
+          {open ? "kam dikhayein" : "poora padhein"}
         </button>
       )}
     </p>
@@ -67,10 +67,10 @@ export function HardEmergencyBanner() {
     >
       <PhoneCall className="w-5 h-5 shrink-0 mt-0.5" />
       <div>
-        <p className="text-sm font-bold mb-1">This looks like it could be an emergency</p>
+        <p className="text-sm font-bold mb-1">Ye emergency jaisa lag raha hai</p>
         <p className="text-xs leading-relaxed opacity-90">
-          Based on what you've described, please don't wait for an AI suggestion — go to the
-          nearest hospital/emergency room right away, or call <strong>112</strong> immediately.
+          Apni describe ki hui problem ke hisaab se, kripya AI suggestion ka intezaar na karein —
+          turant nearest hospital/emergency ke paas jaayein ya <strong>112</strong> par call karein.
         </p>
       </div>
     </div>
@@ -113,7 +113,7 @@ export function MedicineProductCard({
     >
       {isCurative && (
         <span
-          className="text-[11px] font-bold w-fit px-2 py-0.5 rounded-full"
+          className="text-[10px] font-bold uppercase tracking-wide w-fit px-2 py-0.5 rounded"
           style={{ background: "#eef7f2", color: GREEN }}
         >
           Real curative option

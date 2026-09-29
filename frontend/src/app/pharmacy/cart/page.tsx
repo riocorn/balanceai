@@ -79,7 +79,7 @@ export default function PharmacyCartPage() {
               style={{ background: "#fff", border: `1px solid ${BORDER}` }}
             >
               <div className="min-w-0">
-                <p className="text-[11px] font-semibold mb-0.5" style={{ color: MUTED }}>
+                <p className="text-[10px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: MUTED }}>
                   {item.disease_name}
                 </p>
                 <p className="text-sm font-semibold" style={{ color: TEXT }}>{item.name}</p>
@@ -120,7 +120,7 @@ export default function PharmacyCartPage() {
           </div>
 
           <div className="mb-3">
-            <p className="text-xs font-bold mb-1.5" style={{ color: cart.doctorVerified || waSent ? GREEN : TEXT }}>
+            <p className="text-[11px] font-bold uppercase tracking-wide mb-1.5" style={{ color: cart.doctorVerified || waSent ? GREEN : TEXT }}>
               Step 1 of 2 — Send your case to the doctor
             </p>
             <button
@@ -135,7 +135,7 @@ export default function PharmacyCartPage() {
           </div>
 
           <div>
-            <p className="text-xs font-bold mb-1.5" style={{ color: waSent ? TEXT : MUTED }}>
+            <p className="text-[11px] font-bold uppercase tracking-wide mb-1.5" style={{ color: waSent ? TEXT : MUTED }}>
               Step 2 of 2 — Self-declare the doctor's go-ahead (not yet independently verified)
             </p>
             <label className={`flex items-start gap-2 ${waSent ? "cursor-pointer" : "cursor-not-allowed"}`}>

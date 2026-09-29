@@ -788,7 +788,7 @@ export default function SymptomCheckerPage() {
                 <Stethoscope className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold mb-1" style={{ color: MUTED }}>
+                <p className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: MUTED }}>
                   Possible match
                 </p>
                 <h2 className="font-display font-bold text-2xl mb-2 leading-tight" style={{ color: TEXT }}>
@@ -876,8 +876,8 @@ export default function SymptomCheckerPage() {
                                   <p className="font-display font-extrabold text-2xl leading-none" style={{ color: EFFECTIVENESS_TEXT }}>
                                     {pct}%
                                   </p>
-                                  <p className="text-[10px] font-semibold mt-0.5" style={{ color: MUTED }}>
-                                    effective
+                                  <p className="text-[10px] font-semibold uppercase tracking-wide mt-0.5" style={{ color: MUTED }}>
+                                    Effective
                                   </p>
                                 </div>
                               )}
