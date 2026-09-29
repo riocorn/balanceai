@@ -552,7 +552,7 @@ export default function SymptomCheckerPage() {
                 story as the final CTA band below in the mic/soundwave
                 variant. Replaces three separate icon-in-square tiles that
                 repeated the identical pattern used on /consult-a-doctor. */}
-            <div className="relative flex items-center justify-center" aria-hidden="true">
+            <div className="flex items-center justify-center" aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element -- static
                   local decorative SVG; next/image's raster pipeline isn't
                   used for hand-authored vector assets. */}
@@ -561,18 +561,6 @@ export default function SymptomCheckerPage() {
                 alt=""
                 className="w-full max-w-[460px] sm:max-w-[560px] h-auto"
                 style={{ filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.22))" }}
-              />
-              {/* Second illustration kept alongside the first, not replaced —
-                  the app-flow phone mockup, as a smaller floating detail
-                  card inset over the corner of the product illustration. */}
-              {/* eslint-disable-next-line @next/next/no-img-element -- static
-                  local decorative SVG; next/image's raster pipeline isn't
-                  used for hand-authored vector assets. */}
-              <img
-                src="/illustrations/symptom-hero-phone.svg"
-                alt=""
-                className="hidden sm:block absolute -bottom-6 -left-4 w-[190px] h-auto"
-                style={{ filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.28))" }}
               />
             </div>
           </div>
@@ -1012,12 +1000,33 @@ export default function SymptomCheckerPage() {
           journey instead of three interchangeable tiles. */}
       <section id="how-it-works" className="w-full py-24 px-4 scroll-mt-24" style={{ background: SURFACE }}>
         <div className="max-w-5xl mx-auto">
-          <div className="mb-14 max-w-lg">
-            <p className="text-sm font-semibold mb-2" style={{ color: BLUE }}>How it works</p>
-            <h2 className="font-display leading-[1.08] text-3xl sm:text-4xl" style={{ color: TEXT }}>
-              From what you feel to what you take —{" "}
-              <span style={{ color: BLUE, fontStyle: "italic" }}>three real steps.</span>
-            </h2>
+          <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-center mb-14">
+            <div className="max-w-lg">
+              <p className="text-sm font-semibold mb-2" style={{ color: BLUE }}>How it works</p>
+              <h2 className="font-display leading-[1.08] text-3xl sm:text-4xl" style={{ color: TEXT }}>
+                From what you feel to what you take —{" "}
+                <span style={{ color: BLUE, fontStyle: "italic" }}>three real steps.</span>
+              </h2>
+            </div>
+            {/* Second illustration, kept in its own separate section rather
+                than layered onto the hero's photorealistic pack image —
+                the real app-flow phone mockup, on its own dark card so its
+                white-stroke linework stays visible against this section's
+                white background. */}
+            <div
+              className="hidden sm:flex items-center justify-center rounded-3xl p-6 shrink-0"
+              style={{ background: TEAL }}
+              aria-hidden="true"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- static
+                  local decorative SVG; next/image's raster pipeline isn't
+                  used for hand-authored vector assets. */}
+              <img
+                src="/illustrations/symptom-hero-phone.svg"
+                alt=""
+                className="w-[210px] h-auto"
+              />
+            </div>
           </div>
           <div className="relative grid sm:grid-cols-3 gap-10 sm:gap-8">
             <div
