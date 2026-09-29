@@ -192,9 +192,9 @@
      height="94"
      rx="8"
      fill="none"
-     stroke="#ffffff"
+     stroke="#7C5CBF"
      stroke-width="3"
-     opacity="0.92"
+     opacity="0.95"
      id="rect52" />
   <line
      x1="74"
@@ -262,17 +262,17 @@
      height="48"
      rx="15"
      fill="none"
-     stroke="#ffffff"
+     stroke="#5B6EE1"
      stroke-width="3"
-     opacity="0.92"
+     opacity="0.95"
      id="rect68" />
   <path
      d="M382,348 L374,364 L398,348 Z"
      fill="none"
-     stroke="#ffffff"
+     stroke="#5B6EE1"
      stroke-width="3"
      stroke-linejoin="round"
-     opacity="0.92"
+     opacity="0.95"
      id="path70" />
   <circle
      cx="386"
@@ -286,7 +286,7 @@
      cx="400"
      cy="324"
      r="3"
-     fill="#ffffff"
+     fill="#C98A2C"
      id="circle74"
      class="typing-dot"
      style="animation-delay:0.2s" />
@@ -294,7 +294,7 @@
      cx="414"
      cy="324"
      r="3"
-     fill="#ffffff"
+     fill="#E0475A"
      id="circle76"
      class="typing-dot"
      style="animation-delay:0.4s" />

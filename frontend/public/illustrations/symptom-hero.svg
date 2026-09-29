@@ -150,6 +150,9 @@
      stroke-linecap="round"
      stroke-linejoin="round"
      id="path38" />
+  <!-- extra colorful waveform readings, alongside the flagged one -->
+  <circle cx="257" cy="204" r="4" fill="#2F9E5B" />
+  <circle cx="309" cy="209" r="4" fill="#C98A2C" />
   <!-- flagged anomaly node + leader -->
   <circle
      cx="233"
@@ -192,17 +195,17 @@
      height="50"
      rx="14"
      fill="none"
-     stroke="#ffffff"
+     stroke="#5B6EE1"
      stroke-width="3"
-     opacity="0.92"
+     opacity="0.95"
      id="rect48" />
   <path
      d="M78,120 L70,136 L92,120 Z"
      fill="none"
-     stroke="#ffffff"
+     stroke="#5B6EE1"
      stroke-width="3"
      stroke-linejoin="round"
-     opacity="0.92"
+     opacity="0.95"
      id="path50" />
   <line
      x1="70"
@@ -264,18 +267,18 @@
        height="30"
        rx="15"
        fill="none"
-       stroke="#ffffff"
+       stroke="#C98A2C"
        stroke-width="3"
-       opacity="0.92"
+       opacity="0.95"
        id="rect64" />
     <line
        x1="392"
        y1="326"
        x2="392"
        y2="356"
-       stroke="#ffffff"
+       stroke="#C98A2C"
        stroke-width="3"
-       opacity="0.92"
+       opacity="0.95"
        id="line66" />
     <circle
        cx="365"

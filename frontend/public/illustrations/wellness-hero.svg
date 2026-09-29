@@ -27,14 +27,14 @@
      cy="96"
      r="28"
      fill="none"
-     stroke="#ffffff"
+     stroke="#C98A2C"
      stroke-width="3"
      id="circle4" />
   <g
-     stroke="#ffffff"
+     stroke="#C98A2C"
      stroke-width="2.2"
      stroke-linecap="round"
-     opacity="0.75"
+     opacity="0.85"
      id="g16">
     <line
        x1="240"
