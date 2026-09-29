@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Stethoscope, MessageCircle, ShieldCheck, ClipboardList } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -44,26 +43,16 @@ export default function ConsultADoctorPage() {
       <SiteHeader active="other" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        {/* Real photography backdrop — a doctor checking a patient's blood
-            pressure (same already-verified Unsplash photo used on the
-            symptom-checker trust band, reused here for a consistent,
-            genuinely photographic hero instead of a flat color block). */}
-        <Image
-          src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.75 }} />
+        {/* Typography-led hero — solid gradient field + dot-grid texture,
+            no stock photography (redesign, 2026-09-29). */}
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
+          aria-hidden="true"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
-        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 pt-14 pb-16 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-28 w-96 h-96 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 pt-16 pb-20 text-center">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight leading-[1.05]">
             AI never has the final word — a doctor reviews every case.
           </h1>
           <p className="text-sm sm:text-base max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.88)" }}>

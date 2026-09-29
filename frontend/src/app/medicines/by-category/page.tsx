@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -57,28 +56,19 @@ export default function MedicinesByCategoryPage() {
       <SiteHeader active="medicines" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        {/* Real photography backdrop — same already-verified blister-pack
-            photo used on /medicines, so this sibling page isn't a flat
-            color block either. */}
-        <Image
-          src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.6 }} />
+        {/* Typography-led hero — solid gradient field + dot-grid texture,
+            no stock photography (redesign, 2026-09-29). */}
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
+          aria-hidden="true"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-8">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+        <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">
             Browse by Health Area
           </h1>
-          <p className="text-sm max-w-xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="text-sm sm:text-base max-w-xl" style={{ color: "rgba(255,255,255,0.88)" }}>
             Real medicines from our catalog, grouped by the health area they're commonly used for —
             a quick way to see what's relevant to you before diving into the full list.
           </p>

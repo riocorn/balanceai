@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Search, Loader2, X, ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -92,42 +91,21 @@ export default function MedicinesPage() {
     <main style={{ background: BG }} className="min-h-screen font-sans">
       <SiteHeader active="medicines" />
 
-      {/* ── Hero banner — same gradient/search-bar rhythm as pharmacy/symptom-checker ── */}
+      {/* ── Hero banner — typography-led gradient field, no stock photography
+          (redesign, 2026-09-29), same device used across the redesigned
+          pages so the site reads as one system. ── */}
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        {/* Real photography backdrop — blister packs of medicine, tinted with
-            the brand gradient (Unsplash, license-clear, verified 2026-09-28). */}
-        <Image
-          src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        {/* Real bug found and fixed here (same as /pharmacy's hero): this
-            tint sat at opacity 0.97 over the real photo, hiding it almost
-            entirely and reading as a flat gradient block instead of the
-            "real photography backdrop" the comment above describes. */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
           aria-hidden="true"
-          style={{ background: HERO_GRADIENT, opacity: 0.55 }}
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.55) 0%, rgba(4,20,24,0.25) 55%, rgba(4,20,24,0.05) 78%)" }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.08]"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-8">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+        <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">
             Find the right medicine, fast.
           </h1>
-          <p className="text-sm max-w-xl mb-5" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="text-sm sm:text-base max-w-xl mb-6" style={{ color: "rgba(255,255,255,0.88)" }}>
             Search clear, source-cited information on thousands of medicines, so you always know
             exactly what you're taking.
           </p>
@@ -153,7 +131,7 @@ export default function MedicinesPage() {
         {/* ── Category sidebar (desktop) ── */}
         <aside className="hidden lg:block">
           <div className="sticky top-20 rounded-2xl p-4" style={{ background: SURFACE, border: "1px solid #E4EBEE" }}>
-            <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: MUTED }}>Browse by category</p>
+            <p className="text-sm font-semibold mb-3" style={{ color: MUTED }}>Browse by category</p>
             <div className="max-h-[65vh] overflow-y-auto pr-1 space-y-1">
               <button
                 onClick={() => setCategory(null)}

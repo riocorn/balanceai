@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Loader2, Pill, Sparkles, HeartPulse, Baby, Heart } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
@@ -166,25 +165,17 @@ export default function WellnessPage() {
       <SiteHeader active="wellness" />
 
       <div className="relative overflow-hidden" style={{ background: HERO_GRADIENT }}>
-        {/* Real photography backdrop — same already-verified pharmacy shelf
-            photo used elsewhere, so the hero isn't a flat color block. */}
-        <Image
-          src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.7 }} />
+        {/* Typography-led hero — solid gradient field + dot-grid texture,
+            no stock photography (redesign, 2026-09-29). */}
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
+          aria-hidden="true"
           style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
         />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-8">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">Wellness</h1>
-          <p className="text-sm max-w-xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+        <div className="absolute -right-20 -top-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight leading-[1.05]">Wellness</h1>
+          <p className="text-sm sm:text-base max-w-xl" style={{ color: "rgba(255,255,255,0.88)" }}>
             Real, commonly used products from our catalog across sexual wellness, vitamins &amp;
             supplements, personal care, women&apos;s health, and mom &amp; baby care — for genuine
             preventive health, not general &quot;boosting&quot;.

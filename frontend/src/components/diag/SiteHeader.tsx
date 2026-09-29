@@ -425,23 +425,19 @@ export default function SiteHeader({
             <Link href="/symptom-checker" className="flex items-center gap-2 shrink-0" style={{ color: TEXT }}>
               {/* eslint-disable-next-line @next/next/no-img-element -- static local vector brand mark */}
               <img src="/illustrations/brand-mark.svg" alt="" aria-hidden="true" className="w-8 h-8 shrink-0" />
-              <span className="flex items-baseline gap-1.5">
-                <span className="font-display font-extrabold text-xl">
-                  Balance<span style={{ color: TEAL }}>AI</span>
-                </span>
-                <span className="text-[8px] font-bold uppercase tracking-wide whitespace-nowrap" style={{ color: TEAL }}>
-                  (Medical Research)
-                </span>
+              <span className="font-serif font-semibold text-2xl tracking-tight" style={{ fontFamily: "var(--font-fraunces)" }}>
+                Balance<span style={{ color: TEAL }}>AI</span>
               </span>
             </Link>
 
             {/* Box 2 — the real AI /medical/query input, everywhere, right
                 next to the logo. Visible at every width (see fix note
-                above) -- stacked below the logo on mobile, inline on sm+. */}
+                above) -- stacked below the logo on mobile, inline on sm+.
+                No floating eyebrow label above it (removed -- the skill's
+                own guidance flags unexplained ALL-CAPS labels above content
+                as a generated-page tell, and the placeholder text already
+                says what to type). */}
             <div className="flex-1 relative min-w-0">
-              <p className="absolute -top-3.5 left-4 text-[9px] font-bold uppercase tracking-wide px-1 flex items-center gap-1" style={{ color: TEAL, background: SURFACE }}>
-                <Sparkles className="w-2.5 h-2.5" /> Find the Right Treatment
-              </p>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -475,20 +471,26 @@ export default function SiteHeader({
             Since the one real input box always auto-submits immediately
             (there's no separate page-level box left to prefill for editing),
             these quick-links go straight through the same real
-            /medical/query auto-submit path. */}
+            /medical/query auto-submit path. Each category's color is a
+            small dot, not an icon -- the same accent-per-category mapping
+            from CATEGORY_TILES carries through everywhere that category
+            appears on the site (medicine cards, category pages), so the
+            color means something instead of being decorative. Link text
+            itself stays in the same near-black ink as the rest of the nav,
+            quieter than coloring the whole label. */}
         <div className="w-full border-b" style={{ borderColor: "#E4EBEE" }}>
           <div
-            className="max-w-6xl mx-auto px-4 h-10 flex items-center gap-6 text-xs font-semibold overflow-x-auto [&::-webkit-scrollbar]:hidden"
+            className="max-w-6xl mx-auto px-4 h-10 flex items-center gap-5 text-xs font-medium overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
           >
-            {CATEGORY_TILES.map(({ label, starter, accent, icon: Icon }) => (
+            {CATEGORY_TILES.map(({ label, starter, accent }) => (
               <button
                 key={label}
                 onClick={() => goToSymptomCheckerAutoSubmit(starter)}
-                className="flex items-center gap-1.5 whitespace-nowrap transition-opacity duration-200 hover:opacity-70"
-                style={{ color: accent }}
+                className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 hover:text-[#0E7C86]"
+                style={{ color: MUTED }}
               >
-                <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: accent }} />
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />
                 {label}
               </button>
             ))}

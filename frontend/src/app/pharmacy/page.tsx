@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, MessageCircle, Sparkles, CheckCircle2,
@@ -10,8 +9,8 @@ import {
 } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
+import CategoryRail from "@/components/diag/CategoryRail";
 import { matchSymptoms } from "@/lib/pharmacy-api";
-import { CATEGORY_TILES } from "@/components/diag/categories";
 
 // Aligned to the locked BalanceAI palette (--diag-primary-teal / --diag-primary-blue /
 // --diag-effectiveness) so /pharmacy shares the same design language as /symptom-checker.
@@ -86,45 +85,17 @@ export default function PharmacyIntakePage() {
   return (
     <main style={{ background: BG }} className="min-h-screen font-sans">
       <SiteHeader active="pharmacy" />
-      {/* ── Full-bleed hero banner — 1mg/Netmeds pattern: split text/graphic + carousel dots ── */}
+      {/* ── Hero banner — typography-led, no stock photography (redesign,
+          2026-09-29): a solid brand gradient field with a dense dot-grid
+          texture and two soft outline rings, matching the same device used
+          on /symptom-checker so the two entry points feel like one site. ── */}
       <div className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)` }}>
-        {/* Real photography backdrop — pills spilling from a bottle, tinted
-            with the brand gradient (Unsplash, license-clear, verified
-            2026-09-28). */}
-        <Image
-          src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        {/* Real bug found and fixed here: this tint sat at opacity 0.97 over
-            the real photo, hiding ~97% of it — the "real photography
-            backdrop" comment above was true in code but not in what a
-            visitor actually saw (a flat gradient block). Brought down to
-            match the same tuned treatment used on /symptom-checker, where
-            the photo is genuinely visible outside the text column. */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{ background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`, opacity: 0.4 }}
-        />
-        {/* Left-side scrim — the rotating headline/search copy sits on the
-            left column, so it needs the strongest contrast there. */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{ background: "linear-gradient(100deg, rgba(4,20,24,0.92) 0%, rgba(4,20,24,0.68) 45%, rgba(4,20,24,0.18) 70%, rgba(4,20,24,0) 88%)" }}
-        />
-        {/* decorative background texture, dense pattern like real e-pharmacy banners */}
-        <div className="absolute inset-0 opacity-[0.08]" style={{
+        <div className="absolute inset-0 opacity-[0.10] pointer-events-none" style={{
           backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)",
           backgroundSize: "22px 22px",
         }} />
-        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full" style={{ background: "rgba(255,255,255,0.06)" }} />
-        <div className="absolute -left-16 bottom-0 w-64 h-64 rounded-full" style={{ background: "rgba(255,255,255,0.05)" }} />
+        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.12)" }} />
+        <div className="absolute -left-16 bottom-0 w-64 h-64 rounded-full pointer-events-none" style={{ border: "1px solid rgba(255,255,255,0.10)" }} />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-6 sm:pt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* ── Left: rotating bold text block + search ── */}
@@ -141,7 +112,7 @@ export default function PharmacyIntakePage() {
                   <Sparkles className="w-3.5 h-3.5" />
                   {active.badge}
                 </div>
-                <h1 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold mb-3 text-white leading-[1.12] tracking-tight">
+                <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold mb-3 text-white leading-[1.05] tracking-tight">
                   {active.headline}
                 </h1>
                 <p className="text-sm sm:text-base max-w-md mx-auto md:mx-0" style={{ color: "rgba(255,255,255,0.85)" }}>
@@ -281,26 +252,8 @@ export default function PharmacyIntakePage() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* ── Category rail — circular icon badges, dense horizontal-scroll, 1mg/Netmeds "shop by category" pattern ── */}
         <div className="-mt-1 sm:mt-0 pt-6">
-          <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: MUTED }}>Browse by health area</p>
-          <div className="flex sm:grid sm:grid-cols-6 gap-4 sm:gap-3 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 -mx-5 px-5 sm:mx-0 sm:px-0">
-            {CATEGORY_TILES.map(({ icon: Icon, label, accent, starter, image }) => (
-              <button
-                key={label}
-                onClick={() => submit(starter)}
-                disabled={loading}
-                className="flex flex-col items-center gap-2 shrink-0 w-20 sm:w-auto transition-transform disabled:opacity-40 hover:-translate-y-0.5"
-              >
-                <div className="relative w-14 h-14 rounded-full overflow-hidden shadow-sm">
-                  <Image src={`${image}?auto=format&fit=crop&w=200&q=70`} alt="" fill sizes="56px" className="object-cover" />
-                  <div className="absolute inset-0" style={{ background: `${accent}66` }} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-white drop-shadow-sm" />
-                  </div>
-                </div>
-                <span className="text-[11px] font-semibold text-center leading-tight" style={{ color: TEXT }}>{label}</span>
-              </button>
-            ))}
-          </div>
+          <p className="text-sm font-semibold mb-3" style={{ color: MUTED }}>Browse by health area</p>
+          <CategoryRail onSelect={(starter) => submit(starter)} disabled={loading} />
           {error && <p className="text-xs mt-3" style={{ color: "#B42318" }}>{error}</p>}
         </div>
 

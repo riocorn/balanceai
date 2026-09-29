@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ShieldCheck,
@@ -31,7 +30,7 @@ import SiteFooter from "@/components/diag/SiteFooter";
 import MedicinePackPlaceholder from "@/components/diag/MedicinePackPlaceholder";
 import ScrollReveal from "@/components/diag/ScrollReveal";
 import { Card } from "@/components/ui/card";
-import { CATEGORY_TILES } from "@/components/diag/categories";
+import CategoryRail from "@/components/diag/CategoryRail";
 import { TEAL, BLUE, BG, SURFACE, TEXT, MUTED, EFFECTIVENESS, EFFECTIVENESS_TEXT, EMERGENCY, HERO_GRADIENT, ACCENT_PURPLE, ACCENT_CORAL, ACCENT_AMBER } from "@/components/diag/theme";
 
 // ---------------------------------------------------------------------------
@@ -451,41 +450,27 @@ export default function SymptomCheckerPage() {
           className="relative overflow-hidden pt-14 pb-36 sm:pb-40 px-4 rounded-b-[32px] sm:rounded-b-[48px]"
           style={{ background: HERO_GRADIENT }}
         >
-          {/* Real photography backdrop — doctors reviewing a case together,
-              tinted with the brand gradient so the white headline text stays
-              fully legible (Unsplash, license-clear, verified 2026-09-28). */}
-          <Image
-            src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1600&q=75"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover pointer-events-none"
-            aria-hidden="true"
-          />
-          {/* A near-opaque overlay across the WHOLE hero previously hid the
-              real photo almost entirely (read as a flat gradient again,
-              defeating the point of using real photography). The brand tint
-              is now light and even, and the actual contrast work is done by
-              the localized scrim below — strong only behind the left-aligned
-              text column, fading out so the photo is genuinely visible on
-              the right/illustration side. */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ background: HERO_GRADIENT, opacity: 0.38 }} />
-          {/* Left-side scrim — the headline/search copy is left-aligned, so it
-              needs the strongest contrast on that side; the photo is left
-              clearly visible toward the right/illustration column. */}
+          {/* Redesign (2026-09-29): the previous hero used a tinted stock
+              photo as a backdrop — diagnosed as the single biggest driver of
+              the site's templated/cheap feel. Replaced with a deliberate
+              typography-led hero: a solid brand gradient field, a dense
+              dot-grid texture (a considered graphic device, not a blurred
+              "SaaS gradient blob"), and two large soft rings that echo the
+              logo's pulse mark rather than any photographic content. */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 opacity-[0.12] pointer-events-none"
             aria-hidden="true"
-            style={{ background: "linear-gradient(100deg, rgba(3,15,18,0.82) 0%, rgba(3,15,18,0.66) 42%, rgba(3,15,18,0.25) 68%, rgba(3,15,18,0) 88%)" }}
+            style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "22px 22px" }}
           />
-          {/* Dense dot-grid texture — deliberately not a soft blurred "SaaS
-              gradient blob"; matches the tighter, information-dense visual
-              language of real e-pharmacy hero banners */}
           <div
-            className="absolute inset-0 opacity-[0.10] pointer-events-none"
+            className="absolute -right-32 -top-40 w-[30rem] h-[30rem] rounded-full pointer-events-none"
             aria-hidden="true"
-            style={{ backgroundImage: "radial-gradient(circle, #fff 1.5px, transparent 1.5px)", backgroundSize: "20px 20px" }}
+            style={{ border: "1px solid rgba(255,255,255,0.14)" }}
+          />
+          <div
+            className="absolute -right-16 -top-16 w-72 h-72 rounded-full pointer-events-none"
+            aria-hidden="true"
+            style={{ border: "1px solid rgba(255,255,255,0.10)" }}
           />
 
           {/* Rotating offer/trust ticker — mirrors the promo-carousel strip real pharmacy hero
@@ -532,8 +517,8 @@ export default function SymptomCheckerPage() {
                     {HERO_SLIDES[slide].badge}
                   </span>
                   <h1
-                    className="font-display font-bold leading-tight mb-4 text-white"
-                    style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}
+                    className="font-display font-bold leading-[1.05] mb-4 text-white tracking-tight"
+                    style={{ fontSize: "clamp(2.25rem, 6vw, 4rem)" }}
                   >
                     {HERO_SLIDES[slide].headline}
                   </h1>
@@ -788,7 +773,7 @@ export default function SymptomCheckerPage() {
                 <Stethoscope className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: MUTED }}>
+                <p className="text-xs font-semibold mb-1" style={{ color: MUTED }}>
                   Possible match
                 </p>
                 <h2 className="font-display font-bold text-2xl mb-2 leading-tight" style={{ color: TEXT }}>
@@ -876,7 +861,7 @@ export default function SymptomCheckerPage() {
                                   <p className="font-display font-extrabold text-2xl leading-none" style={{ color: EFFECTIVENESS_TEXT }}>
                                     {pct}%
                                   </p>
-                                  <p className="text-[10px] font-semibold uppercase tracking-wide mt-0.5" style={{ color: MUTED }}>
+                                  <p className="text-[10px] font-semibold mt-0.5" style={{ color: MUTED }}>
                                     Effective
                                   </p>
                                 </div>
@@ -971,58 +956,15 @@ export default function SymptomCheckerPage() {
             Each tile takes you to a real, filtered view of the medicine catalog
             for that health area — a distinct action from the header's quick-link
             strip, which instead pre-fills the symptom-checker input. */}
-        <ScrollReveal className="flex gap-5 sm:gap-7 overflow-x-auto pb-3 px-1 -mx-1 snap-x snap-proximity [scrollbar-width:thin]" stagger={0.05} y={16}>
-          {CATEGORY_TILES.map(({ label, icon: Icon, accent, image, medicinesQuery }) => (
-            <Link
-              key={label}
-              href={`/medicines?q=${encodeURIComponent(medicinesQuery)}`}
-              className="group shrink-0 snap-start w-20 sm:w-24 flex flex-col items-center gap-3 text-center"
-            >
-              <div
-                className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden transition-all duration-200 group-hover:-translate-y-1 group-hover:scale-105 group-active:translate-y-0 group-active:scale-100"
-                style={{ boxShadow: "0 8px 20px rgba(11,32,39,0.22), 0 3px 8px rgba(11,32,39,0.14)" }}
-              >
-                {/* Real, license-clear Unsplash photo per category, tinted with
-                    the tile's accent so the icon stays legible on top — verified
-                    by direct download before wiring in 2026-09-28. */}
-                <Image src={`${image}?auto=format&fit=crop&w=200&q=70`} alt="" fill sizes="80px" className="object-cover" />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: `linear-gradient(150deg, ${accent}b3 0%, ${TEAL}99 100%)` }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-sm" strokeWidth={2} />
-                </div>
-              </div>
-              <span className="text-xs sm:text-sm font-semibold leading-snug" style={{ color: TEXT }}>
-                {label}
-              </span>
-            </Link>
-          ))}
-        </ScrollReveal>
+        <CategoryRail linkToMedicines />
       </section>
 
-      {/* Trust claims band — layered gradient + texture, not a flat fill */}
+      {/* Trust claims band — layered gradient + texture, not a flat fill or
+          stock photo (redesign, 2026-09-29). */}
       <section
         className="relative w-full py-14 px-4 overflow-hidden"
         style={{ background: `linear-gradient(120deg, ${TEAL} 0%, ${TEAL} 35%, ${BLUE} 100%)` }}
       >
-        {/* Real photography backdrop — a doctor checking a patient's blood
-            pressure — tinted with the same brand gradient (Unsplash,
-            license-clear, verified 2026-09-28). */}
-        <Image
-          src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=1600&q=75"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{ background: `linear-gradient(120deg, ${TEAL} 0%, ${TEAL} 35%, ${BLUE} 100%)`, opacity: 0.85 }}
-        />
         <div
           className="absolute inset-0 opacity-[0.10] pointer-events-none"
           aria-hidden="true"
