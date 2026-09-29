@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Trash2, MessageCircle, ArrowLeft, ShoppingBag, CheckCircle2, ShieldAlert, Check } from "lucide-react";
+import { Trash2, MessageCircle, ArrowLeft, CheckCircle2, ShieldAlert, Check } from "lucide-react";
 import SiteHeader from "@/components/diag/SiteHeader";
 import SiteFooter from "@/components/diag/SiteFooter";
 import { BG, BLUE, SURFACE } from "@/components/diag/theme";
@@ -49,9 +49,20 @@ export default function PharmacyCartPage() {
       <main style={{ background: BG }} className="min-h-screen font-sans">
         <SiteHeader active="pharmacy" />
         <div className="max-w-lg mx-auto px-5 py-20 text-center">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "#EEF3F5" }}>
-            <ShoppingBag className="w-6 h-6" style={{ color: MUTED }} strokeWidth={1.75} />
-          </div>
+          {/* Custom vector illustration (hand-built — see
+              public/illustrations/README.md): an open, empty bag with a
+              faint "ghost" capsule outline hinting at what lands here once
+              a medicine is added. Replaces a single bare ShoppingBag icon
+              for this page's one real empty state. */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- static
+              local decorative SVG; next/image's raster pipeline isn't used
+              for hand-authored vector assets. */}
+          <img
+            src="/illustrations/empty-cart.svg"
+            alt=""
+            aria-hidden="true"
+            className="w-44 sm:w-52 h-auto mx-auto mb-4"
+          />
           <p className="text-sm mb-4" style={{ color: MUTED }}>Your cart is empty.</p>
           <Link href="/pharmacy" className={`text-sm font-semibold underline hover:opacity-75 rounded ${FOCUS_RING}`} style={{ color: GREEN, transition: TRANSITION_ALL }}>
             Describe your problem to find medicines
