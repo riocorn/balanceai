@@ -1,0 +1,1106 @@
+[
+  {
+    "disease_id": "congestive_heart_failure",
+    "confusable_id": "cirrhosis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Ascites and dependent oedema (occasionally with a transudative pleural effusion) arise from portal hypertension and hypoalbuminaemia, not venous congestion - jugular venous pressure is typically flat/normal (in contrast to elevated JVP in HF), the echocardiogram is normal, and deranged liver function tests plus stigmata of chronic liver disease (spider naevi, palmar erythema, caput medusae) point to the hepatic cause."
+  },
+  {
+    "disease_id": "aortic_stenosis",
+    "confusable_id": "mitral_regurgitation",
+    "confusable_name_raw": null,
+    "distinguishing_text": "MR's murmur is holosystolic (not crescendo-decrescendo), loudest at the apex, high-pitched/blowing, and radiates to the left axilla/infrascapular region - the opposite radiation pattern from AS's right-2nd-intercostal-space, carotid-radiating crescendo-decrescendo murmur (already in this entry). A practical bedside pitfall is the Gallavardin phenomenon, where a genuine AS murmur's harsh component is filtered out at the apex, leaving only a musical high-frequency component that can be mistaken for MR; a described discriminator is that the AS murmur's intensity increases after a post-extrasystol"
+  },
+  {
+    "disease_id": "migraine",
+    "confusable_id": "tension_type_headache",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Tension-type headache (TTH, ICHD-3 section 2) is distinguished from migraine by: bilateral (rather than unilateral) location; pressing/tightening, non-pulsating quality; mild-to-moderate (rather than moderate-to-severe) intensity; NOT aggravated by routine physical activity; and the absence of, or at most one of, nausea/photophobia/phonophobia (migraine requires nausea/vomiting OR both photophobia and phonophobia). Episode duration in TTH ranges from 30 minutes to 7 days. TTH is far more prevalent than migraine globally (an estimated 2 billion people affected by TTH in 2021 vs 1.2 billion with"
+  },
+  {
+    "disease_id": "migraine",
+    "confusable_id": "cluster_headache",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cluster headache is distinguished from migraine by: strictly unilateral, severe-to-very-severe periorbital/temporal pain (often described as among the most severe pain a human can experience, colloquially the 'suicide headache'); short attack duration of 15-180 minutes (vs 4-72 hours in migraine); ipsilateral cranial autonomic features required for diagnosis (lacrimation, conjunctival injection, nasal congestion/rhinorrhoea, ptosis, miosis, eyelid oedema, facial sweating); a characteristic restlessness/agitation during attacks (patients pace or rock, in contrast to migraineurs who prefer still"
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Acute transverse myelitis / spinal cord compression",
+    "distinguishing_text": "A distinct sensory level, early bowel/bladder dysfunction, and UPGOING (extensor) plantar responses / eventual hyperreflexia below the lesion (versus GBS's global areflexia) point to a cord lesion rather than GBS; spinal cord compression is a neurosurgical emergency and MUST be excluded with urgent spinal MRI in any patient with a sensory level, sphincter involvement, or asymmetric/paraparetic (leg-only) pattern before treating as GBS."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Botulism",
+    "distinguishing_text": "Botulism causes a descending (not ascending) paralysis, often starting with cranial nerve palsies (diplopia, ptosis, bulbar weakness) and prominent autonomic/pupillary findings (fixed dilated pupils), typically WITHOUT sensory symptoms, and CSF protein is normal (no albuminocytologic dissociation); a history of contaminated food/wound exposure or, in infants, honey ingestion is a key clue."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Tick paralysis",
+    "distinguishing_text": "Also causes ascending flaccid paralysis with areflexia that can closely mimic GBS, but CSF protein is typically normal, onset is more rapid (over 24-48 hours), and finding and removing an embedded tick produces striking, often dramatic, recovery within hours to a day or two - a full skin/scalp examination for an attached tick is mandatory in any suspected GBS case, especially in endemic areas and in children."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Acute intermittent porphyria (AIP)",
+    "distinguishing_text": "AIP can cause an acute motor-predominant polyneuropathy resembling GBS, but is typically accompanied by severe abdominal pain, psychiatric/behavioural disturbance or seizures, autonomic instability (tachycardia, hypertension), and hyponatraemia; the diagnosis is confirmed by a markedly elevated urinary porphobilinogen during an acute attack."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Myasthenic crisis (myasthenia gravis)",
+    "distinguishing_text": "Myasthenic crisis causes fatigable, fluctuating weakness (worse with exertion, better with rest) predominantly affecting ocular, bulbar and proximal muscles, with PRESERVED deep tendon reflexes (versus GBS's areflexia) and no sensory symptoms; edrophonium/ice-pack test improvement, positive acetylcholine-receptor or MuSK antibodies, and a decremental response on repetitive nerve stimulation distinguish it from GBS."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Hypokalemic periodic paralysis",
+    "distinguishing_text": "Presents with episodic (not monophasic-progressive) flaccid weakness, often triggered by carbohydrate-heavy meals, exercise, or (in thyrotoxic periodic paralysis) hyperthyroidism, with a low serum potassium at the time of weakness and rapid resolution after potassium repletion - CSF protein is normal and there is no antecedent infection pattern."
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "confusable_id": null,
+    "confusable_name_raw": "Spinal cord compression (structural)",
+    "distinguishing_text": "See transverse myelitis/cord compression entry above - a sensory level and sphincter involvement with preserved-to-increased reflexes below the lesion (rather than global areflexia) should prompt urgent MRI to exclude a compressive lesion (tumour, epidural abscess, disc herniation) before committing to a GBS diagnosis and lumbar puncture."
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Viral (aseptic) meningitis",
+    "distinguishing_text": "Usually less toxic, lymphocytic (mononuclear) CSF pleocytosis of about 50-1000 cells x10^6/L (neutrophilic early), protein about 0.4-0.8 g/L and normal CSF:serum glucose ratio (>=0.5); enteroviruses cause most identified cases, HSV-2 and VZV are next in adults. Bacterial and viral meningitis cannot reliably be separated clinically, and early viral CSF can be neutrophilic, so antibiotics are given until bacterial meningitis is excluded; in children with pleocytosis the Bacterial Meningitis Score (sensitivity 98.3%, NPV 99.9%) can identify very-low-risk cases. Values on the bacterial side of the"
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Tuberculous meningitis (cross-reference: 'tuberculosis' entry)",
+    "distinguishing_text": "Subacute (days to weeks) course rather than hours; length of history is a predictor separating TBM from bacterial meningitis; CSF lymphocytic pleocytosis 10-500 cells/microL with >50% lymphocytes, protein >1 g/L (often 1-3 g/L), low glucose (<2.2 mmol/L or ratio <0.5), and (per the tuberculosis entry) cranial nerve palsies classically affecting the basal cisterns; but neutrophil predominance can occur early and CSF alone is non-specific. Diagnostic rule (Thwaites 2002) was 86% sensitive/79% specific prospectively; Xpert Ultra sensitivity was 70% against the uniform case definition. TBM mortali"
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "confusable_id": "viral_hepatitis",
+    "confusable_name_raw": "Herpes simplex (HSV) encephalitis and other viral encephalitis",
+    "distinguishing_text": "Encephalitis is inflammation of the brain parenchyma with clinical evidence of neurological dysfunction: behavioural change, acute cognitive dysfunction, speech disturbance, focal deficits and seizures (in 113 virologically proven HSV encephalitis cases, behavioural change, fever, confusion and speech disturbance were characteristic). Altered mental status is early in encephalitis but does not reliably separate encephalitis from bacterial meningitis; CSF typically shows mild mononuclear pleocytosis with mildly to moderately raised protein, and CSF/imaging can be normal early in proven HSV dise"
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Subarachnoid haemorrhage (SAH)",
+    "distinguishing_text": "SAH classically presents with a thunderclap (instantly peaking) headache reaching maximal intensity within 1 hour, and neck pain/stiffness or limited neck flexion are themselves part of the validated Ottawa SAH Rule, so meningism cannot separate SAH from meningitis on its own. In neurologically intact patients with headache peaking within 1 hour, the Ottawa SAH Rule had 100% sensitivity (95% CI 97.2-100%) but only 15.3% specificity; non-contrast third-generation CT read by a radiologist was 100% sensitive (97.0-100%) when done within 6 hours of headache onset and 92.9% overall (89.0-95.5%), (S"
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "confusable_id": "bacterial_meningitis",
+    "confusable_name_raw": "Partially treated bacterial meningitis / culture-negative meningitis after antibiotics",
+    "distinguishing_text": "Prior oral or parenteral antibiotics lower CSF culture yield (meningococcus can be sterile within 2 hours and pneumococcus from about 4 hours of parenteral third-generation cephalosporin) and lower the sensitivity of CSF lactate (0.93 overall to 0.49 with pre-treatment), so a partly treated bacterial meningitis can look like aseptic meningitis; PCR panels and blood cultures (positive in 57-68% of cases with negative CSF culture in one paediatric series) can still give the answer."
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "confusable_id": "osteoarthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Hand osteoarthritis (OA) is classified by hard-tissue (bony) enlargement of at least 2 of 10 selected joints (2nd and 3rd DIP, 2nd and 3rd PIP, and first carpometacarpal joints of both hands), fewer than 3 swollen MCP joints, and either at least 2 enlarged DIP joints or deformity of at least 1 of the 10 joints; the criteria were 92% sensitive and 98% specific against a control group that included RA and spondyloarthropathy. So in a patient with hand pain, DIP-predominant bony enlargement with few swollen MCP joints favours OA, whereas 3 or more swollen MCP, PIP and wrist joints with soft-tissu"
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "confusable_id": "psoriatic_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "The CASPAR criteria classify psoriatic arthritis as established inflammatory articular disease plus at least 3 points from: current psoriasis (2 points), history of psoriasis, family history of psoriasis, dactylitis, juxta-articular new bone formation, rheumatoid-factor negativity and nail dystrophy (1 point each). Sensitivity was 0.914 and specificity 0.987 in a derivation study of 588 cases and 536 controls that included 384 RA patients. Practical pointers for a polyarthritis that looks like RA: look for psoriasis (skin, scalp, natal cleft, nails), dactylitis and new bone formation on radiog"
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "confusable_id": "systemic_lupus_erythematosus",
+    "confusable_name_raw": null,
+    "distinguishing_text": "The 2019 EULAR/ACR SLE classification criteria require a positive antinuclear antibody (ANA) at least once as the entry criterion, then weighted (2-10 points) criteria across seven clinical domains (constitutional, haematological, neuropsychiatric, mucocutaneous, serosal, musculoskeletal, renal) and three immunological domains (antiphospholipid antibodies, complement proteins, SLE-specific antibodies); 10 points or more classifies SLE (sensitivity 96.1%, specificity 93.4% in validation). Joint symptoms are common in SLE (musculoskeletal is one of the scored domains; the symmetric small-joint p"
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "confusable_id": "polymyalgia_rheumatica",
+    "confusable_name_raw": null,
+    "distinguishing_text": "The 2012 provisional EULAR/ACR PMR criteria apply to patients aged 50 or more with bilateral shoulder pain not better explained by another pathology, with elevated CRP and/or ESR, and score morning stiffness over 45 minutes (2 points), hip pain or limited range of motion (1), absence of RF and/or ACPA (2) and absence of peripheral joint pain (1); a score of 4 or more gave 68% sensitivity and 78% specificity, with specificity of only 65% for discriminating RA from PMR (88% versus shoulder conditions). This honest overlap matters: elderly-onset RA can present with shoulder and hip girdle stiffne"
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "confusable_id": "reactive_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Reactive arthritis is sterile inflammatory arthritis following a remote infection, often gastrointestinal or urogenital, and is diagnosed mainly clinically as acute oligoarticular (large-joint) arthritis developing within 2-4 weeks of the preceding infection; annual incidence in population studies is 0.6-27 per 100,000. No generally agreed diagnostic criteria exist, and HLA-B27 should not be used as a diagnostic tool for acute reactive arthritis. Compared with RA, reactive arthritis is typically asymmetric, oligoarticular and post-infectious rather than symmetric small-joint polyarthritis, and"
+  },
+  {
+    "disease_id": "gout",
+    "confusable_id": "rheumatoid_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "RA is classified under the 2010 ACR/EULAR criteria (definite RA: synovitis in >=1 joint, no better alternative diagnosis, total score >=6 of 10 from joint involvement, serology, acute-phase reactants and duration). Distinguishing features from gout: RA is scored on persistent synovitis, serological abnormality (rheumatoid factor/anti-CCP), acute-phase reactants and symptom duration, whereas gout is recurrent self-limiting attacks with complete resolution between episodes and crystal-proven monosodium urate; but early gout with polyarticular foot involvement and chronic tophaceous gout can mimi"
+  },
+  {
+    "disease_id": "gout",
+    "confusable_id": "cellulitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "An acute gout attack is often misdiagnosed as cellulitis, and the reverse. In a single-centre study of 184 acute gout attacks and 183 lower-limb cellulitis cases, the delta neutrophil index (immature granulocyte fraction) was lower in gout (0.6% vs 2.8%; cut-off 1.7% to predict cellulitis; OR 9.7), including in patients without MSU confirmation and with normouricaemia. This is a single-centre finding and not a validated bedside rule; joint aspiration for crystals and culture remains the discriminating test when a joint effusion is present."
+  },
+  {
+    "disease_id": "gout",
+    "confusable_id": "reactive_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Reactive arthritis is a seronegative spondyloarthritis: additive or migratory oligoarthritis (large-joint oligoarthritis in the Reiter's-syndrome subtype) with inflammatory back pain and extra-articular features (uveitis, urogenital, skin), following a gastrointestinal or urogenital infection by about 1-6 weeks; it typically affects young adults, is associated with HLA-B27, and cultures of synovial fluid are negative. It differs from septic arthritis (fever, systemic infection signs, monoarthritis) and from gout by the antecedent infection, extra-articular signs and absence of crystals."
+  },
+  {
+    "disease_id": "osteoarthritis",
+    "confusable_id": "rheumatoid_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Rheumatoid arthritis (RA) and OA are distinguished mainly by pattern and tempo. RA classification (1987 ACR criteria) requires morning stiffness of at least 1 hour, symmetric small-joint (MCP/PIP/wrist) polyarthritis, and often systemic serology (rheumatoid factor, anti-CCP) and elevated acute-phase reactants (2010 ACR/EULAR criteria); OA's clinical criteria specify morning stiffness under 30 minutes, no palpable synovial warmth, and a large-joint, often asymmetric or single-joint pattern (knee, hip, hand DIP/first CMC) with normal inflammatory markers. RA is an autoimmune, serology-positive-i"
+  },
+  {
+    "disease_id": "ankylosing_spondylitis",
+    "confusable_id": "psoriatic_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Psoriatic arthritis (PsA) can involve the axial skeleton and overlaps with AS within the spondyloarthritis family, but is classified using the CASPAR criteria: established inflammatory articular disease plus at least 3 points from current psoriasis (2 points), history of psoriasis, family history of psoriasis, dactylitis, juxta-articular new bone formation, rheumatoid-factor negativity, and nail dystrophy (1 point each). In the CASPAR derivation study (588 cases, 536 controls including 72 AS patients as a comparator group), sensitivity was 91.4% and specificity 98.7%. Practically, current or p"
+  },
+  {
+    "disease_id": "ankylosing_spondylitis",
+    "confusable_id": "reactive_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Reactive arthritis is a spondyloarthritis subtype triggered by a preceding genitourinary or gastrointestinal infection (e.g. Chlamydia, Salmonella, Shigella, Campylobacter, Yersinia), typically presenting as an acute, asymmetric oligoarthritis, often with enthesitis and dactylitis and, in the classic but not universal triad, conjunctivitis/uveitis and urethritis/cervicitis, usually within days to a few weeks of the triggering infection. It is distinguished from AS mainly by this clear temporal link to a preceding infection and a more acute, often self-limited or relapsing-remitting peripheral "
+  },
+  {
+    "disease_id": "systemic_lupus_erythematosus",
+    "confusable_id": "mixed_connective_tissue_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Mixed connective tissue disease (MCTD) is an overlap syndrome combining features of SLE, systemic sclerosis and polymyositis/dermatomyositis, unified by the presence of high-titre antibodies to U1-ribonucleoprotein (anti-U1-RNP) - a serological marker not part of the SLE-specific antibody criterion (which is anti-dsDNA/anti-Sm). Clinically, MCTD is suggested by Raynaud's phenomenon, puffy/'sausage' fingers, sclerodactyly, myositis and pulmonary hypertension occurring alongside lupus-like or RA-like arthritis; a review of the 'undifferentiated versus mixed' connective tissue disease question no"
+  },
+  {
+    "disease_id": "systemic_lupus_erythematosus",
+    "confusable_id": "fibromyalgia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Fibromyalgia - chronic widespread pain with fatigue, unrefreshing sleep and cognitive symptoms, classified by the 2016 revised ACR criteria using a widespread pain index and symptom severity scale rather than tender-point examination - is an important differential and frequent comorbid overlap with SLE because both cause profound fatigue and diffuse musculoskeletal pain, but fibromyalgia does not cause objective synovitis, rash, serositis, cytopenias, renal disease, or a positive SLE-specific antibody profile. Fatigue that does not track with objective markers of lupus activity (normal complem"
+  },
+  {
+    "disease_id": "psoriatic_arthritis",
+    "confusable_id": "rheumatoid_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "PsA and RA can both cause a symmetric polyarthritis (Moll and Wright's polyarticular PsA pattern resembles RA), but they are distinguished by rheumatoid-factor status (RF negativity is a scored point favouring PsA in the CASPAR criteria; RA is frequently RF- and/or anti-CCP-positive - see this knowledge base's rheumatoid arthritis entry, anti_ccp_and_rf_accuracy), by DIP joint involvement (a Moll-and-Wright PsA pattern, but explicitly excluded from RA's 2010 ACR/EULAR joint-count scoring - see this knowledge base's rheumatoid arthritis entry, acr_eular_2010_criteria), and by dactylitis, enthes"
+  },
+  {
+    "disease_id": "psoriatic_arthritis",
+    "confusable_id": "gout",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Gout, like PsA, can cause an asymmetric mono- or oligoarthritis and (in chronic tophaceous disease) can involve DIP joints, overlapping with PsA's classic presenting patterns. The discriminating test is synovial fluid analysis for monosodium urate crystals, which is sufficient on its own for classification under the 2015 ACR/EULAR gout criteria (sensitivity 92%, specificity 89% in that study); additional discriminating domains in those criteria include serum urate level, the double-contour sign on ultrasound, and gout-specific erosion pattern on imaging, as already detailed in this knowledge b"
+  },
+  {
+    "disease_id": "psoriatic_arthritis",
+    "confusable_id": "osteoarthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Hand osteoarthritis (OA) can mimic DIP-predominant PsA because both preferentially involve the DIP joints, but the underlying process differs: hand OA classification requires hard-tissue (bony) enlargement of at least 2 of 10 selected joints with few swollen MCP joints (92% sensitive, 98% specific against controls including inflammatory arthritis in the derivation study), reflecting a degenerative, non-inflammatory bony process, whereas PsA's DIP involvement is inflammatory (soft-tissue swelling, often with adjacent nail dystrophy in the same digit - the 'DIP joint plus diseased nail' associat"
+  },
+  {
+    "disease_id": "schizophrenia",
+    "confusable_id": "schizoaffective_disorder",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Schizoaffective disorder is distinguished from schizophrenia and from mood disorders with psychotic features by two DSM-5 requirements: psychotic symptoms (delusions and/or hallucinations) must be present for 2 or more weeks in the absence of a major mood episode at some point during the lifetime course of the illness (ruling out a pure mood disorder with psychosis), while a major mood episode (depressive or manic) must be present for the majority (more than 50%) of the total duration of the active and residual portions of the illness (distinguishing it from schizophrenia, where mood symptoms "
+  },
+  {
+    "disease_id": "dengue_fever",
+    "confusable_id": "malaria",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Malaria (cross-reference: see this knowledge base's separate 'malaria' entry) is a key differential for dengue in India given overlapping fever/headache/myalgia presentations. In a real India tertiary-care cohort of acute undifferentiated febrile illness, features favoring dengue over malaria included the ABSENCE of hepatosplenomegaly (2.1% of dengue cases vs 60% of malaria cases, odds ratio 0.11), absence of altered sensorium (0% dengue vs 60% malaria), and a low CRP (83.3% of dengue cases had CRP <50 mg/L, versus 100% of malaria cases with CRP >50 mg/L -- CRP was a strong discriminator, with"
+  },
+  {
+    "disease_id": "atopic_dermatitis",
+    "confusable_id": "psoriasis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Psoriasis can mimic AD, particularly in infancy and in flexural (inverse) presentations, but the two differ in typical morphology and immune driver: this knowledge base's own psoriasis entry documents psoriasis as classically producing well-demarcated erythematous, desquamative plaques on extensor surfaces/scalp/nails, driven predominantly by the IL-23/Th17/IL-17 axis, versus AD's poorly demarcated, pruritic, xerotic, eczematous lesions with lichenification, driven predominantly by Th2/IL-4/IL-13 pathways (see this entry's own definition_and_pathophysiology and this knowledge base's psoriasis "
+  },
+  {
+    "disease_id": "atopic_dermatitis",
+    "confusable_id": "scabies",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Scabies is a key mimicker to actively exclude, since missing it delays appropriate antiparasitic treatment and risks household spread. Per the same 2026 review, scabies should be suspected 'when pruritus is severe or when lesions involve the palms, soles, or axillary folds,' and key distinguishing features include a 'history of pruritus affecting other household members and the nocturnal exacerbation of itching' - features not typical of AD itself."
+  },
+  {
+    "disease_id": "urinary_tract_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Vaginitis / genitourinary syndrome of menopause (atrophic vaginitis)",
+    "distinguishing_text": "Genitourinary syndrome of menopause (vulvovaginal and urinary atrophy from oestrogen deficiency) produces urinary frequency, urgency, nocturia, dysuria, urinary incontinence and recurrent-UTI-like symptoms that overlap closely with cystitis, but arise from urogenital tissue atrophy rather than acute infection; vaginal/vulvar dryness, irritation, dyspareunia and visible atrophic changes on examination point toward this diagnosis, and a negative urine culture in a postmenopausal woman with these symptoms should prompt consideration of atrophy rather than repeat empiric antibiotics."
+  },
+  {
+    "disease_id": "urinary_tract_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Sexually transmitted infection (e.g. chlamydial/gonococcal urethritis)",
+    "distinguishing_text": "Chlamydial infection in women is frequently asymptomatic, which is why CDC treatment guidance emphasises screening rather than symptom-triggered testing; when a genital STI does produce dysuria, it is classically accompanied by vaginal/urethral discharge and can occur with pyuria on urinalysis but a negative or low-count standard urine culture ('sterile pyuria' patterns are a recognised general clue to a non-typical-uropathogen cause, illustrated in case literature by conditions such as genitourinary tuberculosis presenting as chronic dysuria with persistent sterile pyuria despite antibacteria"
+  },
+  {
+    "disease_id": "urinary_tract_infection",
+    "confusable_id": "interstitial_cystitis",
+    "confusable_name_raw": "Interstitial cystitis / bladder pain syndrome (IC/BPS)",
+    "distinguishing_text": "IC/BPS produces chronic bladder pain/pressure with urinary frequency and urgency that can closely mimic cystitis, but is a chronic, typically culture-negative condition rather than an acute bacterial infection, and does not resolve with antibiotics. Contemporary research is actively trying to improve objective differentiation: a 2025 study combining urinary biomarkers (e.g. 8-OHdG, TNF-alpha) with clinical pain scores reported a diagnostic model with AUROC 0.997 (96% accuracy, 96% sensitivity, 92% specificity) as a non-invasive alternative to invasive testing, and a 2026 phenotyping study dist"
+  },
+  {
+    "disease_id": "bppv",
+    "confusable_id": "menieres_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Meniere's disease, per the Barany Society/AAO-HNS consensus diagnostic criteria, requires episodic vertigo lasting between 20 minutes and 12 hours (definite Meniere's) or 20 minutes to 24 hours (probable), together with fluctuating low- to medium-frequency sensorineural hearing loss and aural symptoms (tinnitus and/or aural fullness) in the affected ear - a much longer episode duration and the presence of cochlear symptoms clearly separate it from BPPV's brief, hearing-sparing, purely positional episodes."
+  },
+  {
+    "disease_id": "acute_otitis_media",
+    "confusable_id": "acute_otitis_media",
+    "confusable_name_raw": "Otitis media with effusion (OME)",
+    "distinguishing_text": "OME is defined as 'liquid in the middle ear cavity and without the signs and symptoms of acute otitis media' - the tympanic membrane may look dull or show an air-fluid level, but it is not bulging and there is no acute infective picture (no acute otalgia, fever or erythema driven by infection). Pneumatic otoscopy showing reduced TM mobility with fluid but without bulging favours OME; unlike AOM, OME does not benefit from antibiotics, making this distinction the central over-diagnosis-avoidance point in AOM diagnosis."
+  },
+  {
+    "disease_id": "acute_otitis_media",
+    "confusable_id": "otitis_externa",
+    "confusable_name_raw": "Otitis externa (external ear canal infection)",
+    "distinguishing_text": "Otitis externa is 'an acute inflammatory reaction that affects the subdermis of the external auditory canal' rather than the middle ear; pain is typically reproduced by traction on the pinna or pressure on the tragus (not a feature of AOM), and any discharge originates from an inflamed canal rather than through a perforated tympanic membrane. The AAP diagnostic criteria for AOM explicitly require that new-onset otorrhoea be 'not secondary to otitis externa' before it can be used to diagnose AOM, formally building this distinction into the diagnostic pathway."
+  },
+  {
+    "disease_id": "acute_otitis_media",
+    "confusable_id": null,
+    "confusable_name_raw": "Referred otalgia from dental, temporomandibular joint (TMJ) or pharyngeal sources",
+    "distinguishing_text": "Ear pain can be referred from outside the ear via shared cranial nerve innervation: 'dental and TMJ pathology commonly cause secondary otalgia' through the auriculotemporal branch of the trigeminal nerve, while the glossopharyngeal nerve (CN IX) 'provides taste and somatic sensation to the tongue's posterior third and afferents to the carotid body and oropharynx,' giving an anatomical basis for pharyngeal-source referred ear pain. In these cases otoscopy (including pneumatic otoscopy) shows a normal, non-bulging tympanic membrane, whereas dental, TMJ or oropharyngeal examination reveals the tr"
+  },
+  {
+    "disease_id": "streptococcal_pharyngitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Viral pharyngitis",
+    "distinguishing_text": "By far the most common cause of sore throat overall; distinguished from GAS by the presence of cough, rhinorrhea/coryza, hoarseness, oral ulcers, or conjunctivitis, features the CDC states 'suggest viral infection instead' of GAS and which are used clinically to withhold RADT/culture testing and antibiotics. GAS accounts for only about 20-30% of pharyngitis episodes in children and 5-15% in adults per CDC guidance, meaning most pharyngitis in both age groups is viral (or non-GAS) even before any testing."
+  },
+  {
+    "disease_id": "streptococcal_pharyngitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Infectious mononucleosis (Epstein-Barr virus)",
+    "distinguishing_text": "Infectious mononucleosis classically produces fever, pharyngitis, posterior cervical lymphadenopathy, and splenomegaly, in contrast to the anterior cervical lymphadenopathy typical of GAS. A 2022 systematic review and meta-analysis of diagnostic accuracy found posterior cervical lymphadenopathy (positive likelihood ratio [LR+] 3.16) and splenomegaly (LR+ 2.39) each moderately support an IM diagnosis, while lymphocytosis greater than 50% with atypical lymphocytes greater than 10% was the strongest laboratory discriminator; diagnosis is confirmed with a positive heterophile antibody ('Monospot')"
+  },
+  {
+    "disease_id": "streptococcal_pharyngitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Peritonsillar abscess (quinsy)",
+    "distinguishing_text": "Peritonsillar abscess is a suppurative complication that presents with more severe, typically unilateral findings than simple pharyngitis: trismus (difficulty opening the mouth) and uvular deviation are the key discriminating signs. In a pediatric emergency-department cohort, patients with confirmed peritonsillar abscess had trismus in 41.2% versus 5.3% of non-abscess sore-throat patients, uvular deviation in 94.1% versus 15.8%, and palatal edema in 52.9% versus 10.5% - large, clinically actionable differences from uncomplicated pharyngitis. Medial uvular displacement, trismus, odynophagia, an"
+  },
+  {
+    "disease_id": "scabies",
+    "confusable_id": "atopic_dermatitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Scabies is a key differential to actively exclude in any patient being considered for a diagnosis of atopic dermatitis (AD), since missing it delays antiparasitic treatment and risks household spread. This knowledge base's own atopic_dermatitis entry (differential_diagnosis.scabies) documents, from a 2026 open-access paediatric review, that scabies should specifically be suspected 'when pruritus is severe or when lesions involve the palms, soles, or axillary folds,' and that key distinguishing features favouring scabies over AD include a 'history of pruritus affecting other household members a"
+  },
+  {
+    "disease_id": "scabies",
+    "confusable_id": "contact_dermatitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Allergic or irritant contact dermatitis can mimic scabies-related eczematization, particularly when secondary excoriation and lichenification obscure the primary lesion morphology. The key discriminators are anatomic distribution and history: contact dermatitis is typically localised to the site of a specific triggering exposure (e.g., a rash confined to skin under jewellery, a waistband, or an area of documented allergen/irritant contact), lacks true burrows, and does not classically produce a pattern of interdigital/genital/axillary involvement with simultaneous nocturnal itching in multiple"
+  },
+  {
+    "disease_id": "typhoid_fever",
+    "confusable_id": "malaria",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Malaria is a real, key differential for typhoid fever given substantial overlap in fever, headache, myalgia, and (in both diseases) potential hepatosplenomegaly, and both are hyperendemic in overlapping regions of India and South Asia. A real India tertiary-care acute-undifferentiated-febrile-illness cohort (Rathod BD et al, Cureus 2026) found hepatosplenomegaly in 60% of malaria cases versus only 2.1% of dengue cases, with enteric fever intermediate (31.6% combined hepatosplenomegaly in that same cohort's 19 enteric fever cases) -- and found relative bradycardia (present in 36.8% of enteric f"
+  },
+  {
+    "disease_id": "typhoid_fever",
+    "confusable_id": "dengue_fever",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Dengue fever (cross-reference: see this knowledge base's separate 'dengue_fever' entry) is another key real differential, and the two diseases have genuinely distinguishing features despite overlapping fever/headache/myalgia presentations. Typhoid's incubation period (6-30 days) is longer and more variable than dengue's shorter incubation (approximately 4-7 days), and typhoid presents with a sustained, stepwise fever accompanied by abdominal pain and either constipation or diarrhea, rather than dengue's short, high-spiking fever with severe myalgia/arthralgia ('breakbone fever'), retro-orbital"
+  },
+  {
+    "disease_id": "chlamydia_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Gonorrhea (Neisseria gonorrhoeae urethritis/cervicitis)",
+    "distinguishing_text": "Real, substantial clinical overlap exists: both organisms cause urethritis/cervicitis with dysuria and discharge, and frequently co-infect the same patient (see distinction_from_gonorrhea_coinfection_and_empirical_treatment above), which is why CDC guidance is built around testing both together rather than distinguishing them purely clinically. Classic teaching distinguishes gonococcal urethritis as having a shorter incubation period (typically 2-5 days) with copious, purulent discharge, versus chlamydial (non-gonococcal) urethritis as having a longer incubation period (roughly 1-3 weeks), sca"
+  },
+  {
+    "disease_id": "chlamydia_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Other non-gonococcal urethritis/cervicitis causes (Mycoplasma genitalium, Ureaplasma spp., Trichomonas vaginalis)",
+    "distinguishing_text": "When NAAT for C. trachomatis and N. gonorrhoeae is negative in a patient with urethritis/cervicitis symptoms, real alternative causes include Mycoplasma genitalium, Ureaplasma urealyticum/parvum and Trichomonas vaginalis. A 2024 Chinese outpatient cohort found that Ureaplasma urealyticum coinfection was in fact the single most common coinfection pattern (66.41% of all coinfections identified), rather than chlamydia-gonorrhea coinfection - illustrating that mixed and non-chlamydial, non-gonococcal causes are a real and common source of overlapping genital-tract symptoms that require organism-sp"
+  },
+  {
+    "disease_id": "gonorrhea_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Chlamydia (Chlamydia trachomatis urethritis/cervicitis)",
+    "distinguishing_text": "Real, substantial clinical overlap exists, and the two organisms frequently co-infect the same patient (see frequent_chlamydia_coinfection above), which is why CDC guidance treats testing/empirical coverage for both together as standard practice rather than relying on clinical discrimination alone. Classic teaching distinguishes gonococcal urethritis as having a shorter incubation period (typically 2-5 days) with copious, purulent discharge, versus chlamydial (non-gonococcal) urethritis as having a longer incubation period (roughly 1-3 weeks), scantier and more mucoid discharge, and a substant"
+  },
+  {
+    "disease_id": "gonorrhea_infection",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of urethritis/cervicitis (Mycoplasma genitalium, Ureaplasma spp., Trichomonas vaginalis)",
+    "distinguishing_text": "When NAAT for N. gonorrhoeae and C. trachomatis is negative in a patient with urethritis/cervicitis symptoms, real alternative causes include Mycoplasma genitalium, Ureaplasma urealyticum/parvum and Trichomonas vaginalis. A 2024 Chinese outpatient cohort found Ureaplasma urealyticum coinfection was in fact the single most common coinfection pattern identified (66.41% of all coinfections), rather than a gonorrhea-chlamydia pattern - real evidence that mixed and non-gonococcal, non-chlamydial causes are a common source of overlapping genital-tract symptoms requiring organism-specific NAAT testin"
+  },
+  {
+    "disease_id": "bacterial_conjunctivitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Viral conjunctivitis",
+    "distinguishing_text": "Watery (not purulent) discharge, a burning/gritty sensation, preauricular lymphadenopathy in up to about 50% of cases, and a classic pattern of starting in one eye and spreading 'to the other eye within 24 to 48 h', often with concomitant pharyngitis or known sick contacts. It is the single most common cause of infectious conjunctivitis overall and is self-limiting, typically improving within 5-14 days."
+  },
+  {
+    "disease_id": "bacterial_conjunctivitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Allergic conjunctivitis",
+    "distinguishing_text": "Severe itching is the 'key differentiating factor'; presentation is typically bilateral with watery/mucoid discharge, chemosis, and crusting of the lid margins, often accompanied by atopic symptoms (nasal congestion, sneezing). Lymphadenopathy is absent. It is the most common non-infectious cause of red eye, affecting an estimated 15%-40% of the population, though only a minority ever seek care for it."
+  },
+  {
+    "disease_id": "bacterial_conjunctivitis",
+    "confusable_id": "bacterial_conjunctivitis",
+    "confusable_name_raw": "Hyperacute (gonococcal) bacterial conjunctivitis - a sight-threatening emergency",
+    "distinguishing_text": "A distinct, rapidly progressive form usually caused by Neisseria gonorrhoeae: 'severe copious purulent discharge and decreased vision', often with eyelid swelling, eye pain on palpation, and preauricular adenopathy (unlike routine bacterial conjunctivitis). It 'carries a high risk for corneal involvement and subsequent corneal perforation' if not treated urgently, and management requires immediate ophthalmic referral plus systemic (not just topical) antibiotics - 'intramuscular ceftriaxone', with concurrent empiric treatment for possible chlamydial co-infection. This is the single most importa"
+  },
+  {
+    "disease_id": "trichomoniasis",
+    "confusable_id": null,
+    "confusable_name_raw": "Bacterial vaginosis (BV)",
+    "distinguishing_text": "Real, substantial clinical overlap exists (both real-world produce elevated vaginal pH >4.5 and can give a positive whiff/amine test), and the two conditions are real-world biologically linked - a 2026 study found BV-positive women had significantly increased odds (odds ratio 3.6) of T. vaginalis positivity. Classic distinguishing features per Egan & Lipsky (Am Fam Physician 2000): BV produces a thin, off-white discharge with a characteristic fishy odor that increases after intercourse, and wet mount shows 'clue cells' (vaginal epithelial cells coated with bacteria) with few lactobacilli, rath"
+  },
+  {
+    "disease_id": "trichomoniasis",
+    "confusable_id": null,
+    "confusable_name_raw": "Vulvovaginal candidiasis",
+    "distinguishing_text": "Real, key distinguishing feature is vaginal pH: candidiasis real-world produces a normal pH (<4.5), unlike the elevated pH (>4.5) of trichomoniasis, and the whiff/amine test is real-world negative in candidiasis (versus can be positive in trichomoniasis). Candidiasis classically produces a thick, white, 'cottage cheese'-like discharge with no odor, versus trichomoniasis's frothy, malodorous, yellow-green discharge; wet mount/KOH prep in candidiasis shows pseudohyphae, mycelial tangles or budding yeast rather than motile trophozoites."
+  },
+  {
+    "disease_id": "trichomoniasis",
+    "confusable_id": null,
+    "confusable_name_raw": "Chlamydia and gonorrhea (Chlamydia trachomatis, Neisseria gonorrhoeae) - real frequent co-testing/co-occurrence population",
+    "distinguishing_text": "Real evidence indicates T. vaginalis, C. trachomatis and N. gonorrhoeae are real, frequently co-tested STI pathogens with genuine population-level co-occurrence, though this research session found real coinfection-rate data reported as qualitative co-occurrence patterns (elevated statistical association/'lift index') rather than one single universal percentage: a 2026 network/co-occurrence analysis found T. pallidum-T. vaginalis and T. pallidum-C. trachomatis pairings showed a 'lift index >=3 in both male and female samples', real statistical evidence of non-random STI clustering. Clinically, "
+  },
+  {
+    "disease_id": "rabies",
+    "confusable_id": "tetanus",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Tetanus can be confused with furious rabies because both cause spasms triggered by external stimuli, but tetanus classically produces generalized rigidity (trismus, risus sardonicus) with a clear sensorium and no hydrophobia/aerophobia as defining features, and typically follows a contaminated puncture/soil wound rather than a mammal bite or scratch. Wound history (contaminated wound in tetanus vs. animal bite/scratch in rabies) and the presence of true hydrophobia/aerophobia (rabies) are the key clinical discriminators. Cross-reference this knowledge base's tetanus entry for its own classic-s"
+  },
+  {
+    "disease_id": "diphtheria",
+    "confusable_id": "streptococcal_pharyngitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "See this knowledge base's own 'streptococcal_pharyngitis' entry for that condition's full diagnostic framework. Key distinguishing features from diphtheria: GAS pharyngitis typically produces tonsillar exudate that wipes away without bleeding, lacking the progressively adherent, bleeding-on-removal pseudomembrane characteristic of diphtheria; GAS also does not produce the 'bull neck' soft-tissue swelling pattern nor the toxin-mediated myocarditis/polyneuropathy of diphtheria (although GAS has its own distinct real complications, including post-streptococcal rheumatic fever and rare invasive/to"
+  },
+  {
+    "disease_id": "cataract",
+    "confusable_id": "age_related_macular_degeneration",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Age-related macular degeneration (AMD) is 'an acquired degeneration of the retina that causes significant central visual impairment' with hallmark symptoms of 'visual distortion, metamorphopsia, micropsia' and central 'scotoma' - features not typical of uncomplicated cataract, which instead causes relatively uniform blur/glare without image distortion. Both are common in the elderly, both cause progressive/gradual vision loss, and both frequently coexist in the same patient, but management is entirely different (cataract extraction versus anti-VEGF therapy or AREDS-type supplementation for AMD"
+  },
+  {
+    "disease_id": "cataract",
+    "confusable_id": "glaucoma",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Primary open-angle glaucoma causes progressive peripheral visual field loss (e.g. 'nasal step,' 'arcuate scotoma') and optic disc cupping, but critically, 'the majority of patients with POAG are asymptomatic' and 'are only symptomatic in late disease' - unlike cataract's early, self-noticed central blur. Because glaucomatous field loss is silent until advanced and is not reversed by cataract surgery, intraocular pressure measurement and optic-disc/field assessment must be performed alongside cataract evaluation in older patients rather than assuming a visual complaint is due to lens opacity al"
+  },
+  {
+    "disease_id": "cataract",
+    "confusable_id": "diabetic_retinopathy",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Diabetic retinopathy is distinguished on fundoscopy by 'abnormally dilated small vessel outpouchings (microaneurysms), retinal bleeding (retinal hemorrhages),' 'yellow lipid and protein deposits (hard exudates),' macular edema, and in proliferative disease, retinal/disc/iris neovascularization - none of which are features of cataract, which is a lens (not retinal) opacity seen on slit-lamp exam. The two conditions frequently coexist in diabetic patients (cataract is a recognized diabetes-associated finding, and 'vitrectomy accelerates the rate of cataract formation'), so a dilated retinal exam"
+  },
+  {
+    "disease_id": "chickenpox",
+    "confusable_id": "impetigo",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Impetigo (usually Staphylococcus aureus and/or group A Streptococcus) is a real, common bacterial skin infection that starts as a red, itchy sore that breaks open and leaks clear fluid or pus, then forms a characteristic crusty yellow or 'honey-colored' scab -- a genuinely distinctive appearance different from chickenpox's clear fluid-filled vesicles arising diffusely on an erythematous base -- and typically lacks the systemic prodrome (fever, malaise) and the trunk-and-face-predominant, successive-crop distribution seen in varicella; impetigo instead commonly affects exposed skin such as the "
+  },
+  {
+    "disease_id": "glaucoma",
+    "confusable_id": null,
+    "confusable_name_raw": "Cataract (cross-reference this KB's cataract entry)",
+    "distinguishing_text": "Cataract causes gradual, painless blurring of vision, glare, and dimming of colours from lens opacification, and - unlike glaucoma - the visual loss it causes is genuinely reversible with surgery. Glaucoma instead classically produces peripheral visual field constriction/arcuate field defects from optic nerve damage while central acuity is often preserved until late, and any vision already lost to glaucoma is permanent, not surgically reversible. The two conditions also commonly coexist in the same (usually older) patient, so a formal dilated fundus/optic-disc exam and perimetry, not visual ac"
+  },
+  {
+    "disease_id": "glaucoma",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of optic neuropathy (compressive, demyelinating, ischemic, nutritional/toxic)",
+    "distinguishing_text": "A real, quantified retrospective study found that 32% of cases (17 of 53 patients) referred as glaucoma actually had a non-glaucomatous optic neuropathy, most commonly compressive optic neuropathy, followed by demyelinating optic neuropathy (23.5%) and ischemic optic neuropathy (17.6%). Key red flags favouring a non-glaucomatous cause: 'optic disk pallor disproportionate to cupping, visual field defects respecting the vertical meridian, younger age at presentation (<50 years), rapid progression despite adequately controlled IOP', and RNFL/OCT thinning that involves the temporal (papillomacular"
+  },
+  {
+    "disease_id": "glaucoma",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of an acute red, painful eye (bacterial/viral conjunctivitis, anterior uveitis/iritis, microbial keratitis, episcleritis/scleritis)",
+    "distinguishing_text": "A structured acute-vision-loss framework places 'severe painful red eye with vision loss, elevated IOP +/- nausea' (acute angle-closure glaucoma) in its own most urgent tier - 'immediate IOP-lowering therapy; urgent ophthalmology' - with a fixed mid-dilated pupil as a hallmark sign, in contrast to conjunctivitis (this KB's bacterial_conjunctivitis entry), which is not typically vision-threatening or associated with elevated IOP, and anterior uveitis/keratitis, which classically show a small/irregular or normal pupil, ciliary flush, and normal-to-low (not markedly elevated) IOP. Distinguishing "
+  },
+  {
+    "disease_id": "herpes_zoster",
+    "confusable_id": "contact_dermatitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Acute contact dermatitis (irritant or allergic) can mimic early herpes zoster when it produces a linear or band-like erythematous, vesicular eruption -- for example from a plant, chemical, or topical allergen applied in a line across the skin -- but contact dermatitis genuinely lacks the strict dermatomal (single sensory-nerve-territory) distribution and the preceding neuropathic prodromal pain of zoster, is typically intensely pruritic rather than painful, and does not respect the sharp midline cut-off that is a hallmark of true dermatomal zoster."
+  },
+  {
+    "disease_id": "amoebiasis",
+    "confusable_id": "inflammatory_bowel_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Amoebic colitis is frequently misdiagnosed as inflammatory bowel disease (IBD) - cross-reference this knowledge base's inflammatory_bowel_disease entry. A 2025 systematic review of 54 case reports of parasitic colitis presenting in high-income countries (33 of them amoebiasis) found an overall misdiagnosis rate of 69%, with 76% of misdiagnosed cases mistaken specifically for IBD; substantial harm occurred in 57% of patients including seven deaths, and corticosteroid administration to misdiagnosed patients was associated with major morbidity or death in 77% of cases versus only 10% among those "
+  },
+  {
+    "disease_id": "croup",
+    "confusable_id": null,
+    "confusable_name_raw": "Epiglottitis (acute supraglottitis)",
+    "distinguishing_text": "Epiglottitis differs from croup in onset speed, appearance, and airway signs: 'symptoms arise very quickly, in most cases within 12-24 h' with a short history of fever, severe throat pain, stridor and rapidly progressive respiratory distress. The child 'usually presents sitting forward in a tripod or sniffing position and does not want to lie down' and often drools 'because they cannot swallow.' 'Unlike croup, cough is uncommon' in epiglottitis, and affected children 'are often systemically unwell' / appear toxic with high fever, in contrast to croup where 'children with croup usually appear l"
+  },
+  {
+    "disease_id": "croup",
+    "confusable_id": null,
+    "confusable_name_raw": "Bacterial tracheitis",
+    "distinguishing_text": "Bacterial tracheitis often begins with a course that mimics croup, but 'its onset tends to be more insidious' than epiglottitis, and 'the patient's condition deteriorates rapidly' after this deceptively mild start, with a 'brassy cough,' high fever, and toxic appearance; unlike epiglottitis, the child can typically 'lie flat' and has minimal drooling. A real, recognised clinical clue is poor response to standard croup therapy: a 2024 case report explicitly notes 'poor response to corticosteroids or nebulized epinephrine' as a feature prompting reconsideration of bacterial tracheitis, and state"
+  },
+  {
+    "disease_id": "croup",
+    "confusable_id": null,
+    "confusable_name_raw": "Foreign body aspiration",
+    "distinguishing_text": "Foreign body aspiration classically presents as an 'acute onset of choking and/or drooling,' typically in children under 3 years, without the preceding viral prodrome (coryza, low-grade fever over 12-72 hours) that characterises croup, and without the gradual barky-cough evolution of croup."
+  },
+  {
+    "disease_id": "croup",
+    "confusable_id": null,
+    "confusable_name_raw": "Retropharyngeal (and parapharyngeal/peritonsillar) abscess",
+    "distinguishing_text": "These deep neck space infections present with 'high fever, neck pain, sore throat, and dysphagia followed by torticollis, drooling, and stridor,' predominantly in children under 6 years. A specific distinguishing examination finding is that 'limitation of neck extension and torticollis are more common than limited neck flexion' (which instead points toward meningitis). Stridor is a less common presenting feature now than historically (reported in only about 3% of one paediatric case series), reflecting generally earlier diagnosis before airway compromise develops; a real case report of a child"
+  },
+  {
+    "disease_id": "influenza",
+    "confusable_id": "covid_19",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Influenza and COVID-19 share extensive symptom overlap -- fever/chills, cough, shortness of breath, fatigue, sore throat, rhinitis, muscle aches, headache, and (less commonly) vomiting, diarrhea, and taste/smell changes -- and the CDC states directly that the two 'cannot be told apart by symptoms alone because many of the signs and symptoms are the same.' Because early treatment can reduce the risk of severe illness for both diseases, the CDC recommends combined flu/COVID-19 testing (a dual assay) whenever a patient needs a specific diagnosis to guide targeted antiviral therapy, rather than re"
+  },
+  {
+    "disease_id": "covid_19",
+    "confusable_id": "influenza",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Clinically, influenza and COVID-19 are frequently indistinguishable on symptoms alone. Loss of taste/smell is more classically associated with (though not exclusive to, and not universal in) COVID-19 than influenza. On chest CT, a multireader study found 7 of 14 imaging findings differed significantly between COVID-19 and influenza pneumonia, but radiologists could correctly identify the causative virus in only 44% of cases, meaning imaging alone is an unreliable discriminator. In practice, definitive differentiation requires molecular testing (multiplex RT-PCR panels or paired SARS-CoV-2/infl"
+  },
+  {
+    "disease_id": "cholelithiasis_cholecystitis",
+    "confusable_id": "peptic_ulcer_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Peptic ulcer disease (see this knowledge base's peptic_ulcer_disease entry) can present with epigastric pain overlapping biliary colic, but classically shows a clearer relationship to meals in the opposite direction for duodenal ulcers (pain relieved by eating, recurring 2-3 hours later or at night) versus gastric ulcers (pain often worsened by eating), lacks the right-shoulder radiation typical of biliary pain, and is not associated with Murphy's sign or gallbladder findings on ultrasound; endoscopy and H. pylori/NSAID history help distinguish it."
+  },
+  {
+    "disease_id": "cholelithiasis_cholecystitis",
+    "confusable_id": "acute_pancreatitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Acute pancreatitis (see this knowledge base's acute_pancreatitis entry) shares epigastric pain with gallstone disease and, importantly, gallstones are a real major etiology of acute pancreatitis (gallstone pancreatitis, via transient or persistent ampullary obstruction by a migrating stone). Pancreatitis pain classically radiates straight through to the back, is more constant and severe, and is distinguished biochemically by lipase/amylase elevation at least 3x the upper limit of normal per the revised Atlanta criteria (see the acute_pancreatitis entry's diagnostic_framework), which is not exp"
+  },
+  {
+    "disease_id": "bronchiolitis",
+    "confusable_id": "pneumonia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Pneumonia is distinguished from bronchiolitis by real focal/asymmetric findings and higher fever: guidance lists pneumonia as a differential with 'unilateral findings, fever >39\u00b0C,' in contrast to the typically bilateral, lower-grade-febrile picture of viral bronchiolitis."
+  },
+  {
+    "disease_id": "tetralogy_of_fallot",
+    "confusable_id": null,
+    "confusable_name_raw": "Transposition of the great arteries (TGA)",
+    "distinguishing_text": "Transposition of the great arteries is explicitly listed alongside critical pulmonary stenosis, total anomalous pulmonary venous connection, and truncus arteriosus as a differential for a cyanotic neonate with tetralogy of Fallot excluded by echocardiography. Both are cyanotic lesions presenting in the newborn period, but they are anatomically distinct (in TGA the aorta arises from the right ventricle and the pulmonary artery from the left ventricle, a ventriculo-arterial discordance, rather than TOF's combination of VSD, RVOT obstruction, aortic override and RV hypertrophy); echocardiography "
+  },
+  {
+    "disease_id": "tetralogy_of_fallot",
+    "confusable_id": null,
+    "confusable_name_raw": "Truncus arteriosus (common arterial trunk)",
+    "distinguishing_text": "Truncus arteriosus (referred to in the primary review as 'common arterial trunk') is likewise a cyanotic lesion on the standard differential list for a newborn with suspected tetralogy of Fallot. It is anatomically distinguished by a single arterial trunk arising from the heart and supplying the systemic, pulmonary, and coronary circulations, in contrast to TOF's two separate great vessels (aorta and pulmonary trunk) with the aorta merely overriding the septum; echocardiography (and, if needed, further imaging) distinguishes the two by identifying whether one or two arterial valves/trunks are "
+  },
+  {
+    "disease_id": "tetralogy_of_fallot",
+    "confusable_id": "venous_thromboembolism",
+    "confusable_name_raw": "Other causes of neonatal cyanosis: critical pulmonary stenosis, Ebstein's malformation, tricuspid atresia, total anomalous pulmonary venous connection, and persistent pulmonary hypertension of the newborn",
+    "distinguishing_text": "The full differential diagnosis of a cyanotic neonate with a murmur includes, beyond TOF itself: persistent pulmonary hypertension of the newborn (a primary pulmonary, not structural-cardiac, cause of cyanosis), critical pulmonary stenosis, Ebstein's malformation of the tricuspid valve, and tricuspid atresia. Echocardiography is the diagnostic tool used to differentiate all of these from tetralogy of Fallot, by directly identifying (or excluding) the specific combination of VSD, RVOT obstruction, aortic override, and RV hypertrophy that defines TOF, and by characterising the tricuspid/pulmonar"
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "confusable_id": "ventricular_septal_defect",
+    "confusable_name_raw": "Ventricular septal defect (VSD)",
+    "distinguishing_text": "VSD produces a shunt murmur whose character differs from PDA's continuous machinery murmur: 'murmur intensity correlates with flow velocity across the defect. Smaller VSDs are often associated with louder murmurs (holosystolic or protomesosystolic),' whereas larger defects with elevated pulmonary pressures produce softer murmurs - in either case the VSD murmur is systolic (holosystolic/pansystolic), not the continuous systolic-through-diastolic murmur of PDA, and echocardiography localises the shunt to the ventricular septum rather than the aortopulmonary connection."
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "confusable_id": "ventricular_septal_defect",
+    "confusable_name_raw": "Atrial septal defect (ASD)",
+    "distinguishing_text": "ASD is distinguished by right-heart, not continuous-murmur, findings: 'physical examination typically reveals an RV heave, fixed splitting of the second heart sound, and a systolic flow murmur over the pulmonary area' - the fixed (respiration-independent) split S2 and the absence of a continuous diastolic component are the key bedside features separating ASD from PDA, again confirmed definitively by echocardiography showing an interatrial rather than aortopulmonary communication."
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "confusable_id": null,
+    "confusable_name_raw": "Venous hum (innocent/physiological continuous murmur)",
+    "distinguishing_text": "Venous hum is a benign continuous murmur that must be distinguished from pathological continuous murmurs like PDA's: it is heard 'above the clavicle, either medial to the sternocleidomastoid muscle' (not at the second left intercostal space/left infraclavicular area where PDA is loudest), is 'more intense in diastole, often harsh and noisy,' and - the key bedside discriminator - 'its characteristic is the disappearance of it with jugular vein compressing, or from the transition from sitting to lying position,' a manoeuvre that does not abolish a true PDA murmur."
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "confusable_id": null,
+    "confusable_name_raw": "Aortopulmonary window",
+    "distinguishing_text": "Aortopulmonary window is a rarer aortopulmonary connection that can also produce a continuous murmur, but at a different location: it 'usually is heard on the left of the sternum much lower than a patent ductus arteriosus,' with echocardiography needed to confirm the direct aorta-to-pulmonary-artery communication (rather than a duct) as the anatomic source."
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "confusable_id": null,
+    "confusable_name_raw": "Coronary arteriovenous fistula",
+    "distinguishing_text": "A coronary arteriovenous fistula also produces a continuous murmur but with maximum intensity 'during diastole' rather than the more even systolic-diastolic distribution typical of PDA; echocardiography/angiography demonstrates the abnormal coronary-to-cardiac-chamber connection rather than a patent duct."
+  },
+  {
+    "disease_id": "ventricular_septal_defect",
+    "confusable_id": "patent_ductus_arteriosus",
+    "confusable_name_raw": "Patent ductus arteriosus (PDA)",
+    "distinguishing_text": "PDA classically produces a continuous ('machinery-type') murmur that persists through both systole and diastole, reflecting the persistent aorta-to-pulmonary-artery pressure gradient across the ductus in both cardiac phases, in contrast to the systole-limited holosystolic murmur of VSD. A real published neonatal case explicitly documents this auscultatory pattern - 'a continuous machinery-type murmur' - in a confirmed large PDA. Note: this knowledge base's own patent_ductus_arteriosus entry (a sibling congenital heart defect entry intended as a cross-reference for this differential) had not ye"
+  },
+  {
+    "disease_id": "ventricular_septal_defect",
+    "confusable_id": "ventricular_septal_defect",
+    "confusable_name_raw": "Atrial septal defect (ASD)",
+    "distinguishing_text": "ASD produces a real distinctly different auscultatory pattern from VSD: 'characteristic physical findings include a midsystolic pulmonary flow or ejection murmur, accompanied by a fixed split-second heart sound,' reflecting increased flow across the pulmonary valve (not a holosystolic regurgitant-type jet across a septal hole) and delayed pulmonic valve closure from right ventricular volume overload that does not vary with respiration (the 'fixed' split). Small ASDs may also spontaneously close, and larger defects also cause right heart volume overload, but the underlying anatomic level of the"
+  },
+  {
+    "disease_id": "irritable_bowel_syndrome",
+    "confusable_id": "inflammatory_bowel_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Crohn's disease and ulcerative colitis (cross-reference this knowledge base's inflammatory_bowel_disease entry) can mimic IBS-D/IBS-M but are distinguished by red-flag features IBS should not have: rectal bleeding, nocturnal diarrhea, unintentional weight loss, and elevated fecal calprotectin (used by the ACG 2021 guideline specifically to help separate IBD from IBS). Source: Lacy BE et al, ACG Clinical Guideline, American Journal of Gastroenterology 2021 (PMID 33315591)."
+  },
+  {
+    "disease_id": "irritable_bowel_syndrome",
+    "confusable_id": "celiac_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Celiac disease (cross-reference this knowledge base's celiac_disease entry) can present with IBS-like bloating, diarrhea and abdominal pain and is specifically screened for with serologic testing per the ACG 2021 guideline. A prospective Indian study from Rajasthan of 287 consecutive adult IBS patients found 9 patients (about 3%) were seropositive or biopsy-confirmed for celiac disease, with lower hemoglobin independently associated with celiac positivity in IBS patients - supporting targeted rather than blanket testing. Sources: Lacy BE et al, ACG Clinical Guideline, American Journal of Gastr"
+  },
+  {
+    "disease_id": "diverticulitis",
+    "confusable_id": "colorectal_cancer",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Colorectal cancer can mimic diverticulitis by causing localized abdominal pain, a palpable mass, and a change in bowel habits, and can also coexist with or be obstructed/perforated in a way that resembles complicated diverticulitis on imaging; this overlap is the real rationale for interval colonoscopy after recovery from an episode of diverticulitis (see diagnostic_framework), given the real, if modest, rate of malignancy found on follow-up colonoscopy, and a reported colorectal cancer risk of about 1.9% among diverticulitis patients overall rising to about 7.9% among those with complicated d"
+  },
+  {
+    "disease_id": "diverticulitis",
+    "confusable_id": "inflammatory_bowel_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Inflammatory bowel disease (Crohn disease and ulcerative colitis) can overlap with diverticulitis both in symptoms (abdominal pain, altered bowel habits, fever) and, in the sigmoid colon specifically, in imaging appearance (segmental colonic wall thickening and inflammation); a distinct entity, segmental colitis associated with diverticulosis (SCAD), further blurs this boundary. See this knowledge base's own inflammatory_bowel_disease entry for that disease's own diagnostic criteria and distinguishing features (e.g., disease chronicity, extraintestinal manifestations, endoscopic/histologic fin"
+  },
+  {
+    "disease_id": "hemorrhoids",
+    "confusable_id": "anal_fissure",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Distinguished primarily by its pain pattern: in a high-volume referral-centre series of 623 patients with acute anal fissure, 73.5% reported severe, tearing pain during defecation that persisted afterward (patients presented after an average of 3 weeks of symptoms), versus the classically painless bleeding of internal hemorrhoids. Fissures show a strong posterior midline predominance (63.7% at the 6 o'clock position, 21.0% at 12 o'clock in lithotomy position) and produce bright red bleeding/blood streaking on toilet paper in 70.8% of patients, plus burning (27.3%) and perianal pruritus (19.3%)"
+  },
+  {
+    "disease_id": "hemorrhoids",
+    "confusable_id": "colorectal_cancer",
+    "confusable_name_raw": null,
+    "distinguishing_text": "The single most important differential to exclude given the danger of misattributing rectal bleeding to hemorrhoids without appropriate evaluation (cross-reference this knowledge base's colorectal_cancer entry). Rectal bleeding overlaps in 55-70% of early-stage rectal cancer presentations with hemorrhoidal bleeding, but cancer-related bleeding is more often dark red or mucoid, mixed with the stool, and intermittent/persistent without a clear straining trigger, versus the bright red, painless, surface/post-defecation bleeding typical of hemorrhoids. A 2026 systematic review found colorectal/rec"
+  },
+  {
+    "disease_id": "hemorrhoids",
+    "confusable_id": "inflammatory_bowel_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Perianal/anorectal manifestations of Crohn's disease (cross-reference this knowledge base's inflammatory_bowel_disease entry) can mimic hemorrhoidal or fissure disease but are distinguished by: multiple, atypically located fissures/ulcers (versus the predictable posterior-midline location of primary fissures); pain in a large majority (approximately 70%) of Crohn's-related fissures, often worsened by defecation; deep inflammatory ulceration (versus the superficial, localized tissue change of hemorrhoids); frequent association with fistulizing disease; and, on biopsy, granulomas found in a majo"
+  },
+  {
+    "disease_id": "nephrolithiasis",
+    "confusable_id": "acute_appendicitis",
+    "confusable_name_raw": "Acute appendicitis",
+    "distinguishing_text": "A real, quantified head-to-head comparison of 188 ureteral-stone patients versus 188 acute-appendicitis patients found appendicitis patients had nausea far more often (81% vs 11%) and localised McBurney's-point tenderness far more often (97% vs 59%), with higher inflammatory markers (C-reactive protein 41 mg/L vs 14 mg/L; leukocytes 14x10^9/L vs 10x10^9/L). Conversely, hematuria (gross or microscopic) was present in 92% of stone patients versus only 26% of appendicitis patients, making urinalysis the real most discriminating single bedside test between the two conditions; despite the overlappi"
+  },
+  {
+    "disease_id": "nephrolithiasis",
+    "confusable_id": null,
+    "confusable_name_raw": "Ovarian torsion / ectopic pregnancy (in women)",
+    "distinguishing_text": "Ovarian (adnexal) torsion presents with pain, nausea and vomiting with abdominal or pelvic tenderness that can closely mimic renal colic when pain is lateralised; a real, important diagnostic pitfall is that normal Doppler flow can be observed in up to 60% of true adnexal-torsion cases, so a 'reassuring' pelvic Doppler ultrasound does not reliably exclude torsion. Ectopic pregnancy and other acute gynaecological causes of pelvic pain are real standard differentials that must be actively considered alongside renal colic in a woman of reproductive age presenting with acute flank/pelvic pain; bet"
+  },
+  {
+    "disease_id": "nephrolithiasis",
+    "confusable_id": null,
+    "confusable_name_raw": "Biliary colic / acute cholecystitis",
+    "distinguishing_text": "Biliary colic is real, mechanistically and clinically distinct from renal colic: it is right-upper-quadrant/epigastric pain (rather than flank-to-groin), classically triggered or worsened by fatty meals via cholecystokinin-mediated gallbladder contraction, radiates to the right shoulder blade or back rather than the groin, is typically constant/steady during an episode rather than truly waxing-and-waning, and does not cause hematuria; a positive Murphy's sign (real modest positive likelihood ratio ~2.8) can support acute cholecystitis specifically. See this knowledge base's own cholelithiasis_"
+  },
+  {
+    "disease_id": "nephrolithiasis",
+    "confusable_id": "nonspecific_low_back_pain",
+    "confusable_name_raw": "Musculoskeletal back pain",
+    "distinguishing_text": "Musculoskeletal flank/back pain is real mechanical/positional pain, typically reproducible or worsened by specific movements or direct palpation of the paraspinal muscles, without the true colicky waxing-and-waning pattern, without radiation to the groin, without hematuria, and without the autonomic accompaniments (nausea/vomiting, restlessness) of true renal colic; the EAU guideline's own diagnostic-imaging logic implicitly relies on this distinction, stating that when non-contrast CT shows no stone in a patient with flank pain, 'the cause of abdominal pain should be identified' -- i.e. a gen"
+  },
+  {
+    "disease_id": "anal_fissure",
+    "confusable_id": "hemorrhoids",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference this knowledge base's hemorrhoids entry. The key distinguishing feature is the pain pattern: a fissure classically causes severe, sharp pain during and for hours after defecation together with visible bleeding on wiping/stool surface, whereas hemorrhoidal disease is more often associated with painless bleeding unless a hemorrhoid is thrombosed or prolapsed. External hemorrhoidal thrombosis (an acutely painful perianal lump) is explicitly listed as a differential to distinguish from a fissure's linear tear on exam."
+  },
+  {
+    "disease_id": "bacterial_prostatitis",
+    "confusable_id": "urinary_tract_infection",
+    "confusable_name_raw": "Urinary tract infection / cystitis alone (without prostate involvement)",
+    "distinguishing_text": "Uncomplicated cystitis produces dysuria, frequency and urgency similar to prostatitis but without perineal/pelvic pain, without the exquisitely tender prostate on digital rectal examination, and typically without the fever/systemic illness or acute retention seen in acute bacterial prostatitis. See this knowledge base's own 'urinary_tract_infection' entry for the full UTI symptom/diagnostic framework; in men, any culture-confirmed UTI should prompt consideration of prostatic source/involvement, since men have a structurally protected, normally sterile urinary tract and male UTI is itself less "
+  },
+  {
+    "disease_id": "bacterial_prostatitis",
+    "confusable_id": "bacterial_prostatitis",
+    "confusable_name_raw": "Chronic prostatitis/chronic pelvic pain syndrome (CP/CPPS) - non-bacterial",
+    "distinguishing_text": "CP/CPPS (NIH category III) is far more common than true chronic bacterial prostatitis (category II) and is defined by 'persistent or recurrent symptoms and no other urogenital pathology for >=3 of the previous 6 months' in the absence of documented bacterial infection - the key distinguishing feature is a negative urine/EPS culture despite prostatitis-type symptoms (pelvic pain, LUTS, sexual dysfunction, psychological features). The 2015 BJU International consensus guideline explicitly warns that 'repeated use of antibiotics...should be avoided if there is no obvious symptomatic benefit from i"
+  },
+  {
+    "disease_id": "bacterial_prostatitis",
+    "confusable_id": "benign_prostatic_hyperplasia",
+    "confusable_name_raw": "Benign prostatic hyperplasia (BPH)",
+    "distinguishing_text": "BPH produces overlapping lower urinary tract symptoms (frequency, urgency, weak stream, incomplete emptying) from bladder outlet obstruction, but without fever, without the acutely tender prostate of bacterial prostatitis, and without bacteriuria on culture. BPH-related urinary stasis and obstruction is itself a real risk factor that predisposes to acute bacterial prostatitis (see risk_factors below), so the two conditions frequently coexist in the same older patient rather than being mutually exclusive. This knowledge base does not yet contain a dedicated 'benign_prostatic_hyperplasia' entry "
+  },
+  {
+    "disease_id": "benign_prostatic_hyperplasia",
+    "confusable_id": "prostate_cancer",
+    "confusable_name_raw": "Prostate cancer",
+    "distinguishing_text": "Prostate cancer overwhelmingly arises in the peripheral zone (68% in the classic zonal-anatomy mapping study) rather than the transition zone affected by BPH, and typically presents (when symptomatic at all) with LUTS that are clinically indistinguishable from BPH-related LUTS on symptoms alone -- meaning LUTS cannot themselves discriminate the two conditions. DRE may reveal a hard, nodular, or asymmetric prostate suggestive of malignancy versus the smooth, symmetric, firm-elastic enlargement typical of BPH, though DRE's real pooled sensitivity for cancer detection in primary care is only 0.51"
+  },
+  {
+    "disease_id": "benign_prostatic_hyperplasia",
+    "confusable_id": null,
+    "confusable_name_raw": "Chronic prostatitis / chronic pelvic pain syndrome (CPPS)",
+    "distinguishing_text": "Prostatitis/CPPS is a real, common syndrome (affecting a reported 2-10% of men) classified by the NIH into four categories: acute bacterial prostatitis (category I) and chronic bacterial prostatitis (category II), both caused by real uropathogenic infection and responsive to antimicrobial treatment; chronic prostatitis/CPPS (category III), which accounts for 90-95% of prostatitis cases, is of unknown aetiology, and is marked by a real mixture of PELVIC/PERINEAL PAIN together with urinary and ejaculatory symptoms, with no uniformly effective therapy; and asymptomatic inflammatory prostatitis (c"
+  },
+  {
+    "disease_id": "benign_prostatic_hyperplasia",
+    "confusable_id": null,
+    "confusable_name_raw": "Overactive bladder (OAB) / detrusor overactivity",
+    "distinguishing_text": "OAB presents predominantly or exclusively with STORAGE symptoms (urgency, frequency, nocturia, +/- urgency incontinence) without a mechanical outlet-obstruction cause, whereas BPH-related LUTS typically also include voiding symptoms (weak stream, hesitancy, straining) reflecting real bladder outlet obstruction. Mechanistically, OAB reflects detrusor overactivity that can occur either independent of prostatic obstruction or as a secondary consequence of chronic bladder outlet obstruction itself (i.e. BPH-driven detrusor changes can produce an OAB-like storage-symptom picture), which is precisel"
+  },
+  {
+    "disease_id": "benign_prostatic_hyperplasia",
+    "confusable_id": null,
+    "confusable_name_raw": "Urethral stricture",
+    "distinguishing_text": "Urethral stricture is a real, mechanically distinct cause of obstructive/irritative LUTS from BPH: it is a narrowing of the urethra itself due to scar tissue (rather than external/periurethral prostatic compression), with an estimated prevalence of 0.9% among men in industrialised countries. A 2013 review of etiology found 45% of strictures are iatrogenic (from prior urethral instrumentation/catheterization/surgery), 30% idiopathic, and 20% due to bacterial urethritis -- a materially different risk-factor profile from BPH's hormone/age-driven prostatic enlargement. Strictures are real, diagnos"
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Hyperosmolar Hyperglycemic State (HHS)",
+    "distinguishing_text": "Real - glucose typically much higher (>600 mg/dL), minimal-to-absent ketosis/acidosis (pH >=7.3, bicarbonate >=15 mEq/L), altered mentation from extreme hyperosmolarity rather than acidosis, typically older Type 2 diabetic patients; HIGHER mortality (5-20%) than DKA (~1-5%) despite milder acid-base derangement."
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Alcoholic Ketoacidosis (AKA)",
+    "distinguishing_text": "Real - history of acute or chronic alcohol use with poor oral intake and GI symptoms (vomiting), dehydrated on exam, and ketoacidosis on labs, but serum glucose is real classically low, normal, or only mildly elevated (unlike DKA's marked hyperglycemia), because chronic alcohol use plus starvation depletes hepatic glycogen while alcohol metabolism itself suppresses gluconeogenesis. Real, important overlap: a person with known diabetes who also binge-drinks can have a mixed picture, so a normal-to-low glucose does not by itself exclude a ketoacidotic emergency requiring urgent care."
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Starvation ketosis",
+    "distinguishing_text": "Real - mild ketosis from prolonged fasting/very-low-carbohydrate intake, but glucose is normal-to-low (not the marked hyperglycemia of DKA) and acidosis, if present at all, is real and mild (pH rarely <7.3), self-limited with refeeding."
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of high-anion-gap metabolic acidosis in a known diabetic",
+    "distinguishing_text": "Real, must be considered when the classic DKA triad is incomplete - lactic acidosis (e.g., metformin-associated lactic acidosis, particularly with concurrent renal impairment), toxic alcohol ingestion (methanol/ethylene glycol - real, distinguished by an elevated osmolar gap and absence of significant ketonemia), salicylate toxicity, and uremia/advanced chronic kidney disease."
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of altered mental status in a known diabetic",
+    "distinguishing_text": "Real, must always be actively excluded because they are rapidly correctable or immediately dangerous if missed - severe hypoglycemia (opposite-direction emergency, corrected by Whipple's-triad-guided glucose administration, see this KB's diabetes_mellitus entry), stroke, and sepsis/meningitis; a bedside glucose check is the fastest way to separate hypoglycemia from DKA/HHS at first contact."
+  },
+  {
+    "disease_id": "hemophilia_a",
+    "confusable_id": "von_willebrand_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Von Willebrand disease (VWD) is the most common inherited bleeding disorder overall and a key differential, but it typically presents with mucocutaneous bleeding (epistaxis, menorrhagia, easy bruising) rather than the deep joint/muscle bleeding typical of haemophilia A, and most VWD is inherited in an autosomal (not X-linked) pattern, so it affects both sexes. One specific VWD subtype, type 2N, is a real and clinically important mimic of mild/moderate haemophilia A because it causes disproportionately low FVIII activity (since von Willebrand factor normally protects circulating FVIII from clea"
+  },
+  {
+    "disease_id": "beta_thalassemia_major",
+    "confusable_id": "iron_deficiency_anaemia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Both iron deficiency anaemia (IDA -- see this KB's 'iron_deficiency_anaemia' entry) and beta-thalassemia trait cause a microcytic, hypochromic anaemia and are the two most common causes that must be distinguished in practice. The key distinguishing laboratory pattern: the Mentzer index (MCV divided by RBC count) is <13 in thalassemia trait and >13 in IDA -- one real diagnostic-accuracy study in pregnant women with microcytic anaemia reported the Mentzer index achieving 100% sensitivity and 100% specificity for this distinction in that cohort (mean index 11.38 in thalassemia trait vs 15.88 in I"
+  },
+  {
+    "disease_id": "thrombotic_thrombocytopenic_purpura",
+    "confusable_id": "immune_thrombocytopenic_purpura",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Real and genuinely critical to distinguish: immune thrombocytopenic purpura (ITP, cross-reference this KB's own 'immune_thrombocytopenic_purpura' entry) causes isolated thrombocytopenia from immune platelet destruction, WITHOUT the microangiopathic hemolysis (no schistocytes, normal LDH/haptoglobin, normal ADAMTS13) that defines TTP. Despite both historically being called 'purpura' and both causing low platelets/bruising, the treatments are dramatically different - ITP is treated with corticosteroids/IVIG/thrombopoietin-receptor agonists and platelet transfusion is often used if needed, wherea"
+  },
+  {
+    "disease_id": "thrombotic_thrombocytopenic_purpura",
+    "confusable_id": "disseminated_intravascular_coagulation",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Real, standard hematologic teaching: disseminated intravascular coagulation (DIC) also causes thrombocytopenia and can show fragmented red cells, but DIC is real distinguished by concurrent consumption of coagulation factors - producing prolonged PT and aPTT and real low fibrinogen - because DIC involves activation of the coagulation cascade itself, whereas TTP is a platelet-mediated microangiopathy in which the standard coagulation screen (PT, aPTT, fibrinogen) is real typically normal. DIC is also real usually secondary to an identifiable trigger (sepsis, malignancy, obstetric catastrophe, m"
+  },
+  {
+    "disease_id": "renal_tubular_acidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Other causes of (non-RTA) metabolic acidosis, by anion gap",
+    "distinguishing_text": "Calculating the serum anion gap is the real first discriminating step: an elevated-AG metabolic acidosis (lactic acidosis, diabetic/alcoholic ketoacidosis, uremia from advanced renal failure, toxic ingestions such as methanol/ethylene glycol/salicylate) reflects accumulation of an unmeasured organic acid and is mechanistically distinct from RTA, which produces a normal-AG (hyperchloremic) acidosis from bicarbonate loss/failure of regeneration. RTA should specifically be suspected whenever normal-AG acidosis is found without evidence of extra-renal (typically gastrointestinal) bicarbonate loss."
+  },
+  {
+    "disease_id": "renal_tubular_acidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Gastrointestinal bicarbonate loss (e.g. diarrhea)",
+    "distinguishing_text": "Gastrointestinal bicarbonate loss also produces a real normal-anion-gap metabolic acidosis and is the classic extrarenal mimic of RTA, but the kidney's response is intact: NH4+ excretion rises appropriately, producing a real negative urine anion gap (approximately -30 to -50 mmol/L) -- the opposite of the positive UAG seen in distal (type 1) and type 4 RTA. A careful history (diarrhea, laxative use, ileostomy) plus the urine anion gap is the real standard way to separate the two."
+  },
+  {
+    "disease_id": "renal_tubular_acidosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Drug-induced non-anion-gap acidosis (e.g. topiramate, acetazolamide, other carbonic anhydrase inhibitors)",
+    "distinguishing_text": "Certain drugs cause a real, mechanistically direct proximal-RTA-like acidosis rather than a primary inherited/autoimmune RTA: topiramate inhibits carbonic anhydrase, an enzyme necessary for proximal tubular acid handling, and can cause chronic metabolic acidosis, renal stone formation and bone mineralization defects with continued use. A careful medication history (topiramate, acetazolamide, and in other contexts ifosfamide, tenofovir, aminoglycosides, valproate) is the real key differentiator from a primary/inherited RTA, since the acidosis is expected to improve after the causative drug is w"
+  },
+  {
+    "disease_id": "renal_tubular_acidosis",
+    "confusable_id": "chronic_kidney_disease",
+    "confusable_name_raw": "Chronic kidney disease (CKD) -- cross-reference this KB's chronic_kidney_disease entry",
+    "distinguishing_text": "CKD can also cause metabolic acidosis, but real, important mechanistic and clinical differences exist. CKD-associated acidosis typically develops with a reduced GFR (uremic retention of anions producing an elevated or mixed anion gap as CKD advances) and worsening ammonium excretion capacity as functioning nephron mass falls, whereas classic RTA occurs with normal or near-normal GFR and a normal anion gap. This distinction is genuinely complicated by two real, honestly reported nuances from the dRTA literature: first, type 4 (hyperkalemic) RTA is itself frequently a direct consequence of CKD a"
+  },
+  {
+    "disease_id": "immune_thrombocytopenic_purpura",
+    "confusable_id": "thrombotic_thrombocytopenic_purpura",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Real and genuinely critical to distinguish before any platelet-related intervention: thrombotic thrombocytopenic purpura (TTP, cross-reference this KB's own 'thrombotic_thrombocytopenic_purpura' entry) causes thrombocytopenia together with microangiopathic hemolytic anemia (schistocytes, elevated LDH, low haptoglobin) and severe ADAMTS13 deficiency, whereas ITP causes real isolated thrombocytopenia from immune platelet destruction without hemolysis. This distinction is treatment-critical because, real unlike TTP (where platelet transfusion is classically relatively contraindicated except for l"
+  },
+  {
+    "disease_id": "immune_thrombocytopenic_purpura",
+    "confusable_id": "disseminated_intravascular_coagulation",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Real, disseminated intravascular coagulation (DIC) also causes thrombocytopenia but is real distinguished by concurrent coagulopathy (prolonged PT/aPTT, low fibrinogen, elevated D-dimer/fibrin degradation products) and an identifiable real triggering condition such as sepsis, severe trauma, or obstetric catastrophe - features real absent in isolated ITP."
+  },
+  {
+    "disease_id": "alpha_thalassemia",
+    "confusable_id": "iron_deficiency_anaemia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Iron deficiency anaemia (IDA -- see this KB's 'iron_deficiency_anaemia' entry) and alpha thalassemia trait/silent carrier both cause a microcytic (and in IDA, hypochromic) blood picture and must be distinguished, but this distinction is genuinely harder in alpha thalassemia than in beta-thalassemia trait because alpha thalassemia trait frequently shows a normal haemoglobin electrophoresis/HPLC (unlike beta-thalassemia trait's characteristically elevated HbA2), so the electrophoresis-based discriminators validated for beta-thalassemia trait vs IDA (elevated HbA2 on HPLC) do not apply. A real No"
+  },
+  {
+    "disease_id": "neurogenic_bladder",
+    "confusable_id": "neurogenic_bladder",
+    "confusable_name_raw": "Non-neurogenic (idiopathic) overactive bladder / detrusor overactivity",
+    "distinguishing_text": "Idiopathic OAB presents with the same storage symptoms (urgency, frequency, urgency incontinence) as neurogenic detrusor overactivity but occurs WITHOUT a relevant, confirmed neurological lesion -- by ICS definition, neurogenic bladder specifically requires a demonstrable neurological cause. Because symptoms alone cannot reliably separate the two, a thorough neurological history and examination (looking for SCI, MS, diabetes, stroke, spina bifida, or other relevant disease) plus urodynamics to characterise the pattern are both required; the presence of a confirmed neurological disease/lesion i"
+  },
+  {
+    "disease_id": "neurogenic_bladder",
+    "confusable_id": null,
+    "confusable_name_raw": "Bladder outlet obstruction (e.g. benign prostatic hyperplasia, urethral stricture)",
+    "distinguishing_text": "Mechanical bladder outlet obstruction from BPH or urethral stricture produces voiding symptoms (weak stream, hesitancy, straining, incomplete emptying) that can closely mimic detrusor underactivity or DSD-related obstruction in neurogenic bladder, but the obstruction here is anatomic/mechanical rather than neurologically mediated. Pressure-flow urodynamics distinguishes the two: true outlet obstruction shows high voiding pressure with low flow in the ABSENCE of a demonstrable neurological cause or dyssynergic sphincter EMG pattern, whereas neurogenic underactivity shows low/absent detrusor pre"
+  },
+  {
+    "disease_id": "neurogenic_bladder",
+    "confusable_id": "urinary_tract_infection",
+    "confusable_name_raw": "Urinary tract infection (acute cystitis) mimicking or exacerbating neurogenic bladder symptoms",
+    "distinguishing_text": "Because patients with neurogenic bladder have a real, chronically elevated baseline risk of urinary tract infection (from impaired emptying, catheter use, and altered bladder defence mechanisms), an acute UTI can present as an acute worsening of otherwise-stable storage or voiding symptoms, new incontinence, or in SCI patients even as autonomic dysreflexia or non-specific systemic illness rather than classic dysuria (due to impaired bladder sensation). The distinguishing feature is a positive urine culture (a bacterial concentration of >=10^3 CFU/mL together with symptoms is the accepted diagn"
+  },
+  {
+    "disease_id": "neurogenic_bladder",
+    "confusable_id": null,
+    "confusable_name_raw": "Fowler's syndrome (primary urinary retention in young women)",
+    "distinguishing_text": "Fowler's syndrome is a real, distinct cause of chronic urinary retention in young women, characterised by impaired urethral sphincter relaxation (abnormal sphincter EMG activity) without a demonstrable central or peripheral neurological lesion on standard workup, often associated with polycystic ovary syndrome. It is listed among the neurogenic-mimicking causes of detrusor underactivity/retention specifically because it must be distinguished from true neurogenic (SCI/MS/diabetic) retention through the absence of an identifiable causative neurological disease and characteristic sphincter EMG fi"
+  },
+  {
+    "disease_id": "intestinal_obstruction",
+    "confusable_id": "volvulus",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Sigmoid and cecal volvulus are real, mechanistically distinct differentials/causes of LBO (accounting for a real 3-8% and 1-3% of LBO cases respectively, per Radiopaedia), and small-bowel volvulus is a real, rarer cause of SBO. This knowledge base's own separate 'volvulus' entry covers that condition's specific twisting mechanism, imaging signs (coffee bean, bird's beak, whirl and corkscrew signs), and outcome data in full, and is cross-referenced here rather than duplicated."
+  },
+  {
+    "disease_id": "hydronephrosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Parapelvic / peripelvic renal cyst",
+    "distinguishing_text": "Parapelvic cysts are real, rare renal cysts that can masquerade as ureteric obstruction and hydronephrosis on ultrasound and CT, creating a genuine diagnostic pitfall; a documented real case presented as allograft dysfunction 10 years after renal transplantation with imaging mimicking hydronephrosis, and a separate real pediatric case presented as an apparent cause of PUJ obstruction managed surgically before the cystic (non-obstructive) nature was clarified. Correct differentiation (typically requiring cross-sectional imaging correlation or contrast urography showing non-communication of the "
+  },
+  {
+    "disease_id": "hydronephrosis",
+    "confusable_id": "vesicoureteral_reflux",
+    "confusable_name_raw": "Vesicoureteral reflux (VUR) with non-obstructive dilation",
+    "distinguishing_text": "VUR causes real upper urinary tract dilation without a true mechanical obstruction, graded separately using the International Reflux Study Committee's 1985 five-grade voiding cystourethrogram (VCUG) classification (grades I-V); a real reliability study of that grading system across 28 VCUG studies rated by 13 pediatric radiologists/urologists/residents found only moderate average interrater reliability (weighted kappa 0.53, worst at grade III, kappa 0.36) despite high intrarater reliability (kappa 0.86) -- meaning VUR-grade-based differentiation from obstructive hydronephrosis on imaging alone"
+  },
+  {
+    "disease_id": "hydronephrosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Physiological hydronephrosis of pregnancy",
+    "distinguishing_text": "Real physiological uretero-hydronephrosis of pregnancy is right-sided-predominant (63% in a 100-patient MRI cohort), typically confined to the kidney and/or proximal ureter, asymptomatic, and does not require intervention; left-sided or whole-ureter dilation in a pregnant patient is real evidence favoring a pathological cause (stone, true obstruction) rather than physiological dilation, per the same MRI study's own practical conclusion."
+  },
+  {
+    "disease_id": "hydronephrosis",
+    "confusable_id": null,
+    "confusable_name_raw": "Malignant extrinsic ureteral compression (pelvic mass)",
+    "distinguishing_text": "Real extrinsic compression from a pelvic malignancy is distinguished from primary urologic (stone/PUJ) obstruction on cross-sectional imaging by identifying the causative mass; in a real 188-patient series of malignant ureteral obstruction, compression by a pelvic mass was the mechanism in 36.9% of cases, with prostate cancer (17.6%), bladder cancer (16.5%) and rectal cancer (11.7%) the three most frequent culprit tumors -- a materially different differential list than the acute-flank-pain differentials (appendicitis, biliary colic, adnexal torsion, musculoskeletal pain) relevant to stone-indu"
+  },
+  {
+    "disease_id": "tension_type_headache",
+    "confusable_id": "migraine",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Migraine without aura (ICHD-3 1.1) requires at least 2 of 4 different pain characteristics -- unilateral location, pulsating quality, moderate-severe intensity, aggravation by routine physical activity -- plus nausea/vomiting and/or both photophobia AND phonophobia, and attacks last 4-72 hours untreated; this contrasts point-for-point with TTH's bilateral, pressing, mild-moderate, activity-tolerant pattern with at most one of photophobia/phonophobia and no vomiting. See this knowledge base's own 'migraine' entry for full ICHD-3 migraine criteria detail. In practice the two disorders frequently"
+  },
+  {
+    "disease_id": "cluster_headache",
+    "confusable_id": "migraine",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Migraine differs from cluster headache in: longer attack duration (4-72 hours vs 15-180 minutes); more often bilateral pain, pulsating quality; patients seeking stillness/quiet dark rooms rather than restlessness; associated nausea/vomiting and photophobia+phonophobia (rather than ipsilateral cranial autonomic signs) as the defining associated features; and a female predominance (roughly 3:1) in contrast to cluster headache's strong male predominance."
+  },
+  {
+    "disease_id": "cluster_headache",
+    "confusable_id": "trigeminal_neuralgia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Classical trigeminal neuralgia (ICHD-3 13.1.1) causes paroxysms of unilateral facial pain confined to one or more divisions of the trigeminal nerve (most often V2/V3, sparing the periorbital autonomic pattern of cluster headache), described as electric-shock-like, shooting, stabbing or sharp, lasting from a fraction of a second up to two minutes, and classically precipitated by innocuous stimuli in the trigger zone (light touch, chewing, talking, brushing teeth, cold wind) - a precipitation pattern not seen in cluster headache. It lacks the prominent ipsilateral autonomic features and restless"
+  },
+  {
+    "disease_id": "bells_palsy",
+    "confusable_id": null,
+    "confusable_name_raw": "Stroke (central/upper motor neuron facial palsy)",
+    "distinguishing_text": "The single most important bedside discriminator is FOREHEAD SPARING: because the upper face (frontalis, orbicularis oculi) receives bilateral cortical corticobulbar innervation while the lower face receives only contralateral innervation, a central lesion (stroke) spares the forehead - the patient can still wrinkle the forehead and close the eye on the affected side, with weakness confined to the lower face. Preserved forehead strength should immediately raise suspicion for a central cause rather than Bell's palsy. Any equivocal presentation must be triaged as a possible stroke (see EMERGENCY_"
+  },
+  {
+    "disease_id": "bells_palsy",
+    "confusable_id": null,
+    "confusable_name_raw": "Ramsay Hunt syndrome (herpes zoster oticus)",
+    "distinguishing_text": "Caused by VZV reactivation in the geniculate ganglion, Ramsay Hunt presents with the classic triad of peripheral facial nerve palsy, ear pain, and a vesicular zoster rash in the ear canal/pinna (vesicles can also appear in the mouth); it can also cause sensorineural hearing loss and vertigo. HSV-1 PCR of facial nerve fluid is negative in Ramsay Hunt (versus 79% positive in true Bell's palsy), and prognosis for full recovery is generally worse than Bell's palsy, so it changes both prognosis-counseling and the choice/urgency of antiviral therapy."
+  },
+  {
+    "disease_id": "bells_palsy",
+    "confusable_id": null,
+    "confusable_name_raw": "Lyme disease facial palsy (Borrelia burgdorferi)",
+    "distinguishing_text": "Lyme disease should be specifically considered with BILATERAL facial palsy (which is rare overall, 0.3%-2.0% of all facial palsy presentations, and 'red-flag' for a systemic cause rather than idiopathic Bell's), or with a history of tick exposure, travel/residence in a Lyme-endemic area, or an antecedent erythema migrans rash; Lyme disease is reported as the most common infectious cause of bilateral facial nerve palsy in the pediatric population. Diagnosis requires Lyme serology, and treatment is antibiotic-based rather than the standard Bell's palsy steroid/antiviral approach."
+  },
+  {
+    "disease_id": "bells_palsy",
+    "confusable_id": null,
+    "confusable_name_raw": "Tumor / structural lesion (facial nerve schwannoma, parotid gland tumor, cerebellopontine-angle mass, leptomeningeal metastasis)",
+    "distinguishing_text": "Suspect a structural lesion rather than idiopathic Bell's palsy when the palsy is slowly/insidiously progressive rather than acute, when there are other cranial neuropathies or a palpable parotid mass, or - as shown in a recent structural-mimic case series - when facial palsy RECURS strictly on the same (ipsilateral) side with progressively worsening House-Brackmann grade and progressive axonal loss on serial nerve conduction studies across episodes; such a pattern should prompt dedicated facial-nerve MRI rather than repeated 'recurrent Bell's palsy' labeling."
+  },
+  {
+    "disease_id": "vascular_dementia",
+    "confusable_id": "alzheimers_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Alzheimer's disease classically presents with an insidious, gradually and steadily progressive amnestic syndrome (impaired new learning/episodic memory as the earliest and most prominent feature) without a stepwise course, focal neurological signs, or early gait/urinary symptoms; medial temporal (hippocampal/entorhinal) atrophy is disproportionate to any vascular lesion load on imaging. Vascular dementia instead shows (in its classic form) a stepwise or fluctuating course tied to vascular events, executive-predominant over memory-predominant impairment, focal neurological signs, and imaging-co"
+  },
+  {
+    "disease_id": "vascular_dementia",
+    "confusable_id": "frontotemporal_dementia",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Behavioural-variant frontotemporal dementia (bvFTD) can mimic the executive-dysfunction/personality-change picture of vascular dementia, but the revised international consensus criteria require early, progressive change in personality/behaviour (disinhibition, apathy, loss of empathy, perseverative/compulsive behaviour, hyperorality) with relatively preserved episodic memory and visuospatial skills, typically without focal vascular signs, and with frontal/anterior temporal atrophy or hypometabolism on imaging rather than infarcts or a vascular lesion pattern. A vascular contribution should be "
+  },
+  {
+    "disease_id": "meningioma",
+    "confusable_id": "glioma",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Gliomas are intra-axial (arising from brain parenchyma) versus meningioma's extra-axial dural-based location; gliomas typically lack a dural tail sign and show infiltrative rather than well-circumscribed margins. This knowledge base does not currently contain a separate 'glioma' entry to cross-reference directly - noted here rather than fabricating a cross-link."
+  },
+  {
+    "disease_id": "encephalitis",
+    "confusable_id": "bacterial_meningitis",
+    "confusable_name_raw": "Bacterial or viral (aseptic) meningitis without brain parenchymal involvement",
+    "distinguishing_text": "Meningitis produces fever, headache, neck stiffness and photophobia but, unlike encephalitis, does not typically cause altered mental status persisting >=24h, seizures, or focal neurological deficits; when these are present the case should be classified and worked up as encephalitis (or meningoencephalitis) rather than uncomplicated meningitis, per the consensus case-definition framework."
+  },
+  {
+    "disease_id": "encephalitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Anti-NMDA-receptor (and other autoimmune) encephalitis presenting as a primary psychiatric disorder",
+    "distinguishing_text": "Because psychiatric symptoms or memory problems are the presenting feature in essentially all anti-NMDAR cases, patients (especially young women) are frequently first evaluated or admitted for a presumed primary psychiatric illness (e.g. new-onset psychosis, catatonia) before seizures, dyskinesias, autonomic instability or decreased consciousness emerge and prompt neurological/CSF antibody work-up; this misdiagnosis risk is explicitly highlighted in the foundational case series."
+  },
+  {
+    "disease_id": "encephalitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Acute disseminated encephalomyelitis (ADEM)",
+    "distinguishing_text": "ADEM is a monophasic, typically post-infectious or post-vaccination inflammatory demyelinating disease of the CNS, generally affecting children, with multifocal white-matter lesions on MRI rather than the focal medial-temporal pattern of HSV encephalitis or the normal/non-specific MRI often seen in anti-NMDAR encephalitis; it sits within the same broad differential as infectious/autoimmune encephalitis and formal revised case definitions for ADEM versus other CNS demyelinating/inflammatory syndromes have been published."
+  },
+  {
+    "disease_id": "normal_pressure_hydrocephalus",
+    "confusable_id": "alzheimers_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Distinguishing iNPH from Alzheimer's disease matters because the two commonly coexist in the same elderly patient (mixed pathology is frequent) and because iNPH cognitive impairment is a frontal-subcortical/dysexecutive pattern with relative sparing of episodic memory encoding and cortical functions early on, versus the primarily amnestic, hippocampal-medial-temporal pattern of early Alzheimer's disease; gait is classically normal early in pure Alzheimer's disease but is required for an iNPH diagnosis from the outset. See this KB's Alzheimer's disease entry (id: alzheimers_disease) for the amn"
+  },
+  {
+    "disease_id": "agoraphobia",
+    "confusable_id": "panic_disorder",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Panic disorder and agoraphobia are now diagnosed as separate, potentially co-occurring conditions rather than one being a subtype of the other. Panic disorder requires recurrent unexpected panic attacks plus persistent concern/worry about additional attacks or their consequences, or maladaptive behavior change; it does not require situational avoidance limited to the five agoraphobic domains. Agoraphobia can occur with or without panic disorder (or with only isolated panic attacks, as quantified above), and the key differentiator is whether the person's fear/avoidance is organised around the f"
+  },
+  {
+    "disease_id": "postpartum_depression",
+    "confusable_id": "postpartum_depression",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Onset any time in pregnancy through the first postpartum year (DSM-5 formally restricts the 'peripartum onset' specifier to within 4 weeks postpartum, though this is widely regarded as too narrow -- see definition_and_pathophysiology). Persistent (>=2 weeks), meets full major depressive episode criteria, causes functional impairment. May include passive suicidal ideation or intrusive, distressing (ego-dystonic) thoughts of infant harm that the mother recognizes as wrong and resists. Urgent psychiatric referral is required if active suicidal intent, a plan, or any command-type or ego-syntonic t"
+  },
+  {
+    "disease_id": "tendinitis",
+    "confusable_id": "bursitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Subacromial/subdeltoid bursitis is the classic shoulder mimic of rotator cuff tendinopathy, producing overlapping lateral shoulder pain with overhead activity; the two frequently coexist (subacromial impingement can inflame both the cuff tendons and the overlying bursa), making pure clinical differentiation difficult without imaging in some cases. Similar tendon-bursa overlap occurs at other sites (e.g. retrocalcaneal bursitis mimicking insertional Achilles tendinopathy, olecranon bursitis near the elbow)."
+  },
+  {
+    "disease_id": "bursitis",
+    "confusable_id": "tendinitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Tendinitis/tendinopathy adjacent to a bursa can mimic or coexist with bursitis (e.g., subacromial bursitis with rotator cuff tendinopathy, or trochanteric bursitis with gluteus medius/minimus tendinopathy in GTPS); tenderness in tendinitis tends to localize along the tendon course and is reproduced by resisted contraction of that tendon's muscle, whereas bursitis tenderness is more focal over the bursa itself. In GTPS specifically, gluteal tendinopathy is frequently the primary pathology rather than the bursa."
+  },
+  {
+    "disease_id": "bursitis",
+    "confusable_id": "cellulitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cellulitis produces diffuse, poorly-marginated skin erythema, warmth, and edema without a discrete fluctuant bursal collection; ultrasonography helps differentiate the two by showing (or not showing) a discrete distended bursal fluid collection, which is absent in isolated cellulitis. Cellulitis overlying a bursa can also coexist with, or progress to, septic bursitis."
+  },
+  {
+    "disease_id": "fibromyalgia",
+    "confusable_id": "rheumatoid_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Unlike fibromyalgia, rheumatoid arthritis presents with objective synovitis (joint swelling, warmth), elevated inflammatory markers (ESR/CRP) and seropositivity (rheumatoid factor/anti-CCP) in most cases. Per the 2016 ACR fibromyalgia criteria, the two conditions can also coexist in the same patient, so a fibromyalgia diagnosis must not be used to explain away new objective inflammatory joint findings."
+  },
+  {
+    "disease_id": "fibromyalgia",
+    "confusable_id": "polymyalgia_rheumatica",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Polymyalgia rheumatica classically causes bilateral shoulder/hip girdle pain and stiffness in patients over 50, with markedly elevated ESR/CRP and a dramatic response to low-dose corticosteroids -- features absent in fibromyalgia, where inflammatory markers are normal."
+  },
+  {
+    "disease_id": "herniated_intervertebral_disc",
+    "confusable_id": "lumbar_spondylosis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Lumbar spondylosis (degenerative disc/facet disease) is the chronic background process on which many disc herniations occur; it is distinguished by more insidious-onset, activity-related axial low back pain without a dominant single nerve-root pattern, whereas acute disc herniation more often presents with sudden-onset radicular leg pain exceeding back pain and a positive straight-leg-raise sign referable to one nerve root. A 2026 systematic review and meta-analysis found surgery for lumbar disc herniation gives better outcomes than conservative care in the short term, but outcomes become comp"
+  },
+  {
+    "disease_id": "polymyalgia_rheumatica",
+    "confusable_id": "rheumatoid_arthritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Elderly-onset/late-onset rheumatoid arthritis (LORA) can mimic PMR with proximal girdle symptoms. The 2012 EULAR/ACR criteria explicitly build in the distinction: points are awarded specifically for the ABSENCE of RF/ACPA (2 points) and the ABSENCE of peripheral joint involvement (1 point), i.e., presence of these features should push the diagnosis away from PMR and toward RA."
+  },
+  {
+    "disease_id": "polymyalgia_rheumatica",
+    "confusable_id": "giant_cell_arteritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Not simply a differential but a genuinely overlapping/co-existing diagnosis with shared pathogenesis \u2014 see EMERGENCY_OVERRIDE_RULE below for the real screening obligation this creates."
+  },
+  {
+    "disease_id": "osteomyelitis",
+    "confusable_id": "cellulitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cellulitis produces diffuse skin/soft-tissue erythema, warmth, and edema without deep bone involvement, whereas osteomyelitis involves the bone itself; MRI is the key discriminator because it can directly visualize marrow signal change (osteomyelitis) versus soft-tissue-only inflammation (cellulitis), with pooled MRI sensitivity 95.6% / specificity 80.7% for osteomyelitis."
+  },
+  {
+    "disease_id": "spondylolisthesis",
+    "confusable_id": "lumbar_spondylosis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-referenced from this knowledge base's lumbar_spondylosis entry: pure lumbar spondylosis is facet/disc degeneration causing axial pain, radiculopathy, or neurogenic claudication WITHOUT measurable vertebral body translation. Spondylolisthesis is distinguished on the same lateral radiograph by a measurable anterior (or posterior) slip of one vertebral body on the next; degenerative spondylolisthesis and lumbar spondylosis otherwise share the same underlying facet/disc degenerative process and frequently coexist at the same level."
+  },
+  {
+    "disease_id": "spondylolisthesis",
+    "confusable_id": "herniated_intervertebral_disc",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-referenced from this knowledge base's herniated_intervertebral_disc entry: acute disc herniation typically presents more suddenly, with radicular leg pain exceeding back pain and a single dominant nerve-root pattern, and shows no vertebral slip on imaging - whereas spondylolisthesis-related radiculopathy develops on a background of a demonstrable pars defect or degenerative slip and is often more gradual in onset. The two can coexist, since disc degeneration is part of the same degenerative cascade that produces degenerative spondylolisthesis."
+  },
+  {
+    "disease_id": "osteosarcoma",
+    "confusable_id": "osteomyelitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Acute/subacute osteomyelitis is an important benign mimic, particularly in children, because it can also produce periosteal reaction, a Codman triangle and metaphyseal signal change. In a direct comparison of 32 osteomyelitis and 31 Ewing sarcoma cases, permeative cortical involvement and a soft-tissue mass on MRI were significantly more common in the malignant (Ewing sarcoma) group, whereas a serpiginous tract on MRI favoured osteomyelitis; on multivariate analysis only ethnicity and the presence of a soft-tissue mass remained independently discriminating, and the authors concluded 'many feat"
+  },
+  {
+    "disease_id": "polymyositis",
+    "confusable_id": "dermatomyositis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference this knowledge base's dermatomyositis entry. Distinguished from PM by (1) presence of characteristic skin findings (heliotrope rash, Gottron papules) and (2) a complement/microangiopathy-mediated mechanism (capillary lysis, perifascicular atrophy) rather than PM's direct CD8+ T-cell/perforin attack on myofibers (Dalakas & Hohlfeld, PMID 14511932). In a real single-centre cohort, dermatomyositis had significantly lower CK than PM (316 vs 4884 U/L, p=0.005) despite comparable clinical weakness, consistent with the differing injury mechanisms."
+  },
+  {
+    "disease_id": "dermatomyositis",
+    "confusable_id": "polymyositis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Polymyositis (PM) is mechanistically and clinically distinguished from DM by the ABSENCE of the characteristic cutaneous findings (no heliotrope rash, no Gottron's papules/sign) - PM is a 'diagnosis of exclusion' among the IIMs requiring that skin disease and other identifiable causes (drug-induced myopathy, muscular dystrophy, IBM) be ruled out. Pathologically, PM shows endomysial CD8+ T-cell infiltration of non-necrotic, MHC-class-I-expressing fibers rather than the perifascicular, complement/microangiopathy pattern of DM."
+  },
+  {
+    "disease_id": "tinea_corporis",
+    "confusable_id": "pityriasis_rosea",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Pityriasis rosea classically begins with a single larger 'herald patch' followed days to weeks later by smaller oval lesions distributed along skin cleavage lines (Langer's lines) in a 'Christmas-tree' pattern, each with a fine peripheral collarette of scale; it lacks the single, expanding, scaly-bordered ring of tinea corporis and is KOH-negative."
+  },
+  {
+    "disease_id": "acne_vulgaris",
+    "confusable_id": "rosacea",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Rosacea is a key differential for facial acne-like eruptions in adults: it centres on the mid-face with persistent erythema, telangiectasia and inflammatory papules/pustules, but classically lacks comedones (a feature acne always has in some lesions), and it does not respond to standard acne therapy, requiring a distinct treatment strategy. Dermoscopically, features such as yellow/red halos, vascular polygons and follicular pustules have been shown to statistically differentiate rosacea from other facial inflammatory dermatoses."
+  },
+  {
+    "disease_id": "nonalcoholic_fatty_liver_disease",
+    "confusable_id": "alcoholic_liver_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "MASLD is distinguished from alcohol-related liver disease (ALD) purely by quantified alcohol intake, since both can look histologically identical: MASLD requires intake <=20 g/day (female) / <=30 g/day (male); 'MetALD' is the overlap category (average 20-50 g/day female, 30-60 g/day male); intake above the MetALD range is classified as ALD (PMID 37363821). Cross-reference: this KB's alcoholic/alcohol-related liver disease entry covers the ALD end of this spectrum -- accurate quantified alcohol history is the pivotal step separating the two diagnoses since imaging and routine liver chemistries "
+  },
+  {
+    "disease_id": "alcoholic_liver_disease",
+    "confusable_id": "nonalcoholic_fatty_liver_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Nonalcoholic fatty liver disease (NAFLD) is the principal histologic mimic of alcoholic steatosis/steatohepatitis and must be distinguished chiefly by alcohol-use history quantified with AUDIT/AUDIT-C or NIAAA at-risk drinking thresholds, since imaging and routine histology cannot reliably separate the two on their own (see this KB's NAFLD-adjacent guidance context: Indian National Association for Study of the Liver (INASL) Guidance Paper on Nomenclature, Diagnosis and Treatment of Nonalcoholic Fatty Liver Disease. J Clin Exp Hepatol. 2023. PMID 36950481). Not yet a separate entry in this KB a"
+  },
+  {
+    "disease_id": "alcoholic_liver_disease",
+    "confusable_id": "viral_hepatitis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Viral hepatitis (chronic HBV/HCV) is a leading global cause of cirrhosis alongside alcohol and NAFLD, can coexist with alcohol-related injury, and accelerates fibrosis progression when both are present; HBsAg and anti-HCV serology are standard exclusion/co-diagnosis tests in any patient being worked up for chronic liver disease (Devarbhavi H, Asrani SK, Arab JP, Nartey YA, Pose E, Kamath PS. Global burden of liver disease: 2023 update. J Hepatol. 2023. PMID 36990226). Cross-reference this KB's \"viral_hepatitis\" entry."
+  },
+  {
+    "disease_id": "chronic_gastritis",
+    "confusable_id": "peptic_ulcer_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Peptic ulcer disease shares H. pylori infection as its dominant cause and frequently coexists with the background chronic gastritis it arises from, but is defined endoscopically by a discrete mucosal break/crater at least 5 mm in diameter extending through the muscularis mucosae, which chronic gastritis alone does not have."
+  },
+  {
+    "disease_id": "chronic_gastritis",
+    "confusable_id": "gerd",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Gastro-oesophageal reflux disease produces heartburn/regurgitation that can overlap with epigastric dyspeptic symptoms, but is a distinct disorder of the gastro-oesophageal junction/lower oesophageal sphincter rather than a gastric mucosal inflammatory process."
+  },
+  {
+    "disease_id": "chronic_glomerulonephritis",
+    "confusable_id": "diabetic_nephropathy",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference: KB entry 'diabetic_nephropathy' exists. Distinguishing features favoring diabetic nephropathy over primary CGN: long-standing diabetes (typically >5-10 years in type 1; variable in type 2), concurrent diabetic retinopathy, and a more gradual rise in proteinuria typically WITHOUT significant hematuria or RBC casts \u2014 active urinary sediment should prompt reconsideration of a primary/immune glomerular process and biopsy."
+  },
+  {
+    "disease_id": "chronic_glomerulonephritis",
+    "confusable_id": "nephrotic_syndrome",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Nephrotic-range proteinuria (>3.5 g/day) with edema/hypoalbuminemia/hyperlipidemia overlaps with (and in children is often used interchangeably to describe) several of the causal glomerular diseases underlying CGN, notably membranous nephropathy and FSGS. No dedicated 'nephrotic_syndrome' KB id was found in this database at the time of writing, so it is not cross-referenced by id for that reason."
+  },
+  {
+    "disease_id": "chronic_glomerulonephritis",
+    "confusable_id": "iga_nephropathy",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference: KB entry 'iga_nephropathy' exists as the single most common specific primary cause underlying CGN worldwide; this CGN entry describes the shared downstream syndrome/progression pathway rather than duplicating IgAN-specific detail."
+  },
+  {
+    "disease_id": "chronic_glomerulonephritis",
+    "confusable_id": "chronic_kidney_disease",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference: KB entry 'chronic_kidney_disease' exists as the broader staging entity (KDIGO eGFR/albuminuria categories); CGN is one specific etiologic route into CKD, distinguished from other CKD causes by glomerular-pattern urinalysis (hematuria + proteinuria) and biopsy findings."
+  },
+  {
+    "disease_id": "acute_glomerulonephritis",
+    "confusable_id": "iga_nephropathy",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Real IgA nephropathy (Berger disease) is the key mimic to distinguish from PSGN/post-infectious AGN, mainly by timing and complement: IgA nephropathy classically causes gross ('synpharyngitic') hematuria that occurs DURING or within about 1-2 days of an upper-respiratory or gastrointestinal infection, with normal complement levels; post-infectious/post-streptococcal AGN, by contrast, follows a real latency period of roughly one to three weeks after the triggering infection (see definition_and_pathophysiology) and is characterized by real hypocomplementemia (low C3) rather than normal complemen"
+  },
+  {
+    "disease_id": "hypertensive_nephropathy",
+    "confusable_id": "diabetic_nephropathy",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference: KB entry 'diabetic_nephropathy' exists (also see this KB's 'chronic_glomerulonephritis' entry for shared CKD-staging context). Distinguishing histologic features favoring diabetic nephropathy: Kimmelstiel-Wilson nodules and efferent-arteriole hyalinosis (hypertensive nephrosclerosis classically involves the afferent arteriole predominantly), though mixed lesions are common when long-standing type 2 diabetes and hypertension coexist, and management differs (intensive glycemic control and diabetes-specific pharmacotherapy for DN vs targeted vascular risk reduction for hypertensi"
+  },
+  {
+    "disease_id": "hypertensive_nephropathy",
+    "confusable_id": "chronic_glomerulonephritis",
+    "confusable_name_raw": null,
+    "distinguishing_text": "Cross-reference: KB entry 'chronic_glomerulonephritis' exists. Active nephritic urinary sediment (dysmorphic RBCs, RBC casts) or nephrotic-range proteinuria points away from uncomplicated hypertensive nephrosclerosis toward a primary glomerular disease and should prompt biopsy rather than a default clinical diagnosis of hypertensive nephrosclerosis."
+  },
+  {
+    "disease_id": "urinary_incontinence",
+    "confusable_id": "urinary_tract_infection",
+    "confusable_name_raw": "Urinary tract infection (acute cystitis)",
+    "distinguishing_text": "Acute UTI can produce or acutely worsen urgency and urge-type leakage together with dysuria, increased frequency, and sometimes suprapubic discomfort or haematuria; the distinguishing feature is a positive urinalysis/urine culture and the typically acute, self-limited time-course once treated, versus the chronic, relapsing-remitting course of true urgency urinary incontinence. Because a positive urine culture is required to make this distinction, urinalysis is part of the standard initial UI work-up specifically to exclude an infective cause before attributing symptoms to a chronic incontinenc"
+  },
+  {
+    "disease_id": "urinary_incontinence",
+    "confusable_id": "neurogenic_bladder",
+    "confusable_name_raw": "Neurogenic bladder (detrusor overactivity or underactivity secondary to a demonstrable neurological lesion)",
+    "distinguishing_text": "Non-neurogenic UUI and neurogenic detrusor overactivity can produce identical storage symptoms (urgency, frequency, urgency incontinence); by definition, neurogenic bladder requires a demonstrable, relevant neurological cause (e.g. spinal cord injury, multiple sclerosis, spina bifida, diabetes, stroke), which is sought via a directed neurological history and examination, since symptoms alone cannot separate idiopathic overactive bladder from a neurogenic cause. Overflow-pattern UI similarly overlaps with neurogenic detrusor underactivity, again distinguished by the presence or absence of a con"
+  },
+  {
+    "disease_id": "urinary_incontinence",
+    "confusable_id": "benign_prostatic_hyperplasia",
+    "confusable_name_raw": "Bladder outlet obstruction / benign prostatic hyperplasia (in men) or pelvic organ prolapse (in women)",
+    "distinguishing_text": "Mechanical outlet obstruction produces predominantly voiding symptoms (weak stream, hesitancy, straining, incomplete emptying) that can progress to overflow incontinence, mimicking detrusor underactivity; in women, advanced pelvic organ prolapse can itself kink the urethra and either mask or, after reduction, unmask stress incontinence. Pressure-flow urodynamics and a pelvic examination (looking for prolapse) are the distinguishing tools."
+  },
+  {
+    "disease_id": "interstitial_cystitis",
+    "confusable_id": "urinary_tract_infection",
+    "confusable_name_raw": "Recurrent or chronic urinary tract infection (UTI)",
+    "distinguishing_text": "IC/BPS diagnosis fundamentally requires excluding active bacterial infection: the AUA guideline's exclusion-based diagnostic framework and NIDDK's diagnostic description both make ruling out infection (via urinalysis and urine culture) a required first step, since UTI causes an overlapping symptom picture of urgency, frequency, and bladder/suprapubic pain but is treatable with antibiotics and should resolve, unlike IC/BPS. Persistent symptoms despite negative repeated cultures and appropriate antibiotic trials point away from ongoing infection and toward IC/BPS."
+  },
+  {
+    "disease_id": "interstitial_cystitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Overactive bladder (OAB) / detrusor overactivity",
+    "distinguishing_text": "OAB shares urgency, frequency, and (with urgency incontinence) some overlap in presentation, but OAB is defined by urgency with or without incontinence WITHOUT the bladder/pelvic pain that worsens with filling and improves with voiding that characterizes IC/BPS -- pain is the discriminating feature, since OAB is not primarily a pain syndrome. Where a patient's presentation is ambiguous, urodynamics and the presence/absence of pain correlated with bladder filling are used to separate the two; see this knowledge base's urinary_incontinence entry (where present) for full sourced detail on OAB's o"
+  },
+  {
+    "disease_id": "interstitial_cystitis",
+    "confusable_id": null,
+    "confusable_name_raw": "Endometriosis",
+    "distinguishing_text": "Endometriosis and IC/BPS commonly coexist and can each mimic the other because pelvic pain from ectopic endometrial tissue can sensitize the bladder; a rat model study demonstrated that pelvic endometriosis induces real bladder hypersensitivity via TRPA1 receptor hyperexpression in bladder tissue and dorsal root ganglia, providing a real mechanistic basis for symptom cross-sensitization between the two conditions. Clinically, a literature review found that undiagnosed IC/BPS patients underwent hysterectomy for presumed gynecologic pain (including presumed endometriosis) more often than patient"
+  }
+]

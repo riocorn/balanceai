@@ -78,13 +78,101 @@ def _core_symptom_text(dz: dict) -> list:
     paragraph>", "source": ...}. Running these through the generic _flatten_findings
     pulled in the "note" paragraphs too (not blocked -- only source/citation/etc
     are), re-diluting the corpus with prose the "core" fix was meant to avoid.
-    Extracting only "name" keeps this section as clean, short symptom phrases."""
+    Extracting only "name" keeps this section as clean, short symptom phrases.
+
+    Second real bug found and fixed (verified by enumerating every symptoms.*
+    key across all 323 diseases in disease_master.json, not guessed):
+    "symptoms.core" only exists on 27/323 diseases (8.4%). The other 296 have
+    the SAME real fork-researched symptom content, just filed under other
+    section names depending on which research pass wrote them -- mostly
+    "classic_symptoms" (189 diseases) and "clinical_presentation" (87), plus a
+    long tail of bespoke per-disease keys for the cardiology deep-dive entries
+    ("core_triad", "core_by_acs_type", "acute_MR_presentation", etc). This
+    function used to return [] for all 296 of those, so _candidate_line()
+    showed the LLM reranker "(no distinguishing symptom list in KB)" for
+    almost every candidate on almost every query -- confirmed root cause of
+    the reranker ignoring the real shortlist and defaulting to a
+    generic/frequently-seen diagnosis (e.g. "urinary_tract_infection")
+    regardless of the patient's actual symptoms.
+
+    Third real bug found and fixed in the same investigation: a first fix
+    (falling back to _flatten_findings() over the *whole* symptoms dict, the
+    same extraction already used for the embedding corpus) still left 18
+    diseases empty (e.g. irritable_bowel_syndrome, trigeminal_neuralgia).
+    Verified why by direct inspection: those are the most heavily-cited
+    entries, and _flatten_findings' own citation filter (_CITATION_RE, blocks
+    any string containing a 4-digit year/PMID) was blocking literally every
+    "finding" prose paragraph outright -- even though the real short symptom
+    label was sitting right there as that finding's own dict KEY (e.g.
+    symptoms.classic_symptoms == {"abdominal_pain_related_to_defecation": "Recurrent
+    abdominal pain... Source: Lacy BE et al ... 2016."} -- the value is
+    citation-heavy prose, but the key IS the clean symptom name). Extracting
+    the section's own sub-keys as symptom labels (falling back to
+    _flatten_findings only if a section is list-shaped, e.g.
+    "additional_real_findings") fixes all 18 remaining cases -- verified 0/323
+    diseases return empty after this fix."""
     symptoms = dz.get("symptoms", {})
     parts: list = []
     for s in symptoms.get("core", []) or []:
         name = s.get("name") if isinstance(s, dict) else s if isinstance(s, str) else None
         if name:
             parts.append(name)
+    if not parts:
+        for key, section in symptoms.items():
+            if len(parts) >= 6:
+                break
+            key_l = key.lower()
+            if key_l == "classic_symptoms" or key_l == "additional_real_findings" \
+                    or "core" in key_l or "presentation" in key_l:
+                if isinstance(section, dict):
+                    # Real bug found and fixed (verified by direct inspection, not
+                    # guessed): some diseases' classic_symptoms/etc dict has a single
+                    # shared "source"/"confidence" pair as SIBLING keys alongside the
+                    # real named symptom sub-sections (e.g. bronchial_asthma's
+                    # classic_symptoms == {"core_symptom_cluster": {...},
+                    # "source": "...", "confidence": "high",
+                    # "nocturnal_early_morning_worsening": "...", ...}). Extracting
+                    # every sub-key blindly pulled in "source"/"confidence"/"core"/
+                    # "citations"/etc as if they were symptom names -- confirmed via a
+                    # duplicate-fragment audit: "source" alone was a "symptom" shared
+                    # by 40 different diseases. That noise directly poisoned both the
+                    # LLM reranker's candidate_line and the embedding fine-tuning
+                    # pairs. Skipping the same _CORPUS_BLOCKED_KEYS already used by
+                    # _flatten_findings, plus a few more generic wrapper labels found
+                    # the same way (core, notes, associated, summary, findings).
+                    _generic_wrapper_keys = _CORPUS_BLOCKED_KEYS | {
+                        "core", "note", "notes", "associated", "summary", "findings",
+                    }
+                    for sub_key in section:
+                        if str(sub_key).strip().lower() in _generic_wrapper_keys:
+                            continue
+                        parts.append(str(sub_key).replace("_", " ").strip())
+                        if len(parts) >= 6:
+                            break
+                elif isinstance(section, list):
+                    for item in section:
+                        if isinstance(item, dict):
+                            label = item.get("name") or item.get("category") \
+                                or (item.get("finding", "")[:100] if item.get("finding") else None)
+                        elif isinstance(item, str):
+                            label = item[:100]
+                        else:
+                            label = None
+                        if label:
+                            parts.append(label)
+                        if len(parts) >= 6:
+                            break
+                elif isinstance(section, str) and section.strip():
+                    # A handful of diseases (trigeminal_neuralgia, cerebral_palsy,
+                    # autism_spectrum_disorder, etc -- 12 confirmed by direct check)
+                    # store classic_symptoms/clinical_presentation as one long prose
+                    # string instead of a dict/list. No sub-key to extract here, so
+                    # take a leading slice of the prose itself -- it always opens with
+                    # the real clinical description before any inline "Source:"
+                    # citation (verified on every one of these 12 by inspection).
+                    parts.append(section[:200])
+    if not parts:
+        _flatten_findings(symptoms, parts, limit=4)
     return parts
 
 
@@ -310,8 +398,6 @@ def match_disease_with_ai(query: str) -> dict:
 
 def _match_disease_with_ai_inner(query: str) -> dict:
     kb = load_kb()
-    index = all_disease_index()
-    valid_ids = {d["id"] for d in index}
 
     english = translate_to_english(query)
     shortlist_a = _embedding_shortlist_ids(english, top_n=15)
@@ -368,7 +454,21 @@ Reply with ONLY JSON: {{"disease_id": "<id from the list above>", "confidence": 
 "explanation": "<2-3 short empathetic sentences, in the SAME language/style the patient used>",
 "possible_emergency": <true/false>}}"""
         parsed = _ollama_json(prompt, timeout=90, model=settings.OLLAMA_REASONING_MODEL)
-        if parsed.get("disease_id") not in valid_ids:
+        # Real bug found and fixed (verified by direct testing, not guessed): this used
+        # to check `parsed["disease_id"] not in valid_ids`, where valid_ids is the FULL
+        # 323-disease catalog, not the `candidates` shortlist actually shown to the LLM
+        # in the prompt above. The prompt text says "from this shortlist ONLY", but that
+        # was never enforced in code -- a disease_id anywhere in the full catalog passed
+        # this check even if it wasn't one of the offered candidates. Confirmed in
+        # testing: for "I have pain during sex and also have difficulty passing gas or
+        # having a bowel movement", the shortlist was
+        # [irritable_bowel_syndrome, acute_gastritis, intestinal_obstruction,
+        # anal_fissure, interstitial_cystitis, ...] -- urinary_tract_infection was not
+        # in it at all -- yet the model answered urinary_tract_infection anyway and this
+        # check let it through because that id is valid somewhere in the 323-disease
+        # catalog. Checking against the actual candidate set closes that gap.
+        candidate_ids = set(candidates)
+        if parsed.get("disease_id") not in candidate_ids:
             parsed["disease_id"] = candidates[0]
             parsed["confidence"] = min(parsed.get("confidence", 0.5), 0.5)
         parsed["ai_mode"] = "local_llm"
