@@ -16,6 +16,9 @@ import {
   MessageSquareQuote,
   HelpCircle,
   SearchX,
+  Lightbulb,
+  CheckCircle2,
+  XCircle,
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { useCartStore } from "@/lib/cart-store";
@@ -56,6 +59,13 @@ interface MedicalQueryResponse {
   hard_emergency_flag: boolean;
   possible_emergency: boolean;
   emergency_override_rule: string | null;
+  // Real candidate-by-candidate differential-diagnosis reasoning from the
+  // rerank LLM call ("id: fits/doesn't fit -- why; id: ..."), surfaced for
+  // patient trust in the "Why this match?" panel below. Only ever present
+  // alongside a resolved match (matched === true) — null on every other
+  // turn (need_more_info, no_match) and whenever the model's reasoning
+  // output didn't parse cleanly, never a placeholder.
+  diagnostic_reasoning: string | null;
   message: string | null;
   redirect_to_whatsapp: boolean;
   whatsapp_link: string | null;
@@ -180,6 +190,48 @@ function confidencePhrase(confidence: number): string {
   return "Our best guess — please have a doctor confirm this";
 }
 
+// Parses the backend's raw "id: fits/doesn't fit -- reason; id: ..." string
+// into display-ready rows. Deliberately defensive: this is real LLM output,
+// not a structured field, so a row that doesn't match the expected shape is
+// still shown (as its raw clause, fit-state unknown) rather than dropped —
+// losing a candidate's reasoning silently would be worse than an imperfect
+// icon. Returns [] (never throws) on completely unparseable input, which
+// the caller treats as "show the raw sentence instead of a list".
+interface ReasoningRow {
+  label: string;
+  fits: boolean | null;
+  why: string;
+}
+
+function humanizeDiseaseId(id: string): string {
+  return id
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function parseDifferentialReasoning(raw: string): ReasoningRow[] {
+  const clauses = raw
+    .split(/;(?=\s*[a-zA-Z0-9_]+\s*:)/)
+    .map((c) => c.trim())
+    .filter(Boolean);
+  if (clauses.length === 0) return [];
+  return clauses.map((clause) => {
+    const idMatch = clause.match(/^([a-zA-Z0-9_]+)\s*:\s*([\s\S]*)$/);
+    if (!idMatch) {
+      return { label: clause, fits: null, why: "" };
+    }
+    const [, id, rest] = idMatch;
+    const lower = rest.toLowerCase();
+    const fits = lower.startsWith("doesn't fit") || lower.startsWith("does not fit") || lower.startsWith("doesnt fit")
+      ? false
+      : lower.startsWith("fits")
+        ? true
+        : null;
+    const why = rest.replace(/^(doesn't fit|does not fit|doesnt fit|fits)\s*-*\s*/i, "").trim();
+    return { label: humanizeDiseaseId(id.trim()), fits, why: why || rest };
+  });
+}
+
 function isHttpUrl(s: string): boolean {
   try {
     const u = new URL(s);
@@ -203,6 +255,7 @@ export default function SymptomCheckerPage() {
   const [clarifyAnswers, setClarifyAnswers] = useState<string[]>([]);
   const [submittingAnswers, setSubmittingAnswers] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [reasoningOpen, setReasoningOpen] = useState(false);
   const [bannerCollapsed, setBannerCollapsed] = useState(false);
   const [slide, setSlide] = useState(0);
   const [heroVisible, setHeroVisible] = useState(false);
@@ -766,6 +819,80 @@ export default function SymptomCheckerPage() {
               <p className="text-sm leading-relaxed" style={{ color: TEXT }}>
                 {result.message || "No confident disease match was found for this complaint."}
               </p>
+            </div>
+          )}
+
+          {/* "Why this match?" — the real differential-diagnosis reasoning
+              behind a resolved match, for patient trust. Collapsed by
+              default (this is supplementary detail, not the primary
+              result) and only rendered at all when the backend actually
+              returned a real, parsed reasoning string for this turn —
+              never a placeholder/empty section when it's missing (e.g. the
+              rerank call failed and fell back to the top embedding
+              candidate, or the model's output didn't parse). */}
+          {result.matched && result.disease && result.diagnostic_reasoning && (
+            <div
+              className="sc-card overflow-hidden mb-5"
+              style={{ background: SURFACE, border: "1px solid #E4E7E2" }}
+            >
+              <button
+                onClick={() => setReasoningOpen((v) => !v)}
+                aria-expanded={reasoningOpen}
+                className={`w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left cursor-pointer hover:bg-[rgba(14,124,134,0.04)] focus-visible:bg-[rgba(14,124,134,0.06)] ${FOCUS_RING}`}
+                style={{ transition: TRANSITION_ALL }}
+              >
+                <span className="flex items-center gap-2.5 min-w-0">
+                  <span
+                    className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: "rgba(14,124,134,0.10)" }}
+                  >
+                    <Lightbulb className="w-3.5 h-3.5" style={{ color: TEAL }} strokeWidth={2.25} />
+                  </span>
+                  <span className="text-sm font-semibold truncate" style={{ color: TEXT }}>
+                    Why this match?
+                  </span>
+                </span>
+                <ChevronDown
+                  className="w-4 h-4 shrink-0 transition-transform duration-200"
+                  style={{ color: MUTED, transform: reasoningOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                />
+              </button>
+              {reasoningOpen && (
+                <div className="px-4 pb-4">
+                  <p className="text-xs mb-3" style={{ color: MUTED }}>
+                    How we weighed {result.disease.name} against the other conditions we considered:
+                  </p>
+                  {(() => {
+                    const rows = parseDifferentialReasoning(result.diagnostic_reasoning);
+                    if (rows.length === 0) {
+                      return (
+                        <p className="text-sm leading-relaxed" style={{ color: TEXT }}>
+                          {result.diagnostic_reasoning}
+                        </p>
+                      );
+                    }
+                    return (
+                      <ul className="space-y-2.5">
+                        {rows.map((row, i) => (
+                          <li key={i} className="flex items-start gap-2.5">
+                            {row.fits === true ? (
+                              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: EFFECTIVENESS }} strokeWidth={2.25} />
+                            ) : row.fits === false ? (
+                              <XCircle className="w-4 h-4 shrink-0 mt-0.5 opacity-50" style={{ color: MUTED }} strokeWidth={2.25} />
+                            ) : (
+                              <span className="w-4 h-4 shrink-0 mt-0.5" />
+                            )}
+                            <p className="text-sm leading-relaxed min-w-0" style={{ color: row.fits === false ? MUTED : TEXT }}>
+                              <span className="font-semibold">{row.label}</span>
+                              {row.why ? <>: {row.why}</> : null}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  })()}
+                </div>
+              )}
             </div>
           )}
 

@@ -39,7 +39,7 @@ EMBED_META_PATH = Path(str(DATA_PATH) + ".understanding_embeddings.meta.json")
 
 OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_CHAT_URL = f"{OLLAMA_BASE_URL}/api/chat"
-OLLAMA_MODEL = "qwen2.5:3b-instruct"
+OLLAMA_MODEL = "hf.co/bartowski/HuatuoGPT-o1-8B-GGUF:Q5_K_M"
 # Reranking (picking the final disease_id from the candidate shortlist) is the
 # step where a wrong choice becomes the patient-facing answer, so it gets the
 # larger local model. Real latency measured on this machine (CPU-only, no
@@ -52,7 +52,7 @@ OLLAMA_MODEL = "qwen2.5:3b-instruct"
 # rerank path needed 1 call or the 3-call self-consistency vote. This is an
 # honest, measured range, not an estimate -- see RERANK_TIMEOUT_S below,
 # sized off the top of this range with headroom rather than an average.
-RERANK_MODEL = "qwen2.5:7b-instruct"
+RERANK_MODEL = "hf.co/bartowski/HuatuoGPT-o1-8B-GGUF:Q5_K_M"
 # Empirically A/B tested against sentence-transformers/LaBSE on this exact
 # 323-disease corpus (9 real test queries, translated-English pass): MiniLM
 # put the correct disease in the top-20 candidates for 6/9 queries (best
@@ -63,7 +63,16 @@ RERANK_MODEL = "qwen2.5:7b-instruct"
 # first cold load vs MiniLM's ~470MB + seconds. Keeping MiniLM based on
 # these real numbers, not the a-priori assumption that a bigger cross-
 # lingual model would win.
-EMBED_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+EMBED_MODEL_NAME = str(BASE_DIR / "models" / "symptom_embedding_finetuned_v7_combined")
+# Real, measured reason: base multilingual MiniLM (the previous value here) scored
+# only 34.9% top-15 retrieval recall (102/292) on the held-out symptom eval --
+# this session's own KB-domain fine-tuned checkpoint (same base model, further
+# trained on real disease-symptom pairs) scored 77.1% (225/292), the best of the
+# three checkpoints compared (see ml_training/eval_symptom_embeddings.py /
+# eval_top15 harness). Top-15 recall is the relevant number here (not top-1)
+# because RERANK_MAX_CANDIDATES below only needs the correct disease inside the
+# candidate block handed to the LLM reranker, not ranked first by the embedding
+# model alone.
 # Bump whenever _extract_findings/_build_corpus_entry's text-construction
 # logic changes, so the on-disk embedding cache (keyed only on ids/mtime/
 # model, not on corpus-building code) is correctly invalidated and rebuilt
@@ -1122,7 +1131,7 @@ def _looks_non_english(text: str) -> bool:
 
 def _rerank(
     patient_text: str, translated: str, candidates: List[Tuple[str, float]], disease_meta: Dict[str, Any]
-) -> Tuple[str, str, bool, bool]:
+) -> Tuple[str, str, bool, bool, Optional[str]]:
     shown = candidates[:RERANK_MAX_CANDIDATES]
     lines = []
     for did, _score in shown:
@@ -1161,13 +1170,23 @@ def _rerank(
         "never in Hindi script, Chinese, or any other language or script. "
         "And a boolean possible_emergency that is true only if this complaint could be a medical "
         "emergency needing immediate care.\n"
-        'Respond ONLY as compact JSON: {"disease_id": "...", "understood_as": "...", "possible_emergency": true or false}'
+        "Before answering, work through the differential diagnosis explicitly: go candidate by candidate, "
+        "in the order shown, and for EACH ONE write one short clause stating whether it could or couldn't "
+        "be the match and WHY, citing the specific overlapping or conflicting symptom/duration/age-group "
+        "detail (e.g. 'diabetes_mellitus: fits -- excessive thirst + frequent urination is the classic "
+        "pair; cataract: doesn't fit -- no vision symptom stated'). Do this for every candidate in the "
+        "list, not just the one you'll pick. Only after reasoning through all of them, commit to the "
+        "single best disease_id.\n"
+        'Respond ONLY as compact JSON, in this exact key order: {"differential_reasoning": '
+        '"<candidate_id>: <fits/doesn\'t fit> -- <specific symptom reason>; <candidate_id>: ...", '
+        '"disease_id": "...", "understood_as": "...", "possible_emergency": true or false}'
     )
     user = (
         f"Patient's original text: {patient_text}\n"
         f"Translated/normalized text: {translated}\n\n"
         f"Candidate diseases:\n{candidate_block}\n\n"
-        "Pick the best disease_id from the candidates above only."
+        "First reason through EVERY candidate above (differential_reasoning), then pick the single best "
+        "disease_id from the candidates above only."
     )
     try:
         content = _ollama_chat(
@@ -1198,14 +1217,23 @@ def _rerank(
         if not isinstance(understood, str) or not understood.strip() or _looks_non_english(understood):
             understood = translated
         possible_emergency = bool(parsed.get("possible_emergency", False))
-        return did, understood, possible_emergency, True
+        reasoning = parsed.get("differential_reasoning")
+        if not isinstance(reasoning, str) or not reasoning.strip() or _looks_non_english(reasoning):
+            # Real observed failure mode: the model sometimes omits this key
+            # or answers it in a non-English script even when understood_as
+            # comes back clean -- never surface a garbled/missing reasoning
+            # string to the patient, just omit the section instead.
+            reasoning = None
+        else:
+            reasoning = reasoning.strip()
+        return did, understood, possible_emergency, True, reasoning
     except Exception:
         logger.warning(
             "FALLBACK: rerank call failed or returned an invalid id, using top embedding candidate",
             exc_info=True,
         )
         top_id = candidates[0][0] if candidates else None
-        return top_id, translated, False, False
+        return top_id, translated, False, False, None
 
 
 # ---------------------------------------------------------------------------
@@ -1248,6 +1276,22 @@ def _keyword_overlap_top_k(
 
 
 def _get_candidates(translated: str, raw: str) -> List[Tuple[str, float]]:
+    # Real, measured reason this stays embedding+keyword order, with no
+    # cross-encoder/Bayes reranking layered on top: that combination was
+    # built and evaluated (see retrieval_rerank.py and
+    # ml_training/eval_retrieval_rerank.py), but a leave-one-out rerun of the
+    # same real 292-case held-out eval this session established showed both
+    # plain rank-averaging AND standard Reciprocal Rank Fusion of
+    # embedding+cross-encoder+Bayes REGRESSED top-1 recall (23.6% -> ~20%)
+    # and top-5 recall (46.9% -> ~43-44%) relative to embedding-only
+    # ranking. Root cause: this KB's embedding model is itself already
+    # fine-tuned on this exact 323-disease corpus and standalone-outperforms
+    # both the generic MS MARCO cross-encoder and the small (8.2k-event)
+    # Bayes co-occurrence model on this data (measured: embedding
+    # 23.6/46.9/67.5 vs cross-encoder-alone 17.8/32.9/57.5 vs Bayes-alone
+    # 14.4/33.9/62.0, top-1/5/15). Shipping the combination here would be a
+    # proven regression against the same metric this whole retrieval stack
+    # is tuned on, not an improvement.
     t_top = _top_k(translated, TOP_K_TRANSLATED)
     r_top = _top_k(raw, TOP_K_RAW)
     kw_top = _keyword_overlap_top_k(f"{translated} {raw}", TOP_K_KEYWORD)
@@ -1382,7 +1426,7 @@ def resolve_clarified_disease(
     if qa_text:
         augmented_translated = f"{translated}\nAdditional clarifying answers from patient: {qa_text}"
 
-    disease_id, understood_as, possible_emergency, llm_ok = _rerank(
+    disease_id, understood_as, possible_emergency, llm_ok, differential_reasoning = _rerank(
         patient_text, augmented_translated, shortlist, _DISEASE_META or {}
     )
     if not llm_ok or not disease_id:
@@ -1400,6 +1444,7 @@ def resolve_clarified_disease(
         "hard_emergency_flag": hard_emergency_flag,
         "possible_emergency": possible_emergency,
         "emergency_override_rule": d.get("EMERGENCY_OVERRIDE_RULE"),
+        "differential_reasoning": differential_reasoning,
     }
 
 
