@@ -154,15 +154,6 @@ class MedicalQueryResponse(BaseModel):
     hard_emergency_flag: bool = False
     possible_emergency: bool = False
     emergency_override_rule: Optional[str] = None
-    diagnostic_reasoning: Optional[str] = Field(
-        None,
-        description=(
-            "The LLM's real candidate-by-candidate differential-diagnosis reasoning behind this match "
-            "(id: fits/doesn't fit -- why, for each candidate considered), surfaced for patient trust. "
-            "Only present on a resolved match from the clarifying-Q&A flow; None when missing/unparseable "
-            "or when this turn didn't resolve to a final disease -- never a placeholder or guessed text."
-        ),
-    )
     message: Optional[str] = Field(
         None, description="Present when no confident disease match was found."
     )
@@ -255,7 +246,6 @@ def _matched_response(disease_id: str, understanding: dict) -> MedicalQueryRespo
         hard_emergency_flag=hard_emergency_flag,
         possible_emergency=possible_emergency,
         emergency_override_rule=_normalize_emergency_rule(understanding.get("emergency_override_rule")),
-        diagnostic_reasoning=understanding.get("differential_reasoning"),
     )
 
 

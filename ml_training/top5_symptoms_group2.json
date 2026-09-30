@@ -1,0 +1,1276 @@
+[
+  {
+    "disease_id": "opioid_use_disorder",
+    "disease_name": "Opioid Use Disorder",
+    "top_5_symptoms": [
+      "craving and loss of control over use",
+      "continued use despite harm and functional impairment",
+      "tolerance and withdrawal as diagnostic criteria",
+      "withdrawal syndrome symptoms and real timeline"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "MSD Manual Professional Edition (verified via web search)",
+      "KB text"
+    ],
+    "confidence_note": "Only 4 real, distinct symptom categories exist -- MSD Manual/DSM-5-TR search confirmed the same 4 criteria clusters already in the KB, no genuinely new 5th category found. Reporting 4 honestly, not padded to 5."
+  },
+  {
+    "disease_id": "acute_otitis_media",
+    "disease_name": "Acute Otitis Media",
+    "top_5_symptoms": [
+      "Recurrent otitis media",
+      "ear pain otalgia",
+      "infant presentation ear tugging irritability fussiness",
+      "fever",
+      "hearing related symptoms"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Otitis media, susceptibility to', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (1 annotations)."
+  },
+  {
+    "disease_id": "vitiligo",
+    "disease_name": "Vitiligo",
+    "top_5_symptoms": [
+      "well demarcated depigmented macules and symmetric distribution",
+      "koebner phenomenon",
+      "poliosis hair depigmentation",
+      "mucosal involvement",
+      "often first appears on hands, face, and areas around body openings/genitals"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/vitiligo)",
+      "KB text (data/disease_master.json)",
+      "KB text"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "streptococcal_pharyngitis",
+    "disease_name": "Streptococcal Pharyngitis (Strep Throat)",
+    "top_5_symptoms": [
+      "core triad and examination findings",
+      "absence of cough and coryza as a distinguishing feature",
+      "scarlet fever rash in a subset",
+      "atypical pediatric presentation",
+      "tender, enlarged cervical/submaxillary lymph nodes"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "KB text"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "hodgkin_lymphoma",
+    "disease_name": "Hodgkin Lymphoma",
+    "top_5_symptoms": [
+      "Lymphoma",
+      "painless lymphadenopathy",
+      "b symptoms",
+      "pruritus",
+      "alcohol induced nodal pain"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Lymphoma, non-hodgkin, familial', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (1 annotations)."
+  },
+  {
+    "disease_id": "testicular_cancer",
+    "disease_name": "Testicular Cancer (Germ Cell Tumor)",
+    "top_5_symptoms": [
+      "lump or swelling in either testicle",
+      "feeling of heaviness in the scrotum",
+      "dull ache in the lower belly or groin",
+      "enlargement or tenderness of breast tissue",
+      "back pain"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/testicular-cancer-care)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "scabies",
+    "disease_name": "Scabies",
+    "top_5_symptoms": [
+      "intense itching, often worse at night",
+      "thin wavy skin burrows with tiny blisters/bumps",
+      "rash concentrated in finger webs, wrists, waistline, and genitals",
+      "secondary skin infection from scratching",
+      "itching persisting for weeks after treatment"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/scabies)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "gestational_trophoblastic_neoplasia",
+    "disease_name": "Gestational Trophoblastic Neoplasia (Choriocarcinoma)",
+    "top_5_symptoms": [
+      "abnormal vaginal bleeding unrelated to periods",
+      "uterus larger than expected for gestational age",
+      "pelvic pain, pressure, or mass",
+      "extreme nausea and vomiting (hyperemesis)",
+      "passing grape-like tissue from the vagina"
+    ],
+    "sources_used": [
+      "Cleveland Clinic",
+      "KB text (data/disease_master.json)",
+      "BC Cancer (bccancer.bc.ca)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "typhoid_fever",
+    "disease_name": "Typhoid Fever (Salmonella Typhi Infection)",
+    "top_5_symptoms": [
+      "fever pattern",
+      "source fever",
+      "relative bradycardia",
+      "source bradycardia",
+      "abdominal pain and bowel habit"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "chlamydia_infection",
+    "disease_name": "Chlamydia (Chlamydia trachomatis Genital Infection)",
+    "top_5_symptoms": [
+      "majority asymptomatic",
+      "symptoms in women",
+      "symptoms in men",
+      "epididymitis in men",
+      "reactive arthritis minority"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "acute_lymphoblastic_leukemia",
+    "disease_name": "Acute Lymphoblastic Leukemia (Childhood ALL)",
+    "top_5_symptoms": [
+      "T-cell acute lymphoblastic leukemias",
+      "Acute lymphoblastic leukemia",
+      "Lymphoma",
+      "bone marrow failure symptoms",
+      "bone pain"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Lymphoblastic leukemia, acute, with lymphomatous features', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (3 annotations)."
+  },
+  {
+    "disease_id": "gonorrhea_infection",
+    "disease_name": "Gonorrhea (Neisseria gonorrhoeae Genital Infection)",
+    "top_5_symptoms": [
+      "sex based asymptomatic pattern",
+      "symptoms in men",
+      "symptoms in women",
+      "pharyngeal and rectal infection often asymptomatic both sexes",
+      "disseminated gonococcal infection rare but serious"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "leprosy",
+    "disease_name": "Leprosy (Hansen's Disease)",
+    "top_5_symptoms": [
+      "numb, hypopigmented skin patches/macules",
+      "thickened/enlarged peripheral nerves",
+      "loss of sensation, often the first symptom (90% of cases)",
+      "muscle weakness in nerve-affected areas",
+      "skin nodules or plaques (lepromatous form)"
+    ],
+    "sources_used": [
+      "CDC (cdc.gov/leprosy)",
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "acute_promyelocytic_leukemia",
+    "disease_name": "Acute Promyelocytic Leukemia (APL)",
+    "top_5_symptoms": [
+      "Chronic infection",
+      "Ecchymosis",
+      "Gingival bleeding",
+      "Epistaxis",
+      "Petechiae"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Acute promyelocytic leukemia', token overlap=2)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 38 total annotations for matched term."
+  },
+  {
+    "disease_id": "giardiasis",
+    "disease_name": "Giardiasis",
+    "top_5_symptoms": [
+      "asymptomatic carriage",
+      "asymptomatic source",
+      "symptomatic presentation",
+      "symptomatic source",
+      "absence of blood and high fever"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "bacterial_conjunctivitis",
+    "disease_name": "Bacterial Conjunctivitis",
+    "top_5_symptoms": [
+      "purulent mucopurulent discharge with eyelids stuck together",
+      "conjunctival injection",
+      "absence of significant itching",
+      "bilateral or sequential bilateral presentation",
+      "usual absence of preauricular lymphadenopathy"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "trichomoniasis",
+    "disease_name": "Trichomoniasis (Trichomonas vaginalis Genital Infection)",
+    "top_5_symptoms": [
+      "itching, burning, redness of the genitals",
+      "discomfort or burning during urination",
+      "abnormal vaginal discharge, thin and yellow-green with a fishy odor",
+      "lower abdominal pain",
+      "penile itching/discharge/burning after urination in men"
+    ],
+    "sources_used": [
+      "CDC (cdc.gov/trichomoniasis)",
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "retinoblastoma",
+    "disease_name": "Retinoblastoma",
+    "top_5_symptoms": [
+      "white pupillary reflex (leukocoria), especially visible in flash photos",
+      "eyes that appear misaligned or crossed (strabismus)",
+      "eye redness",
+      "eye swelling",
+      "vision loss or problems"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Memorial Sloan Kettering",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/retinoblastoma)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "tetanus",
+    "disease_name": "Tetanus (Clostridium tetani Infection)",
+    "top_5_symptoms": [
+      "trismus lockjaw",
+      "risus sardonicus",
+      "generalized muscle rigidity",
+      "painful paroxysmal spasms and triggers",
+      "opisthotonus in severe disease"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "measles",
+    "disease_name": "Measles (Rubeola)",
+    "top_5_symptoms": [
+      "prodrome three cs",
+      "source prodrome",
+      "koplik spots timing",
+      "source koplik timing",
+      "rash"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "anaphylaxis",
+    "disease_name": "Anaphylaxis",
+    "top_5_symptoms": [
+      "rapid onset",
+      "skin mucosal findings",
+      "respiratory symptoms",
+      "cardiovascular symptoms",
+      "gastrointestinal symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "rabies",
+    "disease_name": "Rabies",
+    "top_5_symptoms": [
+      "flu-like early symptoms: fever, weakness, headache",
+      "tingling, itching, or pain at the bite site",
+      "agitation, confusion, hallucinations (furious form)",
+      "hydrophobia -- painful throat/larynx spasms triggered by drinking",
+      "progressive paralysis (paralytic form)"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "CDC (cdc.gov/rabies)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "diphtheria",
+    "disease_name": "Diphtheria",
+    "top_5_symptoms": [
+      "sore throat and the characteristic bleeding pseudomembrane",
+      "bull neck from cervical lymphadenopathy and soft tissue swelling",
+      "myocarditis a distinctive toxin mediated complication",
+      "polyneuropathy a distinctive toxin mediated complication",
+      "danger from circulating toxin distinct from local throat disease"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "cataract",
+    "disease_name": "Cataract",
+    "top_5_symptoms": [
+      "gradual painless progressive blurring",
+      "glare and halos especially at night",
+      "faded or yellowed color perception",
+      "frequent changes in glasses prescription myopic shift",
+      "posterior subcapsular disproportionate glare and near vision difficulty"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "chickenpox",
+    "disease_name": "Chickenpox (Varicella)",
+    "top_5_symptoms": [
+      "prodrome",
+      "source prodrome",
+      "rash pattern and successive crops",
+      "source rash",
+      "contagious period"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "glaucoma",
+    "disease_name": "Glaucoma",
+    "top_5_symptoms": [
+      "patchy peripheral (side) vision loss, gradual in open-angle glaucoma",
+      "severe eye pain and headache (acute angle-closure)",
+      "nausea or vomiting (acute attack)",
+      "blurred vision with halos around lights (acute)",
+      "eye redness (acute angle-closure)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/glaucoma)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "pertussis",
+    "disease_name": "Pertussis (Whooping Cough)",
+    "top_5_symptoms": [
+      "initial cold-like symptoms: runny nose, sneezing, mild cough (catarrhal stage)",
+      "paroxysms of rapid coughing followed by a high-pitched whoop",
+      "post-cough vomiting",
+      "choking or cyanosis spells in infants instead of a whoop",
+      "prolonged convalescent cough lasting weeks"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "CDC (cdc.gov/pertussis)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "herpes_zoster",
+    "disease_name": "Herpes Zoster (Shingles)",
+    "top_5_symptoms": [
+      "prodromal pain",
+      "source prodrome",
+      "dermatomal rash does not cross midline",
+      "source rash",
+      "postherpetic neuralgia most common complication"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "amoebiasis",
+    "disease_name": "Amoebiasis (Entamoeba histolytica Infection)",
+    "top_5_symptoms": [
+      "asymptomatic majority",
+      "asymptomatic majority source",
+      "amebic dysentery",
+      "amebic dysentery source",
+      "liver abscess presentation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "melanoma",
+    "disease_name": "Melanoma (Cutaneous Malignant Melanoma)",
+    "top_5_symptoms": [
+      "asymmetrical mole shape",
+      "irregular, notched, or scalloped border",
+      "multiple colors or a change in color",
+      "diameter larger than a pencil eraser (>6mm)",
+      "evolving size/shape/color, or new itching/tenderness/bleeding"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic ABCDE rule (mayoclinic.org/diseases-conditions/melanoma)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "chronic_myeloid_leukemia",
+    "disease_name": "Chronic Myeloid Leukemia (CML)",
+    "top_5_symptoms": [
+      "Acute myeloid leukemia",
+      "overview",
+      "chronic phase symptomatic presentation",
+      "splenomegaly",
+      "bone pain and advanced disease symptoms"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Leukemia, acute myeloid', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (1 annotations)."
+  },
+  {
+    "disease_id": "croup",
+    "disease_name": "Croup (Laryngotracheobronchitis)",
+    "top_5_symptoms": [
+      "barky seal like cough",
+      "inspiratory stridor",
+      "hoarseness",
+      "worse at night",
+      "preceding mild upper respiratory prodrome"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "influenza",
+    "disease_name": "Influenza (Seasonal Flu)",
+    "top_5_symptoms": [
+      "sudden fever or chills",
+      "cough and sore throat",
+      "muscle or body aches",
+      "headache and fatigue",
+      "runny or stuffy nose"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "CDC (cdc.gov/flu)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "covid_19",
+    "disease_name": "COVID-19 (SARS-CoV-2 Infection)",
+    "top_5_symptoms": [
+      "core symptoms",
+      "loss of taste smell",
+      "source anosmia",
+      "asymptomatic and mild proportion",
+      "source mild proportion"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "cholelithiasis_cholecystitis",
+    "disease_name": "Cholelithiasis and Cholecystitis (Gallstones)",
+    "top_5_symptoms": [
+      "sudden severe right-upper-quadrant/epigastric pain (biliary colic)",
+      "pain radiating to the back or right shoulder",
+      "nausea and vomiting",
+      "fever and chills once cholecystitis develops",
+      "abdominal tenderness to touch"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "bronchiolitis",
+    "disease_name": "Bronchiolitis (RSV and Other Viral)",
+    "top_5_symptoms": [
+      "initial cold-like symptoms: runny nose, mild fever",
+      "worsening cough",
+      "wheezing, a high-pitched whistling sound on exhale",
+      "rapid/labored breathing with chest retractions",
+      "poor feeding and dehydration risk in infants"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "tetralogy_of_fallot",
+    "disease_name": "Tetralogy of Fallot (TOF)",
+    "top_5_symptoms": [
+      "Developmental glaucoma",
+      "Tetralogy of Fallot",
+      "cyanosis severity tracks rvot obstruction",
+      "harsh systolic ejection murmur",
+      "tet spells hypercyanotic spells"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Tetralogy of Fallot and glaucoma', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (2 annotations)."
+  },
+  {
+    "disease_id": "patent_ductus_arteriosus",
+    "disease_name": "Patent Ductus Arteriosus (PDA)",
+    "top_5_symptoms": [
+      "Patent ductus arteriosus",
+      "Clinodactyly of the 5th finger",
+      "small pda often asymptomatic",
+      "heart failure signs in hemodynamically significant pda especially premature infants",
+      "bounding pulses and wide pulse pressure"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Patent ductus arteriosus 2', token overlap=3)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (2 annotations)."
+  },
+  {
+    "disease_id": "ventricular_septal_defect",
+    "disease_name": "Ventricular Septal Defect (VSD)",
+    "top_5_symptoms": [
+      "Ventricular septal defect",
+      "Atrial septal defect",
+      "Pulmonic stenosis",
+      "Tetralogy of Fallot",
+      "Atrioventricular canal defect"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Ventricular septal defect 1', token overlap=3)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 5 total annotations for matched term."
+  },
+  {
+    "disease_id": "sarcoidosis",
+    "disease_name": "Sarcoidosis",
+    "top_5_symptoms": [
+      "incidental detection",
+      "pulmonary symptoms",
+      "lofgren syndrome",
+      "fatigue",
+      "skin lesions"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "irritable_bowel_syndrome",
+    "disease_name": "Irritable Bowel Syndrome (IBS)",
+    "top_5_symptoms": [
+      "abdominal pain related to defecation",
+      "altered bowel habits",
+      "bloating and distension",
+      "symptom fluctuation and chronicity",
+      "absence of red flag features as a distinguishing point"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "empyema",
+    "disease_name": "Empyema (Pleural Empyema)",
+    "top_5_symptoms": [
+      "Persistent or worsening fever despite antibiotic treatment for pneumonia",
+      "Pleuritic chest pain",
+      "Dyspnoea",
+      "Productive cough",
+      "Weight loss and malaise in more chronic/indolent presentations"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "diverticulitis",
+    "disease_name": "Acute Diverticulitis",
+    "top_5_symptoms": [
+      "sudden or gradually worsening lower-left abdominal pain",
+      "fever",
+      "nausea",
+      "abdominal tenderness to touch",
+      "change in bowel habits: diarrhea or constipation"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/diverticulitis)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "hemorrhoids",
+    "disease_name": "Hemorrhoids (Haemorrhoidal Disease)",
+    "top_5_symptoms": [
+      "painless bright red rectal bleeding",
+      "anal itching and irritation",
+      "prolapse or palpable lump",
+      "pain",
+      "mucus discharge"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "inguinal_hernia",
+    "disease_name": "Inguinal Hernia",
+    "top_5_symptoms": [
+      "Inguinal hernia",
+      "groin bulge",
+      "discomfort",
+      "asymptomatic or minimally symptomatic hernias",
+      "warning signs of incarceration strangulation"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Hernia, double inguinal', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (1 annotations)."
+  },
+  {
+    "disease_id": "nephrolithiasis",
+    "disease_name": "Nephrolithiasis (Kidney Stones)",
+    "top_5_symptoms": [
+      "severe sharp flank/back pain radiating to the groin",
+      "pain that comes in waves",
+      "pain or burning during urination",
+      "blood in the urine (pink, red, or brown)",
+      "nausea and vomiting"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/kidney-stones)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "anal_fissure",
+    "disease_name": "Anal Fissure",
+    "top_5_symptoms": [
+      "pain during bowel movements",
+      "pain persisting after bowel movements, up to several hours",
+      "bright red blood on stool or toilet paper",
+      "visible crack or tear in the anal skin",
+      "anal sphincter spasm"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/anal-fissure)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "renal_cell_carcinoma",
+    "disease_name": "Renal Cell Carcinoma (RCC)",
+    "top_5_symptoms": [
+      "Renal cell carcinoma",
+      "triad now uncommon",
+      "hematuria most common",
+      "paraneoplastic syndromes",
+      "constitutional symptoms advanced disease"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Renal cell carcinoma, xp11-associated', token overlap=3)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (1 annotations)."
+  },
+  {
+    "disease_id": "wilms_tumour",
+    "disease_name": "Wilms Tumour (Nephroblastoma)",
+    "top_5_symptoms": [
+      "palpable abdominal mass or swelling",
+      "abdominal pain",
+      "fever",
+      "blood in the urine (hematuria)",
+      "high blood pressure"
+    ],
+    "sources_used": [
+      "Cleveland Clinic",
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "bacterial_prostatitis",
+    "disease_name": "Bacterial Prostatitis (Acute and Chronic)",
+    "top_5_symptoms": [
+      "pain in lower back, perineum, or testicles",
+      "frequent and urgent urination",
+      "burning pain during urination",
+      "fever and chills (acute bacterial form)",
+      "blood in urine"
+    ],
+    "sources_used": [
+      "Cleveland Clinic",
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "benign_prostatic_hyperplasia",
+    "disease_name": "Benign Prostatic Hyperplasia (BPH)",
+    "top_5_symptoms": [
+      "frequent or urgent need to urinate",
+      "increased nighttime urination (nocturia)",
+      "weak or interrupted urine stream",
+      "difficulty starting urination",
+      "dribbling at the end of urination"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/benign-prostatic-hyperplasia)",
+      "KB text (data/disease_master.json)",
+      "HPO frequency data (matched disease: 'Prostatic hyperplasia, benign', token overlap=3)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "diabetic_nephropathy",
+    "disease_name": "Diabetic Nephropathy (Diabetic Kidney Disease)",
+    "top_5_symptoms": [
+      "proteinuria, often asymptomatic early (found on urine test)",
+      "swelling of feet, ankles, hands, or eyes",
+      "worsening, harder-to-control high blood pressure",
+      "foamy urine",
+      "fatigue and nausea (later stages)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/diabetic-nephropathy)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "diabetic_ketoacidosis",
+    "disease_name": "Diabetic Ketoacidosis (DKA)",
+    "top_5_symptoms": [
+      "prodrome",
+      "gastrointestinal",
+      "respiratory",
+      "neurologic",
+      "dehydration signs"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "iga_nephropathy",
+    "disease_name": "IgA Nephropathy (Berger Disease)",
+    "top_5_symptoms": [
+      "Hematuria",
+      "Hypertension",
+      "Stage 5 chronic kidney disease",
+      "Proteinuria",
+      "Mesangial hypercellularity"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Iga nephropathy, susceptibility to, 3', token overlap=2)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 6 total annotations for matched term."
+  },
+  {
+    "disease_id": "volvulus",
+    "disease_name": "Volvulus (Intestinal)",
+    "top_5_symptoms": [
+      "abdominal distension",
+      "colicky abdominal pain",
+      "obstipation",
+      "bilious vomiting neonatal red flag",
+      "peritonitis sepsis if ischemia or perforation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "prolactinoma",
+    "disease_name": "Prolactinoma (Prolactin-Secreting Pituitary Adenoma)",
+    "top_5_symptoms": [
+      "irregular or absent menstrual periods (women)",
+      "milky nipple discharge unrelated to pregnancy (galactorrhea)",
+      "erectile dysfunction and decreased libido (men)",
+      "headache and peripheral vision loss (larger tumors pressing the optic nerve)",
+      "infertility"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/prolactinoma)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "congenital_adrenal_hyperplasia",
+    "disease_name": "Congenital Adrenal Hyperplasia (CAH)",
+    "top_5_symptoms": [
+      "Congenital adrenal hyperplasia",
+      "Adrenogenital syndrome",
+      "Hypospadias",
+      "Renal salt wasting",
+      "classic salt wasting neonatal"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Lipoid congenital adrenal hyperplasia', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (4 annotations)."
+  },
+  {
+    "disease_id": "hereditary_hemochromatosis",
+    "disease_name": "Hereditary Haemochromatosis",
+    "top_5_symptoms": [
+      "fatigue and weakness",
+      "joint pain",
+      "abdominal pain",
+      "bronze or gray skin discoloration",
+      "loss of libido or erectile dysfunction"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/hemochromatosis)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "acromegaly",
+    "disease_name": "Acromegaly",
+    "top_5_symptoms": [
+      "enlarged hands and feet",
+      "coarsened facial features: prominent brow, jaw, nose, lips",
+      "joint pain",
+      "excessive sweating",
+      "headaches"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/acromegaly)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "hemophilia_a",
+    "disease_name": "Haemophilia A (Factor VIII Deficiency)",
+    "top_5_symptoms": [
+      "Hemarthrosis (joint bleeding)",
+      "Muscle hematomas",
+      "Severity-dependent bleeding correlation",
+      "Prolonged bleeding after surgery/dental procedures/circumcision",
+      "Intracranial hemorrhage (ICH)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "siadh",
+    "disease_name": "SIADH (Syndrome of Inappropriate ADH Secretion)",
+    "top_5_symptoms": [
+      "nausea and vomiting",
+      "muscle weakness and cramps",
+      "confusion and irritability",
+      "headache",
+      "seizures or coma in severe hyponatremia"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "MSD Manual (msdmanuals.com/home/kidney-and-urinary-tract-disorders)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "phenylketonuria",
+    "disease_name": "Phenylketonuria (PKU)",
+    "top_5_symptoms": [
+      "musty odor in breath, skin, or urine",
+      "developmental delay or intellectual disability if untreated",
+      "seizures",
+      "skin rashes such as eczema",
+      "lighter skin, hair, and eye color than family members"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/phenylketonuria)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "beta_thalassemia_major",
+    "disease_name": "Beta Thalassemia Major",
+    "top_5_symptoms": [
+      "Pallor",
+      "Anisopoikilocytosis",
+      "Hypochromic microcytic anemia",
+      "Anemia of inadequate production",
+      "Persistence of hemoglobin F"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Beta-thalassemia major', token overlap=3)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 50 total annotations for matched term."
+  },
+  {
+    "disease_id": "hypoparathyroidism",
+    "disease_name": "Hypoparathyroidism",
+    "top_5_symptoms": [
+      "tingling or burning in fingers, toes, and lips",
+      "muscle cramps/aches in legs, feet, abdomen, face",
+      "muscle twitching or spasms (tetany) around the mouth and in the hands",
+      "tiredness and weakness",
+      "seizures in severe cases"
+    ],
+    "sources_used": [
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/hypoparathyroidism)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "thrombotic_thrombocytopenic_purpura",
+    "disease_name": "Thrombotic Thrombocytopenic Purpura (TTP)",
+    "top_5_symptoms": [
+      "Jaundice",
+      "Stroke",
+      "Respiratory distress",
+      "Transient ischemic attack",
+      "Myocardial infarction"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Thrombotic thrombocytopenic purpura, hereditary', token overlap=3)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 20 total annotations for matched term."
+  },
+  {
+    "disease_id": "renal_tubular_acidosis",
+    "disease_name": "Renal Tubular Acidosis (RTA)",
+    "top_5_symptoms": [
+      "Short stature",
+      "Hyperchloremic acidosis",
+      "Proximal renal tubular acidosis",
+      "Rickets",
+      "Hypercalciuria"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Renal tubular acidosis, proximal', token overlap=3)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 7 total annotations for matched term."
+  },
+  {
+    "disease_id": "immune_thrombocytopenic_purpura",
+    "disease_name": "Immune Thrombocytopenic Purpura (ITP)",
+    "top_5_symptoms": [
+      "Purpura",
+      "Thrombocytopenia",
+      "Microangiopathic hemolytic anemia",
+      "Anti-ADAMTS13 antibody positivity",
+      "Proteinuria"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Immune-mediated thrombotic thrombocytopenic purpura', token overlap=3)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 41 total annotations for matched term."
+  },
+  {
+    "disease_id": "chronic_lymphocytic_leukemia",
+    "disease_name": "Chronic Lymphocytic Leukemia (CLL)",
+    "top_5_symptoms": [
+      "Chronic lymphatic leukemia",
+      "Cellular immunodeficiency",
+      "overview",
+      "fatigue and constitutional b symptoms",
+      "lymphadenopathy"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Leukemia, chronic lymphocytic', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (2 annotations)."
+  },
+  {
+    "disease_id": "alpha_thalassemia",
+    "disease_name": "Alpha Thalassemia",
+    "top_5_symptoms": [
+      "Reduced alpha/beta synthesis ratio",
+      "Hypochromic microcytic anemia",
+      "HbH hemoglobin",
+      "Myelodysplasia",
+      "silent carrier and trait"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Alpha-Thalassemia myelodysplasia syndrome', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (4 annotations)."
+  },
+  {
+    "disease_id": "polycythemia_vera",
+    "disease_name": "Polycythemia Vera (PV)",
+    "top_5_symptoms": [
+      "Splenomegaly",
+      "Gingival bleeding",
+      "Tinnitus",
+      "Epistaxis",
+      "Hypertension"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Polycythemia vera', token overlap=2)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 49 total annotations for matched term."
+  },
+  {
+    "disease_id": "febrile_neutropenia",
+    "disease_name": "Febrile Neutropenia (Chemotherapy-Induced)",
+    "top_5_symptoms": [
+      "fever, often the only sign of infection",
+      "sore mouth and gum pain (mucositis)",
+      "skin abscesses",
+      "cough or shortness of breath (possible pneumonia)",
+      "perirectal pain and irritation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "MSD Manual Professional Edition (hematology-and-oncology/leukopenias/neutropenia)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "neurogenic_bladder",
+    "disease_name": "Neurogenic Bladder",
+    "top_5_symptoms": [
+      "loss of bladder control/incontinence",
+      "inability to fully empty the bladder (retention)",
+      "urinary frequency and urgency",
+      "recurrent urinary tract infections",
+      "overflow incontinence/dribbling"
+    ],
+    "sources_used": [
+      "MSD Manual Professional Edition",
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "intestinal_obstruction",
+    "disease_name": "Intestinal Obstruction",
+    "top_5_symptoms": [
+      "historical and modern cardinal pattern",
+      "colicky abdominal pain",
+      "vomiting and obstipation",
+      "atypical and nonspecific presentation of strangulation is the real danger",
+      "exam findings that independently predict strangulation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "disseminated_intravascular_coagulation",
+    "disease_name": "Disseminated Intravascular Coagulation (DIC)",
+    "top_5_symptoms": [
+      "Bleeding phenotype -- petechiae, purpura, mucosal and puncture-site bleeding",
+      "Thrombotic phenotype -- microvascular thrombosis causing organ dysfunction",
+      "Severe purpura fulminans / acral ischaemia / vascular skin infarction (thrombosis-predominant cases)",
+      "Multi-organ dysfunction (renal, hepatic, pulmonary, CNS)",
+      "Underlying-disease-specific presentation (no single fixed symptom set)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "hydronephrosis",
+    "disease_name": "Hydronephrosis",
+    "top_5_symptoms": [
+      "acute vs chronic obstruction pain pattern",
+      "fever and flank pain marking infected obstruction",
+      "hematuria",
+      "palpable abdominal or flank mass in infants",
+      "silent incidental presentation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "No HPO match found; using KB-only real symptom text."
+  },
+  {
+    "disease_id": "factor_v_leiden_thrombophilia",
+    "disease_name": "Factor V Leiden Thrombophilia",
+    "top_5_symptoms": [
+      "Increased factor IX activity",
+      "Deep venous thrombosis",
+      "Hypercoagulability",
+      "Factor V Leiden itself is clinically silent -- the mutation produces no symptoms unless/until a venous thrombotic event ",
+      "FVL is a classic example of gene-environment and gene-gene synergy: the mutation alone confers modest risk, but combined"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Thrombophilia, X-linked, due to factor IX defect', token overlap=2)",
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (3 annotations)."
+  },
+  {
+    "disease_id": "myelofibrosis",
+    "disease_name": "Myelofibrosis",
+    "top_5_symptoms": [
+      "defining features",
+      "splenomegaly",
+      "constitutional symptoms",
+      "cytopenias",
+      "other reported symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "OK"
+  },
+  {
+    "disease_id": "tension_type_headache",
+    "disease_name": "Tension-type Headache",
+    "top_5_symptoms": [
+      "dull, aching head pain, typically bilateral",
+      "sensation of tightness or pressure band around the forehead",
+      "tenderness in scalp, neck, and shoulder muscles",
+      "absence of nausea/vomiting (distinguishes from migraine)",
+      "absence of visual disturbances (distinguishes from migraine)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/tension-headache)"
+    ],
+    "confidence_note": "Real web-sourced top-5 symptoms (Mayo Clinic/MSD Manual/CDC/Cleveland Clinic), verified this session."
+  },
+  {
+    "disease_id": "cluster_headache",
+    "disease_name": "Cluster Headache",
+    "top_5_symptoms": [
+      "Cluster headache",
+      "Rhinorrhea",
+      "Pain",
+      "Edema",
+      "Miosis"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Cluster headache, familial', token overlap=2)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (8 annotations)."
+  },
+  {
+    "disease_id": "frontotemporal_dementia",
+    "disease_name": "Frontotemporal Dementia",
+    "top_5_symptoms": [
+      "Amyotrophic lateral sclerosis",
+      "Frontotemporal dementia",
+      "Atypical behavior",
+      "Dysarthria",
+      "Fasciculations"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Frontotemporal dementia and/or amyotrophic lateral sclerosis 5', token overlap=2)"
+    ],
+    "confidence_note": "Strong: HPO real frequency-ranked data, 8 total annotations for matched term."
+  },
+  {
+    "disease_id": "lewy_body_dementia",
+    "disease_name": "Lewy Body Dementia",
+    "top_5_symptoms": [
+      "Visual hallucination",
+      "Lewy bodies",
+      "Parkinsonism",
+      "Dementia",
+      "Delusion"
+    ],
+    "sources_used": [
+      "HPO frequency data (matched disease: 'Dementia, lewy body', token overlap=3)"
+    ],
+    "confidence_note": "Moderate: HPO match found but frequency data sparse (6 annotations)."
+  }
+]

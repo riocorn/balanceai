@@ -1131,7 +1131,7 @@ def _looks_non_english(text: str) -> bool:
 
 def _rerank(
     patient_text: str, translated: str, candidates: List[Tuple[str, float]], disease_meta: Dict[str, Any]
-) -> Tuple[str, str, bool, bool, Optional[str]]:
+) -> Tuple[str, str, bool, bool]:
     shown = candidates[:RERANK_MAX_CANDIDATES]
     lines = []
     for did, _score in shown:
@@ -1170,23 +1170,13 @@ def _rerank(
         "never in Hindi script, Chinese, or any other language or script. "
         "And a boolean possible_emergency that is true only if this complaint could be a medical "
         "emergency needing immediate care.\n"
-        "Before answering, work through the differential diagnosis explicitly: go candidate by candidate, "
-        "in the order shown, and for EACH ONE write one short clause stating whether it could or couldn't "
-        "be the match and WHY, citing the specific overlapping or conflicting symptom/duration/age-group "
-        "detail (e.g. 'diabetes_mellitus: fits -- excessive thirst + frequent urination is the classic "
-        "pair; cataract: doesn't fit -- no vision symptom stated'). Do this for every candidate in the "
-        "list, not just the one you'll pick. Only after reasoning through all of them, commit to the "
-        "single best disease_id.\n"
-        'Respond ONLY as compact JSON, in this exact key order: {"differential_reasoning": '
-        '"<candidate_id>: <fits/doesn\'t fit> -- <specific symptom reason>; <candidate_id>: ...", '
-        '"disease_id": "...", "understood_as": "...", "possible_emergency": true or false}'
+        'Respond ONLY as compact JSON: {"disease_id": "...", "understood_as": "...", "possible_emergency": true or false}'
     )
     user = (
         f"Patient's original text: {patient_text}\n"
         f"Translated/normalized text: {translated}\n\n"
         f"Candidate diseases:\n{candidate_block}\n\n"
-        "First reason through EVERY candidate above (differential_reasoning), then pick the single best "
-        "disease_id from the candidates above only."
+        "Pick the best disease_id from the candidates above only."
     )
     try:
         content = _ollama_chat(
@@ -1217,23 +1207,14 @@ def _rerank(
         if not isinstance(understood, str) or not understood.strip() or _looks_non_english(understood):
             understood = translated
         possible_emergency = bool(parsed.get("possible_emergency", False))
-        reasoning = parsed.get("differential_reasoning")
-        if not isinstance(reasoning, str) or not reasoning.strip() or _looks_non_english(reasoning):
-            # Real observed failure mode: the model sometimes omits this key
-            # or answers it in a non-English script even when understood_as
-            # comes back clean -- never surface a garbled/missing reasoning
-            # string to the patient, just omit the section instead.
-            reasoning = None
-        else:
-            reasoning = reasoning.strip()
-        return did, understood, possible_emergency, True, reasoning
+        return did, understood, possible_emergency, True
     except Exception:
         logger.warning(
             "FALLBACK: rerank call failed or returned an invalid id, using top embedding candidate",
             exc_info=True,
         )
         top_id = candidates[0][0] if candidates else None
-        return top_id, translated, False, False, None
+        return top_id, translated, False, False
 
 
 # ---------------------------------------------------------------------------
@@ -1426,7 +1407,7 @@ def resolve_clarified_disease(
     if qa_text:
         augmented_translated = f"{translated}\nAdditional clarifying answers from patient: {qa_text}"
 
-    disease_id, understood_as, possible_emergency, llm_ok, differential_reasoning = _rerank(
+    disease_id, understood_as, possible_emergency, llm_ok = _rerank(
         patient_text, augmented_translated, shortlist, _DISEASE_META or {}
     )
     if not llm_ok or not disease_id:
@@ -1444,7 +1425,6 @@ def resolve_clarified_disease(
         "hard_emergency_flag": hard_emergency_flag,
         "possible_emergency": possible_emergency,
         "emergency_override_rule": d.get("EMERGENCY_OVERRIDE_RULE"),
-        "differential_reasoning": differential_reasoning,
     }
 
 

@@ -11,9 +11,6 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "voice"))
 
 from core.config import settings
 from routers.checkin import router as checkin_router
-from routers.nutrition_ml import router as nutrition_ml_router
-from routers.nutrition_rda import router as nutrition_rda_router
-from routers.nutrition_targets import router as nutrition_targets_router
 from routers.recipe import router as recipe_router
 from routers.pharmacy import router as pharmacy_router
 from routers.medical import router as medical_router
@@ -51,9 +48,6 @@ async def add_timing(request: Request, call_next):
 app.include_router(checkin_router)
 if _users_ok and users_router:
     app.include_router(users_router)
-app.include_router(nutrition_ml_router)
-app.include_router(nutrition_rda_router)
-app.include_router(nutrition_targets_router)
 app.include_router(recipe_router)
 app.include_router(pharmacy_router)
 app.include_router(medical_router)

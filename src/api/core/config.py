@@ -34,15 +34,20 @@ class Settings(BaseSettings):
     # candidate diseases, then a local Ollama LLM (no external API, no per-call
     # cost) picks the best one from that shortlist and writes the explanation.
     # No external LLM API is called for this feature — see pharmacy_service.py.
-    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    # Real, measured: base multilingual MiniLM scored only 34.9% top-15 retrieval
+    # recall (102/292) on the held-out symptom eval; the KB-domain fine-tuned
+    # checkpoint below (same base model, further trained on real disease-symptom
+    # pairs) scored 77.1% (225/292) -- best of the checkpoints compared, see
+    # ml_training/eval_symptom_embeddings.py and the eval_top15 harness.
+    EMBEDDING_MODEL: str = str(BASE_DIR / "models" / "symptom_embedding_finetuned_v7_combined")
     OLLAMA_HOST: str = "http://localhost:11434"
-    OLLAMA_MODEL: str = "qwen2.5:3b-instruct"
+    OLLAMA_MODEL: str = "hf.co/bartowski/HuatuoGPT-o1-8B-GGUF:Q5_K_M"
     # Used only for the grounded disease-id/medicine SELECTION calls (never free-form
     # generation -- the model picks from a real KB-derived shortlist or is rejected).
     # Kept separate from OLLAMA_MODEL (used for translation/rephrasing of already-real
     # facts) so the two can be sized independently, mirroring the existing
     # OLLAMA_MODEL/RERANK_MODEL split in medical_understanding.py.
-    OLLAMA_REASONING_MODEL: str = "qwen2.5:7b-instruct"
+    OLLAMA_REASONING_MODEL: str = "hf.co/bartowski/HuatuoGPT-o1-8B-GGUF:Q5_K_M"
     # WhatsApp number the "Verify with Doctor" button deep-links to (E.164, no "+").
     # Placeholder until a real doctor/clinic WhatsApp Business number is provided.
     DOCTOR_WHATSAPP_NUMBER: str = ""

@@ -1,0 +1,1298 @@
+[
+  {
+    "disease_id": "iron_deficiency_anaemia",
+    "disease_name": "Iron Deficiency Anaemia (IDA)",
+    "category": "Haematology / Nutritional",
+    "top_5_symptoms": [
+      "Fatigue / generalized weakness",
+      "Shortness of breath on exertion",
+      "Dizziness / lightheadedness",
+      "Palpitations",
+      "Headache"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "rickets_osteomalacia",
+    "disease_name": "Rickets / Osteomalacia",
+    "category": "Bone / Nutritional (Metabolic Bone Disease)",
+    "top_5_symptoms": [
+      "Bone pain",
+      "Growth retardation / growth failure",
+      "Delayed walking",
+      "Generalized muscular hypotonia",
+      "Waddling gait, leg bowing"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "ischaemic_heart_disease",
+    "disease_name": "Ischaemic Heart Disease (IHD) / Coronary Artery Disease (CAD)",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Stable angina",
+      "Unstable angina",
+      "Acute MI (STEMI/NSTEMI)",
+      "Silent ischaemia",
+      "Atypical presentation (women/diabetics)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "congestive_heart_failure",
+    "disease_name": "Congestive Heart Failure (CHF)",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Left-sided HF",
+      "Right-sided HF",
+      "Biventricular failure",
+      "Elderly",
+      "India-specific (Trivandrum Heart Failure Registry)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "atrial_fibrillation",
+    "disease_name": "Atrial Fibrillation (AF)",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Palpitations",
+      "Fatigue",
+      "Dyspnoea",
+      "Dizziness / lightheadedness",
+      "Chest discomfort"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "aortic_stenosis",
+    "disease_name": "Aortic Stenosis (AS)",
+    "category": "Cardiovascular (Valvular)",
+    "top_5_symptoms": [
+      "Dyspnoea (exertional)",
+      "Angina",
+      "Syncope (exertional)",
+      "Elderly",
+      "Bicuspid valve patients"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "hypertrophic_cardiomyopathy",
+    "disease_name": "Hypertrophic Cardiomyopathy (HCM)",
+    "category": "Cardiovascular (Genetic/Structural)",
+    "top_5_symptoms": [
+      "Dyspnoea",
+      "Chest pain",
+      "Palpitations",
+      "Presyncope/syncope (exertional)",
+      "Fatigue"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "peripheral_artery_disease",
+    "disease_name": "Peripheral Artery Disease (PAD)",
+    "category": "Cardiovascular (Vascular)",
+    "top_5_symptoms": [
+      "Intermittent claudication",
+      "Asymptomatic PAD",
+      "Atypical leg symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "aortic_aneurysm_dissection",
+    "disease_name": "Aortic Aneurysm and Aortic Dissection",
+    "category": "Cardiovascular (Vascular)",
+    "top_5_symptoms": [
+      "Cutis marmorata",
+      "Abnormality of connective tissue",
+      "Mucoid extracellular matrix accumulation",
+      "Abnormality iris morphology",
+      "Hypertension"
+    ],
+    "sources_used": [
+      "HPO frequency data (phenotype.hpoa)",
+      "matched HPO disease name: Familial thoracic aortic aneurysm and aortic dissection"
+    ],
+    "confidence_note": "strong HPO frequency data (41 real annotations, filtered to real symptom terms)"
+  },
+  {
+    "disease_id": "mitral_stenosis",
+    "disease_name": "Mitral Stenosis",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Exertional breathlessness (dyspnoea on exertion)",
+      "Orthopnoea (breathlessness lying flat)",
+      "Paroxysmal nocturnal dyspnoea (PND)",
+      "Fatigue / reduced exercise tolerance (low forward cardiac output)",
+      "Palpitations (often the first symptom of new atrial fibrillation, which occurs in 40-75% of symptomatic mitral stenosis patients"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "mitral_regurgitation",
+    "disease_name": "Mitral Regurgitation",
+    "category": "Cardiovascular (Valvular)",
+    "top_5_symptoms": [
+      "Exertional dyspnoea",
+      "Fatigue / reduced exercise tolerance",
+      "Palpitations",
+      "Orthopnoea and paroxysmal nocturnal dyspnoea"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "aortic_regurgitation",
+    "disease_name": "Aortic Regurgitation (AR) / Aortic Insufficiency",
+    "category": "Cardiovascular (Valvular)",
+    "top_5_symptoms": [
+      "Exertional dyspnoea",
+      "Orthopnoea and paroxysmal nocturnal dyspnoea",
+      "Palpitations / awareness of forceful heartbeat",
+      "Fatigue / reduced exercise tolerance",
+      "Angina"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "infective_endocarditis",
+    "disease_name": "Infective Endocarditis (IE)",
+    "category": "Cardiovascular (Infective)",
+    "top_5_symptoms": [
+      "Fever",
+      "Constitutional symptoms -- malaise, fatigue, anorexia, weight loss, night sweats",
+      "Arthralgia / myalgia",
+      "New or changing cardiac murmur",
+      "Dyspnoea / heart failure symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "venous_thromboembolism",
+    "disease_name": "Venous Thromboembolism (VTE) -- Deep Vein Thrombosis (DVT) and Pulmonary Embolism (PE)",
+    "category": "Cardiovascular (Venous / Thromboembolic)",
+    "top_5_symptoms": [
+      "DVT -- unilateral leg swelling",
+      "DVT -- unilateral leg pain / calf tenderness",
+      "DVT -- warmth and erythema of the affected limb",
+      "DVT -- dilated collateral (nonvaricose) superficial veins",
+      "PE -- dyspnoea"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "pericardial_disease",
+    "disease_name": "Pericardial Disease (Acute Pericarditis, Recurrent/Relapsing Pericarditis, Constrictive Pericarditis & Cardiac Tamponade)",
+    "category": "Cardiovascular (Pericardial)",
+    "top_5_symptoms": [
+      "Pericarditic chest pain",
+      "Pericardial friction rub",
+      "Fever",
+      "Dyspnoea"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "dilated_cardiomyopathy",
+    "disease_name": "Dilated Cardiomyopathy (DCM)",
+    "category": "Cardiovascular (Genetic/Structural - Primary Myocardial Disease)",
+    "top_5_symptoms": [
+      "Dyspnoea on exertion / orthopnoea / PND",
+      "Fatigue and exercise intolerance",
+      "Peripheral oedema, elevated JVP"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "myocarditis",
+    "disease_name": "Myocarditis",
+    "category": "Cardiovascular (Acute/Subacute Inflammatory Myocardial Disease)",
+    "top_5_symptoms": [
+      "Chest pain",
+      "Dyspnoea",
+      "Palpitations / arrhythmia",
+      "Fatigue / exercise intolerance",
+      "Preceding viral prodrome"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "tricuspid_valve_disease",
+    "disease_name": "Tricuspid Valve Disease (Tricuspid Regurgitation and Tricuspid Stenosis)",
+    "category": "Cardiovascular (Valvular)",
+    "top_5_symptoms": [
+      "Fatigue and reduced exercise tolerance",
+      "Peripheral (dependent) oedema",
+      "Ascites and abdominal distension/bloating",
+      "Painful hepatomegaly with a pulsatile liver",
+      "Palpitations"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "pulmonary_hypertension",
+    "disease_name": "Pulmonary Hypertension (PH) -- WHO Group 1 Pulmonary Arterial Hypertension (PAH) and Full 5-Group Classification",
+    "category": "Cardiovascular / Pulmonary Vascular (Right Heart)",
+    "top_5_symptoms": [
+      "Progressive exertional dyspnoea",
+      "Fatigue and reduced exercise tolerance",
+      "Syncope or near-syncope on exertion",
+      "Chest pain",
+      "Haemoptysis"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "ventricular_arrhythmia_scd",
+    "disease_name": "Ventricular Arrhythmias and Sudden Cardiac Death (VT/VF and the Inherited Channelopathies: Long QT Syndrome, Brugada Syndrome, CPVT)",
+    "category": "Cardiovascular (Primary Electrical / Arrhythmic Disease)",
+    "top_5_symptoms": [
+      "palpitations",
+      "presyncope syncope red flags",
+      "sudden cardiac arrest as first presentation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "cardiogenic_shock",
+    "disease_name": "Cardiogenic Shock (CS)",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Severe shortness of breath",
+      "Very fast heartbeat",
+      "Weak pulse / low blood pressure",
+      "Cold, sweaty hands and feet",
+      "Loss of consciousness / reduced alertness"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/cardiogenic-shock/symptoms-causes/syc-20366739"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "hypertension",
+    "disease_name": "Essential (Primary) Hypertension, including Hypertensive Heart Disease",
+    "category": "Cardiovascular",
+    "top_5_symptoms": [
+      "Often no symptoms (silent) until severe",
+      "Headache",
+      "Shortness of breath",
+      "Nosebleeds",
+      "Blurred vision (in hypertensive crisis)"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "acute_rheumatic_fever",
+    "disease_name": "Acute Rheumatic Fever (ARF)",
+    "category": "Cardiovascular / Autoimmune (Post-Streptococcal Inflammatory Multisystem Disease)",
+    "top_5_symptoms": [
+      "Fever",
+      "Migratory polyarthritis / arthralgia",
+      "Carditis symptoms (dyspnoea, palpitations, chest discomfort, orthopnoea in severe cases)",
+      "Sydenham chorea (involuntary, purposeless movements)",
+      "Erythema marginatum (evanescent rash)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "takotsubo_cardiomyopathy",
+    "disease_name": "Takotsubo Cardiomyopathy (TCM) / Stress Cardiomyopathy (\"Broken Heart Syndrome\")",
+    "category": "Cardiovascular (Acute Reversible Stress-Induced Cardiomyopathy - Non-ischaemic)",
+    "top_5_symptoms": [
+      "Acute chest pain",
+      "Dyspnoea",
+      "Syncope / presyncope"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "copd",
+    "disease_name": "Chronic Obstructive Pulmonary Disease (COPD) -- Chronic Bronchitis and Emphysema Phenotypes",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Progressive exertional dyspnoea",
+      "Chronic cough",
+      "Sputum production (expectoration)",
+      "Wheeze and chest tightness",
+      "Recurrent lower respiratory tract infections / acute exacerbations"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "bronchial_asthma",
+    "disease_name": "Bronchial Asthma",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Shortness of breath",
+      "Chest tightness",
+      "Cough",
+      "Wheezing",
+      "Gasping for breath (severe attacks)"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/asthma-attack/symptoms-causes/syc-20354268"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "pneumonia",
+    "disease_name": "Pneumonia (Community-Acquired, Hospital-Acquired and Ventilator-Associated)",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Chest pain when breathing or coughing",
+      "Cough with phlegm",
+      "Fever, sweating, shaking chills",
+      "Shortness of breath",
+      "Fatigue"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/pneumonia/symptoms-causes/syc-20354204"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "tuberculosis",
+    "disease_name": "Tuberculosis (Pulmonary TB, Latent TB Infection, Extrapulmonary TB and Drug-Resistant TB)",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "chronic cough",
+      "source cough threshold",
+      "hemoptysis",
+      "fever",
+      "night sweats"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "interstitial_lung_disease",
+    "disease_name": "Interstitial Lung Disease (ILD) -- with primary clinical focus on Idiopathic Pulmonary Fibrosis (IPF) as the most studied and most severe idiopathic form",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "progressive exertional dyspnea",
+      "dry cough",
+      "bibasilar velcro crackles",
+      "digital clubbing"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "bronchiectasis",
+    "disease_name": "Bronchiectasis",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Chronic productive cough with copious purulent sputum",
+      "Recurrent respiratory infections / exacerbations",
+      "Haemoptysis",
+      "Dyspnoea",
+      "Fatigue"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "obstructive_sleep_apnea",
+    "disease_name": "Obstructive Sleep Apnea (OSA)",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Obstructive sleep apnea",
+      "Focal impaired awareness seizure",
+      "Snoring",
+      "Excessive daytime somnolence",
+      "Anosmia"
+    ],
+    "sources_used": [
+      "HPO frequency data (phenotype.hpoa)",
+      "matched HPO disease name: Apnea, obstructive sleep"
+    ],
+    "confidence_note": "strong HPO frequency data (5 real annotations, filtered to real symptom terms)"
+  },
+  {
+    "disease_id": "lung_cancer",
+    "disease_name": "Lung Cancer -- Non-Small Cell Lung Cancer (NSCLC) and Small Cell Lung Cancer (SCLC)",
+    "category": "Oncology (Respiratory-Tract Malignancy)",
+    "top_5_symptoms": [
+      "Persistent or changing cough",
+      "Haemoptysis",
+      "Dyspnoea (breathlessness)",
+      "Chest pain",
+      "Unexplained weight loss"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "pneumothorax",
+    "disease_name": "Pneumothorax (Spontaneous Primary, Spontaneous Secondary, Traumatic, Iatrogenic, Catamenial) and Tension Pneumothorax",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Sudden-onset pleuritic chest pain",
+      "Dyspnoea, often disproportionate to pneumothorax size in SSP",
+      "Decreased or absent breath sounds on the affected side",
+      "Hyperresonance to percussion on the affected side",
+      "Tachycardia"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "ards",
+    "disease_name": "Acute Respiratory Distress Syndrome (ARDS)",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Hypoxemia",
+      "Abnormal thorax morphology",
+      "Cyanosis",
+      "Premature birth",
+      "Tachypnea"
+    ],
+    "sources_used": [
+      "HPO frequency data (phenotype.hpoa)",
+      "matched HPO disease name: Pediatric acute respiratory distress syndrome"
+    ],
+    "confidence_note": "strong HPO frequency data (16 real annotations, filtered to real symptom terms)"
+  },
+  {
+    "disease_id": "pleural_effusion",
+    "disease_name": "Pleural Effusion (Transudative and Exudative, including Malignant Pleural Effusion and Empyema)",
+    "category": "Respiratory",
+    "top_5_symptoms": [
+      "Dyspnoea",
+      "Pleuritic chest pain",
+      "Dry cough",
+      "Decreased/absent breath sounds and dullness to percussion on the affected side"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "diabetes_mellitus",
+    "disease_name": "Diabetes Mellitus (Type 2 Diabetes Mellitus - majority; Type 1 Diabetes Mellitus, Gestational Diabetes, MODY, LADA as linked entities)",
+    "category": "Endocrine/Metabolic",
+    "top_5_symptoms": [
+      "Increased thirst",
+      "Frequent urination",
+      "Increased hunger",
+      "Unintended weight loss",
+      "Fatigue and blurred vision"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/symptoms-causes/syc-20351193"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "thyroid_disorders",
+    "disease_name": "Thyroid Disorders (Hypothyroidism including Hashimoto's Thyroiditis - primary and secondary/central forms; Hyperthyroidism including Graves' Disease, Toxic Multinodular Goiter, Toxic Adenoma, Subacute/Silent/Postpartum Thyroiditis as linked entities)",
+    "category": "Endocrine/Metabolic",
+    "top_5_symptoms": [
+      "Fatigue",
+      "Cold intolerance",
+      "Weight gain (hypothyroid) or weight loss (hyperthyroid)",
+      "Puffy face / hoarse voice",
+      "Muscle weakness and aches"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/hypothyroidism/symptoms-causes/syc-20350284"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "chronic_kidney_disease",
+    "disease_name": "Chronic Kidney Disease (CKD), including End-Stage Renal Disease (ESRD)",
+    "category": "Renal",
+    "top_5_symptoms": [
+      "Often no symptoms in early stages",
+      "Nausea and vomiting",
+      "Fatigue and weakness",
+      "Sleep problems and decreased mental sharpness",
+      "Shortness of breath (fluid buildup)"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/symptoms-causes/syc-20354521"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "obesity_metabolic_syndrome",
+    "disease_name": "Obesity and Metabolic Syndrome",
+    "category": "Endocrine/Metabolic",
+    "top_5_symptoms": [
+      "acanthosis nigricans",
+      "functional limitations",
+      "psychosocial impact"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "dyslipidemia",
+    "disease_name": "Dyslipidemia (including Familial Hypercholesterolemia)",
+    "category": "Endocrine/Metabolic",
+    "top_5_symptoms": [
+      "Usually no symptoms (silent)",
+      "Eruptive xanthomas (skin bumps, very high triglycerides)",
+      "Xanthelasma (yellow eyelid plaques)",
+      "Tendon bumps (familial hypercholesterolemia)",
+      "Chest pain if it leads to coronary artery disease"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/high-blood-cholesterol/symptoms-causes/syc-20350800"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "pcos",
+    "disease_name": "Polycystic Ovary Syndrome (PCOS)",
+    "category": "Endocrine/Reproductive",
+    "top_5_symptoms": [
+      "oligomenorrhea amenorrhea",
+      "hirsutism ferriman gallwey",
+      "acne",
+      "androgenic alopecia",
+      "infertility anovulation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "osteoporosis",
+    "disease_name": "Osteoporosis (Primary - Postmenopausal/Type I and Age-Related/Type II; and Secondary Osteoporosis)",
+    "category": "Musculoskeletal/Endocrine",
+    "top_5_symptoms": [
+      "Asymptomatic, silent bone loss (the classic and most important presentation)",
+      "Vertebral compression fracture",
+      "Hip fracture (femoral neck / intertrochanteric)",
+      "Distal radius (wrist) fracture (Colles' fracture)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "viral_hepatitis",
+    "disease_name": "Viral Hepatitis (Hepatitis A-E), with focus on Chronic Hepatitis B and Chronic Hepatitis C",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "chronic infection often asymptomatic",
+      "acute hepatitis presentation",
+      "decompensated cirrhosis brief"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "cirrhosis",
+    "disease_name": "Liver Cirrhosis (Compensated and Decompensated)",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "Fatigue and weakness",
+      "Easy bruising or bleeding",
+      "Swelling in legs, feet or ankles",
+      "Jaundice (yellowing of skin/eyes)",
+      "Abdominal swelling from fluid buildup"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/cirrhosis/symptoms-causes/syc-20351487"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "peptic_ulcer_disease",
+    "disease_name": "Peptic Ulcer Disease (Gastric and Duodenal Ulcers)",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "Dull or burning stomach pain",
+      "Feeling of fullness or bloating",
+      "Belching",
+      "Heartburn",
+      "Nausea"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/peptic-ulcer/symptoms-causes/syc-20354223"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "inflammatory_bowel_disease",
+    "disease_name": "Inflammatory Bowel Disease (Crohn's Disease and Ulcerative Colitis)",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "Diarrhea",
+      "Abdominal pain and cramping",
+      "Blood in the stool",
+      "Loss of appetite / weight loss",
+      "Fatigue"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/inflammatory-bowel-disease/symptoms-causes/syc-20353315"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "gerd",
+    "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "heartburn and regurgitation",
+      "dysphagia red flag",
+      "atypical extraesophageal manifestations"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "acute_pancreatitis",
+    "disease_name": "Acute Pancreatitis",
+    "category": "Digestive/Hepatology",
+    "top_5_symptoms": [
+      "Severe upper abdominal pain",
+      "Pain radiating to back or shoulders",
+      "Tenderness when touching the belly",
+      "Fever and fast heartbeat",
+      "Nausea and vomiting"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/pancreatitis/symptoms-causes/syc-20360227"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "celiac_disease",
+    "disease_name": "Celiac Disease (Coeliac Disease, Gluten-Sensitive Enteropathy)",
+    "category": "Digestive/Hepatology (Gastroenterology)",
+    "top_5_symptoms": [
+      "Diarrhea and bloating",
+      "Fatigue",
+      "Weight loss",
+      "Abdominal pain",
+      "Anemia (iron deficiency)"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "stroke",
+    "disease_name": "Stroke (Cerebrovascular Accident) - Ischaemic, Haemorrhagic, and TIA",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Sudden facial drooping (usually one-sided)",
+      "Sudden arm/leg weakness or numbness (usually one-sided)",
+      "Sudden speech difficulty (slurred speech or word-finding difficulty/aphasia)",
+      "Sudden confusion or trouble understanding speech",
+      "Sudden trouble seeing in one or both eyes (visual field cut, diplopia, amaurosis fugax)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "epilepsy",
+    "disease_name": "Epilepsy",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Focal aware seizures",
+      "Focal impaired-awareness seizures",
+      "Generalized tonic-clonic seizures (GTCS)",
+      "Absence seizures",
+      "Myoclonic seizures"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "parkinsons_disease",
+    "disease_name": "Parkinson's Disease",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Bradykinesia (slowness with decrement) - the core defining motor feature",
+      "Rest tremor (classically 'pill-rolling' hand tremor)",
+      "Rigidity (lead-pipe, often with 'cogwheel' quality)",
+      "Postural instability (typically a later feature)",
+      "Asymmetric onset and persistent asymmetry"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "alzheimers_disease",
+    "disease_name": "Alzheimer's Disease",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Episodic memory loss - typically the first and defining symptom",
+      "Language impairment (anomia, word-finding difficulty, progressing to impaired comprehension)",
+      "Visuospatial dysfunction",
+      "Executive dysfunction",
+      "Apraxia (impaired learned motor skills despite intact motor/sensory function)"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "multiple_sclerosis",
+    "disease_name": "Multiple Sclerosis",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Optic neuritis",
+      "Sensory disturbances (numbness, tingling, paraesthesia)",
+      "Lhermitte's sign",
+      "Internuclear ophthalmoplegia (INO)",
+      "Motor weakness and spasticity"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "migraine",
+    "disease_name": "Migraine",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Intense throbbing head pain, often one-sided",
+      "Nausea and vomiting",
+      "Sensitivity to light and sound",
+      "Visual aura (flashing lights, blind spots)",
+      "Neck stiffness / mood changes before onset"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/migraine-headache/symptoms-causes/syc-20360201"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "guillain_barre_syndrome",
+    "disease_name": "Guillain-Barr\u00e9 Syndrome",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "ascending weakness and progression timeline",
+      "cranial nerve and facial involvement",
+      "autonomic dysfunction",
+      "pain",
+      "respiratory muscle weakness"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "myasthenia_gravis",
+    "disease_name": "Myasthenia Gravis",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "core feature",
+      "ocular symptoms",
+      "bulbar symptoms",
+      "limb and axial symptoms",
+      "respiratory involvement"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "bacterial_meningitis",
+    "disease_name": "Bacterial Meningitis",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "adult symptom frequencies",
+      "altered consciousness and seizures",
+      "infant and child specific presentation",
+      "meningococcal petechial purpuric rash",
+      "atypical presentations elderly and immunosuppressed"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "amyotrophic_lateral_sclerosis",
+    "disease_name": "Amyotrophic Lateral Sclerosis (ALS)",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Elevated circulating alkaline phosphatase concentration",
+      "Muscular dystrophy",
+      "Amyotrophic lateral sclerosis",
+      "Rimmed vacuoles",
+      "Muscle fiber inclusion bodies"
+    ],
+    "sources_used": [
+      "HPO frequency data (phenotype.hpoa)",
+      "matched HPO disease name: Amyotrophic lateral sclerosis 20"
+    ],
+    "confidence_note": "strong HPO frequency data (5 real annotations, filtered to real symptom terms)"
+  },
+  {
+    "disease_id": "rheumatoid_arthritis",
+    "disease_name": "Rheumatoid Arthritis",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "Symmetric small-joint polyarthritis - MCP, PIP and wrist joints (plus MTP joints)",
+      "Morning stiffness lasting an hour or more",
+      "Fatigue",
+      "Persistent (6 weeks or more) inflammatory synovitis rather than a transient episode",
+      "Rheumatoid nodules and other late or systemic signs at presentation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "gout",
+    "disease_name": "Gout",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "Podagra - acute arthritis of the first metatarsophalangeal joint",
+      "Acute, rapid-onset monoarthritis peaking within a day (often nocturnal)",
+      "Local inflammatory signs: erythema, warmth, swelling, exquisite tenderness",
+      "Other joints: ankle, mid-foot, knee, oligoarticular or polyarticular flares",
+      "Self-limiting course with complete resolution between early flares"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "osteoarthritis",
+    "disease_name": "Osteoarthritis",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "Activity-related (mechanical) joint pain",
+      "Morning stiffness lasting less than 30 minutes",
+      "Crepitus on active motion",
+      "Joint-line and bony tenderness with bony enlargement",
+      "Progressive functional limitation"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "ankylosing_spondylitis",
+    "disease_name": "Ankylosing Spondylitis",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "inflammatory back pain",
+      "onset before 45 and insidious course",
+      "morning stiffness",
+      "enthesitis sites",
+      "extra articular manifestations"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "systemic_lupus_erythematosus",
+    "disease_name": "Systemic Lupus Erythematosus (SLE)",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "Lupus nephritis",
+      "Nephritis",
+      "Recurrent lower respiratory tract infections",
+      "Malar rash",
+      "Autoimmune hemolytic anemia"
+    ],
+    "sources_used": [
+      "HPO frequency data (phenotype.hpoa)",
+      "matched HPO disease name: Systemic lupus erythematosus 18"
+    ],
+    "confidence_note": "strong HPO frequency data (58 real annotations, filtered to real symptom terms)"
+  },
+  {
+    "disease_id": "hiv_aids",
+    "disease_name": "HIV Infection / AIDS",
+    "category": "Infectious Diseases",
+    "top_5_symptoms": [
+      "acute seroconversion illness",
+      "source acute symptoms",
+      "chronic asymptomatic phase",
+      "source chronic phase",
+      "aids stage opportunistic infections"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "breast_cancer",
+    "disease_name": "Breast Cancer",
+    "category": "Oncology",
+    "top_5_symptoms": [
+      "Breast lump or thickened area",
+      "Change in size, shape or appearance of breast",
+      "Nipple that turns inward",
+      "Skin dimpling (orange-peel texture)",
+      "Peeling or flaking skin on the breast"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/breast-cancer/symptoms-causes/syc-20352470"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "major_depressive_disorder",
+    "disease_name": "Major Depressive Disorder",
+    "category": "Mental Health / Psychiatry",
+    "top_5_symptoms": [
+      "Persistent sadness or emptiness",
+      "Loss of interest or pleasure in activities",
+      "Sleep disturbances",
+      "Fatigue and low energy",
+      "Feelings of worthlessness or guilt"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "psoriatic_arthritis",
+    "disease_name": "Psoriatic Arthritis",
+    "category": "Musculoskeletal / Rheumatology",
+    "top_5_symptoms": [
+      "moll and wright five patterns",
+      "dactylitis",
+      "enthesitis",
+      "skin and nail findings",
+      "extra articular associations uveitis ibd cardiovascular"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "cervical_cancer",
+    "disease_name": "Cervical Cancer",
+    "category": "Oncology",
+    "top_5_symptoms": [
+      "early disease often asymptomatic",
+      "abnormal vaginal bleeding",
+      "vaginal discharge",
+      "advanced disease pelvic and systemic symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "schizophrenia",
+    "disease_name": "Schizophrenia",
+    "category": "Mental Health / Psychiatry",
+    "top_5_symptoms": [
+      "positive symptoms",
+      "negative symptoms",
+      "cognitive symptoms",
+      "prodromal phase"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "bipolar_disorder",
+    "disease_name": "Bipolar Disorder",
+    "category": "Mental Health / Psychiatry",
+    "top_5_symptoms": [
+      "manic episode features",
+      "depressive episode features",
+      "mixed features specifier",
+      "rapid cycling specifier"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "malaria",
+    "disease_name": "Malaria",
+    "category": "Infectious Diseases",
+    "top_5_symptoms": [
+      "fever periodicity by species",
+      "source fever periodicity",
+      "paroxysm mechanism",
+      "source paroxysm mechanism",
+      "chills rigors headache myalgia"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "colorectal_cancer",
+    "disease_name": "Colorectal Cancer",
+    "category": "Oncology",
+    "top_5_symptoms": [
+      "Change in bowel habits (diarrhea/constipation)",
+      "Rectal bleeding or blood in stool",
+      "Persistent abdominal discomfort",
+      "Feeling bowel does not empty completely",
+      "Unexplained weight loss / fatigue"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/colon-cancer/symptoms-causes/syc-20353669"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "prostate_cancer",
+    "disease_name": "Prostate Cancer",
+    "category": "Oncology",
+    "top_5_symptoms": [
+      "Trouble urinating / decreased urine stream",
+      "Blood in urine or semen",
+      "Bone pain",
+      "Unexplained weight loss",
+      "Increased night-time urination"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/prostate-cancer/symptoms-causes/syc-20353087"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "sepsis",
+    "disease_name": "Sepsis and Septic Shock",
+    "category": "Infectious Diseases",
+    "top_5_symptoms": [
+      "vital sign abnormalities",
+      "altered mental status",
+      "hypotension in septic shock",
+      "source localizing symptoms"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 4 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "psoriasis",
+    "disease_name": "Psoriasis",
+    "category": "Dermatology",
+    "top_5_symptoms": [
+      "plaque morphology and distribution",
+      "itching and discomfort",
+      "clinical subtypes overview",
+      "guttate psoriasis and streptococcal trigger",
+      "emergency subtypes gpp and erythrodermic"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "dengue_fever",
+    "disease_name": "Dengue Fever",
+    "category": "Infectious Diseases",
+    "top_5_symptoms": [
+      "fever and breakbone pain",
+      "source fever breakbone",
+      "rash",
+      "source rash",
+      "warning signs"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "atopic_dermatitis",
+    "disease_name": "Atopic Dermatitis (Eczema)",
+    "category": "Dermatology",
+    "top_5_symptoms": [
+      "intense pruritus as hallmark",
+      "age dependent distribution pattern",
+      "xerosis dry skin",
+      "chronic scratching and lichenification",
+      "acute versus chronic phase morphology"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 5 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "generalized_anxiety_disorder",
+    "disease_name": "Generalized Anxiety Disorder",
+    "category": "Mental Health / Psychiatry",
+    "top_5_symptoms": [
+      "Persistent excessive worry",
+      "Restlessness / feeling on edge",
+      "Muscle tension",
+      "Trouble sleeping",
+      "Difficulty concentrating"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/generalized-anxiety-disorder/symptoms-causes/syc-20360803"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  },
+  {
+    "disease_id": "urinary_tract_infection",
+    "disease_name": "Urinary Tract Infection",
+    "category": "Genitourinary",
+    "top_5_symptoms": [
+      "cystitis lower tract symptoms",
+      "pyelonephritis upper tract and systemic symptoms",
+      "atypical or absent presentation in elderly"
+    ],
+    "sources_used": [
+      "KB text (data/disease_master.json)"
+    ],
+    "confidence_note": "no/weak HPO match, used 3 real filtered KB symptom fragments"
+  },
+  {
+    "disease_id": "bppv",
+    "disease_name": "Benign Paroxysmal Positional Vertigo (BPPV)",
+    "category": "Neurological",
+    "top_5_symptoms": [
+      "Brief episodes of dizziness/vertigo triggered by head position change",
+      "Sense of spinning",
+      "Loss of balance / unsteadiness",
+      "Nausea",
+      "Nystagmus (abnormal eye movements)"
+    ],
+    "sources_used": [
+      "Mayo Clinic (real, verified via web search this session)",
+      "https://www.mayoclinic.org/diseases-conditions/vertigo/symptoms-causes/syc-20370055"
+    ],
+    "confidence_note": "weak/no HPO or KB coverage -- real symptoms sourced directly from Mayo Clinic"
+  }
+]

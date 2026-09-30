@@ -1,0 +1,1141 @@
+[
+  {
+    "disease_id": "von_willebrand_disease",
+    "disease_name": "Von Willebrand Disease (VWD)",
+    "top_5_symptoms": [
+      "Reduced factor VIII activity",
+      "Reduced von Willebrand factor activity",
+      "Abnormality of thrombocytes",
+      "Abnormality of coagulation",
+      "Abnormal platelet function"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "myelodysplastic_syndrome",
+    "disease_name": "Myelodysplastic Syndrome (MDS)",
+    "top_5_symptoms": [
+      "Myelodysplasia",
+      "Anemia of inadequate production",
+      "Fatigue",
+      "Abnormal erythrocyte morphology",
+      "Thrombocytosis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "essential_thrombocythemia",
+    "disease_name": "Essential Thrombocythaemia (ET)",
+    "top_5_symptoms": [
+      "Thrombocytosis",
+      "Impaired collagen-induced platelet aggregation",
+      "Impaired epinephrine-induced platelet aggregation",
+      "Impaired ADP-induced platelet aggregation",
+      "Increased megakaryocyte count"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "peripheral_neuropathy",
+    "disease_name": "Peripheral Neuropathy (Non-Diabetic: Idiopathic, Hereditary/Charcot-Marie-Tooth, Toxic, Nutritional/B12, Autoimmune, Chemotherapy-Induced)",
+    "top_5_symptoms": [
+      "The core presentation of length-dependent polyneuropathy is symmetric, distal-predominant numbness",
+      "Charcot-Marie-Tooth disease and related inherited neuropathies characteristically present with",
+      "Chemotherapy-induced peripheral neuropathy (CIPN) presents as symmetric, distal, glove-and-stocking",
+      "Vitamin B12 (cobalamin) deficiency neuropathy classically presents with paresthesias and/or ataxia",
+      "In contrast to the slowly progressive patterns above, Guillain-Barre syndrome presents acutely:"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "antiphospholipid_syndrome",
+    "disease_name": "Antiphospholipid Syndrome (APS)",
+    "top_5_symptoms": [
+      "Antiphospholipid antibody positivity",
+      "Intrauterine growth retardation",
+      "Abnormal thrombosis",
+      "Arterial thrombosis",
+      "Lupus anticoagulant"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (87/100 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "essential_tremor",
+    "disease_name": "Essential Tremor",
+    "top_5_symptoms": [
+      "Postural tremor",
+      "Intention tremor",
+      "Blue sclerae",
+      "Premature graying of hair",
+      "Kinetic tremor"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (36/48 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "diabetic_neuropathy",
+    "disease_name": "Diabetic Neuropathy (Diabetes-Specific Peripheral, Autonomic and Focal Neuropathies)",
+    "top_5_symptoms": [
+      "The real, characteristic sensorimotor presentation of diabetic DSPN is a length-dependent",
+      "Diabetic gastroparesis -- delayed gastric emptying in the absence of mechanical obstruction, caused",
+      "Neurogenic orthostatic hypotension -- a real, sustained fall in blood pressure on standing",
+      "Erectile dysfunction (ED) is a real, common genitourinary autonomic-neuropathy-related"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "cerebral_palsy",
+    "disease_name": "Cerebral Palsy",
+    "top_5_symptoms": [
+      "Microcephaly",
+      "Global developmental delay",
+      "Spasticity",
+      "Cognitive impairment",
+      "Brachycephaly"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (40/63 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "multiple_myeloma",
+    "disease_name": "Multiple Myeloma",
+    "top_5_symptoms": [
+      "Osteopenia",
+      "Pathologic fracture",
+      "Nephrotic syndrome",
+      "Nephropathy",
+      "Pallor"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "huntingtons_disease",
+    "disease_name": "Huntington's Disease",
+    "top_5_symptoms": [
+      "Chorea",
+      "Inertia",
+      "Memory impairment",
+      "Cerebral cortical atrophy",
+      "Subcortical dementia"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (181/240 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "autism_spectrum_disorder",
+    "disease_name": "Autism Spectrum Disorder",
+    "top_5_symptoms": [
+      "Delayed speech and language development",
+      "Intellectual disability",
+      "Abnormal facial shape",
+      "Narrow mouth",
+      "Microcephaly"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (55/55 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "somatic_symptom_disorder",
+    "disease_name": "Somatic Symptom Disorder",
+    "top_5_symptoms": [
+      "The distressing somatic symptom(s) required for SSD can arise in essentially any body system --",
+      "Clinically, Criterion B manifests as: catastrophizing thoughts about symptom seriousness (e.g",
+      "functional and healthcare impact"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "adhd",
+    "disease_name": "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+    "top_5_symptoms": [
+      "Inattentive-domain symptoms: careless mistakes/lack of attention to detail, difficulty sustaining",
+      "Overt motor hyperactivity is most conspicuous in early-to-middle childhood and tends to decline"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "obsessive_compulsive_disorder",
+    "disease_name": "Obsessive-Compulsive Disorder (OCD)",
+    "top_5_symptoms": [
+      "Skin-picking",
+      "Depression",
+      "Collectionism",
+      "Anxiety",
+      "Compulsive behaviors"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "HPO-covered but few rows have explicit frequency (0/5); ranking partly by presence order"
+  },
+  {
+    "disease_id": "post_traumatic_stress_disorder",
+    "disease_name": "Post-Traumatic Stress Disorder (PTSD)",
+    "top_5_symptoms": [
+      "Symptom presentation is organised here by the same 4 DSM-5 clusters used for diagnosis, since that",
+      "Intrusive, involuntary distressing memories of the trauma",
+      "Recurrent distressing trauma-related nightmares",
+      "Dissociative flashbacks - re-experiencing the event as if it were recurring, with a spectrum up to complete loss of awareness of present surroundings",
+      "Intense psychological distress and physiological reactivity (e.g. tachycardia, sweating) on exposure to internal or external trauma cues"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "panic_disorder",
+    "disease_name": "Panic Disorder",
+    "top_5_symptoms": [
+      "The core presenting event is the panic attack itself: a discrete episode of intense fear/discomfort",
+      "DSM-5 Criterion B requires persistent (1+ month) concern or worry about having additional panic",
+      "DSM-5 Criterion B is satisfied either by anticipatory anxiety or by a significant maladaptive",
+      "Because panic symptoms mimic other medical disorders, people with panic disorder are"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "weak/thin HPO match superseded by richer real KB text"
+  },
+  {
+    "disease_id": "borderline_personality_disorder",
+    "disease_name": "Borderline Personality Disorder",
+    "top_5_symptoms": [
+      "The clinical picture of BPD centres on five overlapping domains: (1) emotional dysregulation -",
+      "Self-harm and suicidality are hallmark, not incidental, features of BPD"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "antisocial_personality_disorder",
+    "disease_name": "Antisocial Personality Disorder",
+    "top_5_symptoms": [
+      "The core, defining clinical feature of ASPD is a pervasive pattern of disregard for and violation",
+      "Repeated lying, use of aliases, or conning others for personal profit or pleasure is a core",
+      "Impulsivity or failure to plan ahead (DSM-5-TR criterion A3) is a defining clinical feature of ASPD",
+      "Irritability and aggressiveness, indicated by repeated physical fights or assaults (DSM-5-TR",
+      "Lack of remorse - indifference to, or rationalisation of, having hurt, mistreated, or stolen from"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "schizoaffective_disorder",
+    "disease_name": "Schizoaffective Disorder",
+    "top_5_symptoms": [
+      "Schizoaffective disorder presents as a real combination of psychotic symptoms -- delusions",
+      "In the Depressive type, the mood component consists exclusively of major depressive episodes",
+      "In the Bipolar type, at least one manic episode (abnormally and persistently elevated, expansive",
+      "A real, clinically important subtype of presentation is mood-incongruent psychotic symptoms --"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "binge_eating_disorder",
+    "disease_name": "Binge Eating Disorder",
+    "top_5_symptoms": [
+      "The hallmark presentation is a discrete binge episode (typically under 2 hours) of objectively",
+      "A systematic review and multilevel meta-analysis of DSM-5 eating-disorder impairments (69 studies)",
+      "In the WHO World Mental Health Surveys (23,000 adults, 12 countries), current BED was associated",
+      "A systematic review of 17 studies found BED significantly associated with a marked increase in",
+      "Beyond its strong association with obesity, BED (or clinically significant binge-eating behaviour)"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "nonspecific_low_back_pain",
+    "disease_name": "Non-Specific Low Back Pain",
+    "top_5_symptoms": [
+      "The core presentation is axial pain localized to the lumbosacral region (with or without",
+      "By definition, nonspecific low back pain presents WITHOUT: (a) radicular features - no dermatomal"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "juvenile_idiopathic_arthritis",
+    "disease_name": "Juvenile Idiopathic Arthritis (JIA)",
+    "top_5_symptoms": [
+      "Skin rash",
+      "Arthritis",
+      "Joint swelling",
+      "Fever",
+      "Arthralgia"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (76/76 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "cervical_spondylosis",
+    "disease_name": "Cervical Spondylosis",
+    "top_5_symptoms": [
+      "The most common presentation is chronic, mechanical-type neck pain and stiffness with reduced",
+      "Cervical spondylotic radiculopathy produces pain, paresthesia, or numbness radiating from the neck",
+      "Degenerative cervical myelopathy develops insidiously and its hallmark features are decreased hand"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "pagets_disease_of_bone",
+    "disease_name": "Paget's Disease of Bone (Osteitis Deformans)",
+    "top_5_symptoms": [
+      "Hearing impairment",
+      "Elevated circulating alkaline phosphatase concentration",
+      "Osteoarthritis",
+      "Short stature",
+      "Hypotonia"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "oppositional_defiant_disorder",
+    "disease_name": "Oppositional Defiant Disorder (ODD)",
+    "top_5_symptoms": [
+      "DSM-5 grades ODD severity by how many settings the symptom pattern is pervasive across: Mild",
+      "A subgroup of ODD is characterised by prominent chronic irritability and anger rather than"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "dissociative_identity_disorder",
+    "disease_name": "Dissociative Identity Disorder (DID)",
+    "top_5_symptoms": [
+      "The hallmark clinical feature is disruption of identity: the presence of two or more distinct",
+      "Amnesia from one personality state to another is typically part of the clinical picture, and has",
+      "DID is described as a chronic post-traumatic disorder in which developmentally stressful events in",
+      "Suicidal ideation and suicide attempts are among the most common presenting features of DID: in a",
+      "There is marked symptomatic overlap between DID and other trauma-associated disorders, in"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "body_dysmorphic_disorder",
+    "disease_name": "Body Dysmorphic Disorder (BDD)",
+    "top_5_symptoms": [
+      "The core mechanism mirrors OCD's obsession-compulsion cycle but is appearance-focused: a preoccupying belief that a specific body part (most commonly",
+      "Intense preoccupation with a perceived appearance flaw others can't see or find minor",
+      "Repeatedly checking the mirror, grooming, or skin picking for hours each day",
+      "Attempting to hide the perceived flaw with styling, makeup, or clothes",
+      "Frequently seeking reassurance about appearance from others"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/body-dysmorphic-disorder)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "adjustment_disorder",
+    "disease_name": "Adjustment Disorder",
+    "top_5_symptoms": [
+      "Adjustment disorder presents as emotional or behavioural symptoms that develop in direct response",
+      "Adjustment disorder is common but its measured prevalence varies enormously with population and"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "conduct_disorder",
+    "disease_name": "Conduct Disorder",
+    "top_5_symptoms": [
+      "Bullies, threatens, or intimidates others",
+      "Has deliberately engaged in fire-setting with the intention of causing serious damage",
+      "Has broken into someone else's house, building, or car",
+      "Often stays out at night despite parental prohibitions, beginning before age 13"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "insomnia_disorder",
+    "disease_name": "Insomnia Disorder",
+    "top_5_symptoms": [
+      "Myoclonus",
+      "Abnormal autonomic nervous system physiology",
+      "Insomnia",
+      "Dementia",
+      "Ataxia"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (37/50 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "autoimmune_hepatitis",
+    "disease_name": "Autoimmune Hepatitis",
+    "top_5_symptoms": [
+      "Increased circulating IgG concentration",
+      "Increased circulating immunoglobulin concentration",
+      "Elevated circulating hepatic transaminase concentration",
+      "Anti-smooth muscle antibody positivity",
+      "Antineutrophil antibody positivity"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "sjogrens_syndrome",
+    "disease_name": "Sjogren's Syndrome",
+    "top_5_symptoms": [
+      "Dry eyes (keratoconjunctivitis sicca) - a gritty, sandy, or foreign-body sensation, burning",
+      "Dry mouth (xerostomia) - difficulty swallowing dry food without liquids, needing to sip water",
+      "Dryness is not confined to eyes and mouth: real reported involvement includes dry skin (xerosis)",
+      "Real inflammatory arthralgia/non-erosive polyarthritis affecting small joints, resembling",
+      "Cutaneous vasculitis, most often presenting as palpable purpura over the lower limbs"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "chronic_urticaria",
+    "disease_name": "Chronic Urticaria (Chronic Spontaneous Urticaria / CSU, Chronic Idiopathic Urticaria / CIU)",
+    "top_5_symptoms": [
+      "Urticaria",
+      "Facial erythema",
+      "Flushing",
+      "Abnormal lip morphology",
+      "Edema"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "common_variable_immunodeficiency",
+    "disease_name": "Primary Immunodeficiency (Common Variable Immunodeficiency, CVID)",
+    "top_5_symptoms": [
+      "infection burden",
+      "noninfectious complication spectrum",
+      "Respiratory tract infections and their complications (recurrent sinusitis, otitis, pneumonia) are",
+      "enteropathy autoimmunity granuloma cluster",
+      "cellular immune and onset features"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "reactive_arthritis",
+    "disease_name": "Reactive Arthritis",
+    "top_5_symptoms": [
+      "Conjunctivitis",
+      "Hyperkeratosis",
+      "Arthritis",
+      "Joint swelling",
+      "Joint stiffness"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (36/36 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "compartment_syndrome",
+    "disease_name": "Compartment Syndrome",
+    "top_5_symptoms": [
+      "The earliest and most sensitive real clinical finding: pain that is disproportionate to the",
+      "Tightness in the affected limb",
+      "Numbness or tingling in the affected limb",
+      "Weakness of the affected limb",
+      "Pain that becomes sharp with continued activity"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/chronic-exertional-compartment-syndrome)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "behcets_disease",
+    "disease_name": "Beh\u00e7et's Disease (Beh\u00e7et Syndrome)",
+    "top_5_symptoms": [
+      "Oral ulcer",
+      "Photophobia",
+      "Meningitis",
+      "Arthritis",
+      "Subcutaneous nodule"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (85/85 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "graft_versus_host_disease",
+    "disease_name": "Graft-versus-Host Disease (GVHD)",
+    "top_5_symptoms": [
+      "Poor wound healing",
+      "Thickened skin",
+      "Intermittent generalized erythematous papular rash",
+      "Inflammatory abnormality of the skin",
+      "Xerostomia"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (94/94 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "mixed_connective_tissue_disease",
+    "disease_name": "Mixed Connective Tissue Disease (MCTD)",
+    "top_5_symptoms": [
+      "Skin rash",
+      "Arthritis",
+      "Gastroesophageal reflux",
+      "Dyspnea",
+      "Pulmonary fibrosis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (71/71 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "systemic_sclerosis",
+    "disease_name": "Systemic Sclerosis (Scleroderma)",
+    "top_5_symptoms": [
+      "Abnormality of the skin",
+      "Abnormal skin pigmentation",
+      "Hypopigmented skin patches",
+      "Gastroesophageal reflux",
+      "Autoimmunity"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (127/127 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "kawasaki_disease",
+    "disease_name": "Kawasaki Disease",
+    "top_5_symptoms": [
+      "Palmoplantar erythema",
+      "Recurrent pharyngitis",
+      "Cheilitis",
+      "Proteinuria",
+      "Conjunctivitis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "tinea_pedis",
+    "disease_name": "Tinea Pedis (Athlete's Foot)",
+    "top_5_symptoms": [
+      "The interdigital type - the most common presentation - involves scaling, maceration (softened",
+      "The moccasin (hyperkeratotic) type presents as fine, diffuse, dry scaling with underlying erythema",
+      "The vesiculobullous (inflammatory) type presents with painful, sometimes intensely pruritic"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "rosacea",
+    "disease_name": "Rosacea",
+    "top_5_symptoms": [
+      "The earliest and most common presenting feature is recurrent facial flushing (transient erythema)",
+      "Papulopustular disease presents as dome-shaped erythematous papules and pustules superimposed on",
+      "Visible dilated superficial blood vessels (telangiectasia) develop on the cheeks and nose as a",
+      "Phymatous rosacea presents as progressive skin thickening with irregular surface nodularity and",
+      "Ocular symptoms range from mild/common (foreign-body sensation, burning/stinging, dryness, itching"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "seborrhoeic_dermatitis",
+    "disease_name": "Seborrhoeic Dermatitis",
+    "top_5_symptoms": [
+      "SD affects sebaceous-gland-dense ('seborrhoeic') areas: the scalp (fine dandruff-type flaking",
+      "Flaking skin (dandruff) on the scalp, eyebrows, beard, or mustache",
+      "Patches of greasy skin covered with flaky white or yellow scales",
+      "Itchiness (pruritus)",
+      "Flares with stress, fatigue, or seasonal change"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/seborrheic-dermatitis)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "cellulitis",
+    "disease_name": "Cellulitis",
+    "top_5_symptoms": [
+      "Cellulitis presents clinically as an area of skin with the four cardinal local signs of acute",
+      "Systemic signs -- fever, chills/rigors, tachycardia, and in more severe cases hypotension or"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "lichen_planus",
+    "disease_name": "Lichen Planus",
+    "top_5_symptoms": [
+      "The classic lesion morphology of lichen planus is summarised by the traditional mnemonic of the '6",
+      "The surface of well-developed papules and plaques characteristically shows Wickham's striae - fine",
+      "Onset of cutaneous lichen planus is usually acute, classically affecting the flexor surfaces of the",
+      "Lichen planus is described as a chronic, inflammatory, autoimmune disease that can affect the skin"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "familial_mediterranean_fever",
+    "disease_name": "Familial Mediterranean Fever",
+    "top_5_symptoms": [
+      "Polyarticular arthritis",
+      "Proteinuria",
+      "Arthralgia",
+      "Recurrent fever",
+      "Peritonitis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (78/93 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "complement_deficiency_disorders",
+    "disease_name": "Complement Deficiency Disorders (Terminal Complement C5-C9 Deficiency and C1-Inhibitor Deficiency / Hereditary Angioedema)",
+    "top_5_symptoms": [
+      "recurrent neisseria infections terminal deficiency",
+      "cfi deficiency infectious and dysregulatory presentation",
+      "HAE due to C1-inhibitor deficiency is characterized by recurrent, self-limited, non-pruritic"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "pemphigus_vulgaris",
+    "disease_name": "Pemphigus Vulgaris",
+    "top_5_symptoms": [
+      "Autoimmunity",
+      "Oral mucosal blisters",
+      "Atypical scarring of skin",
+      "Urticaria",
+      "Weight loss"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (20/24 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "contact_dermatitis",
+    "disease_name": "Contact Dermatitis (Allergic and Irritant)",
+    "top_5_symptoms": [
+      "In the acute phase, allergic contact dermatitis is characterized by eczematous dermatitis",
+      "Lichenification (thickened, leathery skin from chronic scratching/rubbing) is the most common",
+      "Beyond the typical localized/exposure-matched pattern, a distinct generalized presentation exists:"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "molluscum_contagiosum",
+    "disease_name": "Molluscum Contagiosum",
+    "top_5_symptoms": [
+      "The classic lesion is a firm, rounded, dome-shaped papule, pink or skin-colored, with a shiny",
+      "Small, firm, raised bumps that are white, pink, or skin-colored",
+      "Bumps often have a dimple/depression in the center",
+      "Lesions are 2-5mm, pinhead to pencil-eraser sized",
+      "Sores may be itchy, sore, red, or swollen"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "CDC (cdc.gov/molluscum-contagiosum/about) / Mayo Clinic"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "lichen_sclerosus",
+    "disease_name": "Lichen Sclerosus",
+    "top_5_symptoms": [
+      "The disease produces white plaques/patches, most commonly on the foreskin or penis in men (BXO)",
+      "Symptom control (of which itching/pruritus is the dominant driver in these vulvar and penile lichen",
+      "Genital lichen sclerosus produces real, quantified architectural change/scarring in a meaningful"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "keloid_scarring",
+    "disease_name": "Keloid Scarring",
+    "top_5_symptoms": [
+      "Keloids are pathological scars originating from connective tissue, characterised by excessive",
+      "Common precipitants include surgical incisions, piercings (especially earlobe), burns, acne",
+      "Keloid formation shows a strong, real, verified genetic and ethnic predisposition: keloids occur up"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "impetigo",
+    "disease_name": "Impetigo",
+    "top_5_symptoms": [
+      "Recurrent bacterial skin infections",
+      "Abnormal blistering of the skin",
+      "Erythema",
+      "Pustule",
+      "Septic arthritis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "actinic_keratosis",
+    "disease_name": "Actinic Keratosis (Solar Keratosis)",
+    "top_5_symptoms": [
+      "Rough, scaly, sandpaper-like patches or papules on sun-exposed skin",
+      "Adherent hyperkeratotic scale or a 'cutaneous horn'",
+      "Multiple lesions within a field of chronic sun damage",
+      "Tenderness, itching, or a pricking/stinging sensation on palpation"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "fixed extraction (nested core-list structure), real KB text"
+  },
+  {
+    "disease_id": "bullous_pemphigoid",
+    "disease_name": "Bullous Pemphigoid",
+    "top_5_symptoms": [
+      "Urticaria",
+      "Weight loss",
+      "Recurrent infections",
+      "Autoimmunity",
+      "Abnormal blistering of the skin"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (15/15 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "hidradenitis_suppurativa",
+    "disease_name": "Hidradenitis Suppurativa",
+    "top_5_symptoms": [
+      "Hidradenitis suppurativa is characterised by recurrent, painful, deep-seated nodules, abscesses and",
+      "Lesions occur predominantly after puberty in the apocrine gland-bearing areas of the body, most",
+      "Beyond the visible nodules/abscesses/sinus tracts, patients experience a real, quantified burden of"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "erythema_multiforme",
+    "disease_name": "Erythema Multiforme (EM)",
+    "top_5_symptoms": [
+      "The hallmark, real diagnostic finding is the target (iris) lesion: a round lesion with three",
+      "Lesions are classically acral and facial -- distributed on the extremities (especially the extensor",
+      "Herpes simplex virus (HSV), overwhelmingly HSV type 1, is the real, dominant trigger of erythema",
+      "When mucosal involvement occurs (defining EM major), the oral mucosa is by far the most commonly"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "stevens_johnson_syndrome",
+    "disease_name": "Stevens-Johnson Syndrome / Toxic Epidermal Necrolysis (SJS/TEN)",
+    "top_5_symptoms": [
+      "Real, SJS/TEN typically begins abruptly, usually 4 days to 4 weeks after starting the causative",
+      "Real, per the field-standard classification, the diagnostic skin lesions are widespread",
+      "Real, SJS/TEN characteristically involves at least one mucosal surface (oral, ocular, and/or"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "verruca_vulgaris",
+    "disease_name": "Verruca Vulgaris (Warts)",
+    "top_5_symptoms": [
+      "Warts present as circumscribed, hyperkeratotic papules or nodules with a rough, papillomatous ('cauliflower-like') surface that interrupts normal",
+      "Small, fleshy, grainy bumps on fingers or hands",
+      "Rough to the touch",
+      "Sprinkling of tiny black dots (clotted blood vessels)",
+      "Growths that hurt, bleed, burn, or itch warrant medical evaluation"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/common-warts)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "tonsillitis",
+    "disease_name": "Tonsillitis (Acute, Recurrent, and Chronic)",
+    "top_5_symptoms": [
+      "Tonsillitis presents with sore throat, odynophagia, fever, tonsillar erythema and enlargement",
+      "A tonsil-specific clinical feature not covered in the streptococcal_pharyngitis entry: tonsillar",
+      "A real, tonsil-specific complication warning-sign set (fully detailed as a real emergency in"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "conductive_hearing_loss",
+    "disease_name": "Conductive Hearing Loss",
+    "top_5_symptoms": [
+      "'A focused history, otoscopic and tuning fork examination and formal hearing testing are the",
+      "Voices and sounds seem too quiet to hear",
+      "Ear feels full, stuffed, painful, or tender",
+      "Fluid may drain from the ear",
+      "Dizziness may occur"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/hearing-loss)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "acute_sinusitis",
+    "disease_name": "Acute Sinusitis (Acute Rhinosinusitis)",
+    "top_5_symptoms": [
+      "The characteristic presentation is nasal congestion/obstruction with anterior and/or posterior",
+      "The single most clinically useful pattern for suspecting bacterial superinfection is 'double"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "otitis_externa",
+    "disease_name": "Otitis Externa",
+    "top_5_symptoms": [
+      "Acute diffuse otitis externa presents with ear pain (otalgia, often disproportionate to visible",
+      "Itching in the ear canal",
+      "Fluid draining from the ear",
+      "Feeling of fullness with decreased or muffled hearing",
+      "Pain worsened by pulling the outer ear or pushing the tragus"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/swimmers-ear)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "sensorineural_hearing_loss",
+    "disease_name": "Sensorineural Hearing Loss (SNHL)",
+    "top_5_symptoms": [
+      "Sudden hearing loss is a frightening symptom that often prompts an urgent or emergent visit",
+      "When sudden hearing loss is accompanied by acute vertigo -- particularly in an elderly patient or",
+      "In contrast to the abrupt, often unilateral presentation of SSNHL, chronic age-related and"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "chronic_rhinosinusitis",
+    "disease_name": "Chronic Rhinosinusitis (CRS, With and Without Nasal Polyps)",
+    "top_5_symptoms": [
+      "The defining time criterion that separates chronic rhinosinusitis from acute sinusitis/acute viral",
+      "Thick, discolored nasal mucus",
+      "Mucus down the back of the throat (postnasal drip)",
+      "Blocked or stuffy nose",
+      "Reduced sense of smell and taste"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)",
+      "Mayo Clinic (mayoclinic.org/diseases-conditions/chronic-sinusitis)"
+    ],
+    "confidence_note": "thin KB coverage supplemented with real gold-standard web source (Mayo Clinic/CDC)"
+  },
+  {
+    "disease_id": "tinnitus",
+    "disease_name": "Tinnitus",
+    "top_5_symptoms": [
+      "Patients describe a perception of sound - ringing, buzzing, hissing, whistling, roaring, clicking",
+      "For the subset of patients who seek care, tinnitus is frequently accompanied by real, measurable",
+      "Tinnitus frequently coexists with measurable sensorineural hearing loss and/or hyperacusis (reduced"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "pityriasis_rosea",
+    "disease_name": "Pityriasis Rosea",
+    "top_5_symptoms": [
+      "Individual lesions are oval, erythematous to salmon-colored, scaly patches/plaques with a fine",
+      "Pityriasis rosea is a universal (worldwide) condition"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "laryngitis",
+    "disease_name": "Laryngitis (Acute, Adult)",
+    "top_5_symptoms": [
+      "'Presenting symptoms frequently include voice changes (eg, hoarseness or a raspy voice), early vocal",
+      "'Mild to moderate upper airway swelling is typical, including vocal fold edema as well as mild"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "menieres_disease",
+    "disease_name": "M\u00e9ni\u00e8re's Disease",
+    "top_5_symptoms": [
+      "The classic clinical picture combines: (1) episodic vertigo - spontaneous, true rotational vertigo",
+      "A minority of patients, typically with longer-standing or more severe disease, develop Tumarkin's"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "epistaxis",
+    "disease_name": "Epistaxis (Recurrent / Idiopathic Nosebleed)",
+    "top_5_symptoms": [
+      "Epistaxis"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "myopia",
+    "disease_name": "Myopia (Nearsightedness)",
+    "top_5_symptoms": [
+      "High myopia",
+      "Reduced visual acuity",
+      "Increased axial length of the globe",
+      "Abnormal fundus morphology",
+      "Cataract"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "vocal_cord_nodules",
+    "disease_name": "Vocal Cord Nodules (Vocal Fold Nodules)",
+    "top_5_symptoms": [
+      "Nodules 'cause dysphonia by preventing full vocal fold closure and modifying vibratory",
+      "Because nodules form from cumulative phonotrauma rather than a single acute insult, the voice"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "confirmed false HPO name-match discarded, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "astigmatism",
+    "disease_name": "Astigmatism",
+    "top_5_symptoms": [
+      "The defining clinical feature of astigmatism is that, unlike pure myopia or hyperopia, uncorrected",
+      "The real functional cost of uncorrected/undercorrected astigmatism has been demonstrated"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "deviated_nasal_septum",
+    "disease_name": "Deviated Nasal Septum (DNS)",
+    "top_5_symptoms": [
+      "nasal obstruction is the dominant symptom",
+      "sinusitis predisposition is real and angle dependent",
+      "Deviated septum, along with nasal perforation, rhinitis, sinusitis and upper respiratory infection"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "nasopharyngeal_carcinoma",
+    "disease_name": "Nasopharyngeal Carcinoma (NPC)",
+    "top_5_symptoms": [
+      "Neoplasia of the nasopharynx"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  },
+  {
+    "disease_id": "age_related_macular_degeneration",
+    "disease_name": "Age-Related Macular Degeneration (AMD)",
+    "top_5_symptoms": [
+      "Macular degeneration",
+      "Peripheral axonal neuropathy",
+      "Macular drusen",
+      "Distal sensory impairment",
+      "Blindness"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org, real PMID-cited annotations)"
+    ],
+    "confidence_note": "strong HPO frequency data (32/53 rows have explicit real frequency values)"
+  },
+  {
+    "disease_id": "diabetic_retinopathy",
+    "disease_name": "Diabetic Retinopathy",
+    "top_5_symptoms": [
+      "Early and even moderate non-proliferative diabetic retinopathy is frequently asymptomatic -",
+      "Symptomatic vision loss occurs when disease reaches an advanced or macula-involving stage: gradual"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "laryngeal_cancer",
+    "disease_name": "Laryngeal Cancer",
+    "top_5_symptoms": [
+      "persistent hoarseness key warning sign",
+      "other local symptoms",
+      "advanced disease symptoms"
+    ],
+    "sources_used": [
+      "BalanceAI KB (data/disease_master.json, real cited research)"
+    ],
+    "confidence_note": "no real HPO coverage for this disease, using project's own deep-researched KB text"
+  },
+  {
+    "disease_id": "hyperopia",
+    "disease_name": "Hyperopia",
+    "top_5_symptoms": [
+      "High hypermetropia",
+      "Abnormality of the dentition",
+      "Retinal degeneration",
+      "Microphthalmia",
+      "Glaucoma"
+    ],
+    "sources_used": [
+      "HPO frequency data (hpo.jax.org)",
+      "cross-validated against KB text manually"
+    ],
+    "confidence_note": "HPO match manually confirmed correct despite differing KB wording"
+  }
+]

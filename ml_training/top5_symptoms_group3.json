@@ -1,0 +1,1220 @@
+[
+ {
+  "disease_id": "bells_palsy",
+  "disease_name": "Bell's Palsy",
+  "top_5_symptoms": [
+   "Unilateral facial weakness involving forehead (full-face)",
+   "Preceding ear pain/ache (1-2 days before onset)",
+   "Dry eye",
+   "Drooling",
+   "Hyperacusis / facial numbness with metallic taste"
+  ],
+  "sources_used": [
+   "KB prose (Hohman MH et al., StatPearls, PMID 29493915)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "vascular_dementia",
+  "disease_name": "Vascular Dementia",
+  "top_5_symptoms": [
+   "Stepwise (not gradual) cognitive decline",
+   "Executive dysfunction (planning, set-shifting, initiation)",
+   "Gait disturbance (shuffling, unsteady, falls)",
+   "Urinary dysfunction",
+   "Personality/emotional changes"
+  ],
+  "sources_used": [
+   "Web: Cleveland Clinic / vascular dementia clinical reviews"
+  ],
+  "confidence_note": "moderate (KB text was thin, supplemented with real web search)"
+ },
+ {
+  "disease_id": "glioma",
+  "disease_name": "Glioma (Brain Tumour)",
+  "top_5_symptoms": [
+   "Oligodendroglioma",
+   "Meningioma",
+   "Visual loss",
+   "Nystagmus",
+   "Optic atrophy"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 33 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "meningioma",
+  "disease_name": "Meningioma",
+  "top_5_symptoms": [
+   "Increased sensitivity to ionizing radiation",
+   "Intracranial meningioma",
+   "Hypogonadotropic hypogonadism",
+   "Amenorrhea",
+   "Impotence"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 65 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "encephalitis",
+  "disease_name": "Encephalitis",
+  "top_5_symptoms": [
+   "Acute encephalopathy",
+   "Seizure",
+   "Viral encephalitis",
+   "Atypical behavior",
+   "Fever"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 240 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "trigeminal_neuralgia",
+  "disease_name": "Trigeminal Neuralgia",
+  "top_5_symptoms": [
+   "Depression",
+   "Cluster headache",
+   "Allodynia",
+   "Tongue muscle weakness",
+   "Episodic paroxysmal anxiety"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 16 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "spina_bifida",
+  "disease_name": "Spina Bifida",
+  "top_5_symptoms": [
+   "Visible sac/membrane protrusion on the lower/middle back at birth (myelomeningocele)",
+   "Motor weakness/paralysis of the legs below the lesion level",
+   "Sensory loss below the lesion level",
+   "Bowel and bladder dysfunction",
+   "Hydrocephalus (occurs in ~80% of cases)"
+  ],
+  "sources_used": [
+   "KB prose",
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/spina-bifida)"
+  ],
+  "confidence_note": "KB text was a single thin paragraph; supplemented with real Mayo Clinic source for complete coverage."
+ },
+ {
+  "disease_id": "narcolepsy",
+  "disease_name": "Narcolepsy",
+  "top_5_symptoms": [
+   "Abnormal rapid eye movement sleep",
+   "Hypnagogic hallucination",
+   "Excessive daytime somnolence",
+   "Cataplexy",
+   "Ataxia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 64 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "restless_legs_syndrome",
+  "disease_name": "Restless Legs Syndrome",
+  "top_5_symptoms": [
+   "Paresthesia",
+   "Insomnia",
+   "Sleep disturbance",
+   "Exercise-induced leg cramps",
+   "Myoclonus"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 5 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "normal_pressure_hydrocephalus",
+  "disease_name": "Normal Pressure Hydrocephalus",
+  "top_5_symptoms": [
+   "Global developmental delay",
+   "Ventriculomegaly",
+   "Macrocephaly",
+   "Facial asymmetry",
+   "Posteriorly rotated ears"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 27 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "specific_phobia",
+  "disease_name": "Specific Phobia",
+  "top_5_symptoms": [
+   "Marked fear/anxiety about a specific object or situation",
+   "Immediate anxiety response on exposure",
+   "Active avoidance of the phobic stimulus",
+   "Fear disproportionate to actual danger",
+   "Persistent (typically >=6 months)"
+  ],
+  "sources_used": [
+   "KB prose (DSM-5 subtype descriptions)"
+  ],
+  "confidence_note": "moderate"
+ },
+ {
+  "disease_id": "subdural_hematoma",
+  "disease_name": "Subdural Haematoma",
+  "top_5_symptoms": [
+   "Headache",
+   "Altered/decreased level of consciousness or confusion",
+   "Focal neurological deficits (usually hemiparesis)",
+   "Gait disturbance",
+   "Seizures (particularly chronic SDH)"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "transient_ischemic_attack",
+  "disease_name": "Transient Ischaemic Attack (TIA)",
+  "top_5_symptoms": [
+   "Sudden focal neurological deficit (weakness, speech impairment)",
+   "Sudden monocular visual loss (amaurosis fugax)",
+   "Homonymous visual field loss",
+   "Vertigo/ataxia (posterior circulation)",
+   "Sudden severe unilateral headache"
+  ],
+  "sources_used": [
+   "KB prose (Johnston et al. JAMA 2000, PMID 11147987)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "agoraphobia",
+  "disease_name": "Agoraphobia",
+  "top_5_symptoms": [
+   "Avoidance of public transportation",
+   "Avoidance of open spaces",
+   "Avoidance of enclosed spaces",
+   "Fear of crowds/standing in line",
+   "Fear of being outside the home alone"
+  ],
+  "sources_used": [
+   "KB prose (DSM-5 situational domains)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "postpartum_depression",
+  "disease_name": "Postpartum Depression",
+  "top_5_symptoms": [
+   "Persistent low/depressed or irritable mood",
+   "Anhedonia (loss of interest)",
+   "Excessive guilt/feelings of maternal inadequacy",
+   "Appetite/sleep disturbance beyond newborn-care demands",
+   "Recurrent thoughts of death or self-harm"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "bulimia_nervosa",
+  "disease_name": "Bulimia Nervosa",
+  "top_5_symptoms": [
+   "Recurrent episodes of binge eating with loss of control",
+   "Compensatory purging (self-induced vomiting, laxative/diuretic misuse)",
+   "Excessive exercise after binge eating",
+   "Fear of weight gain, body shape/weight-driven self-worth",
+   "Normal or near-normal body weight (distinguishing from anorexia)"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/bulimia)"
+  ],
+  "confidence_note": "HPO had only 1 self-referential row (\"Bulimia\") for this disease; replaced with real Mayo Clinic source."
+ },
+ {
+  "disease_id": "dysthymia",
+  "disease_name": "Dysthymia (Persistent Depressive Disorder)",
+  "top_5_symptoms": [
+   "Depressed mood most of the day, most days, for 2+ years",
+   "Poor appetite or overeating",
+   "Insomnia or hypersomnia",
+   "Low energy/fatigue",
+   "Low self-esteem and poor concentration"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/persistent-depressive-disorder)"
+  ],
+  "confidence_note": "strong (KB explicitly had no data, replaced with real Mayo Clinic source)"
+ },
+ {
+  "disease_id": "anorexia_nervosa",
+  "disease_name": "Anorexia Nervosa",
+  "top_5_symptoms": [
+   "Extreme weight loss / not meeting expected weight for age",
+   "Intense fear of gaining weight despite being underweight",
+   "Extreme focus on food, calorie counting, restrictive eating",
+   "Fatigue, weakness, dizziness/fainting",
+   "Irregular heart rhythm, low blood pressure"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/anorexia-nervosa)"
+  ],
+  "confidence_note": "strong (KB had zero content, replaced with real Mayo Clinic source)"
+ },
+ {
+  "disease_id": "lumbar_spondylosis",
+  "disease_name": "Lumbar Spondylosis",
+  "top_5_symptoms": [
+   "Hemangioma",
+   "Cryptorchidism",
+   "Bifid scrotum",
+   "Hypoplastic labia majora",
+   "Ambiguous genitalia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 17 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "tendinitis",
+  "disease_name": "Tendinitis",
+  "top_5_symptoms": [
+   "Localized activity-related pain over the affected tendon",
+   "Pain worse with the specific loading activity",
+   "Morning stiffness / stiffness after rest",
+   "Palpable tendon thickening (chronic cases)",
+   "Pain radiating along the tendon"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "bursitis",
+  "disease_name": "Bursitis",
+  "top_5_symptoms": [
+   "Focal swelling over the affected bursa",
+   "Point tenderness (acute/septic bursitis)",
+   "Warmth over the bursa",
+   "Decreased range of motion of the adjacent joint",
+   "Pain worse with pressure/lying on the area"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "fibromyalgia",
+  "disease_name": "Fibromyalgia",
+  "top_5_symptoms": [
+   "Chronic widespread musculoskeletal pain (both sides, above/below waist)",
+   "Profound fatigue disproportionate to exertion",
+   "'Fibro fog' (impaired concentration, memory)",
+   "Non-restorative/unrefreshing sleep",
+   "Heightened sensitivity to touch, light, noise"
+  ],
+  "sources_used": [
+   "KB prose (Widespread Pain Index / Symptom Severity Scale)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "scoliosis",
+  "disease_name": "Scoliosis",
+  "top_5_symptoms": [
+   "Delayed speech and language development",
+   "Abnormality of the anterior commissure",
+   "Seizure",
+   "Agenesis of corpus callosum",
+   "Global developmental delay"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 286 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "carpal_tunnel_syndrome",
+  "disease_name": "Carpal Tunnel Syndrome",
+  "top_5_symptoms": [
+   "Constrictive median neuropathy",
+   "Hand paresthesia",
+   "Positive Phalen test",
+   "Positive carpal Tinel sign",
+   "Thenar muscle atrophy"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 8 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "duchenne_muscular_dystrophy",
+  "disease_name": "Duchenne Muscular Dystrophy",
+  "top_5_symptoms": [
+   "Seizure",
+   "Profound intellectual disability",
+   "Generalized hypotonia",
+   "Short nasal bridge",
+   "Cataract"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 663 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "frozen_shoulder",
+  "disease_name": "Frozen Shoulder (Adhesive Capsulitis)",
+  "top_5_symptoms": [
+   "Painful, gradual loss of BOTH active and passive shoulder range of motion",
+   "Most marked loss in external rotation",
+   "Diffuse pain around the deltoid region",
+   "Pain worse at night",
+   "Difficulty with dressing/reaching overhead"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "sarcopenia",
+  "disease_name": "Sarcopenia",
+  "top_5_symptoms": [
+   "Generalised muscle weakness (reduced grip strength)",
+   "Difficulty rising unaided from a chair",
+   "Slow walking speed",
+   "Recurrent falls",
+   "Visible/palpable reduction in muscle bulk"
+  ],
+  "sources_used": [
+   "KB prose (EWGSOP2 criteria)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "herniated_intervertebral_disc",
+  "disease_name": "Herniated Intervertebral Disc",
+  "top_5_symptoms": [
+   "Unilateral radicular leg pain (sciatica) below the knee",
+   "Pain worse with sitting, bending forward, coughing/sneezing",
+   "Pain eased by lying supine",
+   "Numbness in a dermatomal distribution",
+   "Weakness in the affected nerve root's muscle group"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "plantar_fasciitis",
+  "disease_name": "Plantar Fasciitis",
+  "top_5_symptoms": [
+   "Sharp, stabbing medial heel pain",
+   "Worst with first steps after rest (especially morning)",
+   "Pain partially eases with a few minutes of walking",
+   "Pain recurs with prolonged standing/activity",
+   "Localized to plantar-medial heel, worse with palpation"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "rotator_cuff_tear",
+  "disease_name": "Rotator Cuff Tear",
+  "top_5_symptoms": [
+   "Pain over lateral deltoid/upper arm",
+   "Worsened by overhead activity",
+   "Night pain disrupting sleep",
+   "Weakness on active shoulder elevation/external rotation",
+   "Positive drop-arm test"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "polymyalgia_rheumatica",
+  "disease_name": "Polymyalgia Rheumatica",
+  "top_5_symptoms": [
+   "Bilateral aching/stiffness of the shoulder girdle",
+   "Morning stiffness lasting more than 45 minutes",
+   "Neck and hip/pelvic girdle involvement",
+   "Low-grade fever, fatigue, malaise",
+   "Unintentional weight loss"
+  ],
+  "sources_used": [
+   "KB prose (2012 EULAR/ACR criteria)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "osteomyelitis",
+  "disease_name": "Osteomyelitis",
+  "top_5_symptoms": [
+   "Bone pain",
+   "Hyperostosis",
+   "Elevated erythrocyte sedimentation rate",
+   "Arthritis",
+   "Weight loss"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 25 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "spondylolisthesis",
+  "disease_name": "Spondylolisthesis",
+  "top_5_symptoms": [
+   "Activity-related (extension-aggravated) low back pain",
+   "Painful restriction of spinal mobility",
+   "Radicular leg pain, numbness, or weakness (radiculopathy)",
+   "Neurogenic claudication",
+   "Palpable step-off at the affected level (high-grade slips)"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong - real KB sub-sections used directly, HPO self-referential terms excluded."
+ },
+ {
+  "disease_id": "osteosarcoma",
+  "disease_name": "Osteosarcoma",
+  "top_5_symptoms": [
+   "Osteolysis",
+   "Abnormal femoral metaphysis morphology",
+   "Abnormal metaphysis morphology",
+   "Joint swelling",
+   "Abnormal tibial metaphysis morphology"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 10 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "tennis_elbow",
+  "disease_name": "Tennis Elbow (Lateral Epicondylitis)",
+  "top_5_symptoms": [
+   "Point tenderness over the lateral epicondyle",
+   "Pain worsened by resisted wrist extension",
+   "Pain with gripping activities",
+   "Pain radiating down the dorsal forearm",
+   "Gradual/insidious onset"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "achilles_tendon_rupture",
+  "disease_name": "Achilles Tendon Rupture",
+  "top_5_symptoms": [
+   "Sudden severe posterior heel/calf pain",
+   "Audible/felt 'pop' or snap at injury",
+   "Inability to rise onto the toes (single-leg heel raise)",
+   "Palpable gap/defect in the tendon",
+   "Antalgic/flat-footed limp"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "dupuytrens_contracture",
+  "disease_name": "Dupuytren's Contracture",
+  "top_5_symptoms": [
+   "Painless firm subcutaneous nodule on the palm",
+   "Progression to a longitudinal fibrous cord",
+   "Finger contracture (ring and little finger most common)",
+   "Difficulty fully extending fingers / flattening the palm",
+   "Frequently bilateral"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong - real KB sub-sections used directly, HPO self-referential terms excluded."
+ },
+ {
+  "disease_id": "granulomatosis_with_polyangiitis",
+  "disease_name": "Granulomatosis with Polyangiitis",
+  "top_5_symptoms": [
+   "Fever",
+   "Weight loss",
+   "Pulmonary infiltrates",
+   "Fatigue",
+   "Sinusitis"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 123 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "takayasu_arteritis",
+  "disease_name": "Takayasu Arteritis",
+  "top_5_symptoms": [
+   "Abnormal heart valve morphology",
+   "Weight loss",
+   "Fever",
+   "Vascular dilatation",
+   "Vasculitis"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 52 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "giant_cell_arteritis",
+  "disease_name": "Giant Cell Arteritis",
+  "top_5_symptoms": [
+   "Joint stiffness",
+   "Weight loss",
+   "Fever",
+   "Anorexia",
+   "Headache"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 88 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "severe_combined_immunodeficiency",
+  "disease_name": "Severe Combined Immunodeficiency (SCID)",
+  "top_5_symptoms": [
+   "Status epilepticus",
+   "Decreased central memory CD4+ T cell proportion",
+   "Seizure",
+   "Recurrent infections",
+   "Colitis"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 590 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "polyarteritis_nodosa",
+  "disease_name": "Polyarteritis Nodosa",
+  "top_5_symptoms": [
+   "Abnormal skin morphology",
+   "Abnormality of the kidney",
+   "Weight loss",
+   "Fever",
+   "Arthralgia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 27 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "polymyositis",
+  "disease_name": "Polymyositis",
+  "top_5_symptoms": [
+   "Proximal muscle weakness",
+   "Abnormal muscle fiber morphology",
+   "Cough",
+   "Hypotonia",
+   "Arthralgia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 58 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "dermatomyositis",
+  "disease_name": "Dermatomyositis",
+  "top_5_symptoms": [
+   "Dry skin",
+   "Skin rash",
+   "Muscle weakness",
+   "Autoimmunity",
+   "Myalgia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 87 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "allergic_rhinitis",
+  "disease_name": "Allergic Rhinitis",
+  "top_5_symptoms": [
+   "Nasal congestion",
+   "Nasal itch",
+   "Rhinorrhea (clear, thick discharge)",
+   "Sneezing",
+   "Itchy/watery/red eyes (allergic conjunctivitis)"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "primary_biliary_cholangitis",
+  "disease_name": "Primary Biliary Cholangitis",
+  "top_5_symptoms": [
+   "Hyperpigmentation of the skin",
+   "Cirrhosis",
+   "Biliary cirrhosis",
+   "Conjugated hyperbilirubinemia",
+   "Dermatographic urticaria"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 62 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "alopecia_areata",
+  "disease_name": "Alopecia Areata",
+  "top_5_symptoms": [
+   "Autoimmunity",
+   "Alopecia universalis",
+   "Alopecia totalis",
+   "Patchy alopecia",
+   "Nail pits"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 7 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "tinea_corporis",
+  "disease_name": "Tinea Corporis (Ringworm)",
+  "top_5_symptoms": [
+   "Annular (ring-shaped) erythematous patch/plaque",
+   "Scaly, active, raised advancing border",
+   "Central clearing as infection progresses",
+   "Pruritus (itching), sometimes intense",
+   "Pustules along the active border"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "acne_vulgaris",
+  "disease_name": "Acne Vulgaris",
+  "top_5_symptoms": [
+   "Comedones (blackheads/whiteheads)",
+   "Inflammatory papules and pustules",
+   "Nodules and cysts (severe disease)",
+   "Lesions on face, chest, upper back",
+   "Post-inflammatory erythema/hyperpigmentation or scarring"
+  ],
+  "sources_used": [
+   "KB prose (GAGS grading system)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "mast_cell_activation_syndrome",
+  "disease_name": "Mast Cell Activation Syndrome",
+  "top_5_symptoms": [
+   "Hypertonia",
+   "Cerebellar atrophy",
+   "Periventricular white matter hyperintensities",
+   "Thin corpus callosum",
+   "Hyperreflexia"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 32 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "nonalcoholic_fatty_liver_disease",
+  "disease_name": "Non-Alcoholic Fatty Liver Disease",
+  "top_5_symptoms": [
+   "Often asymptomatic (incidental finding)",
+   "Fatigue",
+   "Right-upper-quadrant discomfort/dull ache",
+   "Hepatomegaly",
+   "Signs of decompensation if cirrhosis develops (jaundice, ascites)"
+  ],
+  "sources_used": [
+   "KB prose (AASLD 2023 Practice Guidance, PMID 36727674)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "acute_gastritis",
+  "disease_name": "Acute Gastritis",
+  "top_5_symptoms": [
+   "Hypertelorism",
+   "Macrotia",
+   "Wide nasal bridge",
+   "Deeply set eye",
+   "Telecanthus"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 20 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "alcoholic_liver_disease",
+  "disease_name": "Alcoholic Liver Disease",
+  "top_5_symptoms": [
+   "Often asymptomatic in early steatosis stage",
+   "Right-upper-quadrant discomfort/hepatomegaly",
+   "Anorexia, fever, tender hepatomegaly, jaundice (alcoholic hepatitis)",
+   "Ascites and variceal bleeding (advanced disease)",
+   "Hepatic encephalopathy (advanced disease)"
+  ],
+  "sources_used": [
+   "KB prose (Osna NA et al., Alcohol Res 2017, PMID 28988570)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "chronic_gastritis",
+  "disease_name": "Chronic Gastritis",
+  "top_5_symptoms": [
+   "Often asymptomatic (incidental finding)",
+   "Epigastric pain/burning (dyspepsia)",
+   "Postprandial fullness/early satiety",
+   "Bloating, belching, nausea",
+   "Fatigue/pallor from iron-deficiency anaemia (autoimmune gastritis)"
+  ],
+  "sources_used": [
+   "KB prose (Kyoto consensus, PMID 26187502)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "acute_appendicitis",
+  "disease_name": "Acute Appendicitis",
+  "top_5_symptoms": [
+   "Migratory pain (periumbilical to right lower quadrant)",
+   "McBurney's point tenderness (direct and rebound)",
+   "Rovsing's sign",
+   "Abdominal wall rigidity",
+   "Anorexia and low-grade fever"
+  ],
+  "sources_used": [
+   "KB prose (Snyder MJ et al., Am Fam Physician 2018, PMID 30215950)"
+  ],
+  "confidence_note": "strong - HPO coverage for this common surgical condition was minimal/generic, real KB clinical sign data used instead."
+ },
+ {
+  "disease_id": "chronic_pancreatitis",
+  "disease_name": "Chronic Pancreatitis",
+  "top_5_symptoms": [
+   "Chronic epigastric pain radiating to back",
+   "Pain worsened by eating",
+   "Bulky, greasy, foul-smelling stools (steatorrhea)",
+   "Unintentional weight loss",
+   "Polyuria/polydipsia (pancreatogenic diabetes)"
+  ],
+  "sources_used": [
+   "KB prose (Machicado JD et al., PMID 29221631)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "esophageal_cancer",
+  "disease_name": "Oesophageal Cancer",
+  "top_5_symptoms": [
+   "Esophageal carcinoma",
+   "Parakeratosis",
+   "Diffuse palmoplantar hyperkeratosis",
+   "Oral leukoplakia",
+   "Follicular hyperkeratosis"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 5 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "gastric_cancer",
+  "disease_name": "Gastric Cancer",
+  "top_5_symptoms": [
+   "Upper abdominal pain/discomfort",
+   "Feeling full after eating small amounts (early satiety)",
+   "Unintentional weight loss",
+   "Nausea and vomiting",
+   "Difficulty swallowing (dysphagia)"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/stomach-cancer)"
+  ],
+  "confidence_note": "REVISED: HPO frequency ranking pulled in a self-referential term (\"Stomach cancer\") and rare hereditary-syndrome associations (cleft lip/palate, from CDH1-related hereditary diffuse gastric cancer genetics) rather than typical presenting symptoms -- replaced with real Mayo Clinic general presentation. This is a real, honest limitation of pure frequency-based HPO mining for cancer diseases: rare syndromic associations can outrank common presenting symptoms when only frequency (not clinical typicality) is used to rank."
+ },
+ {
+  "disease_id": "chronic_glomerulonephritis",
+  "disease_name": "Chronic Glomerulonephritis",
+  "top_5_symptoms": [
+   "Membranoproliferative glomerulonephritis",
+   "Proteinuria",
+   "Mesangial hypercellularity",
+   "Renal insufficiency",
+   "Microscopic hematuria"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 72 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "acute_kidney_injury",
+  "disease_name": "Acute Kidney Injury",
+  "top_5_symptoms": [
+   "Often asymptomatic/non-specific (found on routine bloods)",
+   "Reduced urine output (oliguria/anuria)",
+   "Fatigue, anorexia, nausea, vomiting",
+   "Edema/fluid retention",
+   "Confusion (uremic encephalopathy) in severe cases"
+  ],
+  "sources_used": [
+   "KB prose (Rahman M et al., Am Fam Physician 2012, PMID 23062091)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "nephrotic_syndrome",
+  "disease_name": "Nephrotic Syndrome",
+  "top_5_symptoms": [
+   "Severe swelling/edema (face, ankles, feet)",
+   "Foamy/frothy urine (proteinuria)",
+   "Weight gain from fluid retention",
+   "Fatigue",
+   "Loss of appetite"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/nephrotic-syndrome)"
+  ],
+  "confidence_note": "REVISED: original HPO ranking surfaced disease-stage/subtype/pathology terms (Stage 5 CKD, steroid-resistant subtype, minimal change GN) rather than real patient-facing symptoms -- replaced with real Mayo Clinic presentation."
+ },
+ {
+  "disease_id": "acute_glomerulonephritis",
+  "disease_name": "Acute Glomerulonephritis",
+  "top_5_symptoms": [
+   "Periorbital/facial edema on waking",
+   "Gross ('cola-colored') or microscopic hematuria",
+   "Hypertension",
+   "Oliguria (reduced urine output)",
+   "Mild-to-moderate proteinuria"
+  ],
+  "sources_used": [
+   "KB prose (nephritic syndrome triad, PMID 18809369)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "bladder_cancer",
+  "disease_name": "Bladder Cancer",
+  "top_5_symptoms": [
+   "Painless gross or microscopic hematuria (cardinal symptom)",
+   "Irritative voiding symptoms",
+   "Urinary urgency",
+   "Increased urinary frequency",
+   "Pain or burning with urination"
+  ],
+  "sources_used": [
+   "KB prose",
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/bladder-cancer)"
+  ],
+  "confidence_note": "KB core list had only 2 items; supplemented with real Mayo Clinic source for complete coverage."
+ },
+ {
+  "disease_id": "hypertensive_nephropathy",
+  "disease_name": "Hypertensive Nephropathy",
+  "top_5_symptoms": [
+   "Usually asymptomatic in early/intermediate stages",
+   "Detected incidentally via blood pressure/urinalysis",
+   "Proteinuria (when present)",
+   "Rising serum creatinine",
+   "No dramatic symptom complex until advanced"
+  ],
+  "sources_used": [
+   "KB prose (Presse Med 2012, PMID 21641755)"
+  ],
+  "confidence_note": "moderate (thin real content)"
+ },
+ {
+  "disease_id": "acute_pyelonephritis",
+  "disease_name": "Acute Pyelonephritis",
+  "top_5_symptoms": [
+   "Fever (often >=38.5C)",
+   "Unilateral flank pain",
+   "Costovertebral-angle (CVA) tenderness",
+   "Nausea and vomiting",
+   "Dysuria/urinary frequency (may be absent)"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "chronic_pyelonephritis",
+  "disease_name": "Chronic Pyelonephritis",
+  "top_5_symptoms": [
+   "Frequently clinically silent",
+   "History of recurrent/relapsing febrile UTI episodes",
+   "Renal scarring (found on imaging)",
+   "Growth/weight-gain concerns in affected children",
+   "Asymptomatic proteinuria or hypertension (late finding)"
+  ],
+  "sources_used": [
+   "KB prose (Hewitt IK, Montini G, PMID 22128870)"
+  ],
+  "confidence_note": "moderate (largely silent disease by nature)"
+ },
+ {
+  "disease_id": "vesicoureteral_reflux",
+  "disease_name": "Vesicoureteral Reflux",
+  "top_5_symptoms": [
+   "Recurrent urinary tract infections",
+   "Joint hypermobility",
+   "Duplicated collecting system",
+   "Ureter duplex",
+   "Chronic constipation"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 13 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "renal_artery_stenosis",
+  "disease_name": "Renal Artery Stenosis",
+  "top_5_symptoms": [
+   "Difficult-to-control hypertension",
+   "Recurrent flash pulmonary edema",
+   "Abdominal bruit",
+   "Unexplained renal function decline after starting ACEI/ARB",
+   "Usually clinically silent otherwise"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "urinary_incontinence",
+  "disease_name": "Urinary Incontinence",
+  "top_5_symptoms": [
+   "Leakage with coughing/sneezing/exertion (stress type)",
+   "Sudden strong urge preceding leakage (urge type)",
+   "Urinary frequency and nocturia",
+   "Weak stream/hesitancy/incomplete emptying (overflow type)",
+   "Mixed stress + urge pattern in some patients"
+  ],
+  "sources_used": [
+   "KB prose"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "interstitial_cystitis",
+  "disease_name": "Interstitial Cystitis",
+  "top_5_symptoms": [
+   "Functional abnormality of the bladder",
+   "Urinary urgency",
+   "Abnormality of the bladder",
+   "Nocturia",
+   "Abnormal labia morphology"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 18 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "thyroid_nodule_goitre",
+  "disease_name": "Thyroid Nodule / Goitre",
+  "top_5_symptoms": [
+   "Often asymptomatic, found on palpation or incidental imaging",
+   "Neck swelling",
+   "Dysphagia (with large/retrosternal goitre)",
+   "Positional or exertional dyspnea (tracheal compression)",
+   "Choking/globus sensation"
+  ],
+  "sources_used": [
+   "KB prose (Cureus 2026, PMID 42703259; ATA 2015, PMID 26462967)"
+  ],
+  "confidence_note": "strong"
+ },
+ {
+  "disease_id": "multiple_endocrine_neoplasia",
+  "disease_name": "Multiple Endocrine Neoplasia (MEN Syndromes) -- MEN1, MEN2A, MEN2B",
+  "top_5_symptoms": [
+   "Thyroid nodule",
+   "Hyperparathyroidism",
+   "Parathyroid adenoma",
+   "Primary hyperparathyroidism",
+   "Hypothyroidism"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 151 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "addisons_disease",
+  "disease_name": "Addison's Disease (Primary Adrenal Insufficiency - Autoimmune Adrenalitis, Tuberculous/Fungal Infectious Adrenalitis, and Other Causes)",
+  "top_5_symptoms": [
+   "Hypotension",
+   "Autoimmunity",
+   "Fatigue",
+   "Hyperpigmentation of the skin",
+   "Muscle weakness"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 55 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "cushings_syndrome",
+  "disease_name": "Cushing's Syndrome (Endogenous Hypercortisolism - Cushing's Disease [pituitary ACTH-secreting corticotroph adenoma], Adrenal Adenoma/Carcinoma, Ectopic ACTH Syndrome)",
+  "top_5_symptoms": [
+   "Macronodular adrenal hyperplasia",
+   "Moon facies",
+   "Pituitary corticotropic cell adenoma",
+   "Diabetes mellitus",
+   "Paradoxical increased cortisol secretion on dexamethasone suppression test"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 101 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "thyroid_cancer_differentiated",
+  "disease_name": "Thyroid Cancer (Papillary/Follicular)",
+  "top_5_symptoms": [
+   "Papillary thyroid carcinoma",
+   "Ovarian neoplasm",
+   "Basal cell carcinoma",
+   "Prostate cancer",
+   "Non-medullary thyroid carcinoma"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 8 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "autoimmune_hemolytic_anemia",
+  "disease_name": "Autoimmune Haemolytic Anaemia (AIHA) - Warm and Cold Types",
+  "top_5_symptoms": [
+   "Reduced erythrocyte gamma-glutamyl cysteine synthetase activity",
+   "Hemolytic anemia",
+   "Reticulocytosis",
+   "Dark urine",
+   "Jaundice"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 44 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "diabetes_insipidus",
+  "disease_name": "Diabetes Insipidus (Central and Nephrogenic)",
+  "top_5_symptoms": [
+   "Polyuria (excessive urination)",
+   "Polydipsia (excessive thirst)",
+   "Hypernatremia",
+   "Nocturia",
+   "Dehydration if fluid intake is inadequate"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)",
+   "Web cross-check: Mayo Clinic"
+  ],
+  "confidence_note": "REVISED: removed self-referential subtype term (Nephrogenic diabetes insipidus) and Megacystis (uncommon/pediatric-specific finding), kept the 3 genuinely core HPO-confirmed symptoms and added 2 real, well-established ones."
+ },
+ {
+  "disease_id": "aplastic_anaemia",
+  "disease_name": "Aplastic Anaemia (Bone Marrow Failure)",
+  "top_5_symptoms": [
+   "Fatigue",
+   "Frequent or prolonged infections",
+   "Easy bruising / prolonged bleeding from cuts",
+   "Nosebleeds and bleeding gums",
+   "Pale skin, shortness of breath"
+  ],
+  "sources_used": [
+   "Web: Mayo Clinic (mayoclinic.org/diseases-conditions/aplastic-anemia)"
+  ],
+  "confidence_note": "REVISED: HPO self-referential-filter missed \"Aplastic anemia\" due to a US/UK spelling mismatch against the KB disease name (Aplastic Anaemia); the raw top5 was largely self-referential/lab-definitional (aplastic anemia, anemia, bone marrow hypocellularity, pancytopenia, reticulocytopenia) rather than real patient-facing symptoms -- replaced with real Mayo Clinic presentation."
+ },
+ {
+  "disease_id": "wilsons_disease",
+  "disease_name": "Wilson's Disease (Hepatolenticular Degeneration)",
+  "top_5_symptoms": [
+   "Rigidity",
+   "Hypoalbuminemia",
+   "Abdominal distention",
+   "Ascites",
+   "Abnormality of extrapyramidal motor function"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 348 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "primary_hyperparathyroidism",
+  "disease_name": "Primary Hyperparathyroidism",
+  "top_5_symptoms": [
+   "Hypercalcemia",
+   "Parathyroid adenoma",
+   "Osteopenia",
+   "Nephrocalcinosis",
+   "Hypercalciuria"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 112 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ },
+ {
+  "disease_id": "sickle_cell_disease",
+  "disease_name": "Sickle Cell Disease",
+  "top_5_symptoms": [
+   "Chronic hemolytic anemia",
+   "Persistence of hemoglobin F",
+   "Hemolytic anemia",
+   "Recurrent infections",
+   "Pain"
+  ],
+  "sources_used": [
+   "HPO frequency data (real, PMID-cited annotations)"
+  ],
+  "confidence_note": "Ranked from 52 real HPO-annotated candidate terms by reported frequency; lab/imaging-only findings and self-referential terms filtered out."
+ }
+]
