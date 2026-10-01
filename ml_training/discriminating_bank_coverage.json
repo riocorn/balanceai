@@ -1,0 +1,237 @@
+{
+  "n_eval_queries": 292,
+  "n_touched_any_kb_pair": 46,
+  "n_touched_validated_pair": 46,
+  "touched_validated_cases": [
+    {
+      "true_disease": "alzheimers_disease",
+      "shortlist_partner": "vascular_dementia",
+      "query_text": "Apraxia (impaired learned motor skills despite intact motor/sensory function)"
+    },
+    {
+      "true_disease": "migraine",
+      "shortlist_partner": "cluster_headache",
+      "query_text": "Migraine aura is caused by cortical spreading depression (CSD, the phenomenon first described by Leao) - a slowly propagating (3-5 mm/min) wave of intense neuronal and glial depolarisation across the cortex, followed by a longer-lasting wave of suppressed cortical activity, accompanied by transient "
+    },
+    {
+      "true_disease": "migraine",
+      "shortlist_partner": "tension_type_headache",
+      "query_text": "Migraine aura is caused by cortical spreading depression (CSD, the phenomenon first described by Leao) - a slowly propagating (3-5 mm/min) wave of intense neuronal and glial depolarisation across the cortex, followed by a longer-lasting wave of suppressed cortical activity, accompanied by transient "
+    },
+    {
+      "true_disease": "rheumatoid_arthritis",
+      "shortlist_partner": "psoriatic_arthritis",
+      "query_text": "Rheumatoid nodules and other late or systemic signs at presentation"
+    },
+    {
+      "true_disease": "rheumatoid_arthritis",
+      "shortlist_partner": "reactive_arthritis",
+      "query_text": "Rheumatoid nodules and other late or systemic signs at presentation"
+    },
+    {
+      "true_disease": "ankylosing_spondylitis",
+      "shortlist_partner": "psoriatic_arthritis",
+      "query_text": "extra articular manifestations"
+    },
+    {
+      "true_disease": "psoriatic_arthritis",
+      "shortlist_partner": "ankylosing_spondylitis",
+      "query_text": "axial psoriatic arthritis"
+    },
+    {
+      "true_disease": "psoriatic_arthritis",
+      "shortlist_partner": "rheumatoid_arthritis",
+      "query_text": "axial psoriatic arthritis"
+    },
+    {
+      "true_disease": "prostate_cancer",
+      "shortlist_partner": "benign_prostatic_hyperplasia",
+      "query_text": "Digital rectal examination (DRE) -- a gloved, lubricated finger inserted into the rectum to palpate the prostate for asymmetry, induration, or a discrete nodule -- remains a real, low-cost adjunct to PSA testing, but its independent contribution to mortality reduction has not been established with t"
+    },
+    {
+      "true_disease": "acute_otitis_media",
+      "shortlist_partner": "otitis_externa",
+      "query_text": "otorrhea if tympanic membrane perforates"
+    },
+    {
+      "true_disease": "cataract",
+      "shortlist_partner": "glaucoma",
+      "query_text": "posterior subcapsular disproportionate glare and near vision difficulty"
+    },
+    {
+      "true_disease": "cataract",
+      "shortlist_partner": "age_related_macular_degeneration",
+      "query_text": "posterior subcapsular disproportionate glare and near vision difficulty"
+    },
+    {
+      "true_disease": "cataract",
+      "shortlist_partner": "diabetic_retinopathy",
+      "query_text": "posterior subcapsular disproportionate glare and near vision difficulty"
+    },
+    {
+      "true_disease": "glaucoma",
+      "shortlist_partner": "cataract",
+      "query_text": "symptomatic contrast between open and angle closure types"
+    },
+    {
+      "true_disease": "bacterial_prostatitis",
+      "shortlist_partner": "benign_prostatic_hyperplasia",
+      "query_text": "chronic bacterial prostatitis presentation"
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "shortlist_partner": "prostate_cancer",
+      "query_text": "symptom severity does not always correlate with prostate size"
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "shortlist_partner": "bacterial_prostatitis",
+      "query_text": "symptom severity does not always correlate with prostate size"
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "shortlist_partner": "urinary_incontinence",
+      "query_text": "symptom severity does not always correlate with prostate size"
+    },
+    {
+      "true_disease": "iga_nephropathy",
+      "shortlist_partner": "acute_glomerulonephritis",
+      "query_text": "hypertension"
+    },
+    {
+      "true_disease": "volvulus",
+      "shortlist_partner": "intestinal_obstruction",
+      "query_text": "peritonitis sepsis if ischemia or perforation"
+    },
+    {
+      "true_disease": "hemophilia_a",
+      "shortlist_partner": "von_willebrand_disease",
+      "query_text": "Recurrent hemarthrosis leading to chronic hemophilic arthropathy"
+    },
+    {
+      "true_disease": "immune_thrombocytopenic_purpura",
+      "shortlist_partner": "thrombotic_thrombocytopenic_purpura",
+      "query_text": "intracranial hemorrhage rare feared complication"
+    },
+    {
+      "true_disease": "neurogenic_bladder",
+      "shortlist_partner": "urinary_incontinence",
+      "query_text": "detrusor sphincter dyssynergia specific symptoms"
+    },
+    {
+      "true_disease": "neurogenic_bladder",
+      "shortlist_partner": "urinary_tract_infection",
+      "query_text": "detrusor sphincter dyssynergia specific symptoms"
+    },
+    {
+      "true_disease": "intestinal_obstruction",
+      "shortlist_partner": "volvulus",
+      "query_text": "exam findings that independently predict strangulation"
+    },
+    {
+      "true_disease": "disseminated_intravascular_coagulation",
+      "shortlist_partner": "immune_thrombocytopenic_purpura",
+      "query_text": "Underlying-disease-specific presentation (no single fixed symptom set)"
+    },
+    {
+      "true_disease": "disseminated_intravascular_coagulation",
+      "shortlist_partner": "thrombotic_thrombocytopenic_purpura",
+      "query_text": "Underlying-disease-specific presentation (no single fixed symptom set)"
+    },
+    {
+      "true_disease": "tension_type_headache",
+      "shortlist_partner": "migraine",
+      "query_text": "absence of migrainous features"
+    },
+    {
+      "true_disease": "agoraphobia",
+      "shortlist_partner": "panic_disorder",
+      "query_text": "panic attack overlap"
+    },
+    {
+      "true_disease": "lumbar_spondylosis",
+      "shortlist_partner": "spondylolisthesis",
+      "query_text": "neurogenic claudication"
+    },
+    {
+      "true_disease": "osteosarcoma",
+      "shortlist_partner": "osteomyelitis",
+      "query_text": "pathologic fracture risk"
+    },
+    {
+      "true_disease": "polymyositis",
+      "shortlist_partner": "dermatomyositis",
+      "query_text": "extramuscular involvement"
+    },
+    {
+      "true_disease": "alcoholic_liver_disease",
+      "shortlist_partner": "viral_hepatitis",
+      "query_text": "cirrhosis"
+    },
+    {
+      "true_disease": "alcoholic_liver_disease",
+      "shortlist_partner": "nonalcoholic_fatty_liver_disease",
+      "query_text": "cirrhosis"
+    },
+    {
+      "true_disease": "chronic_gastritis",
+      "shortlist_partner": "peptic_ulcer_disease",
+      "query_text": "autoimmune gastritis presentation"
+    },
+    {
+      "true_disease": "chronic_gastritis",
+      "shortlist_partner": "gerd",
+      "query_text": "autoimmune gastritis presentation"
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "shortlist_partner": "nephrotic_syndrome",
+      "query_text": "nephrotic features"
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "shortlist_partner": "diabetic_nephropathy",
+      "query_text": "nephrotic features"
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "shortlist_partner": "chronic_kidney_disease",
+      "query_text": "nephrotic features"
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "shortlist_partner": "iga_nephropathy",
+      "query_text": "nephrotic features"
+    },
+    {
+      "true_disease": "acute_glomerulonephritis",
+      "shortlist_partner": "iga_nephropathy",
+      "query_text": "honest variability note"
+    },
+    {
+      "true_disease": "urinary_incontinence",
+      "shortlist_partner": "neurogenic_bladder",
+      "query_text": "overflow incontinence presentation"
+    },
+    {
+      "true_disease": "von_willebrand_disease",
+      "shortlist_partner": "hemophilia_a",
+      "query_text": "joint and muscle bleeding in severe disease"
+    },
+    {
+      "true_disease": "schizoaffective_disorder",
+      "shortlist_partner": "schizophrenia",
+      "query_text": "mood incongruent psychotic features"
+    },
+    {
+      "true_disease": "age_related_macular_degeneration",
+      "shortlist_partner": "cataract",
+      "query_text": "quality of life impact central not peripheral vision"
+    },
+    {
+      "true_disease": "diabetic_retinopathy",
+      "shortlist_partner": "cataract",
+      "query_text": "vision loss in advanced or macula involving disease"
+    }
+  ]
+}

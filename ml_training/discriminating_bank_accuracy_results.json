@@ -1,0 +1,467 @@
+{
+  "n": 46,
+  "before_correct": 19,
+  "after_correct": 26,
+  "cases": [
+    {
+      "true_disease": "alzheimers_disease",
+      "confusable_partner": "vascular_dementia",
+      "question": "Have you noticed your memory getting worse in a steady, gradual way, or has it come and gone in steps?",
+      "simulated_patient_answer": "Yes, it's gotten worse steadily.",
+      "baseline_top1_pick": "alzheimers_disease",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "frontotemporal_dementia",
+      "after_correct": false
+    },
+    {
+      "true_disease": "migraine",
+      "confusable_partner": "cluster_headache",
+      "question": "Do you usually feel the need to stay in a quiet, dark room when your headache is at its worst?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "migraine",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "migraine",
+      "after_correct": true
+    },
+    {
+      "true_disease": "migraine",
+      "confusable_partner": "tension_type_headache",
+      "question": "Does the pain from your headache feel like it's pulsing?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "migraine",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "migraine",
+      "after_correct": true
+    },
+    {
+      "true_disease": "rheumatoid_arthritis",
+      "confusable_partner": "psoriatic_arthritis",
+      "question": "Have you noticed any swelling in your fingertips, especially around the joints?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "rheumatoid_arthritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "rheumatoid_arthritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "rheumatoid_arthritis",
+      "confusable_partner": "reactive_arthritis",
+      "question": "Have you recently had an infection, such as in your stomach or urinary tract, before your joint pain started?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "rheumatoid_arthritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "rheumatoid_arthritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "ankylosing_spondylitis",
+      "confusable_partner": "psoriatic_arthritis",
+      "question": "Have you ever had any skin problems like psoriasis, or do you have a family history of it?",
+      "simulated_patient_answer": "no",
+      "baseline_top1_pick": "psoriatic_arthritis",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "psoriatic_arthritis",
+      "after_correct": false
+    },
+    {
+      "true_disease": "psoriatic_arthritis",
+      "confusable_partner": "ankylosing_spondylitis",
+      "question": "Have you ever had any skin problems like psoriasis, or do you have a family history of it?",
+      "simulated_patient_answer": "yes",
+      "baseline_top1_pick": "psoriatic_arthritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "psoriatic_arthritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "psoriatic_arthritis",
+      "confusable_partner": "rheumatoid_arthritis",
+      "question": "Have you noticed any swelling in your fingertips, especially around the joints?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "psoriatic_arthritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "psoriatic_arthritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "prostate_cancer",
+      "confusable_partner": "benign_prostatic_hyperplasia",
+      "question": "Have you noticed any hard or lumpy areas in your prostate during a digital rectal exam?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "benign_prostatic_hyperplasia",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "prostate_cancer",
+      "after_correct": true
+    },
+    {
+      "true_disease": "acute_otitis_media",
+      "confusable_partner": "otitis_externa",
+      "question": "Does the pain in your ear get worse when you pull on your earlobe or press on the small bump in front of your ear?",
+      "simulated_patient_answer": "no",
+      "baseline_top1_pick": "otitis_externa",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "otitis_externa",
+      "after_correct": false
+    },
+    {
+      "true_disease": "cataract",
+      "confusable_partner": "glaucoma",
+      "question": "Have you noticed any changes in your side or peripheral vision?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "glaucoma",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "cataract",
+      "after_correct": true
+    },
+    {
+      "true_disease": "cataract",
+      "confusable_partner": "age_related_macular_degeneration",
+      "question": "Do you see distorted shapes or wavy lines when looking at straight lines or objects?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "glaucoma",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "cataract",
+      "after_correct": true
+    },
+    {
+      "true_disease": "cataract",
+      "confusable_partner": "diabetic_retinopathy",
+      "question": "Have you noticed any changes in your vision that seem to come and go, especially when you're looking at bright lights at night?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "glaucoma",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "cataract",
+      "after_correct": true
+    },
+    {
+      "true_disease": "glaucoma",
+      "confusable_partner": "cataract",
+      "question": "Have you noticed any changes in your side or peripheral vision?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "glaucoma",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "glaucoma",
+      "after_correct": true
+    },
+    {
+      "true_disease": "bacterial_prostatitis",
+      "confusable_partner": "benign_prostatic_hyperplasia",
+      "question": "Have you had a fever recently?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "bacterial_prostatitis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "bacterial_prostatitis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "confusable_partner": "prostate_cancer",
+      "question": "Have you noticed any hard or lumpy areas in your prostate during a digital rectal exam?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "benign_prostatic_hyperplasia",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "benign_prostatic_hyperplasia",
+      "after_correct": true
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "confusable_partner": "bacterial_prostatitis",
+      "question": "Have you had a fever recently?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "benign_prostatic_hyperplasia",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "benign_prostatic_hyperplasia",
+      "after_correct": true
+    },
+    {
+      "true_disease": "benign_prostatic_hyperplasia",
+      "confusable_partner": "urinary_incontinence",
+      "question": "Do you feel like you can't empty your bladder completely when you go to the bathroom?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "benign_prostatic_hyperplasia",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "benign_prostatic_hyperplasia",
+      "after_correct": true
+    },
+    {
+      "true_disease": "iga_nephropathy",
+      "confusable_partner": "acute_glomerulonephritis",
+      "question": "Did you notice blood in your urine soon after you got sick with a cold or something similar?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "hypertension",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "renal_artery_stenosis",
+      "after_correct": false
+    },
+    {
+      "true_disease": "volvulus",
+      "confusable_partner": "intestinal_obstruction",
+      "question": "Have you noticed any twisting or turning of your abdomen?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "intestinal_obstruction",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "intestinal_obstruction",
+      "after_correct": false
+    },
+    {
+      "true_disease": "hemophilia_a",
+      "confusable_partner": "von_willebrand_disease",
+      "question": "Have you ever had bleeding in your joints or muscles?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "hemophilia_a",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "hemophilia_a",
+      "after_correct": true
+    },
+    {
+      "true_disease": "immune_thrombocytopenic_purpura",
+      "confusable_partner": "thrombotic_thrombocytopenic_purpura",
+      "question": "Have you noticed any unusual fatigue or yellowing of the skin?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "hemophilia_a",
+      "baseline_correct": false,
+      "resolved_pick_after_question": null,
+      "after_correct": false
+    },
+    {
+      "true_disease": "neurogenic_bladder",
+      "confusable_partner": "urinary_incontinence",
+      "question": "Have you ever had an injury or illness that affects your nervous system, such as a spinal cord injury or multiple sclerosis?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "normal_pressure_hydrocephalus",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "neurogenic_bladder",
+      "after_correct": true
+    },
+    {
+      "true_disease": "neurogenic_bladder",
+      "confusable_partner": "urinary_tract_infection",
+      "question": "Have you noticed any new or worsening symptoms since your bladder issues started?",
+      "simulated_patient_answer": "Yes, I've noticed new or worsening symptoms.",
+      "baseline_top1_pick": "normal_pressure_hydrocephalus",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "neurogenic_bladder",
+      "after_correct": true
+    },
+    {
+      "true_disease": "intestinal_obstruction",
+      "confusable_partner": "volvulus",
+      "question": "Have you noticed any twisting or turning of your abdomen?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "intestinal_obstruction",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "intestinal_obstruction",
+      "after_correct": true
+    },
+    {
+      "true_disease": "disseminated_intravascular_coagulation",
+      "confusable_partner": "immune_thrombocytopenic_purpura",
+      "question": "Have you noticed any recent illness or injury that might have triggered these symptoms?",
+      "simulated_patient_answer": "yes",
+      "baseline_top1_pick": "immune_thrombocytopenic_purpura",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "immune_thrombocytopenic_purpura",
+      "after_correct": false
+    },
+    {
+      "true_disease": "disseminated_intravascular_coagulation",
+      "confusable_partner": "thrombotic_thrombocytopenic_purpura",
+      "question": "Have you noticed any unusual bleeding from small cuts or puncture wounds that seems to take longer to stop than usual?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "immune_thrombocytopenic_purpura",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "immune_thrombocytopenic_purpura",
+      "after_correct": false
+    },
+    {
+      "true_disease": "tension_type_headache",
+      "confusable_partner": "migraine",
+      "question": "Does the pain from your headache feel like it's pulsing?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "cluster_headache",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "tension_type_headache",
+      "after_correct": true
+    },
+    {
+      "true_disease": "agoraphobia",
+      "confusable_partner": "panic_disorder",
+      "question": "Do you worry about having more panic attacks or fear what might happen if one were to happen?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "panic_disorder",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "panic_disorder",
+      "after_correct": false
+    },
+    {
+      "true_disease": "lumbar_spondylosis",
+      "confusable_partner": "spondylolisthesis",
+      "question": "Have you noticed any change in the position of your spine or vertebrae, like one vertebra slipping forward or backward compared to the one below it?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "scoliosis",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "lumbar_spondylosis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "osteosarcoma",
+      "confusable_partner": "osteomyelitis",
+      "question": "Have you noticed any swelling in the soft tissues around the affected bone?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "pagets_disease_of_bone",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "pagets_disease_of_bone",
+      "after_correct": false
+    },
+    {
+      "true_disease": "polymyositis",
+      "confusable_partner": "dermatomyositis",
+      "question": "Have you noticed any skin changes, like a purple rash on your eyelids or raised patches on your knuckles?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "psoriatic_arthritis",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "psoriatic_arthritis",
+      "after_correct": false
+    },
+    {
+      "true_disease": "alcoholic_liver_disease",
+      "confusable_partner": "viral_hepatitis",
+      "question": "Have you ever been told you have a virus that affects your liver, like hepatitis B or C?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "wilsons_disease",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "cirrhosis",
+      "after_correct": false
+    },
+    {
+      "true_disease": "alcoholic_liver_disease",
+      "confusable_partner": "nonalcoholic_fatty_liver_disease",
+      "question": "Do you drink alcohol regularly, more than what's considered safe for your health?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "wilsons_disease",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "cirrhosis",
+      "after_correct": false
+    },
+    {
+      "true_disease": "chronic_gastritis",
+      "confusable_partner": "peptic_ulcer_disease",
+      "question": "Have you noticed any painful sores or ulcers in your stomach or the upper part of your small intestine?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "chronic_gastritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "chronic_gastritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "chronic_gastritis",
+      "confusable_partner": "gerd",
+      "question": "Do you feel like there's a burning sensation behind your breastbone, or like acid is coming back up into your throat?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "chronic_gastritis",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "chronic_gastritis",
+      "after_correct": true
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "confusable_partner": "nephrotic_syndrome",
+      "question": "Have you noticed any swelling in your legs or around your eyes?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "nephrotic_syndrome",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "nephrotic_syndrome",
+      "after_correct": false
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "confusable_partner": "diabetic_nephropathy",
+      "question": "Have you had diabetes for more than 5 years?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "nephrotic_syndrome",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "nephrotic_syndrome",
+      "after_correct": false
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "confusable_partner": "chronic_kidney_disease",
+      "question": "Have you noticed blood in your urine?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "nephrotic_syndrome",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "nephrotic_syndrome",
+      "after_correct": false
+    },
+    {
+      "true_disease": "chronic_glomerulonephritis",
+      "confusable_partner": "iga_nephropathy",
+      "question": "Have you noticed any blood in your urine that happens right after you have a sore throat or a cold?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "nephrotic_syndrome",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "nephrotic_syndrome",
+      "after_correct": false
+    },
+    {
+      "true_disease": "acute_glomerulonephritis",
+      "confusable_partner": "iga_nephropathy",
+      "question": "Did you notice blood in your urine soon after you got sick with a cold or something similar?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "cardiogenic_shock",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "iga_nephropathy",
+      "after_correct": false
+    },
+    {
+      "true_disease": "urinary_incontinence",
+      "confusable_partner": "neurogenic_bladder",
+      "question": "Have you ever had an injury or illness that affects your nervous system, such as a spinal cord injury or multiple sclerosis?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "urinary_incontinence",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "urinary_incontinence",
+      "after_correct": true
+    },
+    {
+      "true_disease": "von_willebrand_disease",
+      "confusable_partner": "hemophilia_a",
+      "question": "Have you ever had bleeding in your joints or muscles?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "immune_thrombocytopenic_purpura",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "hemophilia_a",
+      "after_correct": false
+    },
+    {
+      "true_disease": "schizoaffective_disorder",
+      "confusable_partner": "schizophrenia",
+      "question": "Have you ever had a period where you experienced psychotic symptoms, like hearing voices or having strange beliefs, without feeling particularly depressed or manic?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "schizoaffective_disorder",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "schizoaffective_disorder",
+      "after_correct": true
+    },
+    {
+      "true_disease": "age_related_macular_degeneration",
+      "confusable_partner": "cataract",
+      "question": "Do you see distorted shapes or wavy lines when looking at straight lines or objects?",
+      "simulated_patient_answer": "Yes",
+      "baseline_top1_pick": "age_related_macular_degeneration",
+      "baseline_correct": true,
+      "resolved_pick_after_question": "age_related_macular_degeneration",
+      "after_correct": true
+    },
+    {
+      "true_disease": "diabetic_retinopathy",
+      "confusable_partner": "cataract",
+      "question": "Have you noticed any changes in your vision that seem to come and go, especially when you're looking at bright lights at night?",
+      "simulated_patient_answer": "No",
+      "baseline_top1_pick": "cataract",
+      "baseline_correct": false,
+      "resolved_pick_after_question": "age_related_macular_degeneration",
+      "after_correct": false
+    }
+  ]
+}

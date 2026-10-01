@@ -1,0 +1,8 @@
+{
+  "n_diseases": 323,
+  "top_k_neighbors_per_disease": 9,
+  "n_confusable_disease_pairs": 2042,
+  "n_kb_authored_overlap": 50,
+  "n_nearest_neighbor_new": 1992,
+  "n_real_training_pairs_from_this_set": 39873
+}

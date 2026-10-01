@@ -34,6 +34,12 @@ logger = logging.getLogger("medical_understanding")
 _THIS_FILE = Path(__file__).resolve()
 BASE_DIR = _THIS_FILE.parents[3]  # .../balanceai
 DATA_PATH = BASE_DIR / "data" / "disease_master.json"
+# Pre-authored discriminating-question bank (ml_training/build_discriminating_question_bank.py),
+# grounded in the 121 real KB-authored differential_diagnosis_dataset.json hard-negative pairs,
+# one real GPU-generated (HuatuoGPT) patient-answerable question per pair -- see that script's
+# docstring. Covers only those 121 pairs (a small fraction of all possible shortlist combinations),
+# so this is a real but partial improvement, not a replacement for the free-form LLM path below.
+DISCRIMINATING_QUESTIONS_PATH = BASE_DIR / "ml_training" / "discriminating_questions.json"
 EMBED_CACHE_PATH = Path(str(DATA_PATH) + ".understanding_embeddings.npy")
 EMBED_META_PATH = Path(str(DATA_PATH) + ".understanding_embeddings.meta.json")
 
@@ -1312,6 +1318,61 @@ CLARIFY_MAX_CANDIDATES = 8
 CLARIFY_MIN_QUESTIONS = 2
 CLARIFY_MAX_QUESTIONS = 4
 
+_DISCRIMINATING_BANK: Optional[Dict[frozenset, Dict[str, Any]]] = None
+
+
+def _load_discriminating_bank() -> Dict[frozenset, Dict[str, Any]]:
+    """Loads the pre-authored discriminating-question bank once and caches it,
+    keyed by frozenset({disease_a, disease_b}) -> record. Only VALIDATED
+    records (real patient-answerable question, passed the exam-only-finding
+    filter -- see build_discriminating_question_bank.py) are included; the
+    121 KB-authored pairs are a real but partial set, so a miss here is
+    normal and falls through to the free-form LLM path untouched."""
+    global _DISCRIMINATING_BANK
+    if _DISCRIMINATING_BANK is not None:
+        return _DISCRIMINATING_BANK
+    bank: Dict[frozenset, Dict[str, Any]] = {}
+    try:
+        if DISCRIMINATING_QUESTIONS_PATH.exists():
+            records = json.loads(DISCRIMINATING_QUESTIONS_PATH.read_text())
+            for r in records:
+                if not r.get("validated"):
+                    continue
+                a, b = r.get("disease_a"), r.get("disease_b")
+                q = r.get("question")
+                if not a or not b or not q:
+                    continue
+                bank[frozenset((a, b))] = r
+    except Exception:
+        logger.warning("FALLBACK: failed to load discriminating-question bank", exc_info=True)
+        bank = {}
+    _DISCRIMINATING_BANK = bank
+    return bank
+
+
+def _bank_questions_for_candidates(candidates: List[Tuple[str, float]]) -> List[str]:
+    """Real, pre-authored discriminating questions for any pair of diseases
+    within the given shortlist that matches a validated entry in the bank
+    (checked over all pairs within the shown candidates, not just the top
+    two, since the true disease may not always rank first). Order follows
+    candidate rank so the most relevant pairs are asked about first."""
+    bank = _load_discriminating_bank()
+    if not bank:
+        return []
+    ids = [did for did, _score in candidates]
+    seen_pairs = set()
+    questions = []
+    for i in range(len(ids)):
+        for j in range(i + 1, len(ids)):
+            key = frozenset((ids[i], ids[j]))
+            if key in seen_pairs:
+                continue
+            seen_pairs.add(key)
+            record = bank.get(key)
+            if record:
+                questions.append(record["question"])
+    return questions
+
 
 def _clarify_candidate_block(candidates: List[Tuple[str, float]], disease_meta: Dict[str, Any]) -> str:
     lines = []
@@ -1338,8 +1399,23 @@ def generate_clarifying_questions(
     failure (network/parse) or if fewer than 2 genuine questions come back,
     returns {"questions": []}, which the caller treats as "could not
     generate a safe clarifying flow -> fall back to WhatsApp" rather than
-    guessing."""
+    guessing.
+
+    Before composing anything, checks the pre-authored discriminating-
+    question bank (ml_training/discriminating_questions.json, built from the
+    121 real KB-authored commonly-confused disease pairs -- see
+    build_discriminating_question_bank.py) for any pair within this
+    shortlist. Research on real production symptom-checkers (Ada Health,
+    Isabel Healthcare, SmartTriage) found pre-authored, clinician-grounded
+    questions outperform free-form LLM-composed ones for exactly this
+    disambiguation step, so a bank match is used FIRST, with the free-form
+    LLM call only filling any remaining slots up to CLARIFY_MAX_QUESTIONS (or
+    covering the whole shortlist when no bank pair matches at all -- the 121
+    pairs are a real but partial subset of all possible shortlists)."""
     shown = candidates[:CLARIFY_MAX_CANDIDATES]
+    bank_questions = _bank_questions_for_candidates(shown)[:CLARIFY_MAX_QUESTIONS]
+    if len(bank_questions) >= CLARIFY_MAX_QUESTIONS:
+        return {"questions": bank_questions}
     candidate_block = _clarify_candidate_block(shown, disease_meta)
     system = (
         "You are a doctor having a plain, everyday conversation with a patient. The patient described a "
@@ -1363,7 +1439,7 @@ def generate_clarifying_questions(
         f"Candidate diseases:\n{candidate_block}\n\n"
         "Write 2-4 short distinguishing questions."
     )
-    fallback = {"questions": []}
+    fallback = {"questions": bank_questions} if bank_questions else {"questions": []}
     try:
         content = _ollama_chat(
             [{"role": "system", "content": system}, {"role": "user", "content": user}],
@@ -1376,8 +1452,10 @@ def generate_clarifying_questions(
         if not isinstance(questions, list):
             return fallback
         questions = [q.strip() for q in questions if isinstance(q, str) and q.strip() and not _looks_non_english(q)]
-        questions = list(dict.fromkeys(questions))
-        return {"questions": questions[:CLARIFY_MAX_QUESTIONS]}
+        # Bank questions (real, pre-authored, pair-grounded) take priority;
+        # free-form questions only fill remaining slots, deduplicated.
+        merged = list(dict.fromkeys(bank_questions + questions))
+        return {"questions": merged[:CLARIFY_MAX_QUESTIONS]}
     except Exception:
         logger.warning("FALLBACK: clarifying-question generation failed", exc_info=True)
         return fallback

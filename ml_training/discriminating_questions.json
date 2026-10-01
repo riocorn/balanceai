@@ -1,0 +1,1139 @@
+[
+  {
+    "disease_a": "congestive_heart_failure",
+    "disease_b": "cirrhosis",
+    "source": "KB differential reasoning for congestive_heart_failure vs cirrhosis",
+    "distinguishing_text": "Ascites and dependent oedema (occasionally with a transudative pleural effusion) arise from portal hypertension and hypoalbuminaemia, not venous congestion - jugular venous pressure is typically flat/normal (in contrast to elevated JVP in HF), the echocardiogram is normal, and deranged liver function tests plus stigmata of chronic liver disease (spider naevi, palmar erythema, caput medusae) point to the hepatic cause.",
+    "question": "Have you noticed any swelling in your legs or abdomen that doesn't seem to go away?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "aortic_stenosis",
+    "disease_b": "mitral_regurgitation",
+    "source": "KB differential reasoning for aortic_stenosis vs mitral_regurgitation",
+    "distinguishing_text": "MR's murmur is holosystolic (not crescendo-decrescendo), loudest at the apex, high-pitched/blowing, and radiates to the left axilla/infrascapular region - the opposite radiation pattern from AS's right-2nd-intercostal-space, carotid-radiating crescendo-decrescendo murmur (already in this entry). A practical bedside pitfall is the Gallavardin phenomenon, where a genuine AS murmur's harsh component is filtered out at the apex, leaving only a musical high-frequency component that can be mistaken for MR; a described discriminator is that the AS murmur's intensity increases after a post-extrasystol",
+    "question": "Does the sound of your heart murmur change after you take a few extra beats, making it sound more musical or high-pitched?",
+    "validated": false,
+    "reject_reason": "question references an exam/lab/imaging-only finding a patient cannot self-report"
+  },
+  {
+    "disease_a": "migraine",
+    "disease_b": "tension_type_headache",
+    "source": "KB differential reasoning for migraine vs tension_type_headache",
+    "distinguishing_text": "Tension-type headache (TTH, ICHD-3 section 2) is distinguished from migraine by: bilateral (rather than unilateral) location; pressing/tightening, non-pulsating quality; mild-to-moderate (rather than moderate-to-severe) intensity; NOT aggravated by routine physical activity; and the absence of, or at most one of, nausea/photophobia/phonophobia (migraine requires nausea/vomiting OR both photophobia and phonophobia). Episode duration in TTH ranges from 30 minutes to 7 days. TTH is far more prevalent than migraine globally (an estimated 2 billion people affected by TTH in 2021 vs 1.2 billion with",
+    "question": "Does the pain feel like it's squeezing or tightening around your head, rather than throbbing on one side?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "migraine",
+    "disease_b": "cluster_headache",
+    "source": "KB differential reasoning for migraine vs cluster_headache",
+    "distinguishing_text": "Cluster headache is distinguished from migraine by: strictly unilateral, severe-to-very-severe periorbital/temporal pain (often described as among the most severe pain a human can experience, colloquially the 'suicide headache'); short attack duration of 15-180 minutes (vs 4-72 hours in migraine); ipsilateral cranial autonomic features required for diagnosis (lacrimation, conjunctival injection, nasal congestion/rhinorrhoea, ptosis, miosis, eyelid oedema, facial sweating); a characteristic restlessness/agitation during attacks (patients pace or rock, in contrast to migraineurs who prefer still",
+    "question": "Do you feel restless or agitated during your headaches?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "bacterial_meningitis",
+    "disease_b": "viral_hepatitis",
+    "source": "KB differential reasoning for bacterial_meningitis vs viral_hepatitis",
+    "distinguishing_text": "Encephalitis is inflammation of the brain parenchyma with clinical evidence of neurological dysfunction: behavioural change, acute cognitive dysfunction, speech disturbance, focal deficits and seizures (in 113 virologically proven HSV encephalitis cases, behavioural change, fever, confusion and speech disturbance were characteristic). Altered mental status is early in encephalitis but does not reliably separate encephalitis from bacterial meningitis; CSF typically shows mild mononuclear pleocytosis with mildly to moderately raised protein, and CSF/imaging can be normal early in proven HSV dise",
+    "question": "Have you noticed any changes in your behavior or speech recently?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "rheumatoid_arthritis",
+    "disease_b": "osteoarthritis",
+    "source": "KB differential reasoning for rheumatoid_arthritis vs osteoarthritis",
+    "distinguishing_text": "Hand osteoarthritis (OA) is classified by hard-tissue (bony) enlargement of at least 2 of 10 selected joints (2nd and 3rd DIP, 2nd and 3rd PIP, and first carpometacarpal joints of both hands), fewer than 3 swollen MCP joints, and either at least 2 enlarged DIP joints or deformity of at least 1 of the 10 joints; the criteria were 92% sensitive and 98% specific against a control group that included RA and spondyloarthropathy. So in a patient with hand pain, DIP-predominant bony enlargement with few swollen MCP joints favours OA, whereas 3 or more swollen MCP, PIP and wrist joints with soft-tissu",
+    "question": "Do you have more than two swollen joints in your hands, especially around your knuckles?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "rheumatoid_arthritis",
+    "disease_b": "psoriatic_arthritis",
+    "source": "KB differential reasoning for rheumatoid_arthritis vs psoriatic_arthritis",
+    "distinguishing_text": "The CASPAR criteria classify psoriatic arthritis as established inflammatory articular disease plus at least 3 points from: current psoriasis (2 points), history of psoriasis, family history of psoriasis, dactylitis, juxta-articular new bone formation, rheumatoid-factor negativity and nail dystrophy (1 point each). Sensitivity was 0.914 and specificity 0.987 in a derivation study of 588 cases and 536 controls that included 384 RA patients. Practical pointers for a polyarthritis that looks like RA: look for psoriasis (skin, scalp, natal cleft, nails), dactylitis and new bone formation on radiog",
+    "question": "Have you noticed any changes in your nails, such as thickening or pitting?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "rheumatoid_arthritis",
+    "disease_b": "systemic_lupus_erythematosus",
+    "source": "KB differential reasoning for rheumatoid_arthritis vs systemic_lupus_erythematosus",
+    "distinguishing_text": "The 2019 EULAR/ACR SLE classification criteria require a positive antinuclear antibody (ANA) at least once as the entry criterion, then weighted (2-10 points) criteria across seven clinical domains (constitutional, haematological, neuropsychiatric, mucocutaneous, serosal, musculoskeletal, renal) and three immunological domains (antiphospholipid antibodies, complement proteins, SLE-specific antibodies); 10 points or more classifies SLE (sensitivity 96.1%, specificity 93.4% in validation). Joint symptoms are common in SLE (musculoskeletal is one of the scored domains; the symmetric small-joint p",
+    "question": "Have you noticed any rashes on your face that look like a butterfly across your cheeks?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "rheumatoid_arthritis",
+    "disease_b": "polymyalgia_rheumatica",
+    "source": "KB differential reasoning for rheumatoid_arthritis vs polymyalgia_rheumatica",
+    "distinguishing_text": "The 2012 provisional EULAR/ACR PMR criteria apply to patients aged 50 or more with bilateral shoulder pain not better explained by another pathology, with elevated CRP and/or ESR, and score morning stiffness over 45 minutes (2 points), hip pain or limited range of motion (1), absence of RF and/or ACPA (2) and absence of peripheral joint pain (1); a score of 4 or more gave 68% sensitivity and 78% specificity, with specificity of only 65% for discriminating RA from PMR (88% versus shoulder conditions). This honest overlap matters: elderly-onset RA can present with shoulder and hip girdle stiffne",
+    "question": "Do you have morning stiffness lasting more than 45 minutes?",
+    "expected_answer_if_a": "No, because rheumatoid arthritis typically has morning stiffness lasting an hour or more, but this question is too specific and doesn't capture the full duration.",
+    "expected_answer_if_b": "Yes, because polymyalgia rheumatica often has morning stiffness lasting more than 45 minutes, which is a key distinguishing feature.",
+    "validated": true
+  },
+  {
+    "disease_a": "rheumatoid_arthritis",
+    "disease_b": "reactive_arthritis",
+    "source": "KB differential reasoning for rheumatoid_arthritis vs reactive_arthritis",
+    "distinguishing_text": "Reactive arthritis is sterile inflammatory arthritis following a remote infection, often gastrointestinal or urogenital, and is diagnosed mainly clinically as acute oligoarticular (large-joint) arthritis developing within 2-4 weeks of the preceding infection; annual incidence in population studies is 0.6-27 per 100,000. No generally agreed diagnostic criteria exist, and HLA-B27 should not be used as a diagnostic tool for acute reactive arthritis. Compared with RA, reactive arthritis is typically asymmetric, oligoarticular and post-infectious rather than symmetric small-joint polyarthritis, and",
+    "question": "Have you recently had an infection, such as in your stomach or urinary tract, before your joint pain started?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "gout",
+    "disease_b": "rheumatoid_arthritis",
+    "source": "KB differential reasoning for gout vs rheumatoid_arthritis",
+    "distinguishing_text": "RA is classified under the 2010 ACR/EULAR criteria (definite RA: synovitis in >=1 joint, no better alternative diagnosis, total score >=6 of 10 from joint involvement, serology, acute-phase reactants and duration). Distinguishing features from gout: RA is scored on persistent synovitis, serological abnormality (rheumatoid factor/anti-CCP), acute-phase reactants and symptom duration, whereas gout is recurrent self-limiting attacks with complete resolution between episodes and crystal-proven monosodium urate; but early gout with polyarticular foot involvement and chronic tophaceous gout can mimi",
+    "question": "Do you have pain in just one joint that comes and goes, and goes away completely between episodes?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "gout",
+    "disease_b": "cellulitis",
+    "source": "KB differential reasoning for gout vs cellulitis",
+    "distinguishing_text": "An acute gout attack is often misdiagnosed as cellulitis, and the reverse. In a single-centre study of 184 acute gout attacks and 183 lower-limb cellulitis cases, the delta neutrophil index (immature granulocyte fraction) was lower in gout (0.6% vs 2.8%; cut-off 1.7% to predict cellulitis; OR 9.7), including in patients without MSU confirmation and with normouricaemia. This is a single-centre finding and not a validated bedside rule; joint aspiration for crystals and culture remains the discriminating test when a joint effusion is present.",
+    "question": "Have you noticed any changes in your white blood cell count recently, such as feeling more or less tired than usual?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "gout",
+    "disease_b": "reactive_arthritis",
+    "source": "KB differential reasoning for gout vs reactive_arthritis",
+    "distinguishing_text": "Reactive arthritis is a seronegative spondyloarthritis: additive or migratory oligoarthritis (large-joint oligoarthritis in the Reiter's-syndrome subtype) with inflammatory back pain and extra-articular features (uveitis, urogenital, skin), following a gastrointestinal or urogenital infection by about 1-6 weeks; it typically affects young adults, is associated with HLA-B27, and cultures of synovial fluid are negative. It differs from septic arthritis (fever, systemic infection signs, monoarthritis) and from gout by the antecedent infection, extra-articular signs and absence of crystals.",
+    "question": "Have you had any recent infection, such as an upset stomach or a sexually transmitted infection, before your joint pain started?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "osteoarthritis",
+    "disease_b": "rheumatoid_arthritis",
+    "source": "KB differential reasoning for osteoarthritis vs rheumatoid_arthritis",
+    "distinguishing_text": "Rheumatoid arthritis (RA) and OA are distinguished mainly by pattern and tempo. RA classification (1987 ACR criteria) requires morning stiffness of at least 1 hour, symmetric small-joint (MCP/PIP/wrist) polyarthritis, and often systemic serology (rheumatoid factor, anti-CCP) and elevated acute-phase reactants (2010 ACR/EULAR criteria); OA's clinical criteria specify morning stiffness under 30 minutes, no palpable synovial warmth, and a large-joint, often asymmetric or single-joint pattern (knee, hip, hand DIP/first CMC) with normal inflammatory markers. RA is an autoimmune, serology-positive-i",
+    "question": "Do you have morning stiffness that lasts more than an hour?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "ankylosing_spondylitis",
+    "disease_b": "psoriatic_arthritis",
+    "source": "KB differential reasoning for ankylosing_spondylitis vs psoriatic_arthritis",
+    "distinguishing_text": "Psoriatic arthritis (PsA) can involve the axial skeleton and overlaps with AS within the spondyloarthritis family, but is classified using the CASPAR criteria: established inflammatory articular disease plus at least 3 points from current psoriasis (2 points), history of psoriasis, family history of psoriasis, dactylitis, juxta-articular new bone formation, rheumatoid-factor negativity, and nail dystrophy (1 point each). In the CASPAR derivation study (588 cases, 536 controls including 72 AS patients as a comparator group), sensitivity was 91.4% and specificity 98.7%. Practically, current or p",
+    "question": "Have you ever had any skin problems like psoriasis, or do you have a family history of it?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "ankylosing_spondylitis",
+    "disease_b": "reactive_arthritis",
+    "source": "KB differential reasoning for ankylosing_spondylitis vs reactive_arthritis",
+    "distinguishing_text": "Reactive arthritis is a spondyloarthritis subtype triggered by a preceding genitourinary or gastrointestinal infection (e.g. Chlamydia, Salmonella, Shigella, Campylobacter, Yersinia), typically presenting as an acute, asymmetric oligoarthritis, often with enthesitis and dactylitis and, in the classic but not universal triad, conjunctivitis/uveitis and urethritis/cervicitis, usually within days to a few weeks of the triggering infection. It is distinguished from AS mainly by this clear temporal link to a preceding infection and a more acute, often self-limited or relapsing-remitting peripheral ",
+    "question": "Have you had any recent infections, such as a urinary tract infection or stomach flu, before your symptoms started?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "systemic_lupus_erythematosus",
+    "disease_b": "mixed_connective_tissue_disease",
+    "source": "KB differential reasoning for systemic_lupus_erythematosus vs mixed_connective_tissue_disease",
+    "distinguishing_text": "Mixed connective tissue disease (MCTD) is an overlap syndrome combining features of SLE, systemic sclerosis and polymyositis/dermatomyositis, unified by the presence of high-titre antibodies to U1-ribonucleoprotein (anti-U1-RNP) - a serological marker not part of the SLE-specific antibody criterion (which is anti-dsDNA/anti-Sm). Clinically, MCTD is suggested by Raynaud's phenomenon, puffy/'sausage' fingers, sclerodactyly, myositis and pulmonary hypertension occurring alongside lupus-like or RA-like arthritis; a review of the 'undifferentiated versus mixed' connective tissue disease question no",
+    "question": "Have you noticed any changes in your fingers, such as them becoming discolored or feeling cold in response to temperature changes, or do they look swollen or 'sausage-like'?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "systemic_lupus_erythematosus",
+    "disease_b": "fibromyalgia",
+    "source": "KB differential reasoning for systemic_lupus_erythematosus vs fibromyalgia",
+    "distinguishing_text": "Fibromyalgia - chronic widespread pain with fatigue, unrefreshing sleep and cognitive symptoms, classified by the 2016 revised ACR criteria using a widespread pain index and symptom severity scale rather than tender-point examination - is an important differential and frequent comorbid overlap with SLE because both cause profound fatigue and diffuse musculoskeletal pain, but fibromyalgia does not cause objective synovitis, rash, serositis, cytopenias, renal disease, or a positive SLE-specific antibody profile. Fatigue that does not track with objective markers of lupus activity (normal complem",
+    "question": "Have you noticed any rashes on your face that look like a butterfly across your cheeks?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "psoriatic_arthritis",
+    "disease_b": "rheumatoid_arthritis",
+    "source": "KB differential reasoning for psoriatic_arthritis vs rheumatoid_arthritis",
+    "distinguishing_text": "PsA and RA can both cause a symmetric polyarthritis (Moll and Wright's polyarticular PsA pattern resembles RA), but they are distinguished by rheumatoid-factor status (RF negativity is a scored point favouring PsA in the CASPAR criteria; RA is frequently RF- and/or anti-CCP-positive - see this knowledge base's rheumatoid arthritis entry, anti_ccp_and_rf_accuracy), by DIP joint involvement (a Moll-and-Wright PsA pattern, but explicitly excluded from RA's 2010 ACR/EULAR joint-count scoring - see this knowledge base's rheumatoid arthritis entry, acr_eular_2010_criteria), and by dactylitis, enthes",
+    "question": "Have you noticed any swelling in your fingertips, especially around the joints?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "psoriatic_arthritis",
+    "disease_b": "gout",
+    "source": "KB differential reasoning for psoriatic_arthritis vs gout",
+    "distinguishing_text": "Gout, like PsA, can cause an asymmetric mono- or oligoarthritis and (in chronic tophaceous disease) can involve DIP joints, overlapping with PsA's classic presenting patterns. The discriminating test is synovial fluid analysis for monosodium urate crystals, which is sufficient on its own for classification under the 2015 ACR/EULAR gout criteria (sensitivity 92%, specificity 89% in that study); additional discriminating domains in those criteria include serum urate level, the double-contour sign on ultrasound, and gout-specific erosion pattern on imaging, as already detailed in this knowledge b",
+    "question": "Have you noticed any lumps or bumps under your skin, especially on your fingers or toes?",
+    "expected_answer_if_a": "Yes, I have noticed lumps or bumps under my skin, especially on my fingers or toes.",
+    "expected_answer_if_b": "No, I haven't noticed any lumps or bumps under my skin, especially on my fingers or toes.",
+    "validated": true
+  },
+  {
+    "disease_a": "psoriatic_arthritis",
+    "disease_b": "osteoarthritis",
+    "source": "KB differential reasoning for psoriatic_arthritis vs osteoarthritis",
+    "distinguishing_text": "Hand osteoarthritis (OA) can mimic DIP-predominant PsA because both preferentially involve the DIP joints, but the underlying process differs: hand OA classification requires hard-tissue (bony) enlargement of at least 2 of 10 selected joints with few swollen MCP joints (92% sensitive, 98% specific against controls including inflammatory arthritis in the derivation study), reflecting a degenerative, non-inflammatory bony process, whereas PsA's DIP involvement is inflammatory (soft-tissue swelling, often with adjacent nail dystrophy in the same digit - the 'DIP joint plus diseased nail' associat",
+    "question": "Do you have swelling in the joints of your fingers, especially around the base of your nails?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "schizophrenia",
+    "disease_b": "schizoaffective_disorder",
+    "source": "KB differential reasoning for schizophrenia vs schizoaffective_disorder",
+    "distinguishing_text": "Schizoaffective disorder is distinguished from schizophrenia and from mood disorders with psychotic features by two DSM-5 requirements: psychotic symptoms (delusions and/or hallucinations) must be present for 2 or more weeks in the absence of a major mood episode at some point during the lifetime course of the illness (ruling out a pure mood disorder with psychosis), while a major mood episode (depressive or manic) must be present for the majority (more than 50%) of the total duration of the active and residual portions of the illness (distinguishing it from schizophrenia, where mood symptoms ",
+    "question": "Have you ever had a period where you experienced psychotic symptoms, like hearing voices or having strange beliefs, without feeling particularly depressed or manic?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "dengue_fever",
+    "disease_b": "malaria",
+    "source": "KB differential reasoning for dengue_fever vs malaria",
+    "distinguishing_text": "Malaria (cross-reference: see this knowledge base's separate 'malaria' entry) is a key differential for dengue in India given overlapping fever/headache/myalgia presentations. In a real India tertiary-care cohort of acute undifferentiated febrile illness, features favoring dengue over malaria included the ABSENCE of hepatosplenomegaly (2.1% of dengue cases vs 60% of malaria cases, odds ratio 0.11), absence of altered sensorium (0% dengue vs 60% malaria), and a low CRP (83.3% of dengue cases had CRP <50 mg/L, versus 100% of malaria cases with CRP >50 mg/L -- CRP was a strong discriminator, with",
+    "question": "Have you noticed any swelling in your liver or spleen?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "atopic_dermatitis",
+    "disease_b": "psoriasis",
+    "source": "KB differential reasoning for atopic_dermatitis vs psoriasis",
+    "distinguishing_text": "Psoriasis can mimic AD, particularly in infancy and in flexural (inverse) presentations, but the two differ in typical morphology and immune driver: this knowledge base's own psoriasis entry documents psoriasis as classically producing well-demarcated erythematous, desquamative plaques on extensor surfaces/scalp/nails, driven predominantly by the IL-23/Th17/IL-17 axis, versus AD's poorly demarcated, pruritic, xerotic, eczematous lesions with lichenification, driven predominantly by Th2/IL-4/IL-13 pathways (see this entry's own definition_and_pathophysiology and this knowledge base's psoriasis ",
+    "question": "Do you have well-defined, red, scaly patches on the outside of your arms or legs, or on your scalp?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "atopic_dermatitis",
+    "disease_b": "scabies",
+    "source": "KB differential reasoning for atopic_dermatitis vs scabies",
+    "distinguishing_text": "Scabies is a key mimicker to actively exclude, since missing it delays appropriate antiparasitic treatment and risks household spread. Per the same 2026 review, scabies should be suspected 'when pruritus is severe or when lesions involve the palms, soles, or axillary folds,' and key distinguishing features include a 'history of pruritus affecting other household members and the nocturnal exacerbation of itching' - features not typical of AD itself.",
+    "question": "Does your itching get worse at night?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "urinary_tract_infection",
+    "disease_b": "interstitial_cystitis",
+    "source": "KB differential reasoning for urinary_tract_infection vs interstitial_cystitis",
+    "distinguishing_text": "IC/BPS produces chronic bladder pain/pressure with urinary frequency and urgency that can closely mimic cystitis, but is a chronic, typically culture-negative condition rather than an acute bacterial infection, and does not resolve with antibiotics. Contemporary research is actively trying to improve objective differentiation: a 2025 study combining urinary biomarkers (e.g. 8-OHdG, TNF-alpha) with clinical pain scores reported a diagnostic model with AUROC 0.997 (96% accuracy, 96% sensitivity, 92% specificity) as a non-invasive alternative to invasive testing, and a 2026 phenotyping study dist",
+    "question": "Have you noticed any improvement in your symptoms after taking antibiotics?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "bppv",
+    "disease_b": "menieres_disease",
+    "source": "KB differential reasoning for bppv vs menieres_disease",
+    "distinguishing_text": "Meniere's disease, per the Barany Society/AAO-HNS consensus diagnostic criteria, requires episodic vertigo lasting between 20 minutes and 12 hours (definite Meniere's) or 20 minutes to 24 hours (probable), together with fluctuating low- to medium-frequency sensorineural hearing loss and aural symptoms (tinnitus and/or aural fullness) in the affected ear - a much longer episode duration and the presence of cochlear symptoms clearly separate it from BPPV's brief, hearing-sparing, purely positional episodes.",
+    "question": "Do your vertigo episodes last more than 20 minutes?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "acute_otitis_media",
+    "disease_b": "otitis_externa",
+    "source": "KB differential reasoning for acute_otitis_media vs otitis_externa",
+    "distinguishing_text": "Otitis externa is 'an acute inflammatory reaction that affects the subdermis of the external auditory canal' rather than the middle ear; pain is typically reproduced by traction on the pinna or pressure on the tragus (not a feature of AOM), and any discharge originates from an inflamed canal rather than through a perforated tympanic membrane. The AAP diagnostic criteria for AOM explicitly require that new-onset otorrhoea be 'not secondary to otitis externa' before it can be used to diagnose AOM, formally building this distinction into the diagnostic pathway.",
+    "question": "Does the pain in your ear get worse when you pull on your earlobe or press on the small bump in front of your ear?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "scabies",
+    "disease_b": "atopic_dermatitis",
+    "source": "KB differential reasoning for scabies vs atopic_dermatitis",
+    "distinguishing_text": "Scabies is a key differential to actively exclude in any patient being considered for a diagnosis of atopic dermatitis (AD), since missing it delays antiparasitic treatment and risks household spread. This knowledge base's own atopic_dermatitis entry (differential_diagnosis.scabies) documents, from a 2026 open-access paediatric review, that scabies should specifically be suspected 'when pruritus is severe or when lesions involve the palms, soles, or axillary folds,' and that key distinguishing features favouring scabies over AD include a 'history of pruritus affecting other household members a",
+    "question": "Have other members of your household also been experiencing intense itching?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "scabies",
+    "disease_b": "contact_dermatitis",
+    "source": "KB differential reasoning for scabies vs contact_dermatitis",
+    "distinguishing_text": "Allergic or irritant contact dermatitis can mimic scabies-related eczematization, particularly when secondary excoriation and lichenification obscure the primary lesion morphology. The key discriminators are anatomic distribution and history: contact dermatitis is typically localised to the site of a specific triggering exposure (e.g., a rash confined to skin under jewellery, a waistband, or an area of documented allergen/irritant contact), lacks true burrows, and does not classically produce a pattern of interdigital/genital/axillary involvement with simultaneous nocturnal itching in multiple",
+    "question": "Have you noticed any areas of your skin that are itchy and look like small, wavy lines or tracks?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "typhoid_fever",
+    "disease_b": "malaria",
+    "source": "KB differential reasoning for typhoid_fever vs malaria",
+    "distinguishing_text": "Malaria is a real, key differential for typhoid fever given substantial overlap in fever, headache, myalgia, and (in both diseases) potential hepatosplenomegaly, and both are hyperendemic in overlapping regions of India and South Asia. A real India tertiary-care acute-undifferentiated-febrile-illness cohort (Rathod BD et al, Cureus 2026) found hepatosplenomegaly in 60% of malaria cases versus only 2.1% of dengue cases, with enteric fever intermediate (31.6% combined hepatosplenomegaly in that same cohort's 19 enteric fever cases) -- and found relative bradycardia (present in 36.8% of enteric f",
+    "question": "Have you noticed any unusual enlargement of your liver or spleen?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "typhoid_fever",
+    "disease_b": "dengue_fever",
+    "source": "KB differential reasoning for typhoid_fever vs dengue_fever",
+    "distinguishing_text": "Dengue fever (cross-reference: see this knowledge base's separate 'dengue_fever' entry) is another key real differential, and the two diseases have genuinely distinguishing features despite overlapping fever/headache/myalgia presentations. Typhoid's incubation period (6-30 days) is longer and more variable than dengue's shorter incubation (approximately 4-7 days), and typhoid presents with a sustained, stepwise fever accompanied by abdominal pain and either constipation or diarrhea, rather than dengue's short, high-spiking fever with severe myalgia/arthralgia ('breakbone fever'), retro-orbital",
+    "question": "Have you had any abdominal pain or changes in your bowel habits, like constipation or diarrhea, along with your fever?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "rabies",
+    "disease_b": "tetanus",
+    "source": "KB differential reasoning for rabies vs tetanus",
+    "distinguishing_text": "Tetanus can be confused with furious rabies because both cause spasms triggered by external stimuli, but tetanus classically produces generalized rigidity (trismus, risus sardonicus) with a clear sensorium and no hydrophobia/aerophobia as defining features, and typically follows a contaminated puncture/soil wound rather than a mammal bite or scratch. Wound history (contaminated wound in tetanus vs. animal bite/scratch in rabies) and the presence of true hydrophobia/aerophobia (rabies) are the key clinical discriminators. Cross-reference this knowledge base's tetanus entry for its own classic-s",
+    "question": "Have you noticed any muscle stiffness or spasms that make it hard to open your mouth or smile?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "diphtheria",
+    "disease_b": "streptococcal_pharyngitis",
+    "source": "KB differential reasoning for diphtheria vs streptococcal_pharyngitis",
+    "distinguishing_text": "See this knowledge base's own 'streptococcal_pharyngitis' entry for that condition's full diagnostic framework. Key distinguishing features from diphtheria: GAS pharyngitis typically produces tonsillar exudate that wipes away without bleeding, lacking the progressively adherent, bleeding-on-removal pseudomembrane characteristic of diphtheria; GAS also does not produce the 'bull neck' soft-tissue swelling pattern nor the toxin-mediated myocarditis/polyneuropathy of diphtheria (although GAS has its own distinct real complications, including post-streptococcal rheumatic fever and rare invasive/to",
+    "question": "When you try to wipe away the mucus or pus from your tonsils, do you notice any bleeding?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "cataract",
+    "disease_b": "age_related_macular_degeneration",
+    "source": "KB differential reasoning for cataract vs age_related_macular_degeneration",
+    "distinguishing_text": "Age-related macular degeneration (AMD) is 'an acquired degeneration of the retina that causes significant central visual impairment' with hallmark symptoms of 'visual distortion, metamorphopsia, micropsia' and central 'scotoma' - features not typical of uncomplicated cataract, which instead causes relatively uniform blur/glare without image distortion. Both are common in the elderly, both cause progressive/gradual vision loss, and both frequently coexist in the same patient, but management is entirely different (cataract extraction versus anti-VEGF therapy or AREDS-type supplementation for AMD",
+    "question": "Do you see distorted shapes or wavy lines when looking at straight lines or objects?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "cataract",
+    "disease_b": "glaucoma",
+    "source": "KB differential reasoning for cataract vs glaucoma",
+    "distinguishing_text": "Primary open-angle glaucoma causes progressive peripheral visual field loss (e.g. 'nasal step,' 'arcuate scotoma') and optic disc cupping, but critically, 'the majority of patients with POAG are asymptomatic' and 'are only symptomatic in late disease' - unlike cataract's early, self-noticed central blur. Because glaucomatous field loss is silent until advanced and is not reversed by cataract surgery, intraocular pressure measurement and optic-disc/field assessment must be performed alongside cataract evaluation in older patients rather than assuming a visual complaint is due to lens opacity al",
+    "question": "Have you noticed any changes in your side or peripheral vision?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "cataract",
+    "disease_b": "diabetic_retinopathy",
+    "source": "KB differential reasoning for cataract vs diabetic_retinopathy",
+    "distinguishing_text": "Diabetic retinopathy is distinguished on fundoscopy by 'abnormally dilated small vessel outpouchings (microaneurysms), retinal bleeding (retinal hemorrhages),' 'yellow lipid and protein deposits (hard exudates),' macular edema, and in proliferative disease, retinal/disc/iris neovascularization - none of which are features of cataract, which is a lens (not retinal) opacity seen on slit-lamp exam. The two conditions frequently coexist in diabetic patients (cataract is a recognized diabetes-associated finding, and 'vitrectomy accelerates the rate of cataract formation'), so a dilated retinal exam",
+    "question": "Have you noticed any changes in your vision that seem to come and go, especially when you're looking at bright lights at night?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "chickenpox",
+    "disease_b": "impetigo",
+    "source": "KB differential reasoning for chickenpox vs impetigo",
+    "distinguishing_text": "Impetigo (usually Staphylococcus aureus and/or group A Streptococcus) is a real, common bacterial skin infection that starts as a red, itchy sore that breaks open and leaks clear fluid or pus, then forms a characteristic crusty yellow or 'honey-colored' scab -- a genuinely distinctive appearance different from chickenpox's clear fluid-filled vesicles arising diffusely on an erythematous base -- and typically lacks the systemic prodrome (fever, malaise) and the trunk-and-face-predominant, successive-crop distribution seen in varicella; impetigo instead commonly affects exposed skin such as the ",
+    "question": "Have you noticed any yellow or honey-colored crusts on your skin?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "herpes_zoster",
+    "disease_b": "contact_dermatitis",
+    "source": "KB differential reasoning for herpes_zoster vs contact_dermatitis",
+    "distinguishing_text": "Acute contact dermatitis (irritant or allergic) can mimic early herpes zoster when it produces a linear or band-like erythematous, vesicular eruption -- for example from a plant, chemical, or topical allergen applied in a line across the skin -- but contact dermatitis genuinely lacks the strict dermatomal (single sensory-nerve-territory) distribution and the preceding neuropathic prodromal pain of zoster, is typically intensely pruritic rather than painful, and does not respect the sharp midline cut-off that is a hallmark of true dermatomal zoster.",
+    "question": "Have you felt any pain or tingling in your skin before the rash appeared?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "amoebiasis",
+    "disease_b": "inflammatory_bowel_disease",
+    "source": "KB differential reasoning for amoebiasis vs inflammatory_bowel_disease",
+    "distinguishing_text": "Amoebic colitis is frequently misdiagnosed as inflammatory bowel disease (IBD) - cross-reference this knowledge base's inflammatory_bowel_disease entry. A 2025 systematic review of 54 case reports of parasitic colitis presenting in high-income countries (33 of them amoebiasis) found an overall misdiagnosis rate of 69%, with 76% of misdiagnosed cases mistaken specifically for IBD; substantial harm occurred in 57% of patients including seven deaths, and corticosteroid administration to misdiagnosed patients was associated with major morbidity or death in 77% of cases versus only 10% among those ",
+    "question": "Have you noticed any blood in your stool that looks like 'currant jelly'?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "influenza",
+    "disease_b": "covid_19",
+    "source": "KB differential reasoning for influenza vs covid_19",
+    "distinguishing_text": "Influenza and COVID-19 share extensive symptom overlap -- fever/chills, cough, shortness of breath, fatigue, sore throat, rhinitis, muscle aches, headache, and (less commonly) vomiting, diarrhea, and taste/smell changes -- and the CDC states directly that the two 'cannot be told apart by symptoms alone because many of the signs and symptoms are the same.' Because early treatment can reduce the risk of severe illness for both diseases, the CDC recommends combined flu/COVID-19 testing (a dual assay) whenever a patient needs a specific diagnosis to guide targeted antiviral therapy, rather than re",
+    "question": "Have you noticed any changes in your sense of smell or taste?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "covid_19",
+    "disease_b": "influenza",
+    "source": "KB differential reasoning for covid_19 vs influenza",
+    "distinguishing_text": "Clinically, influenza and COVID-19 are frequently indistinguishable on symptoms alone. Loss of taste/smell is more classically associated with (though not exclusive to, and not universal in) COVID-19 than influenza. On chest CT, a multireader study found 7 of 14 imaging findings differed significantly between COVID-19 and influenza pneumonia, but radiologists could correctly identify the causative virus in only 44% of cases, meaning imaging alone is an unreliable discriminator. In practice, definitive differentiation requires molecular testing (multiplex RT-PCR panels or paired SARS-CoV-2/infl",
+    "question": "Have you noticed any change in your sense of taste or smell?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "cholelithiasis_cholecystitis",
+    "disease_b": "peptic_ulcer_disease",
+    "source": "KB differential reasoning for cholelithiasis_cholecystitis vs peptic_ulcer_disease",
+    "distinguishing_text": "Peptic ulcer disease (see this knowledge base's peptic_ulcer_disease entry) can present with epigastric pain overlapping biliary colic, but classically shows a clearer relationship to meals in the opposite direction for duodenal ulcers (pain relieved by eating, recurring 2-3 hours later or at night) versus gastric ulcers (pain often worsened by eating), lacks the right-shoulder radiation typical of biliary pain, and is not associated with Murphy's sign or gallbladder findings on ultrasound; endoscopy and H. pylori/NSAID history help distinguish it.",
+    "question": "Does the pain you feel get better when you eat?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "cholelithiasis_cholecystitis",
+    "disease_b": "acute_pancreatitis",
+    "source": "KB differential reasoning for cholelithiasis_cholecystitis vs acute_pancreatitis",
+    "distinguishing_text": "Acute pancreatitis (see this knowledge base's acute_pancreatitis entry) shares epigastric pain with gallstone disease and, importantly, gallstones are a real major etiology of acute pancreatitis (gallstone pancreatitis, via transient or persistent ampullary obstruction by a migrating stone). Pancreatitis pain classically radiates straight through to the back, is more constant and severe, and is distinguished biochemically by lipase/amylase elevation at least 3x the upper limit of normal per the revised Atlanta criteria (see the acute_pancreatitis entry's diagnostic_framework), which is not exp",
+    "question": "Does the pain from your symptoms radiate to your back?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "bronchiolitis",
+    "disease_b": "pneumonia",
+    "source": "KB differential reasoning for bronchiolitis vs pneumonia",
+    "distinguishing_text": "Pneumonia is distinguished from bronchiolitis by real focal/asymmetric findings and higher fever: guidance lists pneumonia as a differential with 'unilateral findings, fever >39\u00b0C,' in contrast to the typically bilateral, lower-grade-febrile picture of viral bronchiolitis.",
+    "question": "Does the fever feel like it's mostly on one side of your body, or is it more spread out?",
+    "expected_answer_if_a": "no, it's more spread out",
+    "expected_answer_if_b": "yes, it's mostly on one side",
+    "validated": true
+  },
+  {
+    "disease_a": "tetralogy_of_fallot",
+    "disease_b": "venous_thromboembolism",
+    "source": "KB differential reasoning for tetralogy_of_fallot vs venous_thromboembolism",
+    "distinguishing_text": "The full differential diagnosis of a cyanotic neonate with a murmur includes, beyond TOF itself: persistent pulmonary hypertension of the newborn (a primary pulmonary, not structural-cardiac, cause of cyanosis), critical pulmonary stenosis, Ebstein's malformation of the tricuspid valve, and tricuspid atresia. Echocardiography is the diagnostic tool used to differentiate all of these from tetralogy of Fallot, by directly identifying (or excluding) the specific combination of VSD, RVOT obstruction, aortic override, and RV hypertrophy that defines TOF, and by characterising the tricuspid/pulmonar",
+    "question": "Have you noticed any changes in your baby's color or breathing that seem to happen when they're crying or feeding?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "patent_ductus_arteriosus",
+    "disease_b": "ventricular_septal_defect",
+    "source": "KB differential reasoning for patent_ductus_arteriosus vs ventricular_septal_defect",
+    "distinguishing_text": "VSD produces a shunt murmur whose character differs from PDA's continuous machinery murmur: 'murmur intensity correlates with flow velocity across the defect. Smaller VSDs are often associated with louder murmurs (holosystolic or protomesosystolic),' whereas larger defects with elevated pulmonary pressures produce softer murmurs - in either case the VSD murmur is systolic (holosystolic/pansystolic), not the continuous systolic-through-diastolic murmur of PDA, and echocardiography localises the shunt to the ventricular septum rather than the aortopulmonary connection.",
+    "question": "Does the sound of the murmur change when you listen to it during different parts of the heartbeat?",
+    "validated": false,
+    "reject_reason": "question references an exam/lab/imaging-only finding a patient cannot self-report"
+  },
+  {
+    "disease_a": "patent_ductus_arteriosus",
+    "disease_b": "ventricular_septal_defect",
+    "source": "KB differential reasoning for patent_ductus_arteriosus vs ventricular_septal_defect",
+    "distinguishing_text": "ASD is distinguished by right-heart, not continuous-murmur, findings: 'physical examination typically reveals an RV heave, fixed splitting of the second heart sound, and a systolic flow murmur over the pulmonary area' - the fixed (respiration-independent) split S2 and the absence of a continuous diastolic component are the key bedside features separating ASD from PDA, again confirmed definitively by echocardiography showing an interatrial rather than aortopulmonary communication.",
+    "question": "Does the sound of the murmur change when you hold your breath and stop talking for a few seconds?",
+    "validated": false,
+    "reject_reason": "question references an exam/lab/imaging-only finding a patient cannot self-report"
+  },
+  {
+    "disease_a": "ventricular_septal_defect",
+    "disease_b": "patent_ductus_arteriosus",
+    "source": "KB differential reasoning for ventricular_septal_defect vs patent_ductus_arteriosus",
+    "distinguishing_text": "PDA classically produces a continuous ('machinery-type') murmur that persists through both systole and diastole, reflecting the persistent aorta-to-pulmonary-artery pressure gradient across the ductus in both cardiac phases, in contrast to the systole-limited holosystolic murmur of VSD. A real published neonatal case explicitly documents this auscultatory pattern - 'a continuous machinery-type murmur' - in a confirmed large PDA. Note: this knowledge base's own patent_ductus_arteriosus entry (a sibling congenital heart defect entry intended as a cross-reference for this differential) had not ye",
+    "question": "Do you hear a continuous sound in your chest that lasts throughout both parts of the heartbeat?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "irritable_bowel_syndrome",
+    "disease_b": "inflammatory_bowel_disease",
+    "source": "KB differential reasoning for irritable_bowel_syndrome vs inflammatory_bowel_disease",
+    "distinguishing_text": "Crohn's disease and ulcerative colitis (cross-reference this knowledge base's inflammatory_bowel_disease entry) can mimic IBS-D/IBS-M but are distinguished by red-flag features IBS should not have: rectal bleeding, nocturnal diarrhea, unintentional weight loss, and elevated fecal calprotectin (used by the ACG 2021 guideline specifically to help separate IBD from IBS). Source: Lacy BE et al, ACG Clinical Guideline, American Journal of Gastroenterology 2021 (PMID 33315591).",
+    "question": "Have you noticed any bleeding from your rectum, such as blood in your stools or on toilet paper?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "irritable_bowel_syndrome",
+    "disease_b": "celiac_disease",
+    "source": "KB differential reasoning for irritable_bowel_syndrome vs celiac_disease",
+    "distinguishing_text": "Celiac disease (cross-reference this knowledge base's celiac_disease entry) can present with IBS-like bloating, diarrhea and abdominal pain and is specifically screened for with serologic testing per the ACG 2021 guideline. A prospective Indian study from Rajasthan of 287 consecutive adult IBS patients found 9 patients (about 3%) were seropositive or biopsy-confirmed for celiac disease, with lower hemoglobin independently associated with celiac positivity in IBS patients - supporting targeted rather than blanket testing. Sources: Lacy BE et al, ACG Clinical Guideline, American Journal of Gastr",
+    "question": "Have you noticed any changes in your blood counts, like feeling more tired or weak, that might not be related to your bowel symptoms?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "diverticulitis",
+    "disease_b": "colorectal_cancer",
+    "source": "KB differential reasoning for diverticulitis vs colorectal_cancer",
+    "distinguishing_text": "Colorectal cancer can mimic diverticulitis by causing localized abdominal pain, a palpable mass, and a change in bowel habits, and can also coexist with or be obstructed/perforated in a way that resembles complicated diverticulitis on imaging; this overlap is the real rationale for interval colonoscopy after recovery from an episode of diverticulitis (see diagnostic_framework), given the real, if modest, rate of malignancy found on follow-up colonoscopy, and a reported colorectal cancer risk of about 1.9% among diverticulitis patients overall rising to about 7.9% among those with complicated d",
+    "question": "Have you noticed any unexplained weight loss recently?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "diverticulitis",
+    "disease_b": "inflammatory_bowel_disease",
+    "source": "KB differential reasoning for diverticulitis vs inflammatory_bowel_disease",
+    "distinguishing_text": "Inflammatory bowel disease (Crohn disease and ulcerative colitis) can overlap with diverticulitis both in symptoms (abdominal pain, altered bowel habits, fever) and, in the sigmoid colon specifically, in imaging appearance (segmental colonic wall thickening and inflammation); a distinct entity, segmental colitis associated with diverticulosis (SCAD), further blurs this boundary. See this knowledge base's own inflammatory_bowel_disease entry for that disease's own diagnostic criteria and distinguishing features (e.g., disease chronicity, extraintestinal manifestations, endoscopic/histologic fin",
+    "question": "Have you noticed any changes in your bowel habits that have been ongoing for more than a few days?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hemorrhoids",
+    "disease_b": "anal_fissure",
+    "source": "KB differential reasoning for hemorrhoids vs anal_fissure",
+    "distinguishing_text": "Distinguished primarily by its pain pattern: in a high-volume referral-centre series of 623 patients with acute anal fissure, 73.5% reported severe, tearing pain during defecation that persisted afterward (patients presented after an average of 3 weeks of symptoms), versus the classically painless bleeding of internal hemorrhoids. Fissures show a strong posterior midline predominance (63.7% at the 6 o'clock position, 21.0% at 12 o'clock in lithotomy position) and produce bright red bleeding/blood streaking on toilet paper in 70.8% of patients, plus burning (27.3%) and perianal pruritus (19.3%)",
+    "question": "Do you feel severe pain during and after you go to the bathroom?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hemorrhoids",
+    "disease_b": "colorectal_cancer",
+    "source": "KB differential reasoning for hemorrhoids vs colorectal_cancer",
+    "distinguishing_text": "The single most important differential to exclude given the danger of misattributing rectal bleeding to hemorrhoids without appropriate evaluation (cross-reference this knowledge base's colorectal_cancer entry). Rectal bleeding overlaps in 55-70% of early-stage rectal cancer presentations with hemorrhoidal bleeding, but cancer-related bleeding is more often dark red or mucoid, mixed with the stool, and intermittent/persistent without a clear straining trigger, versus the bright red, painless, surface/post-defecation bleeding typical of hemorrhoids. A 2026 systematic review found colorectal/rec",
+    "question": "Does the bleeding happen only when you wipe after going to the bathroom, and is it bright red?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "hemorrhoids",
+    "disease_b": "inflammatory_bowel_disease",
+    "source": "KB differential reasoning for hemorrhoids vs inflammatory_bowel_disease",
+    "distinguishing_text": "Perianal/anorectal manifestations of Crohn's disease (cross-reference this knowledge base's inflammatory_bowel_disease entry) can mimic hemorrhoidal or fissure disease but are distinguished by: multiple, atypically located fissures/ulcers (versus the predictable posterior-midline location of primary fissures); pain in a large majority (approximately 70%) of Crohn's-related fissures, often worsened by defecation; deep inflammatory ulceration (versus the superficial, localized tissue change of hemorrhoids); frequent association with fistulizing disease; and, on biopsy, granulomas found in a majo",
+    "question": "Do you feel pain when you have a bowel movement?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "nephrolithiasis",
+    "disease_b": "acute_appendicitis",
+    "source": "KB differential reasoning for nephrolithiasis vs acute_appendicitis",
+    "distinguishing_text": "A real, quantified head-to-head comparison of 188 ureteral-stone patients versus 188 acute-appendicitis patients found appendicitis patients had nausea far more often (81% vs 11%) and localised McBurney's-point tenderness far more often (97% vs 59%), with higher inflammatory markers (C-reactive protein 41 mg/L vs 14 mg/L; leukocytes 14x10^9/L vs 10x10^9/L). Conversely, hematuria (gross or microscopic) was present in 92% of stone patients versus only 26% of appendicitis patients, making urinalysis the real most discriminating single bedside test between the two conditions; despite the overlappi",
+    "question": "Have you noticed any blood in your urine?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "nephrolithiasis",
+    "disease_b": "nonspecific_low_back_pain",
+    "source": "KB differential reasoning for nephrolithiasis vs nonspecific_low_back_pain",
+    "distinguishing_text": "Musculoskeletal flank/back pain is real mechanical/positional pain, typically reproducible or worsened by specific movements or direct palpation of the paraspinal muscles, without the true colicky waxing-and-waning pattern, without radiation to the groin, without hematuria, and without the autonomic accompaniments (nausea/vomiting, restlessness) of true renal colic; the EAU guideline's own diagnostic-imaging logic implicitly relies on this distinction, stating that when non-contrast CT shows no stone in a patient with flank pain, 'the cause of abdominal pain should be identified' -- i.e. a gen",
+    "question": "Does the pain move from your back to your groin area?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "anal_fissure",
+    "disease_b": "hemorrhoids",
+    "source": "KB differential reasoning for anal_fissure vs hemorrhoids",
+    "distinguishing_text": "Cross-reference this knowledge base's hemorrhoids entry. The key distinguishing feature is the pain pattern: a fissure classically causes severe, sharp pain during and for hours after defecation together with visible bleeding on wiping/stool surface, whereas hemorrhoidal disease is more often associated with painless bleeding unless a hemorrhoid is thrombosed or prolapsed. External hemorrhoidal thrombosis (an acutely painful perianal lump) is explicitly listed as a differential to distinguish from a fissure's linear tear on exam.",
+    "question": "Do you feel sharp pain during and after you go to the bathroom?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "bacterial_prostatitis",
+    "disease_b": "urinary_tract_infection",
+    "source": "KB differential reasoning for bacterial_prostatitis vs urinary_tract_infection",
+    "distinguishing_text": "Uncomplicated cystitis produces dysuria, frequency and urgency similar to prostatitis but without perineal/pelvic pain, without the exquisitely tender prostate on digital rectal examination, and typically without the fever/systemic illness or acute retention seen in acute bacterial prostatitis. See this knowledge base's own 'urinary_tract_infection' entry for the full UTI symptom/diagnostic framework; in men, any culture-confirmed UTI should prompt consideration of prostatic source/involvement, since men have a structurally protected, normally sterile urinary tract and male UTI is itself less ",
+    "question": "Do you have pain in the area around your perineum or pelvis?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "bacterial_prostatitis",
+    "disease_b": "benign_prostatic_hyperplasia",
+    "source": "KB differential reasoning for bacterial_prostatitis vs benign_prostatic_hyperplasia",
+    "distinguishing_text": "BPH produces overlapping lower urinary tract symptoms (frequency, urgency, weak stream, incomplete emptying) from bladder outlet obstruction, but without fever, without the acutely tender prostate of bacterial prostatitis, and without bacteriuria on culture. BPH-related urinary stasis and obstruction is itself a real risk factor that predisposes to acute bacterial prostatitis (see risk_factors below), so the two conditions frequently coexist in the same older patient rather than being mutually exclusive. This knowledge base does not yet contain a dedicated 'benign_prostatic_hyperplasia' entry ",
+    "question": "Have you had a fever recently?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "benign_prostatic_hyperplasia",
+    "disease_b": "prostate_cancer",
+    "source": "KB differential reasoning for benign_prostatic_hyperplasia vs prostate_cancer",
+    "distinguishing_text": "Prostate cancer overwhelmingly arises in the peripheral zone (68% in the classic zonal-anatomy mapping study) rather than the transition zone affected by BPH, and typically presents (when symptomatic at all) with LUTS that are clinically indistinguishable from BPH-related LUTS on symptoms alone -- meaning LUTS cannot themselves discriminate the two conditions. DRE may reveal a hard, nodular, or asymmetric prostate suggestive of malignancy versus the smooth, symmetric, firm-elastic enlargement typical of BPH, though DRE's real pooled sensitivity for cancer detection in primary care is only 0.51",
+    "question": "Have you noticed any hard or lumpy areas in your prostate during a digital rectal exam?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hemophilia_a",
+    "disease_b": "von_willebrand_disease",
+    "source": "KB differential reasoning for hemophilia_a vs von_willebrand_disease",
+    "distinguishing_text": "Von Willebrand disease (VWD) is the most common inherited bleeding disorder overall and a key differential, but it typically presents with mucocutaneous bleeding (epistaxis, menorrhagia, easy bruising) rather than the deep joint/muscle bleeding typical of haemophilia A, and most VWD is inherited in an autosomal (not X-linked) pattern, so it affects both sexes. One specific VWD subtype, type 2N, is a real and clinically important mimic of mild/moderate haemophilia A because it causes disproportionately low FVIII activity (since von Willebrand factor normally protects circulating FVIII from clea",
+    "question": "Have you ever had bleeding in your joints or muscles?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "beta_thalassemia_major",
+    "disease_b": "iron_deficiency_anaemia",
+    "source": "KB differential reasoning for beta_thalassemia_major vs iron_deficiency_anaemia",
+    "distinguishing_text": "Both iron deficiency anaemia (IDA -- see this KB's 'iron_deficiency_anaemia' entry) and beta-thalassemia trait cause a microcytic, hypochromic anaemia and are the two most common causes that must be distinguished in practice. The key distinguishing laboratory pattern: the Mentzer index (MCV divided by RBC count) is <13 in thalassemia trait and >13 in IDA -- one real diagnostic-accuracy study in pregnant women with microcytic anaemia reported the Mentzer index achieving 100% sensitivity and 100% specificity for this distinction in that cohort (mean index 11.38 in thalassemia trait vs 15.88 in I",
+    "question": "Have you noticed any unusual skin changes, like a bronze or golden color, on your body?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "thrombotic_thrombocytopenic_purpura",
+    "disease_b": "immune_thrombocytopenic_purpura",
+    "source": "KB differential reasoning for thrombotic_thrombocytopenic_purpura vs immune_thrombocytopenic_purpura",
+    "distinguishing_text": "Real and genuinely critical to distinguish: immune thrombocytopenic purpura (ITP, cross-reference this KB's own 'immune_thrombocytopenic_purpura' entry) causes isolated thrombocytopenia from immune platelet destruction, WITHOUT the microangiopathic hemolysis (no schistocytes, normal LDH/haptoglobin, normal ADAMTS13) that defines TTP. Despite both historically being called 'purpura' and both causing low platelets/bruising, the treatments are dramatically different - ITP is treated with corticosteroids/IVIG/thrombopoietin-receptor agonists and platelet transfusion is often used if needed, wherea",
+    "question": "Have you noticed any unusual fatigue or yellowing of the skin?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "thrombotic_thrombocytopenic_purpura",
+    "disease_b": "disseminated_intravascular_coagulation",
+    "source": "KB differential reasoning for thrombotic_thrombocytopenic_purpura vs disseminated_intravascular_coagulation",
+    "distinguishing_text": "Real, standard hematologic teaching: disseminated intravascular coagulation (DIC) also causes thrombocytopenia and can show fragmented red cells, but DIC is real distinguished by concurrent consumption of coagulation factors - producing prolonged PT and aPTT and real low fibrinogen - because DIC involves activation of the coagulation cascade itself, whereas TTP is a platelet-mediated microangiopathy in which the standard coagulation screen (PT, aPTT, fibrinogen) is real typically normal. DIC is also real usually secondary to an identifiable trigger (sepsis, malignancy, obstetric catastrophe, m",
+    "question": "Have you noticed any unusual bleeding from small cuts or puncture wounds that seems to take longer to stop than usual?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "renal_tubular_acidosis",
+    "disease_b": "chronic_kidney_disease",
+    "source": "KB differential reasoning for renal_tubular_acidosis vs chronic_kidney_disease",
+    "distinguishing_text": "CKD can also cause metabolic acidosis, but real, important mechanistic and clinical differences exist. CKD-associated acidosis typically develops with a reduced GFR (uremic retention of anions producing an elevated or mixed anion gap as CKD advances) and worsening ammonium excretion capacity as functioning nephron mass falls, whereas classic RTA occurs with normal or near-normal GFR and a normal anion gap. This distinction is genuinely complicated by two real, honestly reported nuances from the dRTA literature: first, type 4 (hyperkalemic) RTA is itself frequently a direct consequence of CKD a",
+    "question": "Have you noticed any kidney stones or bone pain that might suggest a problem with your bones or kidneys?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "immune_thrombocytopenic_purpura",
+    "disease_b": "thrombotic_thrombocytopenic_purpura",
+    "source": "KB differential reasoning for immune_thrombocytopenic_purpura vs thrombotic_thrombocytopenic_purpura",
+    "distinguishing_text": "Real and genuinely critical to distinguish before any platelet-related intervention: thrombotic thrombocytopenic purpura (TTP, cross-reference this KB's own 'thrombotic_thrombocytopenic_purpura' entry) causes thrombocytopenia together with microangiopathic hemolytic anemia (schistocytes, elevated LDH, low haptoglobin) and severe ADAMTS13 deficiency, whereas ITP causes real isolated thrombocytopenia from immune platelet destruction without hemolysis. This distinction is treatment-critical because, real unlike TTP (where platelet transfusion is classically relatively contraindicated except for l",
+    "question": "Have you noticed any unusual fatigue or yellowing of the skin?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "immune_thrombocytopenic_purpura",
+    "disease_b": "disseminated_intravascular_coagulation",
+    "source": "KB differential reasoning for immune_thrombocytopenic_purpura vs disseminated_intravascular_coagulation",
+    "distinguishing_text": "Real, disseminated intravascular coagulation (DIC) also causes thrombocytopenia but is real distinguished by concurrent coagulopathy (prolonged PT/aPTT, low fibrinogen, elevated D-dimer/fibrin degradation products) and an identifiable real triggering condition such as sepsis, severe trauma, or obstetric catastrophe - features real absent in isolated ITP.",
+    "question": "Have you noticed any recent illness or injury that might have triggered these symptoms?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "alpha_thalassemia",
+    "disease_b": "iron_deficiency_anaemia",
+    "source": "KB differential reasoning for alpha_thalassemia vs iron_deficiency_anaemia",
+    "distinguishing_text": "Iron deficiency anaemia (IDA -- see this KB's 'iron_deficiency_anaemia' entry) and alpha thalassemia trait/silent carrier both cause a microcytic (and in IDA, hypochromic) blood picture and must be distinguished, but this distinction is genuinely harder in alpha thalassemia than in beta-thalassemia trait because alpha thalassemia trait frequently shows a normal haemoglobin electrophoresis/HPLC (unlike beta-thalassemia trait's characteristically elevated HbA2), so the electrophoresis-based discriminators validated for beta-thalassemia trait vs IDA (elevated HbA2 on HPLC) do not apply. A real No",
+    "question": "Have you noticed any unusual symptoms when you're pregnant or trying to become pregnant?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "neurogenic_bladder",
+    "disease_b": "urinary_tract_infection",
+    "source": "KB differential reasoning for neurogenic_bladder vs urinary_tract_infection",
+    "distinguishing_text": "Because patients with neurogenic bladder have a real, chronically elevated baseline risk of urinary tract infection (from impaired emptying, catheter use, and altered bladder defence mechanisms), an acute UTI can present as an acute worsening of otherwise-stable storage or voiding symptoms, new incontinence, or in SCI patients even as autonomic dysreflexia or non-specific systemic illness rather than classic dysuria (due to impaired bladder sensation). The distinguishing feature is a positive urine culture (a bacterial concentration of >=10^3 CFU/mL together with symptoms is the accepted diagn",
+    "question": "Have you noticed any new or worsening symptoms since your bladder issues started?",
+    "expected_answer_if_a": "Yes, I've noticed new or worsening symptoms.",
+    "expected_answer_if_b": "No, my symptoms are the same as before.",
+    "validated": true
+  },
+  {
+    "disease_a": "intestinal_obstruction",
+    "disease_b": "volvulus",
+    "source": "KB differential reasoning for intestinal_obstruction vs volvulus",
+    "distinguishing_text": "Sigmoid and cecal volvulus are real, mechanistically distinct differentials/causes of LBO (accounting for a real 3-8% and 1-3% of LBO cases respectively, per Radiopaedia), and small-bowel volvulus is a real, rarer cause of SBO. This knowledge base's own separate 'volvulus' entry covers that condition's specific twisting mechanism, imaging signs (coffee bean, bird's beak, whirl and corkscrew signs), and outcome data in full, and is cross-referenced here rather than duplicated.",
+    "question": "Have you noticed any twisting or turning of your abdomen?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hydronephrosis",
+    "disease_b": "vesicoureteral_reflux",
+    "source": "KB differential reasoning for hydronephrosis vs vesicoureteral_reflux",
+    "distinguishing_text": "VUR causes real upper urinary tract dilation without a true mechanical obstruction, graded separately using the International Reflux Study Committee's 1985 five-grade voiding cystourethrogram (VCUG) classification (grades I-V); a real reliability study of that grading system across 28 VCUG studies rated by 13 pediatric radiologists/urologists/residents found only moderate average interrater reliability (weighted kappa 0.53, worst at grade III, kappa 0.36) despite high intrarater reliability (kappa 0.86) -- meaning VUR-grade-based differentiation from obstructive hydronephrosis on imaging alone",
+    "question": "Do you feel pain when you urinate?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "tension_type_headache",
+    "disease_b": "migraine",
+    "source": "KB differential reasoning for tension_type_headache vs migraine",
+    "distinguishing_text": "Migraine without aura (ICHD-3 1.1) requires at least 2 of 4 different pain characteristics -- unilateral location, pulsating quality, moderate-severe intensity, aggravation by routine physical activity -- plus nausea/vomiting and/or both photophobia AND phonophobia, and attacks last 4-72 hours untreated; this contrasts point-for-point with TTH's bilateral, pressing, mild-moderate, activity-tolerant pattern with at most one of photophobia/phonophobia and no vomiting. See this knowledge base's own 'migraine' entry for full ICHD-3 migraine criteria detail. In practice the two disorders frequently",
+    "question": "Does the pain from your headache feel like it's pulsing?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "cluster_headache",
+    "disease_b": "migraine",
+    "source": "KB differential reasoning for cluster_headache vs migraine",
+    "distinguishing_text": "Migraine differs from cluster headache in: longer attack duration (4-72 hours vs 15-180 minutes); more often bilateral pain, pulsating quality; patients seeking stillness/quiet dark rooms rather than restlessness; associated nausea/vomiting and photophobia+phonophobia (rather than ipsilateral cranial autonomic signs) as the defining associated features; and a female predominance (roughly 3:1) in contrast to cluster headache's strong male predominance.",
+    "question": "Do you usually feel the need to stay in a quiet, dark room when your headache is at its worst?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "cluster_headache",
+    "disease_b": "trigeminal_neuralgia",
+    "source": "KB differential reasoning for cluster_headache vs trigeminal_neuralgia",
+    "distinguishing_text": "Classical trigeminal neuralgia (ICHD-3 13.1.1) causes paroxysms of unilateral facial pain confined to one or more divisions of the trigeminal nerve (most often V2/V3, sparing the periorbital autonomic pattern of cluster headache), described as electric-shock-like, shooting, stabbing or sharp, lasting from a fraction of a second up to two minutes, and classically precipitated by innocuous stimuli in the trigger zone (light touch, chewing, talking, brushing teeth, cold wind) - a precipitation pattern not seen in cluster headache. It lacks the prominent ipsilateral autonomic features and restless",
+    "question": "Do your headaches feel like an electric shock, and do they stop with just a touch or light touch?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "vascular_dementia",
+    "disease_b": "alzheimers_disease",
+    "source": "KB differential reasoning for vascular_dementia vs alzheimers_disease",
+    "distinguishing_text": "Alzheimer's disease classically presents with an insidious, gradually and steadily progressive amnestic syndrome (impaired new learning/episodic memory as the earliest and most prominent feature) without a stepwise course, focal neurological signs, or early gait/urinary symptoms; medial temporal (hippocampal/entorhinal) atrophy is disproportionate to any vascular lesion load on imaging. Vascular dementia instead shows (in its classic form) a stepwise or fluctuating course tied to vascular events, executive-predominant over memory-predominant impairment, focal neurological signs, and imaging-co",
+    "question": "Have you noticed your memory getting worse in a steady, gradual way, or has it come and gone in steps?",
+    "expected_answer_if_a": "No, it's come and gone in steps.",
+    "expected_answer_if_b": "Yes, it's gotten worse steadily.",
+    "validated": true
+  },
+  {
+    "disease_a": "vascular_dementia",
+    "disease_b": "frontotemporal_dementia",
+    "source": "KB differential reasoning for vascular_dementia vs frontotemporal_dementia",
+    "distinguishing_text": "Behavioural-variant frontotemporal dementia (bvFTD) can mimic the executive-dysfunction/personality-change picture of vascular dementia, but the revised international consensus criteria require early, progressive change in personality/behaviour (disinhibition, apathy, loss of empathy, perseverative/compulsive behaviour, hyperorality) with relatively preserved episodic memory and visuospatial skills, typically without focal vascular signs, and with frontal/anterior temporal atrophy or hypometabolism on imaging rather than infarcts or a vascular lesion pattern. A vascular contribution should be ",
+    "question": "Have you noticed any changes in your behavior, like acting on impulse or losing interest in things you used to care about, that have been getting worse over time?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "meningioma",
+    "disease_b": "glioma",
+    "source": "KB differential reasoning for meningioma vs glioma",
+    "distinguishing_text": "Gliomas are intra-axial (arising from brain parenchyma) versus meningioma's extra-axial dural-based location; gliomas typically lack a dural tail sign and show infiltrative rather than well-circumscribed margins. This knowledge base does not currently contain a separate 'glioma' entry to cross-reference directly - noted here rather than fabricating a cross-link.",
+    "question": "Have you noticed any changes in your vision, such as blind spots or double vision, that seem to be related to the position of your head?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "encephalitis",
+    "disease_b": "bacterial_meningitis",
+    "source": "KB differential reasoning for encephalitis vs bacterial_meningitis",
+    "distinguishing_text": "Meningitis produces fever, headache, neck stiffness and photophobia but, unlike encephalitis, does not typically cause altered mental status persisting >=24h, seizures, or focal neurological deficits; when these are present the case should be classified and worked up as encephalitis (or meningoencephalitis) rather than uncomplicated meningitis, per the consensus case-definition framework.",
+    "question": "Have you had any changes in your mental state that have lasted for 24 hours or more?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "normal_pressure_hydrocephalus",
+    "disease_b": "alzheimers_disease",
+    "source": "KB differential reasoning for normal_pressure_hydrocephalus vs alzheimers_disease",
+    "distinguishing_text": "Distinguishing iNPH from Alzheimer's disease matters because the two commonly coexist in the same elderly patient (mixed pathology is frequent) and because iNPH cognitive impairment is a frontal-subcortical/dysexecutive pattern with relative sparing of episodic memory encoding and cortical functions early on, versus the primarily amnestic, hippocampal-medial-temporal pattern of early Alzheimer's disease; gait is classically normal early in pure Alzheimer's disease but is required for an iNPH diagnosis from the outset. See this KB's Alzheimer's disease entry (id: alzheimers_disease) for the amn",
+    "question": "Have you noticed any problems with your memory, like not being able to remember where you put things or what you did earlier?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "agoraphobia",
+    "disease_b": "panic_disorder",
+    "source": "KB differential reasoning for agoraphobia vs panic_disorder",
+    "distinguishing_text": "Panic disorder and agoraphobia are now diagnosed as separate, potentially co-occurring conditions rather than one being a subtype of the other. Panic disorder requires recurrent unexpected panic attacks plus persistent concern/worry about additional attacks or their consequences, or maladaptive behavior change; it does not require situational avoidance limited to the five agoraphobic domains. Agoraphobia can occur with or without panic disorder (or with only isolated panic attacks, as quantified above), and the key differentiator is whether the person's fear/avoidance is organised around the f",
+    "question": "Do you worry about having more panic attacks or fear what might happen if one were to happen?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "tendinitis",
+    "disease_b": "bursitis",
+    "source": "KB differential reasoning for tendinitis vs bursitis",
+    "distinguishing_text": "Subacromial/subdeltoid bursitis is the classic shoulder mimic of rotator cuff tendinopathy, producing overlapping lateral shoulder pain with overhead activity; the two frequently coexist (subacromial impingement can inflame both the cuff tendons and the overlying bursa), making pure clinical differentiation difficult without imaging in some cases. Similar tendon-bursa overlap occurs at other sites (e.g. retrocalcaneal bursitis mimicking insertional Achilles tendinopathy, olecranon bursitis near the elbow).",
+    "question": "Do you feel pain in your shoulder when you lift your arm overhead?",
+    "expected_answer_if_a": "Yes, I feel pain when lifting my arm overhead.",
+    "expected_answer_if_b": "No, I don't feel pain when lifting my arm overhead.",
+    "validated": true
+  },
+  {
+    "disease_a": "bursitis",
+    "disease_b": "tendinitis",
+    "source": "KB differential reasoning for bursitis vs tendinitis",
+    "distinguishing_text": "Tendinitis/tendinopathy adjacent to a bursa can mimic or coexist with bursitis (e.g., subacromial bursitis with rotator cuff tendinopathy, or trochanteric bursitis with gluteus medius/minimus tendinopathy in GTPS); tenderness in tendinitis tends to localize along the tendon course and is reproduced by resisted contraction of that tendon's muscle, whereas bursitis tenderness is more focal over the bursa itself. In GTPS specifically, gluteal tendinopathy is frequently the primary pathology rather than the bursa.",
+    "question": "Does the pain feel more focused over a specific spot, like a bump, rather than along a muscle or tendon?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "bursitis",
+    "disease_b": "cellulitis",
+    "source": "KB differential reasoning for bursitis vs cellulitis",
+    "distinguishing_text": "Cellulitis produces diffuse, poorly-marginated skin erythema, warmth, and edema without a discrete fluctuant bursal collection; ultrasonography helps differentiate the two by showing (or not showing) a discrete distended bursal fluid collection, which is absent in isolated cellulitis. Cellulitis overlying a bursa can also coexist with, or progress to, septic bursitis.",
+    "question": "Do you have a swollen, fluid-filled area that you can feel under your skin where the pain is?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "fibromyalgia",
+    "disease_b": "rheumatoid_arthritis",
+    "source": "KB differential reasoning for fibromyalgia vs rheumatoid_arthritis",
+    "distinguishing_text": "Unlike fibromyalgia, rheumatoid arthritis presents with objective synovitis (joint swelling, warmth), elevated inflammatory markers (ESR/CRP) and seropositivity (rheumatoid factor/anti-CCP) in most cases. Per the 2016 ACR fibromyalgia criteria, the two conditions can also coexist in the same patient, so a fibromyalgia diagnosis must not be used to explain away new objective inflammatory joint findings.",
+    "question": "Do you have swelling or warmth in the joints of your hands or wrists?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "fibromyalgia",
+    "disease_b": "polymyalgia_rheumatica",
+    "source": "KB differential reasoning for fibromyalgia vs polymyalgia_rheumatica",
+    "distinguishing_text": "Polymyalgia rheumatica classically causes bilateral shoulder/hip girdle pain and stiffness in patients over 50, with markedly elevated ESR/CRP and a dramatic response to low-dose corticosteroids -- features absent in fibromyalgia, where inflammatory markers are normal.",
+    "question": "Do you have pain and stiffness in both your shoulders and hips?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "herniated_intervertebral_disc",
+    "disease_b": "lumbar_spondylosis",
+    "source": "KB differential reasoning for herniated_intervertebral_disc vs lumbar_spondylosis",
+    "distinguishing_text": "Lumbar spondylosis (degenerative disc/facet disease) is the chronic background process on which many disc herniations occur; it is distinguished by more insidious-onset, activity-related axial low back pain without a dominant single nerve-root pattern, whereas acute disc herniation more often presents with sudden-onset radicular leg pain exceeding back pain and a positive straight-leg-raise sign referable to one nerve root. A 2026 systematic review and meta-analysis found surgery for lumbar disc herniation gives better outcomes than conservative care in the short term, but outcomes become comp",
+    "question": "Does your back pain come and go with activity, and feel more like a dull ache than a sharp, shooting pain in your leg?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "polymyalgia_rheumatica",
+    "disease_b": "rheumatoid_arthritis",
+    "source": "KB differential reasoning for polymyalgia_rheumatica vs rheumatoid_arthritis",
+    "distinguishing_text": "Elderly-onset/late-onset rheumatoid arthritis (LORA) can mimic PMR with proximal girdle symptoms. The 2012 EULAR/ACR criteria explicitly build in the distinction: points are awarded specifically for the ABSENCE of RF/ACPA (2 points) and the ABSENCE of peripheral joint involvement (1 point), i.e., presence of these features should push the diagnosis away from PMR and toward RA.",
+    "question": "Have you noticed any pain or swelling in the small joints of your hands or feet, like the joints at the base of your fingers or toes?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "polymyalgia_rheumatica",
+    "disease_b": "giant_cell_arteritis",
+    "source": "KB differential reasoning for polymyalgia_rheumatica vs giant_cell_arteritis",
+    "distinguishing_text": "Not simply a differential but a genuinely overlapping/co-existing diagnosis with shared pathogenesis \u2014 see EMERGENCY_OVERRIDE_RULE below for the real screening obligation this creates.",
+    "question": "Have you noticed any new headaches or pain when using your jaw or tongue?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "osteomyelitis",
+    "disease_b": "cellulitis",
+    "source": "KB differential reasoning for osteomyelitis vs cellulitis",
+    "distinguishing_text": "Cellulitis produces diffuse skin/soft-tissue erythema, warmth, and edema without deep bone involvement, whereas osteomyelitis involves the bone itself; MRI is the key discriminator because it can directly visualize marrow signal change (osteomyelitis) versus soft-tissue-only inflammation (cellulitis), with pooled MRI sensitivity 95.6% / specificity 80.7% for osteomyelitis.",
+    "question": "Have you noticed any pain or tenderness in a specific bone, like your leg or arm, that feels worse when you press on it?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "spondylolisthesis",
+    "disease_b": "lumbar_spondylosis",
+    "source": "KB differential reasoning for spondylolisthesis vs lumbar_spondylosis",
+    "distinguishing_text": "Cross-referenced from this knowledge base's lumbar_spondylosis entry: pure lumbar spondylosis is facet/disc degeneration causing axial pain, radiculopathy, or neurogenic claudication WITHOUT measurable vertebral body translation. Spondylolisthesis is distinguished on the same lateral radiograph by a measurable anterior (or posterior) slip of one vertebral body on the next; degenerative spondylolisthesis and lumbar spondylosis otherwise share the same underlying facet/disc degenerative process and frequently coexist at the same level.",
+    "question": "Have you noticed any change in the position of your spine or vertebrae, like one vertebra slipping forward or backward compared to the one below it?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "spondylolisthesis",
+    "disease_b": "herniated_intervertebral_disc",
+    "source": "KB differential reasoning for spondylolisthesis vs herniated_intervertebral_disc",
+    "distinguishing_text": "Cross-referenced from this knowledge base's herniated_intervertebral_disc entry: acute disc herniation typically presents more suddenly, with radicular leg pain exceeding back pain and a single dominant nerve-root pattern, and shows no vertebral slip on imaging - whereas spondylolisthesis-related radiculopathy develops on a background of a demonstrable pars defect or degenerative slip and is often more gradual in onset. The two can coexist, since disc degeneration is part of the same degenerative cascade that produces degenerative spondylolisthesis.",
+    "question": "Did your back pain come on suddenly, or did it develop gradually over time?",
+    "expected_answer_if_a": "gradually",
+    "expected_answer_if_b": "suddenly",
+    "validated": true
+  },
+  {
+    "disease_a": "osteosarcoma",
+    "disease_b": "osteomyelitis",
+    "source": "KB differential reasoning for osteosarcoma vs osteomyelitis",
+    "distinguishing_text": "Acute/subacute osteomyelitis is an important benign mimic, particularly in children, because it can also produce periosteal reaction, a Codman triangle and metaphyseal signal change. In a direct comparison of 32 osteomyelitis and 31 Ewing sarcoma cases, permeative cortical involvement and a soft-tissue mass on MRI were significantly more common in the malignant (Ewing sarcoma) group, whereas a serpiginous tract on MRI favoured osteomyelitis; on multivariate analysis only ethnicity and the presence of a soft-tissue mass remained independently discriminating, and the authors concluded 'many feat",
+    "question": "Have you noticed any swelling in the soft tissues around the affected bone?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "polymyositis",
+    "disease_b": "dermatomyositis",
+    "source": "KB differential reasoning for polymyositis vs dermatomyositis",
+    "distinguishing_text": "Cross-reference this knowledge base's dermatomyositis entry. Distinguished from PM by (1) presence of characteristic skin findings (heliotrope rash, Gottron papules) and (2) a complement/microangiopathy-mediated mechanism (capillary lysis, perifascicular atrophy) rather than PM's direct CD8+ T-cell/perforin attack on myofibers (Dalakas & Hohlfeld, PMID 14511932). In a real single-centre cohort, dermatomyositis had significantly lower CK than PM (316 vs 4884 U/L, p=0.005) despite comparable clinical weakness, consistent with the differing injury mechanisms.",
+    "question": "Have you noticed any changes in your skin, such as rashes or discoloration on your knuckles or eyelids?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "dermatomyositis",
+    "disease_b": "polymyositis",
+    "source": "KB differential reasoning for dermatomyositis vs polymyositis",
+    "distinguishing_text": "Polymyositis (PM) is mechanistically and clinically distinguished from DM by the ABSENCE of the characteristic cutaneous findings (no heliotrope rash, no Gottron's papules/sign) - PM is a 'diagnosis of exclusion' among the IIMs requiring that skin disease and other identifiable causes (drug-induced myopathy, muscular dystrophy, IBM) be ruled out. Pathologically, PM shows endomysial CD8+ T-cell infiltration of non-necrotic, MHC-class-I-expressing fibers rather than the perifascicular, complement/microangiopathy pattern of DM.",
+    "question": "Have you noticed any skin changes, like a purple rash on your eyelids or raised patches on your knuckles?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "tinea_corporis",
+    "disease_b": "pityriasis_rosea",
+    "source": "KB differential reasoning for tinea_corporis vs pityriasis_rosea",
+    "distinguishing_text": "Pityriasis rosea classically begins with a single larger 'herald patch' followed days to weeks later by smaller oval lesions distributed along skin cleavage lines (Langer's lines) in a 'Christmas-tree' pattern, each with a fine peripheral collarette of scale; it lacks the single, expanding, scaly-bordered ring of tinea corporis and is KOH-negative.",
+    "question": "Have you noticed a single patch of scaly skin that appeared before other patches?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "acne_vulgaris",
+    "disease_b": "rosacea",
+    "source": "KB differential reasoning for acne_vulgaris vs rosacea",
+    "distinguishing_text": "Rosacea is a key differential for facial acne-like eruptions in adults: it centres on the mid-face with persistent erythema, telangiectasia and inflammatory papules/pustules, but classically lacks comedones (a feature acne always has in some lesions), and it does not respond to standard acne therapy, requiring a distinct treatment strategy. Dermoscopically, features such as yellow/red halos, vascular polygons and follicular pustules have been shown to statistically differentiate rosacea from other facial inflammatory dermatoses.",
+    "question": "Have you noticed any blackheads or whiteheads on your skin?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "nonalcoholic_fatty_liver_disease",
+    "disease_b": "alcoholic_liver_disease",
+    "source": "KB differential reasoning for nonalcoholic_fatty_liver_disease vs alcoholic_liver_disease",
+    "distinguishing_text": "MASLD is distinguished from alcohol-related liver disease (ALD) purely by quantified alcohol intake, since both can look histologically identical: MASLD requires intake <=20 g/day (female) / <=30 g/day (male); 'MetALD' is the overlap category (average 20-50 g/day female, 30-60 g/day male); intake above the MetALD range is classified as ALD (PMID 37363821). Cross-reference: this KB's alcoholic/alcohol-related liver disease entry covers the ALD end of this spectrum -- accurate quantified alcohol history is the pivotal step separating the two diagnoses since imaging and routine liver chemistries ",
+    "question": "Do you drink more than one drink per day on average?",
+    "expected_answer_if_a": "yes",
+    "expected_answer_if_b": "no",
+    "validated": true
+  },
+  {
+    "disease_a": "alcoholic_liver_disease",
+    "disease_b": "nonalcoholic_fatty_liver_disease",
+    "source": "KB differential reasoning for alcoholic_liver_disease vs nonalcoholic_fatty_liver_disease",
+    "distinguishing_text": "Nonalcoholic fatty liver disease (NAFLD) is the principal histologic mimic of alcoholic steatosis/steatohepatitis and must be distinguished chiefly by alcohol-use history quantified with AUDIT/AUDIT-C or NIAAA at-risk drinking thresholds, since imaging and routine histology cannot reliably separate the two on their own (see this KB's NAFLD-adjacent guidance context: Indian National Association for Study of the Liver (INASL) Guidance Paper on Nomenclature, Diagnosis and Treatment of Nonalcoholic Fatty Liver Disease. J Clin Exp Hepatol. 2023. PMID 36950481). Not yet a separate entry in this KB a",
+    "question": "Do you drink alcohol regularly, more than what's considered safe for your health?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "alcoholic_liver_disease",
+    "disease_b": "viral_hepatitis",
+    "source": "KB differential reasoning for alcoholic_liver_disease vs viral_hepatitis",
+    "distinguishing_text": "Viral hepatitis (chronic HBV/HCV) is a leading global cause of cirrhosis alongside alcohol and NAFLD, can coexist with alcohol-related injury, and accelerates fibrosis progression when both are present; HBsAg and anti-HCV serology are standard exclusion/co-diagnosis tests in any patient being worked up for chronic liver disease (Devarbhavi H, Asrani SK, Arab JP, Nartey YA, Pose E, Kamath PS. Global burden of liver disease: 2023 update. J Hepatol. 2023. PMID 36990226). Cross-reference this KB's \"viral_hepatitis\" entry.",
+    "question": "Have you ever been told you have a virus that affects your liver, like hepatitis B or C?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_gastritis",
+    "disease_b": "peptic_ulcer_disease",
+    "source": "KB differential reasoning for chronic_gastritis vs peptic_ulcer_disease",
+    "distinguishing_text": "Peptic ulcer disease shares H. pylori infection as its dominant cause and frequently coexists with the background chronic gastritis it arises from, but is defined endoscopically by a discrete mucosal break/crater at least 5 mm in diameter extending through the muscularis mucosae, which chronic gastritis alone does not have.",
+    "question": "Have you noticed any painful sores or ulcers in your stomach or the upper part of your small intestine?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_gastritis",
+    "disease_b": "gerd",
+    "source": "KB differential reasoning for chronic_gastritis vs gerd",
+    "distinguishing_text": "Gastro-oesophageal reflux disease produces heartburn/regurgitation that can overlap with epigastric dyspeptic symptoms, but is a distinct disorder of the gastro-oesophageal junction/lower oesophageal sphincter rather than a gastric mucosal inflammatory process.",
+    "question": "Do you feel like there's a burning sensation behind your breastbone, or like acid is coming back up into your throat?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_glomerulonephritis",
+    "disease_b": "diabetic_nephropathy",
+    "source": "KB differential reasoning for chronic_glomerulonephritis vs diabetic_nephropathy",
+    "distinguishing_text": "Cross-reference: KB entry 'diabetic_nephropathy' exists. Distinguishing features favoring diabetic nephropathy over primary CGN: long-standing diabetes (typically >5-10 years in type 1; variable in type 2), concurrent diabetic retinopathy, and a more gradual rise in proteinuria typically WITHOUT significant hematuria or RBC casts \u2014 active urinary sediment should prompt reconsideration of a primary/immune glomerular process and biopsy.",
+    "question": "Have you had diabetes for more than 5 years?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_glomerulonephritis",
+    "disease_b": "nephrotic_syndrome",
+    "source": "KB differential reasoning for chronic_glomerulonephritis vs nephrotic_syndrome",
+    "distinguishing_text": "Nephrotic-range proteinuria (>3.5 g/day) with edema/hypoalbuminemia/hyperlipidemia overlaps with (and in children is often used interchangeably to describe) several of the causal glomerular diseases underlying CGN, notably membranous nephropathy and FSGS. No dedicated 'nephrotic_syndrome' KB id was found in this database at the time of writing, so it is not cross-referenced by id for that reason.",
+    "question": "Have you noticed any swelling in your legs or around your eyes?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_glomerulonephritis",
+    "disease_b": "iga_nephropathy",
+    "source": "KB differential reasoning for chronic_glomerulonephritis vs iga_nephropathy",
+    "distinguishing_text": "Cross-reference: KB entry 'iga_nephropathy' exists as the single most common specific primary cause underlying CGN worldwide; this CGN entry describes the shared downstream syndrome/progression pathway rather than duplicating IgAN-specific detail.",
+    "question": "Have you noticed any blood in your urine that happens right after you have a sore throat or a cold?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "chronic_glomerulonephritis",
+    "disease_b": "chronic_kidney_disease",
+    "source": "KB differential reasoning for chronic_glomerulonephritis vs chronic_kidney_disease",
+    "distinguishing_text": "Cross-reference: KB entry 'chronic_kidney_disease' exists as the broader staging entity (KDIGO eGFR/albuminuria categories); CGN is one specific etiologic route into CKD, distinguished from other CKD causes by glomerular-pattern urinalysis (hematuria + proteinuria) and biopsy findings.",
+    "question": "Have you noticed blood in your urine?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  },
+  {
+    "disease_a": "acute_glomerulonephritis",
+    "disease_b": "iga_nephropathy",
+    "source": "KB differential reasoning for acute_glomerulonephritis vs iga_nephropathy",
+    "distinguishing_text": "Real IgA nephropathy (Berger disease) is the key mimic to distinguish from PSGN/post-infectious AGN, mainly by timing and complement: IgA nephropathy classically causes gross ('synpharyngitic') hematuria that occurs DURING or within about 1-2 days of an upper-respiratory or gastrointestinal infection, with normal complement levels; post-infectious/post-streptococcal AGN, by contrast, follows a real latency period of roughly one to three weeks after the triggering infection (see definition_and_pathophysiology) and is characterized by real hypocomplementemia (low C3) rather than normal complemen",
+    "question": "Did you notice blood in your urine soon after you got sick with a cold or something similar?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hypertensive_nephropathy",
+    "disease_b": "diabetic_nephropathy",
+    "source": "KB differential reasoning for hypertensive_nephropathy vs diabetic_nephropathy",
+    "distinguishing_text": "Cross-reference: KB entry 'diabetic_nephropathy' exists (also see this KB's 'chronic_glomerulonephritis' entry for shared CKD-staging context). Distinguishing histologic features favoring diabetic nephropathy: Kimmelstiel-Wilson nodules and efferent-arteriole hyalinosis (hypertensive nephrosclerosis classically involves the afferent arteriole predominantly), though mixed lesions are common when long-standing type 2 diabetes and hypertension coexist, and management differs (intensive glycemic control and diabetes-specific pharmacotherapy for DN vs targeted vascular risk reduction for hypertensi",
+    "question": "Have you noticed any changes in your urine, such as foamy or frothy urine, that you haven't had before?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "hypertensive_nephropathy",
+    "disease_b": "chronic_glomerulonephritis",
+    "source": "KB differential reasoning for hypertensive_nephropathy vs chronic_glomerulonephritis",
+    "distinguishing_text": "Cross-reference: KB entry 'chronic_glomerulonephritis' exists. Active nephritic urinary sediment (dysmorphic RBCs, RBC casts) or nephrotic-range proteinuria points away from uncomplicated hypertensive nephrosclerosis toward a primary glomerular disease and should prompt biopsy rather than a default clinical diagnosis of hypertensive nephrosclerosis.",
+    "question": "Have you noticed blood in your urine?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "urinary_incontinence",
+    "disease_b": "urinary_tract_infection",
+    "source": "KB differential reasoning for urinary_incontinence vs urinary_tract_infection",
+    "distinguishing_text": "Acute UTI can produce or acutely worsen urgency and urge-type leakage together with dysuria, increased frequency, and sometimes suprapubic discomfort or haematuria; the distinguishing feature is a positive urinalysis/urine culture and the typically acute, self-limited time-course once treated, versus the chronic, relapsing-remitting course of true urgency urinary incontinence. Because a positive urine culture is required to make this distinction, urinalysis is part of the standard initial UI work-up specifically to exclude an infective cause before attributing symptoms to a chronic incontinenc",
+    "question": "Have you noticed any blood in your urine?",
+    "expected_answer_if_a": "no",
+    "expected_answer_if_b": "yes",
+    "validated": true
+  },
+  {
+    "disease_a": "urinary_incontinence",
+    "disease_b": "neurogenic_bladder",
+    "source": "KB differential reasoning for urinary_incontinence vs neurogenic_bladder",
+    "distinguishing_text": "Non-neurogenic UUI and neurogenic detrusor overactivity can produce identical storage symptoms (urgency, frequency, urgency incontinence); by definition, neurogenic bladder requires a demonstrable, relevant neurological cause (e.g. spinal cord injury, multiple sclerosis, spina bifida, diabetes, stroke), which is sought via a directed neurological history and examination, since symptoms alone cannot separate idiopathic overactive bladder from a neurogenic cause. Overflow-pattern UI similarly overlaps with neurogenic detrusor underactivity, again distinguished by the presence or absence of a con",
+    "question": "Have you ever had an injury or illness that affects your nervous system, such as a spinal cord injury or multiple sclerosis?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "urinary_incontinence",
+    "disease_b": "benign_prostatic_hyperplasia",
+    "source": "KB differential reasoning for urinary_incontinence vs benign_prostatic_hyperplasia",
+    "distinguishing_text": "Mechanical outlet obstruction produces predominantly voiding symptoms (weak stream, hesitancy, straining, incomplete emptying) that can progress to overflow incontinence, mimicking detrusor underactivity; in women, advanced pelvic organ prolapse can itself kink the urethra and either mask or, after reduction, unmask stress incontinence. Pressure-flow urodynamics and a pelvic examination (looking for prolapse) are the distinguishing tools.",
+    "question": "Do you feel like you can't empty your bladder completely when you go to the bathroom?",
+    "expected_answer_if_a": "No",
+    "expected_answer_if_b": "Yes",
+    "validated": true
+  },
+  {
+    "disease_a": "interstitial_cystitis",
+    "disease_b": "urinary_tract_infection",
+    "source": "KB differential reasoning for interstitial_cystitis vs urinary_tract_infection",
+    "distinguishing_text": "IC/BPS diagnosis fundamentally requires excluding active bacterial infection: the AUA guideline's exclusion-based diagnostic framework and NIDDK's diagnostic description both make ruling out infection (via urinalysis and urine culture) a required first step, since UTI causes an overlapping symptom picture of urgency, frequency, and bladder/suprapubic pain but is treatable with antibiotics and should resolve, unlike IC/BPS. Persistent symptoms despite negative repeated cultures and appropriate antibiotic trials point away from ongoing infection and toward IC/BPS.",
+    "question": "Have you tried antibiotics and seen no improvement in your symptoms?",
+    "expected_answer_if_a": "Yes",
+    "expected_answer_if_b": "No",
+    "validated": true
+  }
+]
