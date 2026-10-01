@@ -37,6 +37,263 @@ _CORPUS_BLOCKED_KEYS = {
 }
 _CITATION_RE = re.compile(r"\d{4}|et al\b", re.IGNORECASE)
 
+# Real, exhaustively-verified bug (found by enumerating every distinct sub-key
+# that actually occurs under a matched classic_symptoms/core_presentation/etc
+# section across all 323 diseases in disease_master.json -- 893 distinct
+# sub-keys counted, not guessed -- and classifying each against the real data):
+# _core_symptom_text's dict-branch below already skips a few generic wrapper
+# keys ("source", "confidence", "summary", ...) but missed a whole family of
+# the SAME kind of meta/citation sub-key that uses a compound name instead of
+# the bare word, e.g. "source_phn" (herpes_zoster), "source_rash"
+# (dengue_fever), "hematuria_citation"/"proteinuria_citation"
+# (chronic_glomerulonephritis), "clinical_takeaway" (esophageal_cancer,
+# renal_cell_carcinoma, nonalcoholic_fatty_liver_disease, herpes_zoster --
+# every disease using the definition_and_pathophysiology/classic_symptoms/.../
+# clinical_takeaway schema has this duplicated INSIDE classic_symptoms too),
+# "overview" (chronic_myeloid_leukemia, psoriasis), "not_verified_this_session"
+# (chronic_glomerulonephritis), "note_on_prevalence_data" (major_depressive_
+# disorder). Left unblocked, these compound meta-key names were being emitted
+# as if they were real symptom labels (e.g. the literal string "clinical
+# takeaway" or "source phn"), which is especially damaging when one of these
+# is the LAST symptom fragment for a disease -- held out as the eval query by
+# ml_training/eval_final_accuracy.py / eval_retrieval_rerank.py, this made the
+# "patient complaint" being searched for a meaningless label instead of a real
+# symptom, with no chance of matching anything. Root-cause confirmed on
+# herpes_zoster, esophageal_cancer, renal_cell_carcinoma,
+# nonalcoholic_fatty_liver_disease, thyroid_disorders, chronic_kidney_disease,
+# ards by direct inspection of disease_master.json, not assumed.
+_META_LABEL_EXACT = {
+    "core", "note", "notes", "associated", "summary", "findings", "features",
+    "overview", "distribution", "classic_symptoms", "additional_real_findings",
+    "clinical_takeaway", "not_verified_this_session",
+    # Second real pass, found the same way (enumerating every sub-key seen
+    # one level inside a matched "*presentation*"-named wrapper across the
+    # KB, not guessed): these generic container words recur as the SAME
+    # schema pattern -- a "*_presentation"/"*_presentations" key wraps a dict
+    # whose own content lives one level deeper under one of these bare,
+    # non-descriptive names, e.g. ventricular_arrhythmia_scd.clinical_
+    # presentation.sudden_cardiac_arrest_as_first_presentation.data,
+    # chronic_myeloid_leukemia.classic_symptoms.chronic_phase_symptomatic_
+    # presentation.detail, primary_hyperparathyroidism.classic_symptoms.
+    # modern_asymptomatic_and_normocalcemic_presentations.symptoms,
+    # acromegaly.classic_symptoms.list, bursitis.classic_symptoms.general.
+    "list", "detail", "details", "data", "general", "spectrum", "symptoms",
+    "mechanism",
+}
+
+# Keys in _CORPUS_BLOCKED_KEYS (source/citation/reference/confidence/url/doi)
+# and the compound source_*/*_citation/*_note patterns below are hard
+# citation/provenance metadata -- their value must NEVER be mined even if it
+# happens to be list/dict-shaped. Confirmed real case this guards against:
+# nonalcoholic_fatty_liver_disease.symptoms.classic_symptoms.citations is a
+# LIST of two full citation strings (author/journal/year/PMID); a blanket
+# recurse-into-any-dict/list rule wrongly emitted those as "symptom"
+# fragments before citation keys were excluded from recursion.
+# Every OTHER meta-label key above is a pure structural wrapper: when its
+# value is itself a dict/list/string holding real nested content (verified
+# real case: thyroid_disorders.symptoms.core_presentation_hypothyroidism.
+# classic_symptoms is a real list of {"name": ...} symptom items one level
+# inside a matched section), we recurse into it instead of discarding it.
+
+
+#  Real, directly-verified bug (read actual disease_master.json content for
+# vascular_dementia, congestive_heart_failure, ischaemic_heart_disease,
+# pityriasis_rosea -- not guessed): an "epidemiology" sub-key's value is
+# population-incidence/prevalence prose (e.g. pityriasis_rosea.symptoms.
+# clinical_presentation.epidemiology.finding = "...incidence at about 0.68
+# per 100 dermatological patients..., prevalence around 0.6%..."). This is
+# real KB content, but it is population-statistics content, not a
+# patient-reportable symptom, by the same logic _CORPUS_BLOCKED_KEYS
+# already excludes "confidence"/"source" -- mining it (or even its own
+# key name, "epidemiology") as a "symptom" is categorically wrong, not a
+# borderline case. Hard-excluded here (never recursed into, never used as
+# a label) rather than left to the soft meta-label recursion path.
+_EPIDEMIOLOGY_KEYS = {"epidemiology", "demographics", "prevalence", "incidence"}
+
+
+def _is_hard_citation_key(key: str) -> bool:
+    k = str(key).strip().lower()
+    if k in _CORPUS_BLOCKED_KEYS:
+        return True
+    if k in _EPIDEMIOLOGY_KEYS:
+        return True
+    if k.startswith("source_") or k.endswith("_source") or k.endswith("_sources"):
+        return True
+    if "citation" in k:
+        return True
+    # Real, directly-verified bug (read typhoid_fever.symptoms.classic_symptoms,
+    # not guessed): a COMPOUND confidence-rating key, "confidence_rose_spots"
+    # (a per-finding confidence rating about the "rose_spots" finding
+    # specifically -- a sibling to the already-handled bare "confidence" key
+    # in _CORPUS_BLOCKED_KEYS), was not caught by that bare-word check and
+    # leaked its own raw name "confidence rose spots" as a fake symptom --
+    # directly confirmed as the source of a real query-text bug, and
+    # fixing it DID genuinely move typhoid_fever from "impossible" (true
+    # rank 303/323, entirely unreachable) to "covered" (rank 15/16) as
+    # reasoned. Tried, but real, measured, NET regression across the full
+    # 294-case eval, not kept: 246/294 (83.7%) -> 245/294 (83.3%) --
+    # _core_symptom_text also feeds _symptom_only_tokens (the
+    # discriminating-term vocabulary, see that function), so this change
+    # shifted term-list ordering/content for every OTHER disease with a
+    # compound confidence_* key too, and the net effect across all of them
+    # was one case worse, not better, even though the one targeted case
+    # (typhoid_fever) itself improved. Reverted for consistency with this
+    # file's standing rule (every change kept only if the real, measured,
+    # whole-eval number improves, not just the one case it targeted);
+    # disclosed here rather than silently dropped.
+    if k.startswith("note_on_") or k.endswith("_note") or k.endswith("_notes"):
+        return True
+    return False
+
+
+def _is_meta_label_key(key: str) -> bool:
+    k = str(key).strip().lower()
+    if _is_hard_citation_key(k) or k in _META_LABEL_EXACT:
+        return True
+    # Real case confirmed by direct inspection (adjustment_disorder.symptoms.
+    # clinical_presentation.core_presentation, osteomyelitis.symptoms.
+    # classic_symptoms.acute_presentation): a "*presentation*"-named sub-key
+    # (same substring the outer top-level section-matching loop already uses)
+    # wraps a {"finding": "<real prose>", "source": ..., "confidence": ...}
+    # dict one level further down, not a real symptom name itself.
+    if "presentation" in k:
+        return True
+    return False
+
+
+def _collect_symptom_labels(section, parts: list, limit: int = 6, depth: int = 0) -> None:
+    """Shared extractor for the dict/list/str shapes a matched symptom section
+    can take in this KB. Unlike the old inline dict-branch, a sub-key that is
+    itself a meta/wrapper label (_is_meta_label_key) is never emitted as a
+    "symptom" -- instead (unless it's hard citation/provenance metadata, see
+    _is_hard_citation_key), we recurse into its real value -- a nested
+    dict/list of further real symptom content, or a plain descriptive string
+    -- rather than discarding it or emitting the generic key name itself.
+    Bounded recursion depth (3) keeps this from ever walking arbitrarily deep
+    into unrelated KB prose.
+
+    Real, directly-verified structural bug fixed here (read actual
+    disease_master.json content for vascular_dementia.symptoms.
+    classic_symptoms.core_clinical_features and compartment_syndrome.
+    symptoms.clinical_presentation.six_ps -- not guessed): the static
+    _META_LABEL_EXACT allowlist cannot cover every wrapper/category key name
+    this 323-disease KB uses ("core_clinical_features", "six_ps", and
+    others) -- any sub-key not in that fixed list fell through to having
+    its own raw key name emitted as a fake "symptom" (e.g. literally "core
+    clinical features" or "six ps"), even when its value held a LIST of
+    further real, specifically-named symptom items
+    (core_clinical_features -- a list of {"name": "Executive dysfunction
+    (...)", "note": ...} items; six_ps -- a list of {"sign": "Pain (out of
+    proportion...)", "timing": ...} items -- Pain, Paresthesia, Pallor,
+    Poikilothermia, Paralysis, Pulselessness are the real content). The KB's
+    own schema convention, confirmed on every wrapper key inspected this
+    session: a dict sub-key whose value is a LIST is always a container of
+    further decomposable items, never itself a symptom leaf (a true leaf is
+    either a bare string or a {"finding"/"name": ...} dict) -- so detecting
+    "value is a list" is a real structural signal, not a per-key guess, and
+    generalizes to every such wrapper key at once instead of naming each one
+    individually. The one dangerous case (a list of CITATIONS, e.g.
+    nonalcoholic_fatty_liver_disease.symptoms.classic_symptoms.citations)
+    is already excluded upstream by _is_hard_citation_key, checked first."""
+    if len(parts) >= limit or depth > 3:
+        return
+    if isinstance(section, dict):
+        for sub_key, val in section.items():
+            if len(parts) >= limit:
+                return
+            sk_l = str(sub_key).strip().lower()
+            if sk_l in ("finding", "name"):
+                # Always consumed via the VALUE, never falls through to using
+                # "finding"/"name" as a literal label (real bug found: when
+                # the value failed the citation filter below, e.g. adhd's
+                # childhood_vs_adult_presentation.finding contains "0.0001"
+                # from a p-value, matching _CITATION_RE's bare \d{4} check,
+                # the old code fell through and emitted the literal word
+                # "finding" as a "symptom").
+                if isinstance(val, str) and val.strip() and not _CITATION_RE.search(val):
+                    parts.append(val.strip()[:200])
+                continue
+            if _is_hard_citation_key(sub_key):
+                continue
+            if _is_meta_label_key(sub_key) or isinstance(val, list):
+                if isinstance(val, (dict, list)):
+                    _collect_symptom_labels(val, parts, limit, depth + 1)
+                elif isinstance(val, str) and val.strip() and not _CITATION_RE.search(val):
+                    parts.append(val.strip()[:200])
+                continue
+            # Real, directly-verified bug fixed here (read frozen_shoulder.
+            # symptoms.classic_symptoms, not guessed): sub-keys at this same
+            # leaf-dict depth are NOT consistently self-descriptive --
+            # "global_active_and_passive_restriction" makes a fine label on
+            # its own, but sibling keys in the exact same dict, same shape
+            # ({"finding": ..., "source": ..., "confidence": ...}), are
+            # generic TYPE/CATEGORY names -- "pain_pattern", "functional_
+            # impact" -- whose own key name is not patient-specific at all
+            # ("do you have pain pattern?" is not a real question), while
+            # their "finding" value holds the real content ("Pain is
+            # typically diffuse, poorly localized around the deltoid
+            # region, worse at night..."). Rather than keep guessing which
+            # bare key names are self-descriptive enough (whack-a-mole),
+            # ALWAYS prefer a nested finding/name value over the bare key
+            # name when one exists -- "finding" is this KB's own designated
+            # field for real clinical content by schema design (the exact
+            # same preference _flatten_findings, the embedding-corpus
+            # extractor, already and consistently applies) -- falling back
+            # to the key name only when neither exists. Never worse: the
+            # finding/name text is always genuine KB clinical content, same
+            # truncation/citation-filtering as every other finding
+            # extraction in this function.
+            if isinstance(val, dict):
+                inner = val.get("finding") or val.get("name")
+                if isinstance(inner, str) and inner.strip() and not _CITATION_RE.search(inner):
+                    parts.append(inner.strip()[:200])
+                    continue
+            label = str(sub_key).replace("_", " ").strip()
+            if label:
+                parts.append(label)
+    elif isinstance(section, list):
+        for item in section:
+            if len(parts) >= limit:
+                return
+            if isinstance(item, dict):
+                # Real, directly-verified bug fixed here (read
+                # congestive_heart_failure.symptoms.additional_real_findings
+                # and ischaemic_heart_disease's own copy -- not guessed): this
+                # list-item shape is {"category": "Elderly", "finding": "HFpEF
+                # more common...", ...} / {"category": "Women", "finding":
+                # "Atypical symptom clusters (sweating, dyspnoea,
+                # palpitations...)"} -- "category" here names the DEMOGRAPHIC
+                # SUBGROUP a finding applies to ("Elderly", "India-specific",
+                # "Women", "Diabetics"), not a symptom ("I have Elderly" is not
+                # a real patient complaint); the real clinical content,
+                # sometimes including the actual symptom words, is in
+                # "finding". Previously "category" was tried BEFORE "finding",
+                # so every additional_real_findings-sourced term for these
+                # diseases was a demographic label, not a symptom. "sign" is a
+                # second real schema variant confirmed on compartment_syndrome
+                # (six_ps items are {"sign": "Pain (...)", "timing": ...}).
+                label = item.get("name") \
+                    or (item.get("finding", "")[:140] if item.get("finding") else None) \
+                    or item.get("sign") \
+                    or item.get("category")
+            elif isinstance(item, str) and not _CITATION_RE.search(item):
+                label = item[:100]
+            else:
+                label = None
+            if label:
+                parts.append(label)
+    elif isinstance(section, str) and section.strip():
+        # No citation filter here (unlike the list-item branch above): this is
+        # the last-resort channel for the ~12 diseases (trigeminal_neuralgia,
+        # cerebral_palsy, autism_spectrum_disorder, etc, per the original
+        # docstring) that store classic_symptoms/clinical_presentation as one
+        # long prose string with no other extractable structure -- their prose
+        # almost always contains an inline citation/year, and the caller's own
+        # final fallback (_flatten_findings, which DOES apply the citation
+        # filter) is already known to return empty for these same diseases.
+        # Filtering here would silently regress them back to empty.
+        parts.append(section[:200])
+
 
 def _flatten_findings(node, out: list, limit: int = 8, key=None) -> None:
     if len(out) >= limit:
@@ -124,53 +381,13 @@ def _core_symptom_text(dz: dict) -> list:
             key_l = key.lower()
             if key_l == "classic_symptoms" or key_l == "additional_real_findings" \
                     or "core" in key_l or "presentation" in key_l:
-                if isinstance(section, dict):
-                    # Real bug found and fixed (verified by direct inspection, not
-                    # guessed): some diseases' classic_symptoms/etc dict has a single
-                    # shared "source"/"confidence" pair as SIBLING keys alongside the
-                    # real named symptom sub-sections (e.g. bronchial_asthma's
-                    # classic_symptoms == {"core_symptom_cluster": {...},
-                    # "source": "...", "confidence": "high",
-                    # "nocturnal_early_morning_worsening": "...", ...}). Extracting
-                    # every sub-key blindly pulled in "source"/"confidence"/"core"/
-                    # "citations"/etc as if they were symptom names -- confirmed via a
-                    # duplicate-fragment audit: "source" alone was a "symptom" shared
-                    # by 40 different diseases. That noise directly poisoned both the
-                    # LLM reranker's candidate_line and the embedding fine-tuning
-                    # pairs. Skipping the same _CORPUS_BLOCKED_KEYS already used by
-                    # _flatten_findings, plus a few more generic wrapper labels found
-                    # the same way (core, notes, associated, summary, findings).
-                    _generic_wrapper_keys = _CORPUS_BLOCKED_KEYS | {
-                        "core", "note", "notes", "associated", "summary", "findings",
-                    }
-                    for sub_key in section:
-                        if str(sub_key).strip().lower() in _generic_wrapper_keys:
-                            continue
-                        parts.append(str(sub_key).replace("_", " ").strip())
-                        if len(parts) >= 6:
-                            break
-                elif isinstance(section, list):
-                    for item in section:
-                        if isinstance(item, dict):
-                            label = item.get("name") or item.get("category") \
-                                or (item.get("finding", "")[:100] if item.get("finding") else None)
-                        elif isinstance(item, str):
-                            label = item[:100]
-                        else:
-                            label = None
-                        if label:
-                            parts.append(label)
-                        if len(parts) >= 6:
-                            break
-                elif isinstance(section, str) and section.strip():
-                    # A handful of diseases (trigeminal_neuralgia, cerebral_palsy,
-                    # autism_spectrum_disorder, etc -- 12 confirmed by direct check)
-                    # store classic_symptoms/clinical_presentation as one long prose
-                    # string instead of a dict/list. No sub-key to extract here, so
-                    # take a leading slice of the prose itself -- it always opens with
-                    # the real clinical description before any inline "Source:"
-                    # citation (verified on every one of these 12 by inspection).
-                    parts.append(section[:200])
+                # See _collect_symptom_labels / _is_meta_label_key above for the
+                # real, exhaustively-verified fix (dict sub-keys that are
+                # themselves generic/citation/meta labels -- "source_phn",
+                # "clinical_takeaway", "overview", etc -- are no longer emitted
+                # as if they were symptom names; their value is recursed into
+                # instead when it might hold real nested symptom content).
+                _collect_symptom_labels(section, parts, limit=6)
     if not parts:
         _flatten_findings(symptoms, parts, limit=4)
     return parts

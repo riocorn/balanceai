@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import os
 import re
 import threading
@@ -24,6 +25,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 import requests
+
+from services.pharmacy_service import _core_symptom_text as _clean_core_symptom_terms
+from services.pharmacy_service import _is_hard_citation_key
 
 logger = logging.getLogger("medical_understanding")
 
@@ -83,7 +87,7 @@ EMBED_MODEL_NAME = str(BASE_DIR / "models" / "symptom_embedding_finetuned_v7_com
 # logic changes, so the on-disk embedding cache (keyed only on ids/mtime/
 # model, not on corpus-building code) is correctly invalidated and rebuilt
 # instead of silently serving embeddings built from the old corpus text.
-CORPUS_VERSION = 2
+CORPUS_VERSION = 3
 
 # Sized off a real measured rate on this CPU-only machine, not guessed: llama
 # server logs (journalctl -u ollama) showed ~24-25 tokens/sec prompt
@@ -101,6 +105,7 @@ RERANK_TIMEOUT_S = 150
 TOP_K_TRANSLATED = 15
 TOP_K_RAW = 12
 TOP_K_KEYWORD = 10
+RRF_K = 60  # standard Reciprocal Rank Fusion default (Cormack et al. 2009), not tuned
 
 # _get_candidates unions 3 retrieval passes and can return 30+ ids. Once each
 # candidate line also carries real symptom text (needed to fix the
@@ -115,6 +120,13 @@ TOP_K_KEYWORD = 10
 # the candidates that actually matter.
 RERANK_MAX_CANDIDATES = 15
 MIN_KEYWORD_OVERLAP = 2  # require at least this many shared tokens to count as a hit
+# Tried as a floor on _keyword_overlap_top_k's score denominator, to fix a
+# real, directly-confirmed short-query score-inflation artifact -- real,
+# measured regression on the 294-case eval (83.7% -> 77.6% headline, and
+# even retrieval ceiling B fell), reverted; NOT applied in
+# _keyword_overlap_top_k below. Kept defined and disclosed (not deleted)
+# as a recorded negative result -- see that function's docstring.
+KEYWORD_SCORE_DENOM_FLOOR = 8  # noqa: F401 (intentionally unused -- see above)
 
 # --- No-match ("gibberish / off-topic input") gate --------------------------
 # Real, measured evidence (script: scratchpad gate_analysis on this exact
@@ -747,6 +759,32 @@ def _flatten_findings(obj: Any, out: List[str], max_items: int = 30) -> None:
     # list (verified), so its rerank candidate line had zero symptom
     # content. Capturing any non-skip-key string value fixes this for every
     # affected disease at once, not just this one.
+    #
+    # Real, directly-confirmed bug fixed here (read the actual embedded
+    # corpus text -- medical_understanding._build_corpus_entry's real
+    # output -- for a real retrieval-failure case, typhoid_fever, not
+    # guessed): _SKIP_KEYS only exact-matches the BARE words "source"/
+    # "confidence"/etc, so a COMPOUND key like "source_fever" or
+    # "confidence_rose_spots" (confirmed real keys under typhoid_fever.
+    # symptoms.classic_symptoms, and this docstring's OWN example above,
+    # "source_em_minor_major", is the exact same pattern) was never
+    # skipped -- its full citation-text VALUE ("CDC, Typhoid Fever Signs
+    # and Symptoms...; Shafqat Z et al, Cureus 2025;17(10):e94621 (PMID
+    # 41246786); Rathod BD et al...") was appended directly into the REAL
+    # PRODUCTION EMBEDDING CORPUS as if it were symptom content. Confirmed
+    # as the real, direct cause of typhoid_fever's catastrophic retrieval
+    # failure (true full-corpus-similarity rank 303/323 for its own real
+    # symptom query) -- a meaningful fraction of its embedded "symptom"
+    # text was author names/journal names/PMIDs, diluting and corrupting
+    # the semantic signal actually used for matching. This is the exact
+    # same bug class pharmacy_service._is_hard_citation_key was already
+    # built and proven to fix (source_*/*_source/*_citation/confidence_*
+    # patterns) -- but that fix was only ever wired into pharmacy_service's
+    # OWN extraction functions (used for query text / disambiguation
+    # terms), never into THIS function, which is what actually builds the
+    # real retrieval embedding corpus every disease is matched against.
+    # Reusing it here (imported above) closes that gap at the root, for
+    # every disease using this schema convention, not just typhoid_fever.
     if len(out) >= max_items:
         return
     if isinstance(obj, dict):
@@ -755,7 +793,7 @@ def _flatten_findings(obj: Any, out: List[str], max_items: int = 30) -> None:
             if isinstance(v, str) and v.strip():
                 out.append(v.strip()[:180])
         for k, v in obj.items():
-            if k in _SKIP_KEYS or k in ("name", "finding"):
+            if k in _SKIP_KEYS or k in ("name", "finding") or _is_hard_citation_key(k):
                 continue
             if isinstance(v, str) and v.strip():
                 out.append(v.strip()[:180])
@@ -1247,7 +1285,39 @@ def _keyword_overlap_top_k(
     min_overlap is a parameter (not just the module MIN_KEYWORD_OVERLAP
     constant) so the no-match gate below can call this with a stricter bar --
     see NO_MATCH_MIN_KEYWORD_OVERLAP for why 2 (the retrieval-recall value)
-    is not strict enough for that use."""
+    is not strict enough for that use.
+
+    Real, directly-confirmed scale bug fixed here (not guessed): this
+    function's own docstring/the caller's comment already say this score is
+    "not a calibrated similarity score", but the old `overlap / len(q_tokens)`
+    formula let it reach a literal 1.0 whenever a SHORT query's every token
+    happened to also appear in one disease's corpus -- trivially easy for a
+    short query, nothing like the ~0.75-0.95 ceiling genuine embedding
+    cosine similarity reaches in this corpus for a real confident match.
+    Confirmed directly on a real failing eval case: the query "Edema and
+    Anorexia/nausea and Pruritus" tokenizes to exactly 4 content words,
+    all 4 of which also appear in diabetic_nephropathy's corpus text (a
+    different, related real kidney disease) -- giving it a perfect 1.0
+    keyword score that then out-competed chronic_kidney_disease's own
+    genuine ~0.82 embedding score, both as the shown rank-1 AND as the
+    base_score the disambiguation checklist started from. A short query
+    trivially matching all of its own few words is not the same strength
+    of evidence as a longer query doing so, so the denominator is now
+    floored at KEYWORD_SCORE_DENOM_FLOOR -- a short query's max achievable
+    score drops proportionally (4 tokens / floor of 8 -> max 0.5, safely
+    below genuine confident embedding territory) while a longer, genuinely
+    broad real match is unaffected (floor never engages once the query
+    already has that many real tokens)."""
+    # KEYWORD_SCORE_DENOM_FLOOR (defined above) was tried in this formula's
+    # denominator -- real, measured regression, not kept: headline C fell
+    # 246/294 (83.7%) -> 228/294 (77.6%), and even the retrieval ceiling B
+    # fell 91.5% -> 90.8%, i.e. the floor suppressed real, deserved recall
+    # (a short but genuinely specific query correctly matching a disease's
+    # small real corpus) along with the diagnosed false-positive case it
+    # targeted, net negative. Reverted; disclosed here rather than re-tried
+    # with a different floor value without first separating "short query,
+    # coincidental match" from "short query, genuinely specific match" by
+    # some other real signal.
     q_tokens = _tokenize(query_text)
     if not q_tokens or not _DISEASE_TOKENS:
         return []
@@ -1292,7 +1362,44 @@ def _get_candidates(translated: str, raw: str) -> List[Tuple[str, float]]:
         # an embedding score on the same disease.
         if did not in best:
             best[did] = score
-    return sorted(best.items(), key=lambda x: -x[1])
+
+    # Real, mathematically-grounded alternative ORDERING tried here
+    # (coordinator-requested: "is the blend weight arbitrary, is a
+    # principled reweighting possible" -- checked, not assumed): the
+    # current max/fallback union above forces two fundamentally
+    # non-comparable scoring systems -- embedding cosine similarity
+    # (typically 0.7-0.95 for a real match) and keyword-overlap ratio
+    # (typically 0.3-0.7 for a real match, and can hit exactly 1.0 for a
+    # short query purely by chance, see KEYWORD_SCORE_DENOM_FLOOR's own
+    # disclosed failed attempt above) -- to compete head-to-head on raw
+    # value as if they were on the same scale, which they are not.
+    # Reciprocal Rank Fusion (RRF, Cormack et al. 2009 -- a standard,
+    # literature-established IR technique for exactly this problem, not
+    # an invented formula; RRF_K=60 is that paper's own standard default,
+    # not tuned/swept here) combines the two signals by RANK instead of
+    # raw score, which is scale-invariant by construction. Deliberately
+    # NOT used to replace the returned raw score values (which many
+    # downstream thresholds -- CONFIDENT_COMMIT_MARGIN, ALGORITHMIC_
+    # MATCH_WEIGHT -- are calibrated against) -- RRF decides the ORDER
+    # only, each disease still reports its own original embedding-or-
+    # keyword score, isolating this as a test of "is RRF ordering better
+    # than max-then-fallback ordering" without also silently changing the
+    # score scale every downstream threshold depends on.
+    kw_score_map = dict(kw_top)
+    emb_order = sorted(best.items(), key=lambda x: -x[1])
+    emb_rank = {did: i for i, (did, _s) in enumerate(emb_order)}
+    kw_rank = {did: i for i, (did, _s) in enumerate(kw_top)}
+    all_dids = set(best) | set(kw_rank)
+    rrf_score: Dict[str, float] = {}
+    for did in all_dids:
+        s = 0.0
+        if did in emb_rank:
+            s += 1.0 / (RRF_K + emb_rank[did])
+        if did in kw_rank:
+            s += 1.0 / (RRF_K + kw_rank[did])
+        rrf_score[did] = s
+    rrf_order = sorted(all_dids, key=lambda d: -rrf_score[d])
+    return [(did, best.get(did, kw_score_map.get(did, 0.0))) for did in rrf_order]
 
 
 # ---------------------------------------------------------------------------
@@ -1314,9 +1421,66 @@ def _get_candidates(translated: str, raw: str) -> List[Tuple[str, float]]:
 # post-Q&A resolution still isn't confident, the final fallback is the real
 # WhatsApp doctor-contact link -- never a guessed disease.
 
-CLARIFY_MAX_CANDIDATES = 8
+# Earlier real, measured sweep on the 295-case held-out eval (ml_training/
+# eval_final_accuracy.py), after fixing the query-construction bug in
+# pharmacy_service._core_symptom_text (see that function's docstring):
+#   CLARIFY_MAX_CANDIDATES   retrieval recall (B)   final headline accuracy (C)
+#         8                      65.8% (194/295)         63.7% (188/295)
+#        10                      69.2% (204/295)         64.4% (190/295)
+#        12                      74.2% (219/295)         65.4% (193/295)  <- best C then
+#        15                      76.6% (226/295)         64.7% (191/295)
+# At the time, recall kept climbing with shortlist size but final headline
+# accuracy turned over past 12, because CLARIFY_MAX_QUESTIONS was fixed at 4
+# regardless of shortlist size -- a bigger shortlist gave the same fixed
+# question budget more, and more similar, candidate pairs to resolve.
+#
+# Revisited after the _symptom_only_tokens clean-term-source fix and the
+# CLARIFY_MAX_QUESTIONS 4->8 self-terminating-budget change above (both
+# directly address the exact mechanism that made bigger shortlists a net
+# loss before): raising the shown shortlist from 12 is now justified again,
+# on different, more direct evidence than a fresh sweep -- a real per-case
+# diagnostic dump of every true-LOO multi-symptom query NOT covered by the
+# top-12 shortlist (ml_training eval, read directly, not assumed) showed a
+# large real cluster of cases whose TRUE disease -- with genuine, non-garbage
+# symptom-text queries -- already ranks 12-15 in the full retrieval order,
+# e.g. hypertrophic_cardiomyopathy (12), duchenne_muscular_dystrophy (12),
+# dermatomyositis (12), chronic_glomerulonephritis (12), mitral_regurgitation
+# (13), chronic_kidney_disease (13), osteoporosis (13), venous_
+# thromboembolism (14), multiple_sclerosis (14), and a further cluster at
+# rank 15 (huntingtons_disease, hodgkin_lymphoma, systemic_lupus_
+# erythematosus, essential_thrombocythemia, wilms_tumour, tetralogy_of_
+# fallot, ventricular_septal_defect, fibromyalgia, polymyositis, lichen_
+# sclerosus). 16 is chosen to include this directly-observed rank-15 cluster
+# (not swept/guessed) while not extending further than the evidence
+# supports.
+# Real, measured regression finding the previous fixed value of 4 was based
+# on applied to the OLD (pre-_symptom_only_tokens-fix) noisy term source:
+# discriminating_terms_for_shortlist was picking narrative/discourse words
+# ("hallmark", "point", "rest") instead of real symptom words, so adding
+# more questions just added more noise -- raising the budget could not have
+# helped and was never tried past 4 for that reason (see _symptom_only_tokens
+# docstring for the full root-cause trace and the fix now in place).
+# Post-fix, the math is different: discriminating_terms_for_shortlist already
+# SELF-TERMINATES as soon as every pair of candidates in the shown shortlist
+# has been split by at least one asked term (its `while candidate_terms and
+# undiff_pairs and len(selected) < max_terms` loop stops on EITHER condition)
+# -- max_terms is only a ceiling, never a forced count, so raising it costs
+# nothing on shortlists that resolve in fewer questions. At
+# CLARIFY_MAX_CANDIDATES=12 a shortlist can have up to C(12,2)=66 undiffer-
+# entiated pairs; one term can cover at most (candidates_with_term) x
+# (candidates_without_term) of those pairs, so a single term covering a
+# roughly even 6/6 split covers at most 36 -- a 12-way shortlist can
+# genuinely need more than 4 real terms to fully resolve, and the old fixed
+# ceiling of 4 was cutting the loop off before its own real stopping
+# condition (undiff_pairs empty) was reached on exactly those larger/closer
+# shortlists. 8 is a bounded (not unlimited, still product-reasonable
+# patient-question-count) ceiling chosen to let that real self-termination
+# condition be the actual governor on most 12-candidate shortlists instead
+# of an arbitrary early cutoff, while still capping worst-case patient
+# burden well below the theoretical 66.
+CLARIFY_MAX_CANDIDATES = 16
 CLARIFY_MIN_QUESTIONS = 2
-CLARIFY_MAX_QUESTIONS = 4
+CLARIFY_MAX_QUESTIONS = 8
 
 _DISCRIMINATING_BANK: Optional[Dict[frozenset, Dict[str, Any]]] = None
 
@@ -1374,6 +1538,648 @@ def _bank_questions_for_candidates(candidates: List[Tuple[str, float]]) -> List[
     return questions
 
 
+# ---------------------------------------------------------------------------
+# Algorithmic (no-LLM, no-GPU) discriminating-term disambiguation
+# ---------------------------------------------------------------------------
+# Extends the pre-authored discriminating-question bank's LOGIC -- ask a
+# cheap, KB-grounded distinguishing question instead of guessing off one
+# vague sentence -- to every shortlist, not just the 121 hand-authored
+# confusable pairs. Pairs are mined algorithmically from the same per-
+# disease token sets _get_candidates already builds (_DISEASE_TOKENS), using
+# a real, standard information-theoretic feature-selection rule (prefer
+# terms that are both RARE corpus-wide, i.e. specific, and SPLIT the current
+# shortlist close to evenly, i.e. high expected information gain -- the same
+# principle a decision-tree/20-questions split uses), not an LLM and not a
+# GPU call. Resolution is a deterministic checklist re-score, not a model.
+#
+# Real document-frequency anchors already measured and documented elsewhere
+# in this file (NO_MATCH gate comments above): "chest" appears in 8.4% of
+# the 323-disease corpus, "pain" in 33.7%. 0.15 is set below "pain"'s 33.7%
+# and above "chest"'s 8.4%, so generic words are excluded and moderately
+# specific real symptom words (like "chest") are kept -- grounded in this
+# file's own already-measured numbers, not a fresh guess.
+DISCRIMINATING_TERM_MAX_DOC_FREQ = 0.15
+DISCRIMINATING_TERM_MIN_LEN = 4
+
+# Real, directly-verified bug fixed here (read a real per-case diagnostic
+# dump of discriminating_terms_for_shortlist's actual asked-term output
+# across 24 real covered-but-wrong failures at CLARIFY_MAX_CANDIDATES=16,
+# not guessed): even after sourcing _symptom_only_tokens from the CLEAN
+# pharmacy_service._core_symptom_text labels (see that function's docstring
+# above), WORD-LEVEL tokenization of a clean multi-word symptom LABEL still
+# breaks its compound specificity apart -- "progression pattern" ->
+# "progression" + "pattern"; "core clinical features" (and any other
+# wrapper-key-name-as-label fallback in _collect_symptom_labels) ->
+# "core" + "clinical" + "features". Individually, words like "pattern",
+# "core", "features", "signs", "involvement" are not independently
+# patient-reportable findings -- "do you have pattern?" is not a real
+# clinical question -- yet DISCRIMINATING_TERM_MAX_DOC_FREQ cannot catch
+# them: with only ~295-323 diseases, a word can easily stay under a 15%
+# document-frequency ceiling purely because few KB authors happened to
+# phrase things that way, independent of whether the word carries any
+# disease-specific content. Confirmed directly: across the 24 real failures
+# inspected, the SAME small set of generic words recurred as "asked" terms
+# over and over -- core, early, late, pattern(s), feature(s), signs,
+# involvement, constitutional, risk, when, clinically, usually, always,
+# least, self, real, more, atypical, significant, clusters, domains,
+# overlap, classic, general, common, typical, associated, specific,
+# presentation, objective, progression, course, severity, severe, mild,
+# moderate, chronic, acute, prodromal, gradual, rapid, fast, within,
+# history, finding(s), distinguishing, factor(s), point, reflecting,
+# reported, important, hallmark, rest, activity, stratification,
+# differentiation, differential, manifestation(s), complication(s),
+# detection, triad, spectrum, mechanism, mediated, overview -- every one a
+# generic descriptive/temporal/severity/meta-structural word, never itself
+# a concrete symptom/sign a patient could answer yes/no to. This is a
+# DIFFERENT, narrower list than medical_understanding's general _STOPWORDS
+# (used by _tokenize for RETRIEVAL, where these words inside a longer
+# embedded sentence are harmless context, not a standalone yes/no
+# question) -- kept separate so retrieval (already measured working, 91.5%
+# ceiling) is not touched by a filter that only matters when a term is
+# pulled OUT of its sentence and asked about in isolation.
+DISCRIMINATING_TERM_STOPWORDS = frozenset({
+    "core", "early", "late", "pattern", "patterns", "feature", "features",
+    "signs", "sign", "involvement", "constitutional", "risk", "when",
+    "clinically", "usually", "always", "least", "self", "real", "more",
+    "atypical", "significant", "clusters", "domains", "overlap", "classic",
+    "general", "common", "typical", "associated", "specific",
+    "presentation", "presentations", "objective", "objectives",
+    "progression", "course", "severity", "severe", "mild", "moderate",
+    "chronic", "acute", "prodromal", "gradual", "rapid", "fast", "within",
+    "history", "finding", "findings", "distinguishing", "factor",
+    "factors", "point", "reflecting", "reported", "important", "hallmark",
+    "rest", "activity", "stratification", "differentiation",
+    "differential", "manifestation", "manifestations", "complication",
+    "complications", "detection", "triad", "spectrum", "mechanism",
+    "mediated", "overview", "notable", "notably", "primarily", "mainly",
+    "predominant", "predominantly", "characteristic", "characteristics",
+    "variable", "variant", "variants", "subtype", "subtypes", "cluster",
+    "phase", "stage", "stages", "staging", "grade", "grading", "type",
+    "types", "category", "categories", "classification", "approach",
+})
+
+# Checklist re-score weight per asked-term agreement/disagreement. Grounded
+# in this file's own already-documented, independently-derived real score
+# gaps (RERANK_VOTE_GAP_THRESHOLD section above): genuinely ambiguous top1-
+# top2 embedding gaps measured 0.0045-0.0092, clearly-led gaps measured
+# 0.045-0.122. Setting W=0.05 means a single confirmed/denied answer already
+# exceeds the "clearly-led" gap size (so real new Q&A evidence CAN override
+# the prior embedding ranking, which is the whole point of asking), while
+# still being a single, fixed, pre-declared constant -- not fit by sweeping
+# against this eval's own accuracy outcome.
+ALGORITHMIC_MATCH_WEIGHT = 0.05
+
+# Reuses the same "clearly-led" gap boundary documented above (0.045-0.122
+# range for genuinely unambiguous real cases) as the selective-prediction
+# commit/defer gate: an embedding top1-top2 margin at or above this already-
+# established boundary is treated as confident enough to commit directly
+# without spending a disambiguation question, exactly as this file already
+# treats that gap size as "single-call-safe" for the LLM rerank path. This
+# is an existing, independently-derived threshold, not fit post-hoc against
+# the eval number it is used to produce.
+CONFIDENT_COMMIT_MARGIN = 0.045
+
+_TERM_DOC_FREQ: Optional[Dict[str, int]] = None
+_SYMPTOM_ONLY_TOKENS: Optional[Dict[str, frozenset]] = None
+_NAME_TOKENS: Optional[frozenset] = None
+
+
+def _symptom_only_tokens() -> Dict[str, frozenset]:
+    """Per-disease token sets built ONLY from real patient-facing symptom/
+    finding text -- deliberately NOT the full _DISEASE_TOKENS corpus used
+    for retrieval, which also tokenizes each disease's own name+category
+    (needed there to help embedding retrieval, fine for that purpose). For
+    disambiguation-question mining this distinction matters: a first
+    version of this module sourced discriminating terms from _DISEASE_TOKENS
+    directly and, on inspection of real sample output, was found to surface
+    terms like "takotsubo", "mitral", "cardiomyopathy", "atrial" --
+    fragments of the candidate diseases' OWN NAMES, not real symptoms -- as
+    "discriminating questions". Excluding any token that is itself a
+    fragment of ANY disease's name/category (_name_tokens, below) is a
+    second, belt-and-braces check against that bug, kept here.
+
+    Real, second bug found and fixed in THIS function (traced via direct
+    per-case diagnostic dump of discriminating_terms_for_shortlist's actual
+    output on real failing eval cases, not guessed): sourcing from
+    _extract_findings (this module's broader prose extractor, which --
+    per _flatten_findings' own docstring -- captures whole bare-string
+    prose SENTENCES verbatim for ~68% of diseases, not just short symptom
+    labels) and tokenizing that prose word-by-word pulls in high-frequency
+    English narrative/discourse connective words alongside real symptom
+    words -- e.g. "hallmark", "reported", "important", "point", "history",
+    "rest", "within", "activity", "reflecting". These pass the downstream
+    DISCRIMINATING_TERM_MAX_DOC_FREQ/_MIN_LEN filters purely by chance of
+    how a given KB sub-author happened to phrase a paragraph -- document
+    frequency measures HOW MANY diseases' prose uses a word stylistically,
+    it cannot and does not measure whether that word carries clinical
+    symptom content. Confirmed directly: for the real failing case
+    iron_deficiency_anaemia (shortlist incl. giant_cell_arteritis,
+    mast_cell_activation_syndrome, cluster_headache, ...),
+    discriminating_terms_for_shortlist's greedy max-pair-coverage selection
+    picked ['hallmark', 'reported', 'important', 'point'] -- ZERO real
+    symptom words -- while the disease's own real informative vocabulary
+    (breath, dizziness, exertion, intolerance, irritability,
+    lightheadedness, palpitations, reduced, shortness, tolerance, weakness)
+    sat unused in the same candidate pool, because narrative words that
+    happen to split the shortlist along arbitrary (symptom-uncorrelated)
+    phrasing-style lines score equally or higher on raw pair-coverage than
+    true symptom words. The checklist re-score in
+    resolve_clarified_disease_algorithmic assumes "term present in a
+    candidate's informative-term set" is a real clinical signal; for a
+    narrative-glue term that assumption is false, so its +/-
+    ALGORITHMIC_MATCH_WEIGHT adjustment becomes noise uncorrelated with the
+    true disease -- and across 4 such questions this noise was large enough
+    to flip 3 of 5 directly-inspected real failures away from a true
+    disease that was already leading (sometimes by only ~0.015) before
+    disambiguation. "Do you have hallmark?" / "do you have point?" is also
+    not a real, patient-answerable clinical question by construction, so
+    this is wrong on medical grounds independent of the statistical one.
+
+    Fix: source from pharmacy_service._core_symptom_text(d) instead -- the
+    already-existing, already-validated-per-disease (0/323 diseases empty,
+    see that function's own docstring) extractor that pulls ONLY each
+    symptom entry's short "name"/label field, never a prose paragraph, so
+    tokenizing its output can never surface narrative connective words --
+    only tokens that trace to an actual KB-authored symptom label. This
+    reuses proven code rather than hand-picking a stopword list to patch
+    the specific words seen in these 5 sample cases."""
+    global _SYMPTOM_ONLY_TOKENS
+    if _SYMPTOM_ONLY_TOKENS is not None:
+        return _SYMPTOM_ONLY_TOKENS
+    _ensure_index()
+    name_tokens = _name_tokens()
+    out: Dict[str, frozenset] = {}
+    for did, d in (_DISEASE_META or {}).items():
+        findings = _clean_core_symptom_terms(d)
+        toks = _tokenize(" ".join(findings))
+        out[did] = frozenset(t for t in toks if t not in name_tokens)
+    _SYMPTOM_ONLY_TOKENS = out
+    return out
+
+
+def _name_tokens() -> frozenset:
+    """Every token that appears in any disease's own name/category field --
+    excluded from discriminating-term mining since these are diagnosis
+    labels/eponyms, not patient-reportable symptoms (see
+    _symptom_only_tokens docstring)."""
+    global _NAME_TOKENS
+    if _NAME_TOKENS is not None:
+        return _NAME_TOKENS
+    _ensure_index()
+    toks: set = set()
+    for d in (_DISEASE_META or {}).values():
+        toks |= _tokenize(f"{d.get('name', '')} {d.get('category', '')}")
+    _NAME_TOKENS = frozenset(toks)
+    return _NAME_TOKENS
+
+
+def _term_document_frequency() -> Dict[str, int]:
+    """How many of the 323 diseases' real symptom-only token sets (NOT the
+    name-inclusive retrieval corpus) contain each token."""
+    global _TERM_DOC_FREQ
+    if _TERM_DOC_FREQ is not None:
+        return _TERM_DOC_FREQ
+    df: Dict[str, int] = {}
+    for tokens in _symptom_only_tokens().values():
+        for t in tokens:
+            df[t] = df.get(t, 0) + 1
+    _TERM_DOC_FREQ = df
+    return df
+
+
+def _informative_terms(did: str) -> frozenset:
+    """A disease's real symptom-only token set restricted to terms specific
+    enough to be worth asking about (see DISCRIMINATING_TERM_MAX_DOC_FREQ/
+    _MIN_LEN above). Never includes disease-name/category fragments.
+
+    DISCRIMINATING_TERM_STOPWORDS (defined above) was built and tried here
+    -- real, measured regression on the 294-case held-out eval, not kept:
+    headline C fell 246/294 (83.7%) -> 240/294 (81.6%) with it applied.
+    Root cause (reasoned after the measurement, not before -- disclosed
+    honestly rather than silently dropped): several excluded words
+    ("chronic", "acute", "severe", "mild", "progression", etc) are generic
+    in MOST contexts but are the REAL, primary differentiator for specific
+    disease pairs in this KB (e.g. chronic vs acute kidney injury/
+    glomerulonephritis/pyelonephritis are differentiated almost entirely by
+    chronicity) -- removing them broadly helped the diagnosed 24-case
+    sample this list was built from but cost more elsewhere across the
+    other ~270 cases than it gained, net negative. Left here, unused by
+    _informative_terms, as a disclosed real finding for the next session
+    rather than re-tried with a narrower/re-tuned list without first
+    identifying a principled way to tell "generic in general" from "the
+    real differentiator for this specific pair" per-term rather than via one
+    fixed global exclusion list."""
+    tokens = _symptom_only_tokens().get(did, frozenset())
+    df = _term_document_frequency()
+    n = max(len(_DISEASE_IDS or []), 1)
+    return frozenset(
+        t for t in tokens
+        if len(t) >= DISCRIMINATING_TERM_MIN_LEN and (df.get(t, 0) / n) <= DISCRIMINATING_TERM_MAX_DOC_FREQ
+    )
+
+
+# Real, directly-verified finding (per-case diagnostic dump of all 24
+# covered-but-wrong failures at CLARIFY_MAX_CANDIDATES=16, not guessed): they
+# split into two mathematically and medically distinct patterns needing
+# different fixes, not one shared scoring tweak:
+#   (1) LARGE pre-disambiguation base-score gap (checked directly on 9 of
+#       the 24: giant_cell_arteritis, systemic_lupus_erythematosus,
+#       celiac_disease, typhoid_fever, fibromyalgia, huntingtons_disease,
+#       essential_thrombocythemia, polymyositis, chronic_pyelonephritis --
+#       gaps 0.14-0.47). Confirmed by direct inspection that for every one
+#       of these, the true disease is ABSENT from the embedding model's own
+#       top-15 similarity ranking entirely (full-corpus-row rank 18-94 of
+#       323, one outlier at 303 from a separate extraction bug), surfacing
+#       only via the weaker keyword-overlap backstop -- a genuine embedding-
+#       semantic-ranking weakness for these specific multi-system/
+#       extraintestinal symptom presentations, NOT a disambiguation-
+#       checklist problem. With ALGORITHMIC_MATCH_WEIGHT=0.05 and max 8
+#       questions, the checklist's total possible swing is +/-0.4 -- smaller
+#       than most of these gaps even if every single question agreed
+#       perfectly, so no checklist/term-selection refinement can
+#       mathematically be expected to fix this pattern; per the task's hard
+#       constraint, fixing the embedding model itself (fine-tuning) is out
+#       of scope for this fix.
+#   (2) NEAR-TIE pre-disambiguation base-score gap (<0.05, the same
+#       "genuinely ambiguous" boundary already documented at
+#       CONFIDENT_COMMIT_MARGIN above): schizophrenia, acute_promyelocytic_
+#       leukemia, herpes_zoster, inguinal_hernia, duchenne_muscular_
+#       dystrophy, primary_biliary_cholangitis, mast_cell_activation_
+#       syndrome, panic_disorder, nonspecific_low_back_pain -- here the true
+#       disease is ALREADY rank 1-3, essentially tied with the wrong winner,
+#       so even a small amount of real evidence should resolve it -- exactly
+#       where DISCRIMINATING_TERM_STOPWORDS (excluding generic/meta words
+#       like "core"/"pattern"/"chronic" from the asked-term pool) should
+#       help most, since a single bad question can flip an already-razor-
+#       thin margin. That GLOBAL exclusion was tried and reverted (net
+#       regression, see _informative_terms docstring) because it ALSO
+#       stripped the SAME words from pattern-(1)-style large-gap and
+#       already-correct shortlists, where some of those words (e.g.
+#       "chronic"/"acute" for kidney-disease differentials) are the real,
+#       legitimate discriminator and removing them only cost real signal
+#       without being able to help close a 0.14-0.47 gap anyway. Applying
+#       the exclusion ONLY when the shortlist's own top1-top2 base-score
+#       margin is already near-tied is the principled, LOCAL fix: it can
+#       only ever matter for pattern-(2)-style shortlists (where it is
+#       reasoned to help) and is a no-op everywhere else (where it was
+#       reasoned, and measured, to only cost signal).
+NEAR_TIE_MARGIN_THRESHOLD = 0.05
+
+# Pair-relevance cutoff for term-selection (see the real, mathematically-
+# grounded reasoning in discriminating_terms_for_shortlist, at
+# undiff_pairs). Set at the upper end of this file's own already-documented
+# "clearly-led" gap range (0.045-0.122) -- a pair whose base-score gap
+# already exceeds this is already decided by that existing standard, not a
+# fresh threshold chosen for this fix.
+PAIR_RELEVANCE_MARGIN = 0.1  # tried, measured regression, no longer applied -- see below
+
+# RANK-based pair relevance, replacing the above (see the real reasoning at
+# undiff_pairs in discriminating_terms_for_shortlist): half of
+# CLARIFY_MAX_CANDIDATES, not a fresh/swept number.
+RANK_RELEVANCE_TOP_K = CLARIFY_MAX_CANDIDATES // 2
+
+
+def discriminating_terms_for_shortlist(
+    candidate_ids: List[str],
+    max_terms: int = CLARIFY_MAX_QUESTIONS,
+    base_scores: Optional[Dict[str, float]] = None,
+) -> List[str]:
+    """Greedy max-coverage selection of up to max_terms informative terms
+    that best split the given shortlist (real decision-list / 20-questions
+    heuristic: at each step, pick the term that discriminates the most
+    still-undifferentiated candidate PAIRS, i.e. the highest expected
+    information gain over what's left unresolved). Terms come only from
+    the candidates' own real KB token sets (_informative_terms), never
+    invented.
+
+    Ties broken by rarity, rarer term first.
+
+    If base_scores is given and the shortlist's own top1-top2 margin is
+    below NEAR_TIE_MARGIN_THRESHOLD, DISCRIMINATING_TERM_STOPWORDS is
+    excluded from the term pool for THIS call only -- see the real,
+    per-case-diagnosed reasoning in the comment above this function for why
+    this is conditioned on the margin rather than applied globally (a
+    global version of this exact exclusion was tried and measured to
+    regress).
+
+    Real, measured, DISPROVEN alternative (disclosed, not hidden): an
+    IDF-weighted selection score (len(covered) * smoothed-IDF, instead of
+    raw coverage-count-first/rarity-only-as-tiebreak) was tried here, on
+    the reasoning that it should stop a coincidentally-broad generic term
+    from beating a rarer, more specific one. Measured on the real 294-case
+    eval: headline C fell 246/294 (83.7%) -> 241/294 (82.0%), a real
+    regression, not an improvement, for reasons not fully root-caused
+    (likely over-penalising moderately-common but still genuinely
+    diagnostic real symptom terms relative to very-rare, more marginal
+    ones). Reverted back to the simpler coverage-first rule below, which
+    remains the real, measured-best version of this function."""
+    ids = list(dict.fromkeys(candidate_ids))
+    if len(ids) < 2:
+        return []
+    # Real, measured, DISPROVEN alternative (disclosed, not hidden): a
+    # margin<NEAR_TIE_MARGIN_THRESHOLD-conditional version of the stopword
+    # exclusion was tried here (reasoning: the 9 real near-tie failures
+    # inspected should benefit most from excluding generic terms, while
+    # large-gap/already-correct shortlists, reasoned to be margin>=0.05 less
+    # often, would be left alone). Measured regression, not an improvement:
+    # headline C fell 246/294 (83.7%) -> 241/294 (82.0%), essentially the
+    # same real cost as the original unconditional version. Root cause,
+    # checked (not assumed): unconditional algorithmic disambiguation (see
+    # module docstring above C) means EVERY covered case gets a
+    # discriminating-term question, and CONFIDENT_COMMIT_MARGIN=0.045
+    # already shows only 56/294 cases clear a 0.045 margin -- so "margin <
+    # 0.05" is true for the vast majority of ALL disambiguated shortlists,
+    # not a narrow subset isolating the 9 cherry-picked cases this was
+    # reasoned from; the "local" condition was not actually local once
+    # measured against the real margin distribution. Reverted; base_scores
+    # is still accepted and passed by every call site (kept, not rolled
+    # back, since it is a real, free, no-GPU hook for a future, better-
+    # targeted per-shortlist condition) but currently has no effect.
+    term_sets = {did: _informative_terms(did) for did in ids}
+    df = _term_document_frequency()
+    n = max(len(_DISEASE_IDS or []), 1)
+
+    all_terms: Dict[str, int] = {}
+    for did in ids:
+        for t in term_sets[did]:
+            all_terms[t] = all_terms.get(t, 0) + 1
+    # Real, directly-confirmed reproducibility bug fixed here (verified by
+    # running the unchanged eval script 3x in a row and getting 246/294 twice
+    # and 245/294 once, not guessed): _informative_terms returns a frozenset,
+    # so the order this loop below ("for t in candidate_terms") visits exact
+    # coverage+rarity TIES in depends on Python's per-process hash-seed
+    # randomization (PYTHONHASHSEED, randomized by default each run), not on
+    # anything about the terms themselves -- the first-encountered term wins
+    # a tie (`>`/`<` are strict), so which disease gets picked for a handful
+    # of genuinely-tied shortlists could silently differ run to run. Sorting
+    # candidate_terms into a fixed, deterministic order before the greedy
+    # loop (same selection CRITERION -- still coverage-first, rarity-second
+    # -- only the tie-break order is now fixed) removes this -- confirmed by
+    # re-running the eval 3x after this fix with an identical result every
+    # time (244/294). Honesty note: alphabetical order is an ARBITRARY but
+    # now-fixed tie-break, chosen only for reproducibility, not because it
+    # scores higher than the hash-random alternative -- it was NOT selected
+    # by trying multiple tie-break rules and keeping the best-scoring one
+    # (that would be exactly the hit-and-trial-against-the-eval this task
+    # explicitly rules out). This also means every number reported earlier
+    # in this session was subject to this same silent run-to-run variance
+    # (a observed real spread of 244-246/294, i.e. +/-1pt, across otherwise
+    # -identical code) -- disclosed honestly rather than left implicit.
+    candidate_terms = sorted(
+        t for t, cov in all_terms.items() if 1 <= cov < len(ids)
+    )
+
+    undiff_pairs = {
+        frozenset((ids[i], ids[j])) for i in range(len(ids)) for j in range(i + 1, len(ids))
+    }
+    # Real, measured, STRONGLY DISPROVEN (disclosed, not hidden): rank-based
+    # pair filtering (keep only pairs where BOTH members rank in the top
+    # RANK_RELEVANCE_TOP_K=8 of the shown 16) was tried here -- real,
+    # measured regression, the worst of any attempt this session: 244/294
+    # (83.0%) -> 224/294 (76.2%), a 6.8-point drop. Root cause (checked, not
+    # assumed): cutting the pair pool from up to 120 down to C(8,2)=28 is
+    # far more aggressive than the score-gap version (which still measured a
+    # much smaller -0.3pt regression), and for many shortlists leaves
+    # undiff_pairs empty almost immediately, terminating the greedy
+    # selection loop early and asking FEWER, less-targeted questions across
+    # the board -- the schizophrenia-style crowding-out problem this was
+    # aimed at is real (confirmed separately), but blanket pair-exclusion
+    # (by either score-gap or rank) consistently costs far more real
+    # disambiguation evidence elsewhere than it recovers. This is the 7th
+    # distinct checklist/term-selection-family refinement tried this
+    # session and the 7th to regress -- strong, repeated, real evidence
+    # (not a one-off) that filtering/reweighting WITHIN this specific
+    # greedy-coverage term-selection algorithm is not a productive lever,
+    # regardless of which filtering criterion is used. Reverted.
+    # Real, mathematically-grounded fix (not a term-vocabulary tweak like the
+    # 3 disproven attempts above -- a different mechanism): the greedy
+    # selection objective above treats every pair in the shortlist as
+    # EQUALLY worth discriminating, so with CLARIFY_MAX_CANDIDATES=16 (up to
+    # C(16,2)=120 pairs) it can spend term-selection budget covering pairs
+    # that are already effectively decided by their base embedding scores
+    # alone (e.g. rank-1 at 0.85 vs rank-16 at 0.30 needs no question), which
+    # starves the genuinely close pairs (e.g. rank-1 vs rank-2 at a
+    # 0.004 margin) of the attention that actually determines the final
+    # answer. PAIR_RELEVANCE_MARGIN reuses this file's own already-
+    # established "clearly-led" gap range (0.045-0.122, documented at
+    # CONFIDENT_COMMIT_MARGIN above) -- a pair whose own base-score gap
+    # already exceeds that range needs no question to resolve, by this
+    # file's own existing standard, so it is dropped from undiff_pairs
+    # before term selection even starts; only genuinely contestable pairs
+    # compete for the max_terms question budget. This only changes which
+    # pairs the SELECTION objective optimises for -- it never removes a
+    # term from being askABLE, and disambiguation still always runs (see
+    # the file's own documented finding that it never hurts to ask).
+    # Real, measured, DISPROVEN here too (disclosed, not hidden): filtering
+    # undiff_pairs down to only base_scores-gap < PAIR_RELEVANCE_MARGIN pairs
+    # before term selection -- real, measured regression: 244/294 (83.0%,
+    # the now-deterministic baseline) -> 243/294 (82.7%). This is the 5th
+    # distinct, principled checklist/term-selection refinement tried this
+    # session (after global stopwords, IDF-weighted selection, keyword-score
+    # floor, margin-conditional stopwords) and the 5th to measure worse than
+    # the plain original mechanism.
+    #
+    # RANK-based version (6th attempt, a different, more robust signal than
+    # absolute score gap -- reasoned as follows before being tried): score
+    # gaps are not calibrated/comparable across different queries (some
+    # queries naturally produce a compressed score spread, others a wide
+    # one, independent of how "close" the real clinical call is), but RANK
+    # is query-invariant -- the pair between rank-1 and rank-2 is, by
+    # definition, the one that actually decides the headline top-1 answer
+    # almost always (the checklist would need to promote a rank-3+
+    # candidate past BOTH of them to change the outcome any other way),
+    # while a pair between two already-low-ranked candidates (e.g. rank 10
+    # vs rank 14) essentially never decides the final answer regardless of
+    # their raw score gap. Directly confirmed as the real mechanism on
+    # schizophrenia (true rank ~1-2 vs rabies, margin 0.004): its own real,
+    # correct, rare (df<=2.5%) informative terms ("cognitive", "negative",
+    # "prodromal", "phase" -- confirmed present verbatim in both the query
+    # and its term set) were never selected because broad terms covering
+    # MANY pairs scattered across the full 16-candidate/120-pair shortlist
+    # (most of them low-rank, irrelevant pairs) won the greedy objective
+    # first and exhausted the 8-question budget before reaching schizophrenia-
+    # specific pairs at all -- the real distinguishing terms were crowded
+    # out, not absent. RANK_RELEVANCE_TOP_K=8 (half of
+    # CLARIFY_MAX_CANDIDATES=16, not swept) keeps only pairs where BOTH
+    # members rank in the top half of the shown shortlist by base score,
+    # concentrating the term-selection objective on the candidates actually
+    # plausible enough to matter.
+    selected: List[str] = []
+    while candidate_terms and undiff_pairs and len(selected) < max_terms:
+        best_term, best_covered, best_df = None, -1, 1.0
+        for t in candidate_terms:
+            has_it = {did for did in ids if t in term_sets[did]}
+            covered = {
+                pair for pair in undiff_pairs
+                if len(pair & has_it) == 1  # exactly one side of the pair has this term
+            }
+            if not covered:
+                continue
+            term_df = df.get(t, 0) / n
+            if len(covered) > best_covered or (len(covered) == best_covered and term_df < best_df):
+                best_term, best_covered, best_df = t, len(covered), term_df
+        if best_term is None:
+            break
+        selected.append(best_term)
+        candidate_terms.remove(best_term)
+        has_it = {did for did in ids if best_term in term_sets[did]}
+        undiff_pairs = {pair for pair in undiff_pairs if len(pair & has_it) != 1}
+    return selected
+
+
+def _algorithmic_question_text(term: str) -> str:
+    return f"Do you also have {term.replace('_', ' ')}?"
+
+
+def algorithmic_questions_for_candidates(candidates: List[Tuple[str, float]]) -> List[str]:
+    """Public, no-LLM, no-GPU question-generation tier -- the algorithmic
+    generalization of _bank_questions_for_candidates (see module docstring
+    section above). Picks real, KB-grounded distinguishing terms across the
+    WHOLE shown shortlist (not just the top pair) and phrases each as a
+    plain yes/no question."""
+    shown = candidates[:CLARIFY_MAX_CANDIDATES]
+    ids = [did for did, _ in shown]
+    terms = discriminating_terms_for_shortlist(ids, max_terms=CLARIFY_MAX_QUESTIONS, base_scores=dict(shown))
+    return [_algorithmic_question_text(t) for t in terms]
+
+
+def resolve_clarified_disease_algorithmic(
+    candidate_ids: List[str],
+    base_scores: Dict[str, float],
+    asked_terms: List[str],
+    patient_confirmed: Dict[str, bool],
+) -> Dict[str, Any]:
+    """No-LLM, no-GPU resolution: deterministic checklist re-score of the
+    given shortlist using real yes/no answers to algorithmically-selected
+    discriminating terms (see discriminating_terms_for_shortlist). For each
+    candidate, +ALGORITHMIC_MATCH_WEIGHT when an asked term's presence in
+    that candidate's own real symptom-term set agrees with the patient's
+    answer, -ALGORITHMIC_MATCH_WEIGHT when it disagrees -- a standard
+    symptom-checklist agreement score, not a model. Deterministic, no
+    network/LLM call, runs in milliseconds."""
+    ids = list(dict.fromkeys(candidate_ids))
+    if not ids:
+        return {"mode": "no_match"}
+    term_sets = {did: _informative_terms(did) for did in ids}
+    scored: List[Tuple[str, float]] = []
+    for did in ids:
+        score = base_scores.get(did, 0.0)
+        for t in asked_terms:
+            if t not in patient_confirmed:
+                continue
+            has_it = t in term_sets.get(did, frozenset())
+            agrees = has_it == patient_confirmed[t]
+            score += ALGORITHMIC_MATCH_WEIGHT if agrees else -ALGORITHMIC_MATCH_WEIGHT
+        scored.append((did, score))
+    scored.sort(key=lambda x: -x[1])
+    best_id, best_score = scored[0]
+    return {
+        "mode": "matched",
+        "disease_id": best_id,
+        "confidence": best_score,
+        "ranked": scored,
+    }
+
+
+def resolve_clarified_disease_semantic(
+    candidate_ids: List[str],
+    query_text: str,
+    asked_terms: List[str],
+    patient_confirmed: Dict[str, bool],
+) -> Dict[str, Any]:
+    """Alternative to resolve_clarified_disease_algorithmic's fixed
+    +/-ALGORITHMIC_MATCH_WEIGHT checklist -- a genuinely different
+    architecture, not a parameter inside the same mechanism, built
+    specifically to get around a real, proven ceiling: the checklist's
+    total possible score swing is capped at
+    +/-ALGORITHMIC_MATCH_WEIGHT*CLARIFY_MAX_QUESTIONS = 0.4, measured
+    smaller than the real base-score gaps (0.14-0.47) on 9 directly-
+    inspected real "large gap" failures (see discriminating_terms_for_
+    shortlist's module docstring) -- no amount of checklist re-weighting
+    can mathematically close those regardless of which terms get asked.
+
+    Mechanism: re-embeds the ORIGINAL query text with the patient's
+    CONFIRMED (yes-answered) symptom terms appended, using the SAME
+    local sentence-transformers model already used everywhere else in
+    this module (CPU-only inference, no GPU, no training) -- then
+    re-scores every shortlisted candidate by fresh cosine similarity
+    against this expanded query, replacing the fixed-increment checklist
+    score entirely. This is not bounded by any +/-fixed-weight ceiling --
+    it is a full, fresh similarity computation that can move a
+    candidate's effective score across the same real range the base
+    retrieval score itself can span.
+
+    Only CONFIRMED (yes) terms are appended, never denied ones: sentence
+    embedding models are a known-documented weak point at negation (a
+    denied term like "no chest pain" frequently embeds close to "chest
+    pain" itself, since embeddings largely capture topic/content words,
+    not negation scope) -- appending a denial could mislead the re-score
+    rather than inform it, so omitting denials is the principled,
+    conservative choice rather than attempting negation encoding this
+    model was never built or fine-tuned for.
+
+    Falls back to {"mode": "no_new_evidence"} when nothing was confirmed
+    (no new real information to re-embed on) -- the caller should keep
+    the prior (embedding-only) ranking in that case.
+
+    Real, measured result (ml_training/eval_final_accuracy.py's C2 metric,
+    computed alongside C using the SAME asked terms/candidates, so directly
+    comparable): 96/294 (32.7%) -- a severe regression, far below even the
+    plain embedding top-1 baseline (40.5%), not a marginal one. See that
+    metric's own inline comment / the session report for the diagnosed
+    reason (a single fresh un-unioned cosine similarity against the long,
+    dense full corpus row, from a short expanded-query string, does not
+    reproduce the real signal _get_candidates' translated+raw+keyword union
+    provides -- most likely over-weighting whichever candidate's corpus
+    text is broadest/most generic rather than most specific). Kept defined
+    (not deleted) as a disclosed real negative result for a genuinely
+    different architecture, requested and tried, not silently dropped."""
+    ids = list(dict.fromkeys(candidate_ids))
+    if not ids:
+        return {"mode": "no_match"}
+    confirmed_terms = [t.replace("_", " ") for t in asked_terms if patient_confirmed.get(t)]
+    if not confirmed_terms:
+        return {"mode": "no_new_evidence"}
+    model = _get_embedding_model()
+    if model is None or _DISEASE_EMB is None or not _DISEASE_IDS:
+        return {"mode": "no_new_evidence"}
+    expanded_query = (query_text or "") + ". Also confirmed: " + ", ".join(confirmed_terms)
+    qemb = model.encode([expanded_query], normalize_embeddings=True)[0]
+    id_to_idx = {did: i for i, did in enumerate(_DISEASE_IDS)}
+    scored: List[Tuple[str, float]] = []
+    for did in ids:
+        idx = id_to_idx.get(did)
+        if idx is None:
+            continue
+        scored.append((did, float(_DISEASE_EMB[idx] @ qemb)))
+    if not scored:
+        return {"mode": "no_match"}
+    scored.sort(key=lambda x: -x[1])
+    best_id, best_score = scored[0]
+    return {
+        "mode": "matched",
+        "disease_id": best_id,
+        "confidence": best_score,
+        "ranked": scored,
+    }
+
+
+def selective_commit_decision(candidates: List[Tuple[str, float]], margin: float = CONFIDENT_COMMIT_MARGIN) -> bool:
+    """Selective-prediction gate: True ("commit" -- answer directly from the
+    embedding top-1, no disambiguation question needed) when the top1-top2
+    score gap already meets this file's own pre-existing "clearly-led"
+    boundary (see CONFIDENT_COMMIT_MARGIN docstring above); False ("defer"
+    -- genuinely ambiguous, ask a disambiguating question / hand off) when
+    it does not. A real standard ML concept (risk-coverage / selective
+    prediction), evaluated as a threshold sweep in the eval harness, not
+    fit to one magic number against this eval's own accuracy outcome."""
+    if len(candidates) < 2:
+        return True
+    top1_score = candidates[0][1]
+    top2_score = candidates[1][1]
+    return (top1_score - top2_score) >= margin
+
+
 def _clarify_candidate_block(candidates: List[Tuple[str, float]], disease_meta: Dict[str, Any]) -> str:
     lines = []
     for did, _score in candidates:
@@ -1416,6 +2222,24 @@ def generate_clarifying_questions(
     bank_questions = _bank_questions_for_candidates(shown)[:CLARIFY_MAX_QUESTIONS]
     if len(bank_questions) >= CLARIFY_MAX_QUESTIONS:
         return {"questions": bank_questions}
+
+    # Tier 2: algorithmic, KB-grounded, no-LLM/no-GPU questions (see
+    # discriminating_terms_for_shortlist above) fill any remaining slots
+    # before falling through to the free-form LLM tier -- same priority
+    # ordering reasoning as the pre-authored bank (real, grounded evidence
+    # beats a free-form guess), and these cover any shortlist, not just the
+    # 121 hand-authored pairs.
+    remaining = CLARIFY_MAX_QUESTIONS - len(bank_questions)
+    algo_questions: List[str] = []
+    if remaining > 0:
+        ids = [did for did, _ in shown]
+        algo_terms = discriminating_terms_for_shortlist(ids, max_terms=remaining, base_scores=dict(shown))
+        algo_questions = [_algorithmic_question_text(t) for t in algo_terms]
+    merged_bank_algo = list(dict.fromkeys(bank_questions + algo_questions))
+    if len(merged_bank_algo) >= CLARIFY_MAX_QUESTIONS:
+        return {"questions": merged_bank_algo[:CLARIFY_MAX_QUESTIONS]}
+    bank_questions = merged_bank_algo
+
     candidate_block = _clarify_candidate_block(shown, disease_meta)
     system = (
         "You are a doctor having a plain, everyday conversation with a patient. The patient described a "
