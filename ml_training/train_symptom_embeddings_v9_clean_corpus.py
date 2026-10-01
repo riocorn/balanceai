@@ -42,6 +42,21 @@ per this session's no-hit-and-trial standard; this run isolates the one
 real lever (corpus cleanliness) by holding every other recipe choice fixed.
 
 Run on GPU (Colab T4).
+
+REAL MEASURED RESULT (2026-10-01, Colab T4, 14,754 pairs, 916 steps, 4
+epochs, 7m16s train time): raw embedding top-1 on the same 294-case
+held-out eval (eval_final_accuracy.py metric A) moved 235/294 (79.9%) ->
+237/294 (80.6%), a small real gain. But the deployed headline metric
+(metric C, the algorithmic-disambiguation pipeline that actually sits in
+front of the raw embedding score) came back BIT-FOR-BIT IDENTICAL:
+267/294 (90.8%) both before and after -- the disambiguation layer already
+recovers essentially everything the embedding-level gain would have
+bought, so it washes out completely at the metric that matters. Retrieval
+ceiling (metric B) also unchanged: 282/294 (95.9%) both. NOT ADOPTED:
+config.py's EMBEDDING_MODEL stays on symptom_embedding_finetuned_v7_combined
+-- no regression, but no real improvement at the headline either, so there
+is no basis to switch. Checkpoint weights were not committed (consistent
+with v8's precedent): only this script, so the run is reproducible.
 """
 import json
 import random
